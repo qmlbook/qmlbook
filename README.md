@@ -55,27 +55,24 @@ rules described above. This list is explicit and overrides any other licensing
 information.
 
 * `ch06/src/delegates/images/earth.jpeg`
-
     - Image credit: NASA/JPL
     - Source: http://photojournal.jpl.nasa.gov/catalog/PIA00232
-
 * `ch06/src/delegates/images/jupiter.jpeg`
-
     - Image credit: NASA/Freddy Willems, Amateur Astronomer
     - Source: http://photojournal.jpl.nasa.gov/catalog/PIA14411
-
 * `ch06/src/delegates/images/mars.jpeg`
-
     - Image credit: NASA/JPL-Caltech
     - Source: http://photojournal.jpl.nasa.gov/catalog/PIA14293
-
 * `ch06/src/delegates/images/mercury.jpeg`
-
     - Image credit: NASA/Johns Hopkins University Applied Physics
       Laboratory/Carnegie Institution of Washington
     - Source: http://photojournal.jpl.nasa.gov/catalog/PIA14551
-
 * `ch06/src/delegates/images/venus.jpeg`
-
     - Image credit: NASA/JPL
     - Source: http://photojournal.jpl.nasa.gov/catalog/PIA00072
+* `ch10/src/sound-effects/swosh.wav`
+    - License: CC0
+    - Source: http://www.freesound.org/people/qubodup/sounds/60026/
+* `ch10/src/sound-effects/beep.wav`
+    - License: CC0
+    - Source:  http://www.freesound.org/people/reecord2/sounds/96063/
