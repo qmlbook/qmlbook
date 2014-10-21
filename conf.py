@@ -50,7 +50,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'Qt5 Cadaques Book'
-copyright = u'2013 Jürgen Bocklage-Ryannel and Johan Thelin. This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License'
+copyright = u'2012-2014 Jürgen Bocklage-Ryannel and Johan Thelin. This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
