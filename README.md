@@ -29,6 +29,10 @@ Screenshots are used by the `screenshots.qml` files located inside each chapter 
 Contributions
 =============
 
+We greatly appreciate any contributions to this project. Feel free to submit pull requests with fixes or additional contents. When contributing, please add your name to the list of contributors in the `pages/contributors.rst` file. Also, if contributing a chapter, add your self as the `sectionauthor`.
+
+We only accept contributions under a CLA, see `CONTRIBUTING.md`. This is because we, the original authors, want to ensure that we say yes if approached by someone willing to turn this material into a book made from dead trees.
+
 Licensing
 =========
 
