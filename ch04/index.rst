@@ -48,7 +48,7 @@ Let's start with a simple example of a QML file to explain the different syntax.
 
 .. hint::
 
-    You can run the example using the QtQuick runtime from the command line from your OS like this::
+    You can run the example using the Qt Quick runtime from the command line from your OS like this::
 
         $ $QTDIR/bin/qmlscene rectangle.qml
 
@@ -285,7 +285,7 @@ To interact with these elements you often will use a ``MouseArea``. Its a rectan
 
 .. note::
 
-    This is an important aspect of QtQuick, the input handling is separated from the visual presentation. By this it allows you to show the user an interface element, but the interaction area can be larger.
+    This is an important aspect of Qt Quick, the input handling is separated from the visual presentation. By this it allows you to show the user an interface element, but the interaction area can be larger.
 
 Components
 ==========
@@ -471,7 +471,7 @@ An element often used with positioners is the ``Repeater``. It works like a for-
     :start-after: M1>>
     :end-before: <<M1
 
-In this repeater example, we use some new magic. We define our own color property, which we use as an array of colors. The repeater creates a series of rectangles (16, as defined by the model). For each loop he creates the rectangle as defined as child of the repeater. In the rectangle we chose the color by using JS math functions ``Math.floor(Math.random()*3)``. This gives us a random number in the range from 0..2, which we use to select the color from our color array. As noted earlier JavaScript is a core part of QtQuick, as such the standard libraries are available for us.
+In this repeater example, we use some new magic. We define our own color property, which we use as an array of colors. The repeater creates a series of rectangles (16, as defined by the model). For each loop he creates the rectangle as defined as child of the repeater. In the rectangle we chose the color by using JS math functions ``Math.floor(Math.random()*3)``. This gives us a random number in the range from 0..2, which we use to select the color from our color array. As noted earlier JavaScript is a core part of Qt Quick, as such the standard libraries are available for us.
 
 A repeater injects the ``index`` property into the repeater. It contains the current loop-index. (0,1,..15). We can use this to make our own decisions based on the index, or in our case to visualize the current index with the ``Text`` element.
 

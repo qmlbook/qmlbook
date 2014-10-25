@@ -110,7 +110,7 @@ Qt 5 seems to be working and we are ready to continue.
 
     After a successful compilation and 2 cups of coffee, Qt 5 will be available in the ``qtbase`` folder. Any beverage will suffice, however, we suggest coffee for best results.
 
-    If you want to test your compilation, simply start ``qtbase/bin/qmlscene`` and select a QtQuick example to run it ...or follow just us into the next chapter.
+    If you want to test your compilation, simply start ``qtbase/bin/qmlscene`` and select a Qt Quick example to run it ...or follow just us into the next chapter.
 
 
     To test your installation, we will create a small hello world application. Please create a simple ``example.qml`` file using your favorite text editor and paste the following content inside:

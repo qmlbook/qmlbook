@@ -8,7 +8,7 @@ Networking
 
 Qt5 comes with a rich set of networking classes on the C++ side. There are for example high level classes on the http protocol layer in a request-reply fashion such as ``QNetworkRequest``, ``QNetworkReply`` and ``QNetworkAccessManager``. But also lower levels classes on the TCP/IP or UDP protocol layer such as ``QTcpSocket``, ``QTcpServer`` and ``QUdpSocket``. Additional classes exists to manage proxies, network cache and also the systems network configuration.
 
-This chapter will not be about C++ networking, this chapter is about QtQuick and networking. So how can I connect my QML/JS user interface directly with a network service or how can I serve my user interface via a network service. There are good books and references out there to cover network programming with Qt/C++. Then it is just a manner to read the chapter about C++ integration to come up with an integration layer to feed your data into the QtQuick world.
+This chapter will not be about C++ networking, this chapter is about Qt Quick and networking. So how can I connect my QML/JS user interface directly with a network service or how can I serve my user interface via a network service. There are good books and references out there to cover network programming with Qt/C++. Then it is just a manner to read the chapter about C++ integration to come up with an integration layer to feed your data into the Qt Quick world.
 
 Serving UI via HTTP
 ===================
@@ -154,7 +154,7 @@ HTTP Requests
 
 .. issues:: ch11
 
-A http request is in Qt typical done using ``QNetworkRequest`` and ``QNetworkReply`` from the c++ site and then the response would be pushed using the Qt/C++ integration into the QML space. So we try to push the envelope here a little bit to use the current tools QtQuick gives us to communicate with a network endpoint. For this we use a helper object to make http request, response cycle. It comes in the form of the java script ``XMLHttpRequest`` object.
+A http request is in Qt typical done using ``QNetworkRequest`` and ``QNetworkReply`` from the c++ site and then the response would be pushed using the Qt/C++ integration into the QML space. So we try to push the envelope here a little bit to use the current tools Qt Quick gives us to communicate with a network endpoint. For this we use a helper object to make http request, response cycle. It comes in the form of the java script ``XMLHttpRequest`` object.
 
 The ``XMLHttpRequest`` object allows the user to register a response handle function and a url. A request can be send using one of the http verbs (get, post, put, delete, ...) to make the request. When the response arrive the handle function is called. The handle function is called several times. Every-time the request state has changed (for example headers have arrived or request is done).
 
@@ -279,7 +279,7 @@ Is it also possible to load local (XML/JSON) files using the XMLHttpRequest. For
 
 	xhr.open("GET", "colors.json");
 
-We use this to read a color table and display it as a grid. It is not possible to modify the file from the QtQuick side. To store data back to the source we would need a small REST based HTTP server or a native QtQuick extension for file access.
+We use this to read a color table and display it as a grid. It is not possible to modify the file from the Qt Quick side. To store data back to the source we would need a small REST based HTTP server or a native Qt Quick extension for file access.
 
 .. literalinclude:: src/localfiles/localfiles.qml
 
