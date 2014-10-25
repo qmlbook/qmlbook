@@ -230,13 +230,13 @@ In the next snippet we read a CSV file from the local directory and loop over th
         // loop forever macro
         forever {
             QString line = stream.readLine();
-            // test for empty string 'QString("")'
-            if(line.isEmpty()) {
-                continue;
-            }
             // test for null string 'String()'
             if(line.isNull()) {
                 break;
+            }
+            // test for empty string 'QString("")'
+            if(line.isEmpty()) {
+                continue;
             }
             QStringList row;
             // for each loop to iterate over containers
