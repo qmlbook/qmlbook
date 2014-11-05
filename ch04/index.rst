@@ -2,7 +2,7 @@
 Quick Starter
 =============
 
-.. sectionauthor:: `jryannel <https://bitbucket.org/jryannel>`_
+.. sectionauthor:: `jryannel <https://github.com/jryannel>`_
 
 .. issues:: ch04
 

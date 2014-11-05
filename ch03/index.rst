@@ -2,7 +2,7 @@
 Qt Creator IDE
 ==============
 
-.. sectionauthor:: `jryannel <https://bitbucket.org/jryannel>`_
+.. sectionauthor:: `jryannel <https://github.com/jryannel>`_
 
 .. issues:: ch03
 
@@ -89,7 +89,7 @@ Locator
 
 .. issues:: ch03
 
-The locator is a central component inside Qt Creator. It allows developers to navigate fast to specific locations inside the source code or inside the help. To open the locator press :kbd:`Ctrl+K`. 
+The locator is a central component inside Qt Creator. It allows developers to navigate fast to specific locations inside the source code or inside the help. To open the locator press :kbd:`Ctrl+K`.
 
 .. image:: assets/locator.png
 	:scale: 50%
@@ -117,7 +117,7 @@ Shortcuts
 
 .. issues:: ch03
 
-Shortcuts are the difference between a nice to use system and a professional system. As a professional you spend hundred of hours in front of your application. Each shortcut which makes your work-flow faster counts. Luckily the developers of Qt Creator think the same and have added literally hundreds of shortcuts to the application. 
+Shortcuts are the difference between a nice to use system and a professional system. As a professional you spend hundred of hours in front of your application. Each shortcut which makes your work-flow faster counts. Luckily the developers of Qt Creator think the same and have added literally hundreds of shortcuts to the application.
 
 To get started we have collection some basic shortcuts (in Windows notation):
 

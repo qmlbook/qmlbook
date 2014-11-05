@@ -2,7 +2,7 @@
 Networking
 ==========
 
-.. sectionauthor:: `jryannel <https://bitbucket.org/jryannel>`_
+.. sectionauthor:: `jryannel <https://github.com/jryannel>`_
 
 .. issues:: ch11
 
@@ -706,7 +706,7 @@ Now you should be able to to use the web socket qml module.
         id: socket
     }
 
-To test your web socket we will use the echo server from http://websocket.org. 
+To test your web socket we will use the echo server from http://websocket.org.
 
 .. literalinclude:: src/wsecho/wsecho.qml
 

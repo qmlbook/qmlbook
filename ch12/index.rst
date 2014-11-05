@@ -4,7 +4,7 @@ Storage
 
 .. issues:: ch12
 
-.. sectionauthor:: `jryannel <https://bitbucket.org/jryannel>`_
+.. sectionauthor:: `jryannel <https://github.com/jryannel>`_
 
 This chapter will cover storing data using QtQuick in Qt5. QtQuick offers only limited ways of storing local data. In this sense it acts more like a browser. In many projects storing data is handled by the C++ backend and the required functionality is exported to the QtQuick frontend side. QtQuick does not provide you with access to the host file system to read and write files as you are used from the Qt C++ side. So it would be task of the backend engineer to write such a plugin or maybe use a network channel to communicate with a local server, which provides these capabilities.
 
@@ -26,7 +26,7 @@ Every application need to store smaller and larger information persistently. Thi
 	Maybe we should also cover the QDataStream apis to write binary data is a fast manner.
 
 	.. todo:: Where is file access handled? labs has a file model or using a c++ plugin.
-    
+
 * Settings, Local Storage, C++ Plugins, Networked Applications, EngineIO
 
 Storing Settings
@@ -36,13 +36,13 @@ Qt comes on its native side with the ``QSettings`` class, which allows you to st
 
 In Qt 5.2 ``Settings`` have entered the QML world. The API is still in the labs module, which means the API may break in the future. So be aware.
 
-Here is a small example, which applies a color value to a base rectangle. Everytime the user clicks on the window a new random color is generated. When the application is closed and relaunched again you should see your last color. The default color should be the color initially set on the root rectangle. 
+Here is a small example, which applies a color value to a base rectangle. Everytime the user clicks on the window a new random color is generated. When the application is closed and relaunched again you should see your last color. The default color should be the color initially set on the root rectangle.
 
 ::
 
     import QtQuick 2.0
     import Qt.labs.settings 1.0
-    
+
     Rectangle {
         id: root
         width: 320; height: 240
@@ -56,7 +56,7 @@ Here is a small example, which applies a color value to a base rectangle. Everyt
             onClicked: root.color = Qt.hsla(Math.random(), 0.5, 0.5, 1.0);
         }
     }
-    
+
 The settings value are stored every time the value changes. This might be not always what you want. To store the settings only when required you can use standard properties.
 
 ::
@@ -84,7 +84,7 @@ It is also possible to store settings into different categories using the ``cate
         property alias width: window.width
         property alias height: window.height
     }
-    
+
 The settings are stored according your application name, organization and domain. This information is normally set in the main function of your c++ code.
 
 ::

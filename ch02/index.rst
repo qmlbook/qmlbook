@@ -2,7 +2,7 @@
 Get Started
 ===========
 
-.. sectionauthor:: `jryannel <https://bitbucket.org/jryannel>`_
+.. sectionauthor:: `jryannel <https://github.com/jryannel>`_
 
 .. issues:: ch02
 
@@ -166,7 +166,7 @@ In the fist example we demonstrate how someone could very simple add 2 constant 
 
     // text stream is text-codec aware
     QTextStream cout(stdout, QIODevice::WriteOnly);
-    
+
     int main(int argc, char** argv)
     {
         // avoid compiler warnings
@@ -226,7 +226,7 @@ In the next snippet we read a CSV file from the local directory and loop over th
     // file operations
     QFile file("sample.csv");
     if(file.open(QIODevice::ReadOnly)) {
-        QTextStream stream(&file);        
+        QTextStream stream(&file);
         // loop forever macro
         forever {
             QString line = stream.readLine();
@@ -310,7 +310,7 @@ In the implementation we draw a small border on our widget and a small rectangle
 
     CustomWidget::CustomWidget(QWidget *parent) :
         QWidget(parent)
-    {    
+    {
     }
 
     void CustomWidget::paintEvent(QPaintEvent *)
@@ -408,7 +408,7 @@ In the implementation we use layouts to better arrange our widgets. They re-layo
 
 .. rubric:: Drawing Shapes
 
-Some problems are better visualized. If the problem at hand looks faintly like geometrical objects, qt graphics view is a good candidate. A graphics view arranges simple geometrical shapes on a scene. the user can interact with these shapes or they are positioned using an algorithm. To populate a graphics view you need a graphics view and a graphics scene. The scene is attached to the view and populates with graphics items. 
+Some problems are better visualized. If the problem at hand looks faintly like geometrical objects, qt graphics view is a good candidate. A graphics view arranges simple geometrical shapes on a scene. the user can interact with these shapes or they are positioned using an algorithm. To populate a graphics view you need a graphics view and a graphics scene. The scene is attached to the view and populates with graphics items.
 Here a short example. First the header file with the declaration of the view and scene.
 
 .. code-block:: cpp
@@ -452,7 +452,7 @@ Adapting Data
 .. issues:: ch02
 
 
-Till now we have mostly covered basic data types and how to use widgets and graphic views. Often in your application you will need larger amount of structured data, which also has to be persistently stored. The data also needs to be displayed. For this Qt uses the models. A simple model is the string list model, which gets filled with strings and then attached to a list view.  
+Till now we have mostly covered basic data types and how to use widgets and graphic views. Often in your application you will need larger amount of structured data, which also has to be persistently stored. The data also needs to be displayed. For this Qt uses the models. A simple model is the string list model, which gets filled with strings and then attached to a list view.
 
 .. code-block:: cpp
 
@@ -512,23 +512,23 @@ Filtering is done based on the column to be filters and a string as filter argum
 
     proxy->setFilterKeyColumn(0);
     proxy->setFilterCaseSensitive(Qt::CaseInsensitive);
-    proxy->setFilterFixedString(QString)    
+    proxy->setFilterFixedString(QString)
 
 The filter proxy model is much more powerful then demonstrated here. For now it is enough to remember its exists.
 
 
 .. note::
 
-    This was an overview of the different kind of classical application you could develop with Qt5. The desktop is moving and soon the mobile devices will be our desktop of tomorrow. Mobile devices have a different user interface design. They are much more simplistic then desktop applications. They do one thing and this simple and focused. Animations is an important part. A user interface needs to feel alive and fluent. The traditional Qt technologies are not well suited for this market. 
+    This was an overview of the different kind of classical application you could develop with Qt5. The desktop is moving and soon the mobile devices will be our desktop of tomorrow. Mobile devices have a different user interface design. They are much more simplistic then desktop applications. They do one thing and this simple and focused. Animations is an important part. A user interface needs to feel alive and fluent. The traditional Qt technologies are not well suited for this market.
 
-    Coming next: Qt Quick for the rescue. 
+    Coming next: Qt Quick for the rescue.
 
 Qt Quick Application
 --------------------
 
 .. issues:: ch02
 
-There is an inherent conflict in modern software development. The user interface is moving much faster then our back-end services. In a traditional technology you develop the so called front-end with the same pace as the back-end. Which results into conflicts when customers want to change the user interface during a project, or develop the idea of an user interface during the project. Agile projects, require agile methods. 
+There is an inherent conflict in modern software development. The user interface is moving much faster then our back-end services. In a traditional technology you develop the so called front-end with the same pace as the back-end. Which results into conflicts when customers want to change the user interface during a project, or develop the idea of an user interface during the project. Agile projects, require agile methods.
 
 Qt Quick provides a declarative environment where your user interface (the front-end) is declared like HTML and your back-end is in native c++ code. This allows you to get both from both worlds.
 
@@ -556,7 +556,7 @@ The declaration language is called QML and it needs to runtime to run it. Qt pro
     view->setSource(source);
     view.show();
 
-Coming back to our earlier examples. In one example we used a c++ city model. It would be great if we could use this model inside our declarative QML code. 
+Coming back to our earlier examples. In one example we used a c++ city model. It would be great if we could use this model inside our declarative QML code.
 
 To enable this we first code our front-end to see how we want to use a possible city model. In this case the front-end expects a object named ``cityModel`` which we can use inside a list view.
 
@@ -586,7 +586,7 @@ To enable the ``cityModel`` we can mostly re-use our previous model and add a co
     m_model->setRoleNames(roles);
     view->rootContext()->setContextProperty("cityModel", m_model);
 
-.. warning:: 
+.. warning::
 
     This is not completely correct, as the SQL table model contains the data in columns and a QML model expects the data as roles. So there needs to be a mapping between columns and roles. Please see `QML and QSqlTableModel <http://qt-project.org/wiki/QML_and_QSqlTableModel>`_ wiki page.
 

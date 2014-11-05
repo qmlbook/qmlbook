@@ -2,7 +2,7 @@
 Fluid Elements
 ==============
 
-.. sectionauthor:: `jryannel <https://bitbucket.org/jryannel>`_
+.. sectionauthor:: `jryannel <https://github.com/jryannel>`_
 
 .. index:: Animations, Easing Curves, Grouped Animations, States, Transitions, SequentialAnimation, ParallelAnimation, ColorAnimation, NumberAnimation, Transition, ClickableImage, Bouncing Ball
 
@@ -93,7 +93,7 @@ Animation can be applied in several ways:
     .. literalinclude:: src/animation/ClickableImageV2.qml
         :start-after: M1>>
         :end-before: <<M1
-    
+
 
     To organize the element below the image we used a ``Column`` positioner and calculated the width and height based on the column's ``childrenRect`` property. We exposed two properties: ``text`` and the image ``source`` as also the ``clicked`` signal. We also wanted that the text is as wide as the image and it should wrap. We achieve the latter by using the ``Text`` elements ``wrapMode`` property.
 
@@ -111,7 +111,7 @@ The three rockets are all at the same y-position (``y=200``). They need to trave
 .. literalinclude:: src/animation/animationtypes.qml
     :start-after: M1>>
     :end-before: <<M1
-    
+
 
 .. rubric:: 1st rocket
 
@@ -128,7 +128,7 @@ The 2nd rocket travels using a ``behavior on`` animation. This behavior tells th
 .. literalinclude:: src/animation/animationtypes.qml
     :start-after: M3>>
     :end-before: <<M3
-    
+
 .. rubric:: 3rd rocket
 
 The 3rd rocket uses a ``standalone animation``. The animation is defined as an own element and could be everywhere in the document. The click will start the animation using the animations function ``start()``. Each animation has a start(), stop(), resume(), restart() function. The animation itself contains much more information then the other animation types earlier. We need to define the target and properties to declare the target element to be animated and which properties we want to animate. We need to define a ``to`` value and in this case we define also a ``from`` value to allow a re-start of the animation.
@@ -373,7 +373,7 @@ You define states in QML with the ``State`` element, which needs to be bound to 
 
 A state is changed by assigning a new state name to the ``state`` property of the element with the states defined.
 
-.. note:: 
+.. note::
 
     Another way to switch states is using the ``when`` property of the ``State`` element. The ``when`` property can be set to an expression that evaluates to true when the state should be applied.
 

@@ -145,13 +145,6 @@ html_theme_options = {
   ],
   'navbar_title': "QmlBook",
   'navbar_site_name': "Chapters",
-  'navbar_sidebarrel': False,
-  'navbar_pagenav': False,
-  'globaltoc_depth': -1,
-  'globaltoc_includehidden': "true",
-  'source_link_position': "",
-  # 'navbar_class': "navbar navbar-inverse",
-  'navbar_fixed_top': "true",
 }
 
 # Add any paths that contain custom themes here, relative to this directory.
