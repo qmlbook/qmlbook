@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2013, Juergen Bocklage-Ryannel, Johan Thelin
  * All rights reserved.
- * 
+ *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:
  *     * Redistributions of source code must retain the above copyright
@@ -12,7 +12,7 @@
  *     * Neither the name of the editors nor the
  *       names of its contributors may be used to endorse or promote products
  *       derived from this software without specific prior written permission.
- * 
+ *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
  * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
  * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -30,7 +30,13 @@
 import QtQuick 2.0
 
 Item {
-    width: 400; height: 300
+    id: root
+    width: 400; height: 420
+
+    Image {
+        anchors.centerIn: parent
+        source: "assets/background.png"
+    }
 
 
     //M4>>
@@ -45,8 +51,8 @@ Item {
     //M1>>
     ClickableImageV3 {
         id: rocket1
-        x: 40; y: 200
-        source: "assets/rocket2.png"
+        x: 40; y: root.height-height
+        source: "assets/rocket.png"
         text: "animation on property"
         NumberAnimation on y {
             to: 40; duration: 4000
@@ -57,8 +63,8 @@ Item {
     //M2>>
     ClickableImageV3 {
         id: rocket2
-        x: 152; y: 200
-        source: "assets/rocket2.png"
+        x: 152; y: root.height-height
+        source: "assets/rocket.png"
         text: "behavior on property"
         Behavior on y {
             NumberAnimation { duration: 4000 }
@@ -73,8 +79,8 @@ Item {
     //M3>>
     ClickableImageV3 {
         id: rocket3
-        x: 264; y: 200
-        source: "assets/rocket2.png"
+        x: 264; y: root.height-height
+        source: "assets/rocket.png"
         onClicked: anim.start()
 //        onClicked: anim.restart()
 
@@ -84,7 +90,6 @@ Item {
             id: anim
             target: rocket3
             properties: "y"
-            from: 205
             to: 40
             duration: 4000
         }

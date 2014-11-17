@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2013, Juergen Bocklage-Ryannel, Johan Thelin
  * All rights reserved.
- * 
+ *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:
  *     * Redistributions of source code must retain the above copyright
@@ -12,7 +12,7 @@
  *     * Neither the name of the editors nor the
  *       names of its contributors may be used to endorse or promote products
  *       derived from this software without specific prior written permission.
- * 
+ *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
  * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
  * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -28,9 +28,20 @@
 import QtQuick 2.0
 
 Rectangle {
+    id: root
     width: 150
     height: 250
-    color: "#333333"
+
+    property color black: '#1f1f21'
+    property color red: '#fc3d39'
+    property color green: '#53d769'
+
+
+    gradient: Gradient {
+        GradientStop { position: 0.0; color: "#2ed5fa" }
+        GradientStop { position: 1.0; color: "#2467ec" }
+    }
+
 
     // M1>>
     Rectangle {
@@ -38,7 +49,8 @@ Rectangle {
         x: 25; y: 15
         width: 100; height: width
         radius: width/2
-        color: "black"
+        color: root.black
+        border.color: Qt.lighter(color, 1.1)
     }
 
     Rectangle {
@@ -46,7 +58,8 @@ Rectangle {
         x: 25; y: 135
         width: 100; height: width
         radius: width/2
-        color: "black"
+        color: root.black
+        border.color: Qt.lighter(color, 1.1)
     }
     // <<M1
 
@@ -56,13 +69,13 @@ Rectangle {
     states: [
         State {
             name: "stop"
-            PropertyChanges { target: light1; color: "red" }
-            PropertyChanges { target: light2; color: "black" }
+            PropertyChanges { target: light1; color: root.red }
+            PropertyChanges { target: light2; color: root.black }
         },
         State {
             name: "go"
-            PropertyChanges { target: light1; color: "black" }
-            PropertyChanges { target: light2; color: "green" }
+            PropertyChanges { target: light1; color: root.black }
+            PropertyChanges { target: light2; color: root.green }
         }
     ]
     // <<M2
@@ -78,6 +91,7 @@ Rectangle {
     transitions: [
         Transition {
             from: "stop"; to: "go"
+//            from: "*"; to: "*"
             ColorAnimation { target: light1; properties: "color"; duration: 2000 }
             ColorAnimation { target: light2; properties: "color"; duration: 2000 }
         }

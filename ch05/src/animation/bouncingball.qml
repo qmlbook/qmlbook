@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2013, Juergen Bocklage-Ryannel, Johan Thelin
  * All rights reserved.
- * 
+ *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:
  *     * Redistributions of source code must retain the above copyright
@@ -12,7 +12,7 @@
  *     * Neither the name of the editors nor the
  *       names of its contributors may be used to endorse or promote products
  *       derived from this software without specific prior written permission.
- * 
+ *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
  * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
  * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -29,8 +29,8 @@ import QtQuick 2.0
 
 Item {
     id: root
-    width: 480
-    height: 300
+    width: 640
+    height: 380
     property int duration: 3000
 
     // M1>>
@@ -58,13 +58,15 @@ Item {
     // M2>>
     Image {
         id: ball
-        x: 20; y: 240
+        x: 0; y: root.height-height
         source: "assets/soccer_ball.png"
 
         MouseArea {
             anchors.fill: parent
             onClicked: {
-                ball.x = 20; ball.y = 240
+                ball.x = 0;
+                ball.y = root.height-ball.height;
+                ball.rotation = 0;
                 anim.restart()
             }
         }
@@ -85,7 +87,7 @@ Item {
             NumberAnimation {
                 target: ball
                 properties: "y"
-                to: 240
+                to: root.height-ball.height
                 duration: root.duration * 0.6
                 easing.type: Easing.OutBounce
             }
@@ -93,14 +95,14 @@ Item {
         NumberAnimation {
             target: ball
             properties: "x"
-            to: 400
+            to: root.width-ball.width
             duration: root.duration
         }
         RotationAnimation {
             target: ball
             properties: "rotation"
             to: 720
-            duration: root.duration * 1.1
+            duration: root.duration
         }
     }
     // <<M3

@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2013, Juergen Bocklage-Ryannel, Johan Thelin
  * All rights reserved.
- * 
+ *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:
  *     * Redistributions of source code must retain the above copyright
@@ -12,7 +12,7 @@
  *     * Neither the name of the editors nor the
  *       names of its contributors may be used to endorse or promote products
  *       derived from this software without specific prior written permission.
- * 
+ *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
  * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
  * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -33,13 +33,20 @@ import QtQuick 2.0
 BrightSquare {
     id: root
     width: 300
-    height: 200
+    height: 400
     property int duration: 3000
+
+    Image {
+        anchors.centerIn: parent
+        source: "assets/background.png"
+    }
+
 
     ClickableImageV3 {
         id: rocket
-        x: 20; y: 120
-        source: "assets/rocket2.png"
+        x: 20; y: root.height-height
+        text: 'rocket'
+        source: "assets/rocket.png"
         onClicked: anim.restart()
     }
 
