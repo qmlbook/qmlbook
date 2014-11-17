@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2013, Juergen Bocklage-Ryannel, Johan Thelin
  * All rights reserved.
- * 
+ *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:
  *     * Redistributions of source code must retain the above copyright
@@ -12,7 +12,7 @@
  *     * Neither the name of the editors nor the
  *       names of its contributors may be used to endorse or promote products
  *       derived from this software without specific prior written permission.
- * 
+ *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
  * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
  * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -27,6 +27,7 @@
 
 // M1>>
 import QtQuick 2.0
+import "../common"
 
 Column {
     spacing: 2
@@ -43,32 +44,23 @@ Column {
             ListElement { name: "Neptune"; surfaceColor: "lightBlue" }
         }
 
-        Rectangle {
-            width: 100
-            height: 20
+        BlueBox {
+            width: 120
+            height: 32
 
             radius: 3
+            text: name
 
-            color: "lightBlue"
-
-            Text {
-                anchors.centerIn: parent
-                text: name
-            }
-            
-            Rectangle {
+            Box {
                 anchors.left: parent.left
                 anchors.verticalCenter: parent.verticalCenter
-                anchors.leftMargin: 2
-                
+                anchors.leftMargin: 4
+
                 width: 16
                 height: 16
-                
+
                 radius: 8
-                
-                border.color: "black"
-                border.width: 1
-                
+
                 color: surfaceColor
             }
         }

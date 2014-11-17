@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2013, Juergen Bocklage-Ryannel, Johan Thelin
  * All rights reserved.
- * 
+ *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:
  *     * Redistributions of source code must retain the above copyright
@@ -12,7 +12,7 @@
  *     * Neither the name of the editors nor the
  *       names of its contributors may be used to endorse or promote products
  *       derived from this software without specific prior written permission.
- * 
+ *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
  * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
  * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -31,37 +31,41 @@ import QtQuick 2.0
 Rectangle {
     width: 120
     height: 300
-    
-    color: "white"
+
+    gradient: Gradient {
+        GradientStop { position: 0.0; color: "#f6f6f6" }
+        GradientStop { position: 1.0; color: "#d7d7d7" }
+    }
 
     ListView {
         anchors.fill: parent
         anchors.margins: 20
-        
+
         clip: true
-        
+
         model: 100
-        
+
         delegate: numberDelegate
         spacing: 5
-        
+
         focus: true
     }
-    
+
     Component {
         id: numberDelegate
-     
+
         Rectangle {
             width: ListView.view.width
             height: 40
-            
-            color: ListView.isCurrentItem?"gray":"lightGray"
-            
+
+            color: ListView.isCurrentItem?"#157efb":"#53d769"
+            border.color: Qt.lighter(color, 1.1)
+
             Text {
                 anchors.centerIn: parent
-                
+
                 font.pixelSize: 10
-                
+
                 text: index
             }
         }

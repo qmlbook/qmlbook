@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2013, Juergen Bocklage-Ryannel, Johan Thelin
  * All rights reserved.
- * 
+ *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:
  *     * Redistributions of source code must retain the above copyright
@@ -12,7 +12,7 @@
  *     * Neither the name of the editors nor the
  *       names of its contributors may be used to endorse or promote products
  *       derived from this software without specific prior written permission.
- * 
+ *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
  * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
  * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -27,66 +27,55 @@
 
 // M1>>
 import QtQuick 2.0
+import "../common"
 
-Rectangle {
-    width: 80
+Background {
+    width: 240
     height: 300
-    
-    color: "white"
 
     ListView {
         anchors.fill: parent
         anchors.margins: 20
-        
+
         clip: true
-        
+
         model: 4
-        
+
         delegate: numberDelegate
-        spacing: 5
-        
+        spacing: 2
+
         header: headerComponent
         footer: footerComponent
     }
-    
+
     Component {
         id: headerComponent
-        
-        Rectangle {
-            width: 40
+
+        YellowBox {
+            width: ListView.view.width
             height: 20
-            
-            color: "yellow"
+            text: 'Header'
+
         }
     }
 
     Component {
         id: footerComponent
-        
-        Rectangle {
-            width: 40
+
+        YellowBox {
+            width: ListView.view.width
             height: 20
-            
-            color: "red"
+            text: 'Footer'
         }
     }
-    
+
     Component {
         id: numberDelegate
-     
-        Rectangle {
-            width: 40
+
+        GreenBox {
+            width: ListView.view.width
             height: 40
-            
-            color: "lightGreen"
-            
-            Text {
-                anchors.centerIn: parent
-                
-                font.pixelSize: 10
-                
-                text: index
-            }
+            text: 'Item #' + index
         }
     }
 }

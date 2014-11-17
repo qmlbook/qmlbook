@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2013, Juergen Bocklage-Ryannel, Johan Thelin
  * All rights reserved.
- * 
+ *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:
  *     * Redistributions of source code must retain the above copyright
@@ -12,7 +12,7 @@
  *     * Neither the name of the editors nor the
  *       names of its contributors may be used to endorse or promote products
  *       derived from this software without specific prior written permission.
- * 
+ *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
  * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
  * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -27,72 +27,58 @@
 
 // M1>>
 import QtQuick 2.0
+import "../common"
 
-Rectangle {
+Background {
     width: 300
     height: 290
-    
-    color: "white"
-    
+
     ListView {
         anchors.fill: parent
         anchors.margins: 20
-        
+
         clip: true
-        
+
         model: spaceMen
-        
+
         delegate: spaceManDelegate
-        
+
         section.property: "nation"
         section.delegate: sectionDelegate
     }
-    
+
     Component {
         id: spaceManDelegate
-        
+
         Item {
-            width: 260
+            width: ListView.view.width
             height: 20
-            
             Text {
                 anchors.left: parent.left
                 anchors.verticalCenter: parent.verticalCenter
-                anchors.leftMargin: 10
-                
+                anchors.leftMargin: 8
                 font.pixelSize: 12
-                
                 text: name
+                color: '#1f1f1f'
             }
         }
     }
-    
+
     Component {
         id: sectionDelegate
-        
-        Rectangle {
-            width: 260
-            height: 20
-            
-            color: "lightGray"
-            
-            Text {
-                anchors.left: parent.left
-                anchors.verticalCenter: parent.verticalCenter
-                anchors.leftMargin: 10
 
-                font.pixelSize: 12
-                font.bold: true
-                
-                text: section
-            }
+        BlueBox {
+            width: ListView.view.width
+            height: 20
+            text: section
+            fontColor: '#e0e0e0'
         }
     }
-            
-    
+
+
     ListModel {
         id: spaceMen
-        
+
         ListElement { name: "Abdul Ahad Mohmand"; nation: "Afganistan"; }
         ListElement { name: "Marcos Pontes"; nation: "Brazil"; }
         ListElement { name: "Alexandar Panayotov Alexandrov"; nation: "Bulgaria"; }

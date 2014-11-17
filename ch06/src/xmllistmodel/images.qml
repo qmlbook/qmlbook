@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2013, Juergen Bocklage-Ryannel, Johan Thelin
  * All rights reserved.
- * 
+ *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:
  *     * Redistributions of source code must retain the above copyright
@@ -12,7 +12,7 @@
  *     * Neither the name of the editors nor the
  *       names of its contributors may be used to endorse or promote products
  *       derived from this software without specific prior written permission.
- * 
+ *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
  * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
  * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -28,25 +28,30 @@
 // M1>>
 import QtQuick 2.0
 import QtQuick.XmlListModel 2.0
+import "../common"
 
-Item {
+Background {
     width: 300
     height: 480
-    
+
     Component {
         id: imageDelegate
-        
-        Item {
+
+        Box {
             width: listView.width
-            height: 400
-            
-	    Column {
+            height: 220
+            color: '#333'
+
+            Column {
                 Text {
                     text: title
+                    color: '#e0e0e0'
                 }
- 
-                Image { 
-                    source: imageSource 
+                Image {
+                    width: listView.width
+                    height: 200
+                    fillMode: Image.PreserveAspectCrop
+                    source: imageSource
                 }
             }
         }
@@ -54,19 +59,17 @@ Item {
 
     XmlListModel {
         id: imageModel
- 
-        source: "http://feeds.nationalgeographic.com/ng/photography/photo-of-the-day/"       
+
+        source: "http://feeds.nationalgeographic.com/ng/photography/photo-of-the-day/"
         query: "/rss/channel/item"
-        
+
         XmlRole { name: "title"; query: "title/string()" }
         XmlRole { name: "imageSource"; query: "substring-before(substring-after(description/string(), 'img src=\"'), '\"')" }
     }
-    
+
     ListView {
         id: listView
-        
         anchors.fill: parent
-        
         model: imageModel
         delegate: imageDelegate
     }

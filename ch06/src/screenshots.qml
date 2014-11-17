@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2013, Juergen Bocklage-Ryannel, Johan Thelin
  * All rights reserved.
- * 
+ *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:
  *     * Redistributions of source code must retain the above copyright
@@ -12,7 +12,7 @@
  *     * Neither the name of the editors nor the
  *       names of its contributors may be used to endorse or promote products
  *       derived from this software without specific prior written permission.
- * 
+ *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
  * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
  * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -29,7 +29,7 @@ import QtQuick 2.0
 
 Item {
     id: root
-    
+
     ListModel {
         id: sourcesModel
         ListElement { source: "gridview/basic.qml"; name: "gridview-basic.png"; margin: 0; }
@@ -52,27 +52,27 @@ Item {
         ListElement { source: "pathview/coverview.qml"; name: "pathview-coverview.png"; margin: 0; }
         ListElement { source: "xmllistmodel/ss-images.qml"; name: "xmllistmodel-images.png"; margin: 0; }
    }
-    
+
     property int p: 0
     property string assetsource: ""
     property string assetname: ""
     property int shootmargin: 0
-    
+
     Rectangle {
         anchors.fill: parent
         anchors.rightMargin: 1
         anchors.bottomMargin: 1
-        
+
         border.color: "lightGray"
         border.width: 1
-    
+
         Loader {
             id: loader
-            
+
             x: 1; y: 1
-            
+
             focus: true
-        
+
             onLoaded: {
                 if (loader.source != "") {
                     if (assetsource.indexOf("ss-") == -1) {
@@ -83,7 +83,7 @@ Item {
             }
         }
     }
-    
+
     function setSize(w,h)
     {
         loader.x = shootmargin;
@@ -91,29 +91,29 @@ Item {
         root.width = w+2+shootmargin*2;
         root.height = h+2+shootmargin*2;
     }
-    
+
     function shoot()
     {
         shootDelay.start();
     }
-    
+
     function shootWithDelay(d)
     {
         shootDelay.interval = d;
         shoot();
     }
-    
+
     Timer {
         id: shootDelay
         interval: 100
         repeat: false;
         onTriggered: takeScreenshot();
     }
-    
+
     Component.onCompleted: {
         prepareScreenshot();
     }
-    
+
     function prepareScreenshot()
     {
         shootDelay.interval = 100;
@@ -126,11 +126,11 @@ Item {
         console.log("    " + assetname);
         console.log("    " + loader.source);
     }
-    
+
     function takeScreenshot()
     {
         console.log("TS: " + assetname);
-        
+
         shorty.shootFull(assetname);
         if (p < sourcesModel.count)
         {

@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2013, Juergen Bocklage-Ryannel, Johan Thelin
  * All rights reserved.
- * 
+ *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:
  *     * Redistributions of source code must retain the above copyright
@@ -12,7 +12,7 @@
  *     * Neither the name of the editors nor the
  *       names of its contributors may be used to endorse or promote products
  *       derived from this software without specific prior written permission.
- * 
+ *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
  * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
  * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -26,24 +26,25 @@
  */
 
 import QtQuick 2.0
+import "../common"
 
-Rectangle {
+Background {
     width: 240
     height: 300
-    
-    color: "white"
 
     ListView {
+        id: view
         anchors.fill: parent
         anchors.margins: 20
-        
+        currentIndex: 0
+
         clip: true
-        
+
         model: 100
-        
+
         delegate: numberDelegate
-        spacing: 5
-        
+        spacing: 4
+
         highlight: highlightComponent
         highlightFollowsCurrentItem: false
         focus: true
@@ -51,42 +52,39 @@ Rectangle {
 // M1>>
     Component {
         id: highlightComponent
-        
+
         Item {
             width: ListView.view.width
             height: ListView.view.currentItem.height
-            
+
             y: ListView.view.currentItem.y
-            
-            Behavior on y { 
+
+            Behavior on y {
                 SequentialAnimation {
                     PropertyAnimation { target: highlightRectangle; property: "opacity"; to: 0; duration: 200 }
                     NumberAnimation { duration: 1 }
                     PropertyAnimation { target: highlightRectangle; property: "opacity"; to: 1; duration: 200 }
-                } 
+                }
             }
-            
-            Rectangle {
-                id: highlightRectangle 
+
+            GreenBox {
+                id: highlightRectangle
                 anchors.fill: parent
-                color: "lightGreen"
             }
         }
     }
 // <<M1
-    
+
     Component {
         id: numberDelegate
-     
+
         Item {
             width: 40
             height: 40
-            
+
             Text {
                 anchors.centerIn: parent
-                
-                font.pixelSize: 10
-                
+                font.pixelSize: 14
                 text: index
             }
         }

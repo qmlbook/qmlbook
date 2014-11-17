@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2013, Juergen Bocklage-Ryannel, Johan Thelin
  * All rights reserved.
- * 
+ *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:
  *     * Redistributions of source code must retain the above copyright
@@ -12,7 +12,7 @@
  *     * Neither the name of the editors nor the
  *       names of its contributors may be used to endorse or promote products
  *       derived from this software without specific prior written permission.
- * 
+ *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
  * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
  * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -31,8 +31,11 @@ import QtQuick 2.0
 Rectangle {
     width: 480
     height: 300
-    
-    color: "white"
+
+    gradient: Gradient {
+        GradientStop { position: 0.0; color: "#dbddde" }
+        GradientStop { position: 1.0; color: "#5fc9f8" }
+    }
 
     ListModel {
         id: theModel
@@ -41,84 +44,88 @@ Rectangle {
         ListElement { number: 1 }
         ListElement { number: 2 }
         ListElement { number: 3 }
-        ListElement { number: 4 } 
+        ListElement { number: 4 }
         ListElement { number: 5 }
         ListElement { number: 6 }
         ListElement { number: 7 }
         ListElement { number: 8 }
         ListElement { number: 9 }
     }
-    
+
     Rectangle {
         anchors.left: parent.left
         anchors.right: parent.right
         anchors.bottom: parent.bottom
         anchors.margins: 20
-        
+
         height: 40
-        
-        color: "darkGreen"
-        
+
+        color: "#53d769"
+        border.color: Qt.lighter(color, 1.1)
+
         Text {
             anchors.centerIn: parent
-            
+
             text: "Add item!"
         }
-        
+
         MouseArea {
             anchors.fill: parent
-            
+
             onClicked: {
                 theModel.append({"number": ++parent.count});
             }
         }
-        
+
         property int count: 9
     }
-    
+
     GridView {
         anchors.fill: parent
         anchors.margins: 20
         anchors.bottomMargin: 80
-        
+
         clip: true
-        
+
         model: theModel
-        
+
         cellWidth: 45
         cellHeight: 45
 
         delegate: numberDelegate
     }
-    
+
     Component {
         id: numberDelegate
-     
+
         Rectangle {
             id: wrapper
-            
+
             width: 40
             height: 40
-            
-            color: "lightGreen"
-            
+
+            gradient: Gradient {
+                GradientStop { position: 0.0; color: "#f8306a" }
+                GradientStop { position: 1.0; color: "#fb5b40" }
+            }
+
             Text {
                 anchors.centerIn: parent
-                
+
                 font.pixelSize: 10
-                
+
                 text: number
             }
-            
+
             MouseArea {
                 anchors.fill: parent
-                
+
                 onClicked: {
-                    if (!wrapper.GridView.delayRemove) 
+                    if (!wrapper.GridView.delayRemove)
                         theModel.remove(index);
                 }
             }
-            
+
             GridView.onRemove: SequentialAnimation {
                 PropertyAction { target: wrapper; property: "GridView.delayRemove"; value: true }
                 NumberAnimation { target: wrapper; property: "scale"; to: 0; duration: 250; easing.type: Easing.InOutQuad }
