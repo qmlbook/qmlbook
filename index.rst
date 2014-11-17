@@ -38,7 +38,7 @@ Content
 
 .. toctree::
     :numbered:
-    :maxdepth: 2
+    :maxdepth: 1
 
     ch01/index
     ch02/index
@@ -51,7 +51,7 @@ Content
     ch09/index
     ch10/index
     ch11/index
-    
+
 
 
 

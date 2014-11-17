@@ -34,7 +34,7 @@ extensions = [
     ]
 
 ### Issue Exentsion
-issues_base_url='https://github.com/jryannel/qt5-cadaques/issues'
+issues_base_url='https://github.com/qmlbook/qmlbook/issues'
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -57,7 +57,7 @@ copyright = u'2012-2014 Jürgen Bocklage-Ryannel and Johan Thelin. This work is 
 # built documents.
 #
 # The short X.Y version.
-version = '2014-01'
+version = '2014-11'
 # The full version, including alpha/beta/rc tags.
 release = version
 
@@ -109,7 +109,7 @@ todo_include_todos = True
 
 
 extlinks = {
-    'qt5': ('http://doc.qt.nokia.com/5.0-snapshot/%s.html','Qt5Doc '),
+    'qt5': ('http://qt-project.org/doc/qt-5/%s.html','Qt5Doc '),
     'qtvideo': ('http://qt-project.org/videos/watch/%s','QtVideo '),
     }
 
@@ -140,7 +140,7 @@ html_theme = 'bootstrap'
 # documentation.
 
 html_theme_options = {
-  'bootswatch_theme': "flatly",
+  'bootswatch_theme': "sandstone",
   'navbar_links': [
   ],
   'navbar_title': "QmlBook",
@@ -169,7 +169,7 @@ html_short_title = project
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
-html_static_path = ['_static']
+# html_static_path = ['_static']
 
 # If not '', a 'Last updated on:' timestamp is inserted at every page bottom,
 # using the given strftime format.
