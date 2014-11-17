@@ -69,7 +69,7 @@ We start with an empty document called ``main.qml``. All QML files will have the
 
 .. code-block:: qml
 
-    import QtQuick 2.0
+    import QtQuick 2.3
 
     Image {
         id: root
@@ -80,22 +80,22 @@ As QML does not make any restriction which element type is the root element we u
 
 
 .. image:: src/showcase/images/background.png
-    :scale: 25%
 
 
 .. note::
 
     Each element has properties, e.g. a image has a ``width``, ``height`` but also other properties like a ``source`` property.  The size of the image element is automatically deducted from the image size. Otherwise we would need to set the ``width`` and ``height`` property to some useful pixel values.
 
-    The most standard elements are located in the ``QtQuick 2.0`` module which we include in the first line with the import statement.
+    The most standard elements are located in the ``QtQuick`` module which we include in the first line with the import statement.
 
     The ``id`` special property is optional and contains an identifier to reference this element later in other places in the document. Important: An ``id`` property can not be changed after it has been set and it can not be set during runtime. Using ``root`` as the id for the root-element is just a habit by the author and makes referencing the top-most element predictable in larger QML documents.
 
-The pin wheel our foreground element of our user interface is placed as another image.
+The foreground elements pole and pin wheel of our user interface are placed as separate images.
 
+.. image:: src/showcase/images/pole.png
 .. image:: src/showcase/images/pinwheel.png
-    :scale: 25%
 
+The pole needs to be placed in the horizontal center of the background towards the bottom. And the pinwheel can be placed in the center of the background.
 
 Normally your user interface will be composed of many different element types and not only image elements like in this example.
 
@@ -105,6 +105,13 @@ Normally your user interface will be composed of many different element types an
   Image {
       id: root
       ...
+      Image {
+          id: pole
+          anchors.horizontalCenter: parent.horizontalCenter
+          anchors.bottom: parent.bottom
+          source: "images/pole.png"
+      }
+
       Image {
           id: wheel
           anchors.centerIn: parent

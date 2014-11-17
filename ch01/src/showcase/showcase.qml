@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2013, Juergen Bocklage-Ryannel, Johan Thelin
  * All rights reserved.
- * 
+ *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:
  *     * Redistributions of source code must retain the above copyright
@@ -12,7 +12,7 @@
  *     * Neither the name of the editors nor the
  *       names of its contributors may be used to endorse or promote products
  *       derived from this software without specific prior written permission.
- * 
+ *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
  * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
  * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -31,41 +31,48 @@ import QtQuick 2.0
 import QtGraphicalEffects 1.0
 
 Image {
-    id: background
+    id: root
     source: "images/background.png"
 
-    FastBlur {
-        id: blur
-        anchors.fill: wheel
-        source: wheel
-        radius: 0
-        Behavior on radius {
-            NumberAnimation {
-                duration: 250
-            }
-        }
-        Behavior on rotation {
-            NumberAnimation {
-                duration: 250
-            }
-        }
+    property int blurRadius: 0
+
+    Image {
+        id: pole
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.bottom: parent.bottom
+        source: "images/pole.png"
     }
+
 
     Image {
         id: wheel
         anchors.centerIn: parent
         source: "images/pinwheel.png"
-        visible: false
+        Behavior on rotation {
+            NumberAnimation {
+                duration: 250
+            }
+        }
+        layer.effect: FastBlur {
+            id: blur
+            radius: root.blurRadius
+            Behavior on radius {
+                NumberAnimation {
+                    duration: 250
+                }
+            }
+        }
+        layer.enabled: true
     }
 
     MouseArea {
         anchors.fill: parent
         onPressed: {
-            blur.rotation += 90
-            blur.radius = 16
+            wheel.rotation += 90
+            root.blurRadius = 16
         }
         onReleased: {
-            blur.radius = 0
+            root.blurRadius = 0
         }
     }
 }
