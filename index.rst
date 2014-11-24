@@ -65,4 +65,5 @@ The chapter queue are the chapters we are working on. They might be almost ready
 * :doc:`ch14/index`
 * :doc:`ch15/index`
 * :doc:`ch16/index`
+* :doc:`ch17/index`
 
