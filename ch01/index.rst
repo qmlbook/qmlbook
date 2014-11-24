@@ -65,6 +65,11 @@ Digesting an User Interface
 
 Let's create a simple user interface using QtQuick, which showcases some aspects of the QML language. At the end we will have a paper windmill with rotating blades.
 
+
+.. image:: assets/scene.png
+    :scale: 50%
+
+
 We start with an empty document called ``main.qml``. All QML files will have the ending ``.qml``. As a markup language (like HTML) a QML document needs to have one and only one root element, which in our case is the ``Image`` element with a width and height based on the background image geometry:
 
 .. code-block:: qml
@@ -178,6 +183,12 @@ Now the wheel will rotate, but it is still not fluent yet. The rotation property
     }
 
 Now whenever the property rotation of the wheel changes it will be animated using a ``NumberAnimation`` with a duration of 250 ms. So each 90 degree turn will take 250 ms.
+
+.. image:: assets/scene2.png
+    :scale: 50%
+
+.. note:: You will not actually see the wheel blurred. This is just to indicate the rotation. But a blurred wheel is in the assets folder. Maybe you want to try to use that.
+
 
 Now the wheel looks already much better. I hope this has given you a short idea of how Qt Quick programming works.
 
