@@ -165,7 +165,8 @@ The value change of a property can be controlled by an animation. Easing attribu
 
 In the next example we will try some easing curves. Each easing curve is displayed by a click-able image and when clicked will set a new easing type on the ``square`` animation as also trigger a ``restart()`` to run the animation with the new curve.
 
-.. image:: assets/easingtypes.png
+.. image:: assets/automatic/easingcurves.png
+    :scale: 50%
 
 
 .. topic:: Extended ClickableImage V3
