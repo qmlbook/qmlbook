@@ -65,6 +65,15 @@ Within QML you declare the user interface, with JavaScript you make it functiona
 
   In general: backend developers are functional driven and frontend developers are user story driven.
 
+Browser/HTML vs QtQuick/QML
+===========================
+
+The browser is the runtime to render HTML and execute the Javascript associated with the HTML. Nowadays modern web applications contain much more JavaScript then HTML. The Javascript inside the browser is a standard ECMAScript environment with some browser additions. A typical JS environment inside the browser knows the ``window`` object to access the browser window. There are also the basic DOM selectors which are used by jQuery to provide the CSS selectors. Additional the is a ``setTimeout`` function to call a function after a certain time. Besides these the JS is standard JavaScript environment similar to QML/JS.
+
+What is also different is where JS can appear inside HTML and QML. in HTML you can only add JS on event handlers (e.g. page loaded, mouse pressed). For example your JS initializes normally in page load, which is comparable to ``Component.onCompleted`` in QML. For example you can not use JS for property bindings (at least not directly, AngularJS enhances the DOM tree to allow these, but this is far away from standard HTML).
+
+So in QML JS is much more a fist-class citizen and much deeper integrated into the QML render tree. Which makes the syntax much more readable. Besides this people which have developed HTML/JS applications will feel at home inside QML/JS.
+
 The Language
 ============
 
@@ -240,7 +249,7 @@ As a little example we will create a JS console. We need an input field where th
 .. image:: assets/jsconsole.png
 
 
-We use Qt Creator to create a QtQuick UI project using QtQuick controls. We call the project `JSConsole`. After the wizard has finished we have already a basic structure for the application with an application window and a menu to exit the application.
+We use Qt Creator to create a Qt Quick UI project using QtQuick controls. We call the project `JSConsole`. After the wizard has finished we have already a basic structure for the application with an application window and a menu to exit the application.
 
 For the input we use a TextField and a Button to send the input for evaluation. The result of the expression evaluation is displayed using a ListView with a ListModel as the model and two labels to display the expression and the evaluated result.
 
