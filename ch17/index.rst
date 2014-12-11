@@ -1,19 +1,4 @@
-Scenegraph Nodes
-================
+Qml Colors
+==========
 
-.. youtube:: RtO2zNzECoI
-
-
-.. youtube:: JpNfg5Z8Ofc
-
-
-Links
-
-* http://www.shaderific.com/glsl-functions/
-* http://qt-project.org/doc/qt-5/qtquick-scenegraph-simplematerial-example.html
-* http://qt-project.org/doc/qt-5/qtquick-visualcanvas-scenegraph-renderer.html
-* http://qt-project.org/doc/qt-5/qtquick-scenegraph-openglunderqml-example.html
-* http://qt-project.org/doc/qt-5/qtquick-scenegraph-textureinsgnode-example.html
-* http://qt-project.org/doc/qt-5/qtquick-visualcanvas-scenegraph.html
-* http://qt-project.org/doc/qt-5/qtquick-scenegraph-customgeometry-example.html
-
+We want to create a simple qml application called qml colors. Qml colors is a helper application to offer you a selection of some basic colors and copy the colors selection to the clipboard as qml snippets. So very simple.
