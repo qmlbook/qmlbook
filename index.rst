@@ -13,11 +13,11 @@ Last Build: |today|
 
 .. topic:: Welcome
 
+    Welcome to the online book of Qt5 Cadaques! Why Qt5? Because Qt5 is awesome! Why cadaques? Because one of the authors had a great holiday in this rocky coast line in the north-east of spain.
+
     The entire collection of chapters covering Qt5 programming, written by Juergen Bocklage-Ryannel and Johan Thelin, is available here. All book content is licensed under the `Creative Commons Attribution Non Commercial Share Alike 4.0  <http://creativecommons.org/licenses/by-nc/4.0>`_ license and examples are licensed under the `BSD <http://en.wikipedia.org/wiki/BSD_licenses>`_ license.
 
-.. sidebar:: About this book.
-
-    Welcome to the online book of Qt5 Cadaques! Why Qt5? Because Qt5 is awesome! Why cadaques? Because one of the authors had a great holiday in this rocky coast line in the north-east of spain.
+    .. rubric:: About
 
     We are heavily working on this book and that means several things:
 
