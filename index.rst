@@ -51,6 +51,9 @@ Content
     ch09/index
     ch10/index
     ch11/index
+    ch12/index
+    ch13/index
+    ch14/index
 
 
 
@@ -60,9 +63,6 @@ Chapter Queue
 
 The chapter queue are the chapters we are working on. They might be almost ready or in an infante state. Give it a try if you like.
 
-* :doc:`ch12/index`
-* :doc:`ch13/index`
-* :doc:`ch14/index`
 * :doc:`ch15/index`
 * :doc:`ch16/index`
 * :doc:`ch17/index`
