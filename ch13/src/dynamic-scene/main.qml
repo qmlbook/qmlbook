@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2013, Juergen Bocklage-Ryannel, Johan Thelin
  * All rights reserved.
- * 
+ *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:
  *     * Redistributions of source code must retain the above copyright
@@ -12,7 +12,7 @@
  *     * Neither the name of the editors nor the
  *       names of its contributors may be used to endorse or promote products
  *       derived from this software without specific prior written permission.
- * 
+ *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
  * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
  * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -33,58 +33,51 @@ import "create-object.js" as CreateObject
 
 Item {
     id: root
-    
+
     ListModel {
         id: objectsModel
     }
 
-    function addPlanet()
-    {
+    function addPlanet() {
         CreateObject.create("planet.qml", root, itemAdded);
     }
-    
-    function addRocket()
-    {
+
+    function addRocket() {
         CreateObject.create("rocket.qml", root, itemAdded);
     }
-    
-    function itemAdded(obj, source)
-    {
+
+    function itemAdded(obj, source) {
         objectsModel.append({"obj": obj, "source": source})
     }
 // <<M1
-    
+
     width: 1024
     height: 600
-    
+
 // M2>>
-    function clearItems()
-    {
-        while(objectsModel.count > 0)
-        {
+    function clearItems() {
+        while(objectsModel.count > 0) {
             objectsModel.get(0).obj.destroy();
             objectsModel.remove(0);
         }
     }
 // <<M2
-    
+
 // M3>>
-    function serialize()
-    {
+    function serialize() {
         var res = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<scene>\n";
-        
-        for(var ii=0; ii < objectsModel.count; ++ii)
-        {
+
+        for(var ii=0; ii < objectsModel.count; ++ii) {
             var i = objectsModel.get(ii);
             res += "  <item>\n    <source>" + i.source + "</source>\n    <x>" + i.obj.x + "</x>\n    <y>" + i.obj.y + "</y>\n  </item>\n"
         }
-        
+
         res += "</scene>";
-        
+
         return res;
     }
 // <<M3
-    
+
 // M4>>
     XmlListModel {
         id: xmlModel
@@ -94,63 +87,61 @@ Item {
         XmlRole { name: "y"; query: "y/string()" }
     }
 
-    function deserialize()
-    {
+    function deserialize() {
         dsIndex = 0;
         CreateObject.create(xmlModel.get(dsIndex).source, root, dsItemAdded);
     }
-    
-    function dsItemAdded(obj, source)
-    {
+
+    function dsItemAdded(obj, source) {
         itemAdded(obj, source);
         obj.x = xmlModel.get(dsIndex).x;
         obj.y = xmlModel.get(dsIndex).y;
-        
+
         dsIndex ++;
-        
+
         if (dsIndex < xmlModel.count)
-            CreateObject.create(xmlModel.get(dsIndex).source, root, dsItemAdded);            
+            CreateObject.create(xmlModel.get(dsIndex).source, root, dsItemAdded);
     }
-    
+
     property int dsIndex
-// <<M4    
+// <<M4
     Column {
         anchors.left: parent.left
         anchors.top: parent.top
         anchors.topMargin: 10
-        
+
         spacing: 10
-        
+
         width: 100
-        
+
         Image {
-            anchors.horizontalCenter: parent.horizontalCenter       
+            anchors.horizontalCenter: parent.horizontalCenter
             source: "planet.png"
-            
+
             MouseArea {
                 anchors.fill: parent
                 onClicked: addPlanet();
             }
         }
-        
+
         Image {
-            anchors.horizontalCenter: parent.horizontalCenter         
+            anchors.horizontalCenter: parent.horizontalCenter
             source: "rocket.png"
-            
+
             MouseArea {
                 anchors.fill: parent
                 onClicked: addRocket();
             }
         }
-        
+
         Rectangle {
-            anchors.horizontalCenter: parent.horizontalCenter         
+            anchors.horizontalCenter: parent.horizontalCenter
 
             width: 100
             height: 40
-            
+
             color: "green"
-            
+
             MouseArea {
                 anchors.fill: parent
                 onClicked: {
@@ -161,13 +152,13 @@ Item {
         }
 
         Rectangle {
-            anchors.horizontalCenter: parent.horizontalCenter         
+            anchors.horizontalCenter: parent.horizontalCenter
 
             width: 100
             height: 40
-            
+
             color: "yellow"
-            
+
             MouseArea {
                 anchors.fill: parent
                 onClicked: deserialize();

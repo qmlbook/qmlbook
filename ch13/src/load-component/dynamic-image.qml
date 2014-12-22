@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2013, Juergen Bocklage-Ryannel, Johan Thelin
  * All rights reserved.
- * 
+ *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:
  *     * Redistributions of source code must retain the above copyright
@@ -12,7 +12,7 @@
  *     * Neither the name of the editors nor the
  *       names of its contributors may be used to endorse or promote products
  *       derived from this software without specific prior written permission.
- * 
+ *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
  * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
  * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -25,25 +25,26 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+// M1>>
 import QtQuick 2.0
 
 Image {
     width: 400
     height: 225
-    
+
     source: "image1.png"
-    
+
     Image {
         id: overlay
-        
+
         anchors.fill: parent
-        
+
         source: "image2.png"
-        
+
         opacity: 0;
         Behavior on opacity { NumberAnimation { duration: 300 } }
     }
-    
+
     MouseArea {
         anchors.fill: parent
         onClicked: {
@@ -54,3 +55,4 @@ Image {
         }
     }
 }
+// <<M1

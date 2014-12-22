@@ -88,11 +88,15 @@ In the example below, the ``Flasher`` component can be put inside any ``MouseAre
 
 .. literalinclude:: src/connections-parent/Flasher.qml
     :language: js
+    :start-after: M1>>
+    :end-before: <<M1
 
 To use the ``Flasher``, simply instantiate a Flasher within each MouseArea, and it all works.
 
 .. literalinclude:: src/connections-parent/main.qml
     :language: js
+    :start-after: M1>>
+    :end-before: <<M1
 
 When using a ``Connections`` element to monitor the signals of multiple types of ``target`` elements, you sometimes find yourself in a situation where the available signals vary between the targets. This results in the ``Connections`` element outputting run-time errors as signals are missed. To avoid this, the ``ignoreUnknownSignal`` property can be set to ``true``. This ignores all such errors.
 
@@ -138,11 +142,17 @@ When loading components over slow connections, the ``progress`` property can be 
 
 .. literalinclude:: src/load-component/create-component.js
     :language: js
+    :start-after: M1>>
+    :end-before: <<M1
+
 
 The code above is kept in a separate JavaScript source file, referenced from the main QML file.
 
 .. literalinclude:: src/load-component/main.qml
     :language: js
+    :start-after: M1>>
+    :end-before: <<M1
+
 
 The ``createObject`` function of a component is used to create object instances, as shown above. This not only applies to dynamically loaded components, but also ``Component`` elements inlined in the QML code. The resulting object can be used in the QML scene like any other object. The only difference is that it does not have an ``id``.
 
@@ -152,7 +162,7 @@ The ``createObject`` function takes two arguments. The first is a ``parent`` obj
 
 .. note:: A dynamically created component instance is not different to an in-line ``Component`` element. The in-line ``Component`` element also provides functions to instantiate objects dynamically.
 
-Dynamicalling Instantiating Items from Text
+Dynamically Instantiating Items from Text
 -------------------------------------------
 
 .. issues:: ch13
@@ -169,6 +179,9 @@ The objects created using the ``Qt.createQmlObject`` function resembles any othe
 
 .. literalinclude:: src/create-object/main.qml
     :language: js
+    :start-after: M1>>
+    :end-before: <<M1
+
 
 Managing Dynamically Created Elements
 -------------------------------------
