@@ -58,7 +58,7 @@ copyright = u'2012-2014 Jürgen Bocklage-Ryannel and Johan Thelin. This work is 
 # built documents.
 #
 # The short X.Y version.
-version = '2014-11'
+version = '2014-12'
 # The full version, including alpha/beta/rc tags.
 release = version
 
