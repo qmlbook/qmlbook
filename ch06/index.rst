@@ -42,7 +42,7 @@ Basic Models
 
 The most basic way to separate the data from the presentation is to use the ``Repeater`` element. It is used to instantiate an array of items, and is easy to combine with a positioner to populate a part of the user interface. A repeater uses a model, which can be anything from the number of items to instantiate, to a fully blown model gathering data from the Internet.
 
-In the most basic for, the repeater can be used to instantiate a specified number of items. Each item will have access to an attached property, the variable ``index``, that can be used to tell the items apart. In the example below, a repeater is used to create 10 instances of an item. The number of items are controlled using the ``model`` property. For each item, the ``Rectangle`` containing a ``Text`` element found inside the ``Repeater`` item, is instantiated. As you can tell, the ``text`` property is set to the ``index`` value, thus the items are numbered from zero to nine.
+In its simplest form, the repeater can be used to instantiate a specified number of items. Each item will have access to an attached property, the variable ``index``, that can be used to tell the items apart. In the example below, a repeater is used to create 10 instances of an item. The number of items are controlled using the ``model`` property. For each item, the ``Rectangle`` containing a ``Text`` element found inside the ``Repeater`` item, is instantiated. As you can tell, the ``text`` property is set to the ``index`` value, thus the items are numbered from zero to nine.
 
 
 .. literalinclude:: src/repeater/number.qml
@@ -208,7 +208,7 @@ Delegate
 
 When it comes to using models and views in a custom user interface, the delegate plays a huge role in creating a look. As each item in a the model are visualized through a delegate, what is actually visible to the user are the delegates.
 
-Each delegate gets access to a number or attached properties, some from the data model, others from the view. From the model, the properties conveys the data for each item to the delegate. From the view, the properties convey state information related to the delegate within the view.
+Each delegate gets access to a number of attached properties, some from the data model, others from the view. From the model, the properties convey the data for each item to the delegate. From the view, the properties convey state information related to the delegate within the view.
 
 The most commonly used properties attached from the view are ``ListView.isCurrentItem`` and ``ListView.view``. The first is a boolean indicating if the item is the current item, while the latter is a read-only reference to the actual view. Through access to the view, it is possible to create general, reusable delegates that adapt to the size and nature of the view in which they are contained. In the example below, the ``width`` of each delegate is bound to the ``width`` of the view, while the background ``color`` of each delegate depends on the attached ``ListView.isCurrentItem`` property.
 

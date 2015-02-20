@@ -93,7 +93,7 @@ As QML does not make any restriction which element type is the root element we u
 
     The most standard elements are located in the ``QtQuick`` module which we include in the first line with the import statement.
 
-    The ``id`` special property is optional and contains an identifier to reference this element later in other places in the document. Important: An ``id`` property can not be changed after it has been set and it can not be set during runtime. Using ``root`` as the id for the root-element is just a habit by the author and makes referencing the top-most element predictable in larger QML documents.
+    The ``id`` special property is optional and contains an identifier to reference this element later in other places in the document. Important: An ``id`` property cannot be changed after it has been set and it cannot be set during runtime. Using ``root`` as the id for the root-element is just a habit by the author and makes referencing the top-most element predictable in larger QML documents.
 
 The foreground elements pole and pin wheel of our user interface are placed as separate images.
 
@@ -287,7 +287,7 @@ From the `qt-project wiki <http://wiki.qt-project.org>`_:
 
 The Qt-Project is an organisation which developes the open-source part of the Qt further. It forms the base for other users to contribute. The biggest contributor is DIGIA, which holds also the comercial rights to Qt.
 
-Qt has an open-source aspect and a comercial aspect for companies. The comercial aspect is for companies which can not or want not to comply with the open-source licenses. Without the comercial aspect these companies would not be able to use Qt and it would not allow DIGIA to contribute so much code to the Qt-Project.
+Qt has an open-source aspect and a comercial aspect for companies. The comercial aspect is for companies which can not or will not comply with the open-source licenses. Without the comercial aspect these companies would not be able to use Qt and it would not allow DIGIA to contribute so much code to the Qt-Project.
 
 There are many companies world-wide, which make their living out of consultancy and product development using Qt on the various platforms. There are many open-source projects and open-source developers, which rely on Qt as their major development library. It feels good to be part of this vibrant community and to work with this awesome tools and libraries. Does it make you a better person? Maybe:-)
 
