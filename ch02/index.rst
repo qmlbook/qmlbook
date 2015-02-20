@@ -76,7 +76,7 @@ Another file, ``HelloWorld.qml``, is our application code. Open it and try to gu
         }
     }
 
-The ``HelloWord.qml`` is written in the QML language. We will discuss the QML language in more depth in the next chapter, just so much it's describes the user interface in a series of hierarchical elements. This code in particular show a rectangle of 300 x 300 pixel geometry with a centered text "Hello World". A mouse area spans the whole rectangle and when the user clicks it, the application quits.
+The ``HelloWord.qml`` is written in the QML language. We will discuss the QML language in more depth in the next chapter, just so much it's describes the user interface in a series of hierarchical elements. This code in particular show a rectangle of 360 x 360 pixel geometry with a centered text "Hello World". A mouse area spans the whole rectangle and when the user clicks it, the application quits.
 
 .. todo:: "just so much it's describes the user interface in a series of hierarchical elements"
 
