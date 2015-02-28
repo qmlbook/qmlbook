@@ -38,9 +38,17 @@ The best way to understand Qt is to start from a small demonstration application
 
 The simple example demonstrates the use of file access and the correct way of writing text into a file using text codecs via the text stream. For binary data there is a cross platform binary stream called ``QDataStream``. The different classes we use are included using their class name. Another possibility would be to use a module and class name e.g. ``#include <QtCore/QFile>``. For the lazy there is also the possibility to include a whole module using ``#include <QtCore>``. E.g. in ``QtCore`` you have the most common classes used for an application, which are not UI dependent. Have a look at the `QtCore class list <http://doc.qt.io/qt-5/qtcore-module.html>`_ or the `QtCore overview <http://doc.qt.io/qt-5/qtcore-index.html>`_.
 
-As you can see the simple example just writes the text and exists the application. For a command line tool this is good enough. For a user interface you would need an event loop which waits for user input and and somehow schedules re-draw operations. So here the same example now using a desktop button to trigger the writing.
 
-Our ``main.cpp`` suprisingly got smaller. We moved code into an own class as with user input also signal/slots will be used. The signal/slot mechanism normally needs and own object as you will see shortly.
+You build the application using qmake and make. QMake reads a project file and generates a Makefile which then can be called using make. The project file is platform independent and qmake has some rules to apply the platform specific settings to the generated make file. The project can also contain platform scopes for platform sepcific rules, which are required in some specific cases. Here is an example of a simple project file.
+
+.. literalinclude:: src/coreapp/coreapp.pro
+    :language: cpp
+
+We will not go into depth into this topic just remember Qt uses project files for projects and qmake generates the platform specific make files from these project files.
+
+The simple code example above just writes the text and exists the application. For a command line tool this is good enough. For a user interface you would need an event loop which waits for user input and and somehow schedules re-draw operations. So here the same example now using a desktop button to trigger the writing.
+
+Our ``main.cpp`` suprisingly got smaller. We moved code into an own class to be able to use signal/slots for the user input, e.g. the button click. The signal/slot mechanism normally needs and own object as you will see shortly.
 
 .. literalinclude:: src/uiapp/main.cpp
     :language: cpp
@@ -60,22 +68,28 @@ In the main we simple create the application object and start the event loop usi
 
 Qt offers several UI technologies. For this example we use the Desktop Widgets user interface library using pure Qt C++. For this we create a main window which will host a push button to trigger the functionality and also the main window will host our core functionality which we know from the previous example.
 
+.. image:: images/storecontent.png
+
+The main window itself is a widget, which if it does not has a parent is a window. This resembles also how Qt sees a user interface as a tree of ui elements. In this case is the main window our root element nd the push button a child of the main window.
+
 .. literalinclude:: src/uiapp/mainwindow.h
     :language: cpp
 
+Additional we define a public slot called ``storeContent()`` whih shall be called when the button is clicked. A slot is a C++ method which is registered with the Qt meta object system and can be dynamically called.
 
 .. literalinclude:: src/uiapp/mainwindow.cpp
     :language: cpp
 
-.. todo:: Show and explain the example source code for the main window
+In the main window storeContent we create fist the push button and then register the signal ``clicked()`` with the slot ``storeContent()`` using the connect method. Every time the signal clicked is emitted the slot slot ``storeContent()`` is called.
 
-.. todo:: think about a chapter about Qt REPL?
+.. note::
 
+    This demonstrasted the fundamental principles in Qt:
 
-.. todo::
-    * the main loop
-    * a basic build configuration using qmake
-    * how to build and run
+    * Object hierachy or parent/child relationships (also for user interface elements)
+    * Meta object system and signal/slot connections
+    * Event loop for user input handling
+    * Cross platform programming using a common API
 
 
 The QObject
