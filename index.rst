@@ -1,13 +1,13 @@
 .. title:: Qt5 Cadaques
 
-.. |reviewme| image:: assets/reviewme.png
-.. |new| image:: assets/new.png
-.. |updated| image:: assets/updated.png
+.. |reviewme| image:: images/reviewme.png
+.. |new| image:: images/new.png
+.. |updated| image:: images/updated.png
 
 A Book about Qt5
 ================
 
-.. |issues| image:: assets/issues.png
+.. |issues| image:: images/issues.png
 
 Last Build: |today|
 
