@@ -1,8 +1,0 @@
-language: cpp
-before_install:
-    - sudo add-apt-repository --yes ppa:beineri/opt-qt541-trusty
-    - sudo apt-get update -qq
-    - sudo apt-get install -qq qt5-qmake qt54base qt54declarative qt54graphicaleffects qt54quickcontrols qt54tools
-script:
-    - source /opt/qt54/bin/qt54-env.sh
-    - qmake -qt=qt5 -v

@@ -30,7 +30,3 @@ def clean():
 def serve():
     with lcd('_build/html'):
         local('python -m SimpleHTTPServer')
-
-def travis_status():
-    local('travis status')
-
