@@ -1,6 +1,6 @@
 #include <QCoreApplication>
 #include <QString>
-#include <QtCore/QFile>
+#include <QFile>
 #include <QDir>
 #include <QTextStream>
 #include <QDebug>
@@ -24,6 +24,10 @@ int main(int argc, char *argv[])
     QTextStream stream(&file);
     // write message to file via the text stream
     stream << message;
+
+    // do not start the eventloop as this would wait for external IO
+    // app.exec();
+
     // no need to close file, closes automatically when scope ends
     return 0;
 }
