@@ -92,17 +92,6 @@ A Qt object is a standard C++ object, but with more abilities. These can be divi
 
 The best way of understanding how the ``QObject`` abilities affect a class is to take a standard C++ class and Qt enable it. The class shown below represents an ordinary such class.
 
-.. todo::
-    * when is it applicable - individuals, not values
-    * getter, setter, reset method - using enum
-    * inherit
-    * Q_OBJECT
-    * getFoo -> foo()
-    * Q_PROPERTY, Q_ENUM
-    * signal
-    * setter is a natural slot
-    * Q_INVOKABLE
-
 The person class is a data class with a name and gender properties. The person class uses Qt's object system to add meta information to the c++ class. It allows users of a person object to connect to the slots and get notified when the properties get changed.
 
 .. code-block:: cpp
@@ -186,23 +175,159 @@ Build Systems
 
 .. issues:: ch15
 
-.. todo::
-    * why a build system
-    * the actual Qt build flow
+Building software reliable on different platforms can be a complex task. You will encounter different environments with different compilers, paths and library variations. The purpose of Qt is to shield the application developer from these cross platform issues. For this Qt introduced the ``qmake`` build file generator. ``qmake`` operator on a project file with the ending ``.pro``. This project file contains instructions about the appication and the sources to be used. Running qmake on this project file will generate for you a ``Makefile`` on unix and mac and even under windows if the mingw compiler toolchain shall be used. Otherwise it may create a visual studio project or an xcode project.
+
+A typical build flow in Qt would be under unix::
+
+    $ edit myproject.pro
+    $ qmake // generates Makefile
+    $ make
+
+Qt allows you also to use shadow builds. A shadow build is a build outside of your source code location. Assume we have a myproject folder with a ``myproject.pro`` file. The flow would be like this::
+
+    $ mkdir build
+    $ cd build
+    $ qmake ../myproject/myproject.pro
+
+We create a build folder and then call qmake from inside the build folder with the location of our project folder. This will setup the make file in a way that all build artifacts are stored under the build folder instead of inside our source code folder. This allows us to create builds for different qt versions and build configurations at the same time and also it does not clutter our soruce code folder which is always a good thing.
+
+When you are using Qt Creator it does these things behind the scenes for you and you do not have to worry about these steps usually. For larger projects and more deeper understanding of the flow it is recommended that you can build your qt project from the command line.
 
 QMake
 -----
 
 .. issues:: ch15
 
-.. todo::
-    * background, drawbacks, benefits
-    * a basic example
+QMake is the tool which reads your project file and generates the build file. A project file is a simplified write down of your project configiration, external dependencies and your source files. The simplest source file is probably this::
+
+    // myproject.pro
+
+    SOURCES += main.cpp
+
+Here we build an exectuable application which will have the name ``myproject`` based on the project file name. The build will only contain the ``main.cpp`` source file. And by default we will use the QtCore and QtGui module for this project. If our project would be a QML application we would need to add the QtQuick and QtQml module to the list::
+
+    // myproject.pro
+
+    QT += qml quick
+
+    SOURCES += main.cpp
+
+Now the build file knows to link against the QtQml and QtQuick Qt modules. QMake use the concept of ``=``, ``+=` and ``-=`` to assign, add, remove elements from a list of options. For example for a pure console build without UI dependencies you would remove the QtGui module::
+
+    // myproject.pro
+
+    QT -= gui
+
+    SOURCES += main.cpp
+
+When you want to build a library instead of an application you need to change the build template::
+
+    // myproject.pro
+    TEMPLATE = lib
+
+    QT -= gui
+
+    HEADERS += utils.h
+    SOURCES += utils.cpp
+
+
+Now the project will build as a library without UI dependencies and used the ``utils.h`` header and the ``utils.cpp`` source file. The format of the library will depend on the OS you are building the project.
+
+Often you wil have more complicated setups and need to build a set of projects. For this qmake offers the ``subdirs`` template. Assumy we would have a mylib and a myapp project. Then our setup could be like this::
+
+    my.pro
+    mylib/mylib.pro
+    mylib/utils.h
+    mylib/utils.cpp
+    myapp/myapp.pro
+    myapp/main.cpp
+
+We know already how the mylib.pro and myapp.pro would look like. The my.pro as the overarching project file would look like this::
+
+    // my.pro
+    TEMPLATE = subdirs
+
+    subdirs = mylib \
+        myapp
+
+    myapp.depends = mylib
+
+This declares a project with two subproject ``mylib`` and ``myapp``. Where ``myapp`` depends on ``mylib``. When you run qmake on this project file it will generate for each project file a build file in the corresponding folder. When running the make file for ``my.pro`` then all subproject are also build.
+
+Sometimes you need to do one thing on one platform and another thing on other platforms based on your configuration. For this qmake introduces the concept of scopes. A scope is a applied when a configuration option is set to true.
+
+For example to use a unix specific utils implementation you could use::
+
+    unix {
+        SOURCES += utils_unix.cpp
+    } else {
+        SOURCES += utils.cpp
+    }
+
+What it says is if the CONFIG variable contains a unix option then apply this scope otherwise use the else path. A typical one is to remove the application bundling under mac::
+
+    macx {
+        CONFIG -= app_bundle
+    }
+
+This will create your application as a plain executable under mac and not as a ``.app`` folder which is used for application instalation.
+
+QMake based projects are normally the choice number one when you start programming Qt applications. But there are also other options out there. All have their benefits and drawbacks. We will shortly discuss these other options in the next topcis.
+
+.. rubric:: References
+
+* :qt5:`QMake Manual <qmake-manual>` - Table of contents of the qmake manual
+
+* :qt5:`QMake Language <qmake-language>` - Value assignment, scopes and so like
+
+* :qt5:`QMake Variables <qmake-variable-reference>` - Variables like TEMPLATE, CONFIG, QT are explained here
+
+
 
 CMake
 -----
 
 .. issues:: ch15
+
+CMake is a tool create by Kitware. Kitware is very well known for their 3D visualitation software VTK and also CMake, the cross platform makefile generator. It uses a series of ``CMakeLists.txt`` files to generate platform specific make files. CMake is used by the KDE project and as such has a special relationship with the Qt community.
+
+The ``CMakeLists.txt`` file to store the project configuration. For a simple hello world using QtCore the project file would look like this::
+
+    // ensure cmake version is at least 3.0
+    cmake_minimum_required(VERSION 3.0)
+    // adds the source and build location to the include path
+    set(CMAKE_INCLUDE_CURRENT_DIR ON)
+    // Qt's MOC tool shall be automatically invoked
+    set(CMAKE_AUTOMOC ON)
+    // using the Qt5Core module
+    find_package(Qt5Core)
+    // create excutable helloworld using main.cpp
+    add_executable(helloworld main.cpp)
+    // helloworld links against Qt5Core
+    target_link_libraries(helloworld Qt5::Core)
+
+This will build a helloworld executable using main.cpp and linked agains the external Qt5Core library. The build file can be modified to be more generic::
+
+    // sets the PROJECT_NAME variable
+    project(helloworld)
+    cmake_minimum_required(VERSION 3.0)
+    set(CMAKE_INCLUDE_CURRENT_DIR ON)
+    set(CMAKE_AUTOMOC ON)
+    find_package(Qt5Core)
+
+    // creates a SRC_LIST variable with main.cpp as single entry
+    set(SRC_LIST main.cpp)
+    // add an executable based on the project name and source list
+    add_executable(${PROJECT_NAME} ${SRC_LIST})
+    // links Qt5Core to the project executable
+    target_link_libraries(${PROJECT_NAME} Qt5::Core)
+
+You see CMake is quit powerful. It takes some time to get used to the syntax. What is said in general that CMake is better suited for large and complex projects.
+
+.. rubric:: References
+
+* `CMake Help <http://www.cmake.org/documentation/>`_ - available online but also as QtHelp format
+* `KDE CMake Tutorial <https://techbase.kde.org/Development/Tutorials/CMake>`_
 
 .. todo::
     * background, KDE, benefits, drawbacks, etc
