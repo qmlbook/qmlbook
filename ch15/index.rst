@@ -327,7 +327,10 @@ You see CMake is quit powerful. It takes some time to get used to the syntax. Wh
 .. rubric:: References
 
 * `CMake Help <http://www.cmake.org/documentation/>`_ - available online but also as QtHelp format
+* `Running CMake <http://www.cmake.org/runningcmake/>`_
 * `KDE CMake Tutorial <https://techbase.kde.org/Development/Tutorials/CMake>`_
+* `CMake Book <http://www.kitware.com/products/books/CMakeBook.html>`_
+* `CMake and Qt <http://www.cmake.org/cmake/help/v3.0/manual/cmake-qt.7.html>`_
 
 .. todo::
     * background, KDE, benefits, drawbacks, etc
