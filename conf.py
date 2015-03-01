@@ -58,7 +58,7 @@ copyright = u'2012-2014 Jürgen Bocklage-Ryannel and Johan Thelin. This work is 
 # built documents.
 #
 # The short X.Y version.
-version = '2014-12'
+version = '2015-03'
 # The full version, including alpha/beta/rc tags.
 release = version
 
@@ -110,7 +110,7 @@ todo_include_todos = True
 
 
 extlinks = {
-    'qt5': ('http://qt-project.org/doc/qt-5/%s.html','Qt5Doc '),
+    'qt5': ('http://doc.qt.io/qt-5//%s.html','Qt5Doc '),
     'qtvideo': ('http://qt-project.org/videos/watch/%s','QtVideo '),
     }
 
