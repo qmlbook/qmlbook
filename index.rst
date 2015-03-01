@@ -25,7 +25,7 @@ Last Build: |today|
     #. **We love your support**. If you find any errors or have suggestions, please use our feedback system (the |issues| links). It will create a new ticket-entry in our ticket system and help us to keep track.
     #. **Be patient.** We are working in our spare time on the book and we depend on the support of our companies and family.
 
-    Download this book in `PDF <qt5_cadaques.pdf>`_, or `ePub <qt5_cadaques.epub>`_ form for free.
+    Download this book in `PDF <assets/qt5_cadaques.pdf>`_, or `ePub <assets/qt5_cadaques.epub>`_ form for free.
 
 
     Enjoy!
@@ -54,6 +54,8 @@ Content
     ch12/index
     ch13/index
     ch14/index
+    ch15/index
+    ch16/index
 
 
 
@@ -62,8 +64,4 @@ Chapter Queue
 -------------
 
 The chapter queue are the chapters we are working on. They might be almost ready or in an infante state. Give it a try if you like.
-
-* :doc:`ch15/index`
-* :doc:`ch16/index`
-* :doc:`ch17/index`
 
