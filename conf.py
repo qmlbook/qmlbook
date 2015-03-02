@@ -14,6 +14,9 @@
 import sys, os
 import sphinx_bootstrap_theme
 
+on_qthelp = os.environ.get('QTHELP', None) == 'True'
+print('ON_QTHELP: ' + str(on_qthelp))
+
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
@@ -134,19 +137,25 @@ graphviz_dot_args = [
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
-html_theme = 'bootstrap'
+if on_qthelp:
+  html_theme = 'sphinxdoc'
+else:
+  html_theme = 'bootstrap'
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
 # documentation.
 
-html_theme_options = {
-  'bootswatch_theme': "sandstone",
-  'navbar_links': [
-  ],
-  'navbar_title': "QmlBook",
-  'navbar_site_name': "Chapters",
-}
+if on_qthelp:
+  html_theme_options = {}
+else:
+  html_theme_options = {
+    'bootswatch_theme': "sandstone",
+    'navbar_links': [
+    ],
+    'navbar_title': "QmlBook",
+    'navbar_site_name': "Chapters",
+  }
 
 # Add any paths that contain custom themes here, relative to this directory.
 html_theme_path = sphinx_bootstrap_theme.get_html_theme_path()
@@ -317,3 +326,4 @@ epub_exclude_files = ['_static/opensearch.xml', '_static/doctools.js',
 '_static/jquery.js', '_static/searchtools.js', '_static/underscore.js',
 '_static/basic.css', 'search.html', '_static/websupport.js']
 epub_cover = ("_static/cover.png", "epub-cover.html")
+
