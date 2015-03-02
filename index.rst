@@ -25,7 +25,7 @@ Last Build: |today|
     #. **We love your support**. If you find any errors or have suggestions, please use our feedback system (the |issues| links). It will create a new ticket-entry in our ticket system and help us to keep track.
     #. **Be patient.** We are working in our spare time on the book and we depend on the support of our companies and family.
 
-    Download this book in `PDF <assets/qt5_cadaques.pdf>`_, or `ePub <assets/qt5_cadaques.epub>`_ form for free.
+    Download this book in `PDF <assets/qt5_cadaques.pdf>`_, or `ePub <assets/qt5_cadaques.epub>`_ , or `QtHelp <assets/Qt5CadaquesBook.qhc>`_ format for free.
 
 
     Enjoy!
