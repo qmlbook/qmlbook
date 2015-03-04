@@ -1,7 +1,7 @@
 from paver.easy import *
 
 @task
-@needs('assets_init', 'build_html', 'build_pdf', 'build_epub', 'build_assets')
+@needs('assets_init', 'build_html', 'build_pdf', 'build_epub', 'build_qt', 'build_assets')
 def build_all():
     pass
 
