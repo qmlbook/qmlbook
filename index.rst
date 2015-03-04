@@ -75,6 +75,7 @@ Content
     ch14/index
     ch15/index
     ch16/index
+    assets/index
 
 
 

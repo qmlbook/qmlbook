@@ -1,4 +1,8 @@
 _build/
 *.pyc
 ch*/assets/automatic/*
-assets
+*.pdf
+*.tgz
+*.epub
+*.qhc
+
