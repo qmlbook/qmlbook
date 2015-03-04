@@ -35,28 +35,44 @@ void FoundationTest::cleanupTestCase()
 
 void FoundationTest::testQString()
 {
-    QString data("A,B,C,D");
+    // M1>>
+    QString data("A,B,C,D"); // create a simple string
+    // split it into parts
     QStringList list = data.split(",");
+    // create a new string out of the parts
     QString out = list.join(",");
+    // verify both are the same
     QVERIFY(data == out);
+    // change the first character to upper case
     QVERIFY(QString("A") == out[0].toUpper());
+    // M1<<
 }
 
 void FoundationTest::testNumbers()
 {
+    // M2>>
+    // create some variables
     int v = 10;
     int base = 10;
+    // convert an int to a string
     QString a = QString::number(v, base);
+    // and back using and sets ok to true on success
     bool ok(false);
     int v2 = a.toInt(&ok, base);
+    // verify our results
     QVERIFY(ok == true);
     QVERIFY(v = v2);
+    // M2<<
 }
 
 void FoundationTest::testStringArg()
 {
+    // M3>>
+    // create a name
     QString name("Joe");
+    // get the day of the week as string
     QString weekday = QDate::currentDate().toString("dddd");
+    // format a text using paramters (%1, %2)
     QString hello = QString("Hello %1. Today is %2.").arg(name).arg(weekday);
     // This worked on Monday. Promise!
     if(Qt::Monday == QDate::currentDate().dayOfWeek()) {
@@ -64,35 +80,48 @@ void FoundationTest::testStringArg()
     } else {
         QVERIFY(QString("Hello Joe. Today is Monday.") !=  hello);
     }
+    // M3<<
 }
 
 
 void FoundationTest::testUnicode()
 {
-    QChar smile(0x263A);//);
+    // M4>>
+    // Create a unicode character using the unicode for smile :-)
+    QChar smile(0x263A);
+    // you should see a :-) on you console
     qDebug() << smile;
+    // Use a unicode in a string
     QChar smile2 = QString("\u263A").at(0);
     QVERIFY(smile == smile2);
+    // Create 12 smiles in a vector
     QVector<QChar> smilies(12);
     smilies.fill(smile);
+    // Can you see the smiles
     qDebug() << smilies;
+    // M4<<
 }
 
 void FoundationTest::testContainer()
 {
+    // M5>>
+    // Create a simple list of ints using the new C++11 initialization
+    // for this you need to add "CONFIG += c++11" to your pro file.
     QList<int> list{1,2};
 
+    // append another int
     list << 3;
 
-    { // Qt for each
+    // We are using scopes to avoid variable name clashes
+
+    { // iterate through list using Qt for each
         int sum(0);
-        // Qt for each
         foreach (int v, list) {
             sum += v;
         }
         QVERIFY(sum == 6);
     }
-    { // C++11 for each
+    { // iterate through list using C++ 11 range based loop
         int sum = 0;
         for(int v : list) {
             sum+= v;
@@ -100,16 +129,17 @@ void FoundationTest::testContainer()
         QVERIFY(sum == 6);
     }
 
-    { // JAVA iterator
+    { // iterate through list using JAVA style iterators
         int sum = 0;
         QListIterator<int> i(list);
+
         while (i.hasNext()) {
             sum += i.next();
         }
         QVERIFY(sum == 6);
     }
 
-    { // STL iterator
+    { // iterate through list using STL style iterator
         int sum = 0;
         QList<int>::iterator i;
         for (i = list.begin(); i != list.end(); ++i) {
@@ -119,26 +149,29 @@ void FoundationTest::testContainer()
     }
 
 
-    // std::sort descending with mutable iterator using C++11
+    // using std::sort with mutable iterator using C++11
+    // list will be sorted in descending order
     std::sort(list.begin(), list.end(), [](int a, int b) { return a > b; });
     QVERIFY(list == QList<int>({3,2,1}));
 
 
     int value = 3;
-    { // std::find with const iterator
+    { // using std::find with const iterator
         QList<int>::const_iterator result = std::find(list.constBegin(), list.constEnd(), value);
         QVERIFY(*result == value);
     }
 
-    { // std::find using lambda and auto
+    { // using std::find using C++ lambda and C++ 11 auto variable
         auto result = std::find_if(list.constBegin(), list.constBegin(), [value](int v) { return v == value; });
         QVERIFY(*result == value);
     }
+    // M5<<
 }
 
 
 void FoundationTest::testDictionary()
 {
+    // M6>>
     QHash<QString, int> hash({{"b",2},{"c",3},{"a",1}});
     qDebug() << hash.keys(); // a,b,c - unordered
     qDebug() << hash.values(); // 1,2,3 - unordered but same as order as keys
@@ -196,10 +229,12 @@ void FoundationTest::testDictionary()
     QVERIFY(map.contains("c") == true);
 
     // JAVA and STL iterator work same as QHash
+    // M6<<
 }
 
 void FoundationTest::testFileIO()
 {
+    // M7>>
     QStringList data({"a", "b", "c"});
     { // write binary files
         QFile file("out.bin");
@@ -236,6 +271,7 @@ void FoundationTest::testFileIO()
             QCOMPARE(data, data2);
         }
     }
+    // M7<<
 }
 
 QTEST_MAIN(FoundationTest)

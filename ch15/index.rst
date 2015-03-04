@@ -344,16 +344,73 @@ Common Qt Classes
 
 The ``QObject`` class forms the foundations of Qt, but there are many more classes in the framework. Before we continue looking at QML and how to extend it, we will look at some basic Qt classes that are useful to know about.
 
-.. todo::
-    * QString, QStringList
-    * unicode, arg()
+The code examples shown in this section are written using the Qt Test library. It offers a great way to explore the Qt API and store it for later reference. ``QVERIFY``, ``QCOMPARE`` are functions provided by the test library to assert a certain condition. We will also use later in the examples ``{ }`` scopes to avoid variable name clashes. So do not get confused.
 
-.. todo::
+.. rubric:: QString
 
-    * QList, foreach, iterators (both C++-style and JavaStyle)
+Text handling in Qt is in general unicode based. For this you use the ``QString`` class. It comes with a variety of great functions which you would expect from a modern framework. For 8-bit data you would use normally the ``QByteArray`` class and for ASCII identifiers the ``QLatin1String`` to preserve memory. For a list of strings you can use a ``QList<QString>`` or simple the ``QStringList`` class (which is derived from ``QList<QString>``).
 
-.. todo::
-    * QFile, QTextReader
+Here are some example how to use the ``QString`` class. QString should be created on the stack and contains it data internally on the heap. Also by assigning one string to another the data will not be copied only a reference to the data. So this is really cheap and lets the developer concentrate on the code and not on the memory handling. ``QString`` uses reference counters to know when the data can be safely deleted. This feature is called :qt5:`Implicit Sharing <implicit-sharing>` and it is used in many Qt classes.
+
+
+.. literalinclude:: src/qtfoundation/tst_foundation.cpp
+    :language: cpp
+    :start-after: M1>>
+    :end-before:  M1<<
+
+Here we will show how to convert a number to a string and back. There are also conversion functions for float or double and other types. Just look for the function in the Qt documentation used here and you will find the others.
+
+.. literalinclude:: src/qtfoundation/tst_foundation.cpp
+    :language: cpp
+    :start-after: M2>>
+    :end-before:  M2<<
+
+Often in text you need to have parameterized text. One option could be to use ``QString("Hello" + name)`` more flexible is the ``arg`` marker approach as it keeps the order also during translation when the order might change.
+
+.. literalinclude:: src/qtfoundation/tst_foundation.cpp
+    :language: cpp
+    :start-after: M3>>
+    :end-before:  M3<<
+
+Sometimes you want to use unicode characters directly in you code. For this you need to remember how to mark them for the ``QChar`` and ``QString`` classes.
+
+.. literalinclude:: src/qtfoundation/tst_foundation.cpp
+    :language: cpp
+    :start-after: M4>>
+    :end-before:  M4<<
+
+This gives you some examples how to easily treat unicode aware text in Qt. For non-unicode the ``QByteArray`` class has also many helper functions for conversion. Please read the Qt documentation for ``QString`` as it contains tones of good examples.
+
+.. rubric:: Sequential Containers
+
+A list, queue, vector or linked-list is a sequential container. The mostly used sequential container is the ``QList`` class. It is a template based class and needs to be initialized with a type. It is also implicit shared and stores the data internally on the heap. All container classes should be created on the stack. Normally you never want to use ``new QList<T>()``, which means never use ``new`` with a container.
+
+The ``QList`` is as versatile as the ``QString`` class and offers a great API to explore your data. Below is a small example how to use and iterate over a list using also some new C++ 11 features.
+
+.. literalinclude:: src/qtfoundation/tst_foundation.cpp
+    :language: cpp
+    :start-after: M5>>
+    :end-before:  M5<<
+
+.. rubric:: Associative Containers
+
+A map, dictionary or a set are examples for associative containers. They store a value using a key. They are known for their fast lookup. We demonstrate the use of the most used associative container the ``QHash`` also demonstrating some new C++ 11 features.
+
+.. literalinclude:: src/qtfoundation/tst_foundation.cpp
+    :language: cpp
+    :start-after: M6>>
+    :end-before:  M6<<
+
+.. rubric:: File IO
+
+Often it is required to read and write from files. ``QFile`` is actually a ``QObject`` but it in most cases created on the stack. ``QFile`` contains signals to inform the user about when data can be read. This allows to asynchronously read chunks of data until the whole file is read. For convenience it allows also to read data in blocking mode. This should only be used for smaller amount of data and not large files. Luckily we only use small data in these examples.
+
+Besides reading raw data from a file into a ``QByteArray`` you can also read data types using the ``QDataStream`` and unicode string using the ``QTextStream``. We will show you how.
+
+.. literalinclude:: src/qtfoundation/tst_foundation.cpp
+    :language: cpp
+    :start-after: M7>>
+    :end-before:  M7<<
 
 
 Models in C++
