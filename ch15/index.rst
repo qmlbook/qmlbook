@@ -332,11 +332,6 @@ You see CMake is quit powerful. It takes some time to get used to the syntax. Wh
 * `CMake Book <http://www.kitware.com/products/books/CMakeBook.html>`_
 * `CMake and Qt <http://www.cmake.org/cmake/help/v3.0/manual/cmake-qt.7.html>`_
 
-.. todo::
-    * background, KDE, benefits, drawbacks, etc
-    * a basic example
-
-
 Common Qt Classes
 =================
 
@@ -419,6 +414,8 @@ Besides reading raw data from a file into a ``QByteArray`` you can also read dat
 
 More Classes
 ------------
+
+.. issues:: ch15
 
 Qt is a rich application framework. As such it has thousands of classes. It takes some time to get used to all of these classes and how to use them. Luckily Qt has a very good documentation with many useful examples includes. Most of the time you search for a class and the most common use cases are already provided as snippets. Which means for you to just compy and adapt these snippet. Also Qt's examples wich come with the Qt source code are a great help. Make sure you have them available and searchable to make your life more productive. Do not waste time. The Qt community is always helpful. When you ask it is very helpful to ask exact questions and a simple example which displays your needs will drastically increase the response time of others. So invest a litte bit of time to make the life of others who want to help you easier:-).
 
@@ -663,15 +660,6 @@ And here is the QML code. You find the full source code also in the assets for t
 
 Model view programming is one of the hardest tasks in Qt. It is one of the very few classes where you have to implement an interface as a normal application developer. All other classes you just use normally. The programming of models needs always to start on the QML side. You need to envision how your users shouls use the model data. For this it is often a good idea to create a prototype first using the ListModel to see how this best work in QML. This is also true when it comes in defining QML APIs. The problematic aspect is it is not only a technology boundary it is also a programming paradigm change from procedural to declarative. So be prepared for some set backs and aha moments:-).
 
-
-Asynchronous Data Retrieval
----------------------------
-
-.. issues:: ch15
-
-.. todo::
-    * canFetchMore/fetchMore + beginInsertRows/endInsertRows
-    * this really does not work very well with QML, should we scrap it?
 
 SQL Models
 ----------
