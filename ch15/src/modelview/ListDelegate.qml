@@ -1,7 +1,5 @@
 import QtQuick 2.2
-import QtQuick.Window 2.0
 import QtQuick.Layouts 1.1
-import org.example 1.0
 
 Item {
     id: root
@@ -19,8 +17,6 @@ Item {
         opacity: 0.2
         border.color: Qt.darker(color)
     }
-
-
 
     RowLayout {
         anchors.fill: parent

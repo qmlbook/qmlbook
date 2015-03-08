@@ -1,7 +1,4 @@
 import QtQuick 2.2
-import QtQuick.Window 2.0
-
-import org.example 1.0
 
 Rectangle {
     id: root
