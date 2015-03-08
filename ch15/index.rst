@@ -464,7 +464,7 @@ A simple model
 
 A typical QML C++ model derives from ``QAbstractListModel`` and implements at least the ``data`` and ``rowCount`` function. In this example we will use a series of SVG color names provided by the ``QColor`` class and display them using our model. The data is stored into a ``QList<QString>`` data container.
 
-Our ``DataEntryModel`` is derived form ``QAbstractListModel`` and implementats the mandatory functions. We can ignore the parent in ``rowCount`` as this is only used in a tree model. The ``QModelIndex`` class provides the row and column information for the cell, for which the view wants to retrieve. The view is pulling information from the model on a row/column and role base. The ``QAbstractListModel`` is defined in ``QtCore`` but ``QColor`` in ``QtGui``. That is why we have the additional ``QtGui`` dependency. For QML applications it is okay to depend on ``QtGui`` but it should normally not depend on ``QtWidgets``.
+Our ``DataEntryModel`` is derived form ``QAbstractListModel`` and implementats the mandatory functions. We can ignore the parent in ``rowCount`` as this is only used in a tree model. The ``QModelIndex`` class provides the row and column information for the cell, for which the view wants to retrieve data. The view is pulling information from the model on a row/column and role base. The ``QAbstractListModel`` is defined in ``QtCore`` but ``QColor`` in ``QtGui``. That is why we have the additional ``QtGui`` dependency. For QML applications it is okay to depend on ``QtGui`` but it should normally not depend on ``QtWidgets``.
 
 .. literalinclude:: src/modelview/dataentrymodel.h
     :language: cpp
@@ -491,8 +491,10 @@ The next step would be to register the model with QML using the ``qmlRegisterTyp
         // under the url "org.example" in version 1.0
         // under the name "DataEntryModel"
         qmlRegisterType<DataEntryModel>("org.example", 1, 0, "DataEntryModel");
+
         QQmlApplicationEngine engine;
         engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
+
         return app.exec();
     }
 
