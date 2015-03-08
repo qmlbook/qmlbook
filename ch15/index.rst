@@ -427,7 +427,7 @@ That should be enough for the beginning.
 Models in C++
 =============
 
-Models in QML serve the purpose to provide data to ``ListViews``, ``PathViews`` and other views which take a model and create for each entry in the model an instance of a delegate. The view is smart enough to only create these instances which are visible or in the cache range. Which makes it possible to have large models with tens of throusands of entries but still a very slick user interface. The delegate acts like a template to be rendered with the model entries data. So in summar: a view renders entries from the model using a delegate as a template. As such the model is the data provider.
+Models in QML serve the purpose to provide data to ``ListViews``, ``PathViews`` and other views which take a model and create for each entry in the model an instance of a delegate. The view is smart enough to only create these instances which are visible or in the cache range. Which makes it possible to have large models with tens of throusands of entries but still a very slick user interface. The delegate acts like a template to be rendered with the model entries data. So in summary: a view renders entries from the model using a delegate as a template. The model is a data provider to views.
 
 When you do not want ot use C++ you can also define models in pure QML you have several ways to provide a model to the view. For handling of data coming from C++ or large amount of data  the C++ model is more suitable as these pure QML approaches. But often you only need a few entries then these QML models are well suited.
 
