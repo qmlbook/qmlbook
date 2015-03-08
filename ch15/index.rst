@@ -346,7 +346,8 @@ The ``QObject`` class forms the foundations of Qt, but there are many more class
 
 The code examples shown in this section are written using the Qt Test library. It offers a great way to explore the Qt API and store it for later reference. ``QVERIFY``, ``QCOMPARE`` are functions provided by the test library to assert a certain condition. We will also use later in the examples ``{ }`` scopes to avoid variable name clashes. So do not get confused.
 
-.. rubric:: QString
+QString
+-------
 
 Text handling in Qt is in general unicode based. For this you use the ``QString`` class. It comes with a variety of great functions which you would expect from a modern framework. For 8-bit data you would use normally the ``QByteArray`` class and for ASCII identifiers the ``QLatin1String`` to preserve memory. For a list of strings you can use a ``QList<QString>`` or simple the ``QStringList`` class (which is derived from ``QList<QString>``).
 
@@ -381,7 +382,8 @@ Sometimes you want to use unicode characters directly in you code. For this you 
 
 This gives you some examples how to easily treat unicode aware text in Qt. For non-unicode the ``QByteArray`` class has also many helper functions for conversion. Please read the Qt documentation for ``QString`` as it contains tones of good examples.
 
-.. rubric:: Sequential Containers
+Sequential Containers
+---------------------
 
 A list, queue, vector or linked-list is a sequential container. The mostly used sequential container is the ``QList`` class. It is a template based class and needs to be initialized with a type. It is also implicit shared and stores the data internally on the heap. All container classes should be created on the stack. Normally you never want to use ``new QList<T>()``, which means never use ``new`` with a container.
 
@@ -392,7 +394,8 @@ The ``QList`` is as versatile as the ``QString`` class and offers a great API to
     :start-after: M5>>
     :end-before:  M5<<
 
-.. rubric:: Associative Containers
+Associative Containers
+----------------------
 
 A map, dictionary or a set are examples for associative containers. They store a value using a key. They are known for their fast lookup. We demonstrate the use of the most used associative container the ``QHash`` also demonstrating some new C++ 11 features.
 
@@ -401,7 +404,8 @@ A map, dictionary or a set are examples for associative containers. They store a
     :start-after: M6>>
     :end-before:  M6<<
 
-.. rubric:: File IO
+File IO
+-------
 
 Often it is required to read and write from files. ``QFile`` is actually a ``QObject`` but it in most cases created on the stack. ``QFile`` contains signals to inform the user about when data can be read. This allows to asynchronously read chunks of data until the whole file is read. For convenience it allows also to read data in blocking mode. This should only be used for smaller amount of data and not large files. Luckily we only use small data in these examples.
 
@@ -413,16 +417,252 @@ Besides reading raw data from a file into a ``QByteArray`` you can also read dat
     :end-before:  M7<<
 
 
+More Classes
+------------
+
+Qt is a rich application framework. As such it has thousands of classes. It takes some time to get used to all of these classes and how to use them. Luckily Qt has a very good documentation with many useful examples includes. Most of the time you search for a class and the most common use cases are already provided as snippets. Which means for you to just compy and adapt these snippet. Also Qt's examples wich come with the Qt source code are a great help. Make sure you have them available and searchable to make your life more productive. Do not waste time. The Qt community is always helpful. When you ask it is very helpful to ask exact questions and a simple example which displays your needs will drastically increase the response time of others. So invest a litte bit of time to make the life of others who want to help you easier:-).
+
+Here some classes which the author things is a must read: :qt5:`QObject <qobject>`, :qt5:`QString <qstring>`, :qt5:`QByteArray <qbytearray>`, :qt5:`QFile <qfile>`, :qt5:`QDir <qdir>`, :qt5:`QFileInfo <qfileinfo>`, :qt5:`QIODevice <qiodevice>`, :qt5:`QTextStream <qtextstream>`, :qt5:`QDataStream <qdatastream>`, :qt5:`QDebug <qdebug>`, :qt5:`QLoggingCategory <qloggingcategory>`, :qt5:`QTcpServer <qtcpserver>`, :qt5:`QTcpSocket <qtcpsocket>`, :qt5:`QNetworkRequest <qnetworkrequest>`, :qt5:`QNetworkReply <qnetworkreply>`, :qt5:`QAbstractItemModel <qabstractitemmodel>`, :qt5:`QRegExp <qregexp>`, :qt5:`QList <qlist>`, :qt5:`QHash <qhash>`, :qt5:`QThread <qthread>`, :qt5:`QProcess <qprocess>`, :qt5:`QJsonDocument <qjsondocument>`, :qt5:`QJSValue <qjsvalue>`.
+
+That should be enough for the beginning.
+
+
 Models in C++
 =============
 
-.. issues:: ch15
+Models in QML serve the purpose to provide data to ``ListViews``, ``PathViews`` and other views which take a model and create for each entry in the model an instance of a delegate. The view is smart enough to only create these instances which are visible or in the cache range. Which makes it possible to have large models with tens of throusands of entries but still a very slick user interface. The delegate acts like a template to be rendered with the model entries data. So in summar: a view renders entries from the model using a delegate as a template. As such the model is the data provider.
 
-.. todo::
-    * QAbstractListModel
-    * custom role names
-    * the basics
-    * how this fits into QML
+When you do not want ot use C++ you can also define models in pure QML you have several ways to provide a model to the view. For handling of data coming from C++ or large amount of data  the C++ model is more suitable as these pure QML approaches. But often you only need a few entries then these QML models are well suited.
+
+.. code-block:: qml
+
+    ListView {
+        // using a integer as model
+        model: 5
+        delegate: Text { text: 'index: ' + index }
+    }
+
+    ListView {
+        // using a JS array as model
+        model: ['A', 'B', 'C', 'D', 'E']
+        delegate: Text { 'Char['+ index +']: ' + modelData }
+    }
+
+    ListView {
+        // using a dynamic QML ListModel as model
+        model: ListModel {
+            ListElement { char: 'A' }
+            ListElement { char: 'B' }
+            ListElement { char: 'C' }
+            ListElement { char: 'D' }
+            ListElement { char: 'E' }
+        }
+        delegate: Text { 'Char['+ index +']: ' + model.char }
+    }
+
+The QML views knows how to handle these different models. For models coming from the C++ world the view expects a specific protocol to be followed. This protocol is defined in an API (``QAbstractItemModel``) together with documentation for the dynamic behavior. The API was developed for the desktop widget world and is flexible enough to act as a base for trees, or multi column tables as also lists. In QML we mostly only use the list version of the API (``QAbstractListModel``). The API contains some mandatory functions to be implemented and some are optional. The optional parts mostly handle the dynamic use case of adding or removing of data.
+
+A simple model
+--------------
+
+A typical QML C++ model derives from ``QAbstractListModel`` and implements at least the ``data`` and ``rowCount`` function. In this example we will use a series of SVG color names provided by the ``QColor`` class and display them using our model. The data is stored into a ``QList<QString>`` data container.
+
+Our ``DataEntryModel`` is derived form ``QAbstractListModel`` and implementats the mandatory functions. We can ignore the parent in ``rowCount`` as this is only used in a tree model. The ``QModelIndex`` class provides the row and column information for the cell, for which the view wants to retrieve. The view is pulling information from the model on a row/column and role base. The ``QAbstractListModel`` is defined in ``QtCore`` but ``QColor`` in ``QtGui``. That is why we have the additional ``QtGui`` dependency. For QML applications it is okay to depend on ``QtGui`` but it should normally not depend on ``QtWidgets``.
+
+.. literalinclude:: src/modelview/dataentrymodel.h
+    :language: cpp
+
+On the implementation side the most complex part is the data function. We first need to make a range check. And then we check for the display role. The ``Qt::DisplayRole`` is the default text role a view will ask for. There is a small set of default roles defined in Qt which can be used, but normally a model will define its own roles for clarity. All calls which do not contain the display role are ignored at the moment and the default value ``QVariant()`` is returned.
+
+.. literalinclude:: src/modelview/dataentrymodel.cpp
+    :language: cpp
+
+The next step would be to register the model with QML using the ``qmlRegisterType`` call. This is done inside the ``main.cpp`` before the QML file was loaded.
+
+.. code-block:: cpp
+
+    #include <QtGui>
+    #include <QtQml>
+
+    #include "dataentrymodel.h"
+
+    int main(int argc, char *argv[])
+    {
+        QGuiApplication app(argc, argv);
+
+        // register the type DataEntryModel
+        // under the url "org.example" in version 1.0
+        // under the name "DataEntryModel"
+        qmlRegisterType<DataEntryModel>("org.example", 1, 0, "DataEntryModel");
+        QQmlApplicationEngine engine;
+        engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
+        return app.exec();
+    }
+
+
+Now you can access the ``DataEntryModel`` using the QML import statement ``import org.example 1.0`` and use it just like other QML item ``DataEntryModel {}``.
+
+We use this in this example to display a simple list of color entries.
+
+.. code-block:: qml
+
+    import org.example 1.0
+
+    ListView {
+        id: view
+        anchors.fill: parent
+        model: DataEntryModel {}
+        delegate: ListDelegate {
+            // use the defined model role "display"
+            text: model.display
+        }
+        highlight: ListHighlight { }
+    }
+
+The ``ListDelegate`` is a custom type to display some text. The ``ListHighlight`` is just a rectangle. The code was extracted to keep the example compact.
+
+The view can now display a list of strings using the C++ model and the display property of the model. It is still very simple, but already usable in QML. Normally the data is provided from outside the model and the model would acts as an interface to the view.
+
+More Complex Data
+-----------------
+
+In reality the model data is often much more complex. So there is a need to define custom roles so that the view can query other data via properties. For example the model could provide not only the color as hex string, but maybe also the hue, saturation and brightness from the HSV color model as "model.hue", "model.saturation" and "model.brightness" in QML.
+
+.. literalinclude:: src/modelview/roleentrymodel.h
+    :language: cpp
+
+In the header we added the role mapping to be used for QML. When QML tries now to access a property from the model (e.g. "model.name") the listview will lookup the mapping for "name" and ask the model for data using the ``NameRole``. User defined roles should start with ``Qt::UserRole`` and need to be unique for each model.
+
+.. literalinclude:: src/modelview/roleentrymodel.cpp
+    :language: cpp
+
+The implemantation now has changed ony on two places. First in the initialization. We now initialize the data list with QColor data types. Additionally we define our role name map to be accessible for QML. This map is returned later in the ``::roleNames`` function.
+
+The second change is in the ``::data`` function. We extend the switch to cover the other roles (e.g hue, saturation, brightness). There is no way to return a SVG name from a color, as a color can take one any color and SVG names are limited. So we skip this. Storing the names would require to create a structure ``struct { QColor, QString }`` to be able to identify the named color.
+
+After registering the type we can use the model and its entries in our user interface.
+
+.. code-block:: qml
+
+    ListView {
+        id: view
+        anchors.fill: parent
+        model: RoleEntryModel {}
+        focus: true
+        delegate: ListDelegate {
+            text: 'hsv(' +
+                  Number(model.hue).toFixed(2) + ',' +
+                  Number(model.saturation).toFixed() + ',' +
+                  Number(model.brightness).toFixed() + ')'
+            color: model.name
+        }
+        highlight: ListHighlight { }
+    }
+
+We convert the returned type to a JS number type to be able to format the number using fixed-point notation. The code would also work without the Number call (e.g. plain ``model.saturation.toFixed(2)``). Which format to choose, depends how much you trust the incoming data.
+
+Dynamic Data
+------------
+
+Dynamic data covers the aspects of inserting, removing and clearing the data from the model. The ``QAbstractListModel`` expect a certain behavior when entries are removed or inserted. The behavior is expressed in signals which needs to be called before and after the manipulation. For example to insert a row into a model you need first emit the signal ``beginInsertRows``, then manipulate the data and then finally emit ``endInsertRows``.
+
+We will add the following functions to our headers. These functions are declared using ``Q_INVOKABLE`` to be able to call them from QML. Another way would be to declare them a public slots.
+
+.. code-block:: cpp
+
+    // inserts a color at the index (0 at begining, count-1 at end)
+    Q_INVOKABLE void insert(int index, const QString& colorValue);
+    // uses insert to insert a color at the end
+    Q_INVOKABLE void append(const QString& colorValue);
+    // removes a color from the index
+    Q_INVOKABLE void remove(int index);
+    // clear the whole model (e.g. reset)
+    Q_INVOKABLE void clear();
+
+Additional we define a ``count`` property to get the size of the model and a ``get`` method to get a color at the given index. This is useful when you would like to iterate over the model content from QML.
+
+.. code-block:: cpp
+
+    // gives the size of the model
+    Q_PROPERTY(int count READ count NOTIFY countChanged)
+    // gets a color at the index
+    Q_INVOKABLE QColor get(int index);
+
+The implementation for insert checks first the boundaries and if the given value is valid. Only then we begin inserting the data.
+
+.. code-block:: cpp
+
+    void DynamicEntryModel::insert(int index, const QString &colorValue)
+    {
+        if(index < 0 || index > m_data.count()) {
+            return;
+        }
+        QColor color(colorValue);
+        if(!color.isValid()) {
+            return;
+        }
+        // view protocol (begin => manipulate => end]
+        emit beginInsertRows(QModelIndex(), index, index);
+        m_data.insert(index, color);
+        emit endInsertRows();
+        // update our count property
+        emit countChanged(m_data.count());
+    }
+
+Append is very simple. We reuse the insert function with the size of the model.
+
+.. code-block:: cpp
+
+    void DynamicEntryModel::append(const QString &colorValue)
+    {
+        insert(count(), colorValue);
+    }
+
+Remove is similar to insert but it calls the remove opration protocol.
+
+.. code-block:: cpp
+
+    void DynamicEntryModel::remove(int index)
+    {
+        if(index < 0 || index >= m_data.count()) {
+            return;
+        }
+        emit beginRemoveRows(QModelIndex(), index, index);
+        m_data.removeAt(index);
+        emit endRemoveRows();
+        // do not forget to update our count property
+        emit countChanged(m_data.count());
+    }
+
+The helper function ``count`` is trivial. It just returns the data count. The ``get`` function is also quite simple.
+
+.. code-block:: cpp
+
+    QColor DynamicEntryModel::get(int index)
+    {
+        if(index < 0 || index >= m_data.count()) {
+            return QColor();
+        }
+        return m_data.at(index);
+    }
+
+You need to be carefull that you only return a value which QML understands. If it is not one of the basic QML types or types kown to QML you need to register the type first with ``qmlRegisterType`` or ``qmlRegisterUncreatableType``. You use ``qmlRegisterUncreatableType`` if the user shall not be able to instantiate its own object in QML.
+
+Now you can use the model in QML and insert, append, remove entries from the model. Here is a small example which allows the user to enter a color name or color hex value and the color is then appended onto the model and shown in the list view. The red circle on the delegate allows the user to remove this entry from the model. After the entry is remove the list view is notified by the model and updates its content.
+
+.. image:: images/modelview.png
+
+|
+
+And here is the QML code. You find the full source code also in the assets for this chapter. The example uses the QtQuick.Controls and QtQuick.Layout module to make the code more compact. These controls module provides a set of desktop related ui elements in QtQuick and the layouts module provides some very useful layout managers.
+
+
+.. literalinclude:: src/modelview/main.qml
+    :language: qml
+
+
+Model view programming is one of the hardest tasks in Qt. It is one of the very few classes where you have to implement an interface as a normal application developer. All other classes you just use normally. The programming of models needs always to start on the QML side. You need to envision how your users shouls use the model data. For this it is often a good idea to create a prototype first using the ListModel to see how this best work in QML. This is also true when it comes in defining QML APIs. The problematic aspect is it is not only a technology boundary it is also a programming paradigm change from procedural to declarative. So be prepared for some set backs and aha moments:-).
+
 
 Asynchronous Data Retrieval
 ---------------------------
