@@ -50,6 +50,7 @@ def assets_init():
 
 
 @task
+@needs('assets_init')
 def build_assets():
     for ch in path('.').dirs('ch??'):
         name = '%s-assets.tgz'%ch

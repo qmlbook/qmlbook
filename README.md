@@ -1,9 +1,9 @@
-Qt5-Cadaques Project
+QmlBook Project
 ====================
 
 [![Join the chat at https://gitter.im/qmlbook/qmlbook](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/qmlbook/qmlbook?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-This is the source code for the QML book contents. It is licensed under the Creative Commons Attribution-Non Commercial-Share Alike 4.0 license. We hope you enjoy it and we hope it helps you to learn Qt5.
+This is the source code for the QML book contents (http://qmlbook.org). It is licensed under the Creative Commons Attribution-Non Commercial-Share Alike 4.0 license. We hope you enjoy it and we hope it helps you to learn Qt5.
 
 The code examples are licensed under the BSD license. 
 
