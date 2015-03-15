@@ -198,8 +198,9 @@ html_use_smartypants = True
 # }
 
 html_sidebars = {
-    'index': [],
-    '*/index': ['localtoc.html']
+    'index': ['sidebar.html'],
+    '*/index': ['sidebar.html'],
+    '*/ch??/index': ['localtoc.html']
 }
 
 # Additional templates that should be rendered to pages, maps page names to
