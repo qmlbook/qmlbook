@@ -39,6 +39,7 @@ ApplicationWindow {
             title: qsTr("&File")
             MenuItem { action: open }
             MenuItem { action: save }
+            MenuSeparator {}
             MenuItem { action: exit }
         }
     }
