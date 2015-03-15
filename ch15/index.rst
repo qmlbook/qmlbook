@@ -2,9 +2,16 @@
 Qt and C++
 ==========
 
-.. sectionauthor:: `e8johan <https://bitbucket.org/e8johan>`_
+.. sectionauthor:: `jryannel <https://github.com/jryannel>`_
 
 .. issues:: ch15
+
+.. note::
+
+    Last Build: |today|
+
+    The source code for this chapter can be found in the `assets folder <../assets>`_.
+
 
 Qt is a C++ toolkit with an extension for QML and Javascript. There exists many language bindings for Qt, but as Qt is developed in C++, the spirit of C++ can be found throughout the classes. In this section, we will look at Qt from a C++ perspective to build a better understanding how to extend QML with native plugins developed using C++. Through C++, it is possible to extend and control the execution environment provided to QML.
 

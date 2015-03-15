@@ -17,3 +17,6 @@ UI_DIR = build/uic
 SOURCES += main.cpp
 
 OTHER_FILES += main.qml
+
+RESOURCES += \
+    basicmain.qrc
