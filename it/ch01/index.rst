@@ -1,6 +1,6 @@
-===============
+===================
 Introduzione a Qt 5
-===============
+===================
 
 .. sectionauthor:: `jryannel <https://github.com/jryannel>`_, `marco-piccolino <https://github.com/marco-piccolino>`_
 
@@ -16,7 +16,7 @@ Questo capitolo fornisce una visione d'insieme di Qt 5. Il capitolo mostra sia l
 
 
 Prefazione
-=======
+==========
 
 .. rubric:: Storia
 
@@ -25,7 +25,7 @@ Qt 4 ha visto un progresso costante dal 2005, ed ha rappresentato una base solid
 Qt 4 è stato disegnato per soddisfare il mondo desktop e per fornire un set di widget per interfacce utente su tutte le maggiori piattaforme. La sfida per gli utenti di Qt oggi è cambiata, e la sfida principale è quella di fornire interfacce utente basate sul touch, i cui requisiti vengono definiti dai clienti, e che devono essere in grado di fornire un'esperienza d'uso moderna su tutti i maggiori sistemi desktop e mobile. Qt 4.7 ha introdotto la tecnologia QtQuick, che permette agli utenti di creare una serie di componenti UI partendo da elementi semplici, per poter così ottenere interfacce utente completamente nuove, definite dalle richieste dei clienti.
 
 Il focus di Qt5
------------
+---------------
 
 Qt 5 è una versione completamente rinnovata rispetto alla release di grande successo di Qt 4. Con la versione 4.8, Qt 4 ha ormai 7 anni. Era quindi il momento di rendere un toolkit eccezionale ancora migliore. Qt 5 è incentrato sui seguenti aspetti:
 
@@ -40,11 +40,11 @@ Qt 5 è una versione completamente rinnovata rispetto alla release di grande suc
 
 
 Introduzione a Qt5
-===========
+==================
 
 
 Qt Quick
--------
+--------
 
 Qt Quick è il termine onnicomprensivo per la tecnologia dell'interfaccia utente utilizzata in Qt5. Qt Quick di per sé è una collezione di diverse tecnologie:
 
@@ -61,7 +61,7 @@ In un progetto tipico, il front-end viene sviluppato in QML/JavaScript, mentre i
 
 
 Assimilare un'Interfaccia Utente
---------------------------
+--------------------------------
 
 Usando QtQuick, creeremo ora una semplice interfaccia utente che dimostra alcuni aspetti del linguaggio QML. Il risultato finale sarà una girandola con le pale che ruotano.
 
@@ -193,12 +193,12 @@ Ora, ogniqualvolta la proprietà rotation della girandola cambia, essa verrà an
 Ora la girandola ha già un aspetto molto migliore. Spero che questo esempio ti abbia dato una prima impressione di come funzioni la programmazione in Qt Quick.
 
 Gli ingredienti di Qt
-===========
+=====================
 
 Qt 5 consiste di una grande quantità di moduli. Generalmente, un modulo è una libreria che può essere utilizzata dallo sviluppatore. Alcuni moduli sono obbligatori per ogni piattaforma che supporta Qt. Tali moduli formano un insieme chiamato *Qt Essentials Modules*. Molti moduli sono opzionali e formano i *Qt Add-On Modules*. E' probabile che la maggior parte degli sviluppatori non abbia bisogno di tali moduli, ma conoscerli è buona cosa in quanto essi forniscono soluzioni egregie a problemi ricorrenti.
 
 I moduli Qt
----------
+-----------
 
 I Qt Essentials modules sono obbligatori per ogni piattaforma che supporta Qt. Essi forniscono le basi per sviluppare un'applicazione Qt 5 moderna utilizzando Qt Quick 2.
 
@@ -269,7 +269,7 @@ Oltre ai moduli essenziali, Qt offre agli sviluppatori software moduli addiziona
     Poiché questi moduli non fanno parte della distribuzione, il loro stato varia, a seconda di quanti contributori siano attivi e di quanto vengano testati.
 
 Piattaforme Supportate
--------------------
+----------------------
 
 Qt supporta numerose piattaforme. Tutte le maggiori piattaforme sia desktop che embedded sono supportate. Tramite la Qt Application Abstraction, oggi risulta più semplice portare Qt sulla tua piattaforma, se necessario.
 
@@ -279,7 +279,7 @@ Testare Qt 5 su una piattaforma è dispendioso in termini di tempo. Un sottoinsi
 
 
 Il Qt Project
-==========
+=============
 
 Dalla `wiki del qt-project <http://wiki.qt-project.org>`_:
 
