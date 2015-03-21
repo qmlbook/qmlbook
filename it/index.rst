@@ -1,6 +1,6 @@
-=========
-Qml Libro
-=========
+================
+Il libro del QML
+================
 
 .. toctree::
     :numbered:
