@@ -514,7 +514,7 @@ Filtering is done based on the column to be filters and a string as filter argum
     proxy->setFilterCaseSensitive(Qt::CaseInsensitive);
     proxy->setFilterFixedString(QString)
 
-The filter proxy model is much more powerful then demonstrated here. For now it is enough to remember its exists.
+The filter proxy model is much more powerful than demonstrated here. For now it is enough to remember its exists.
 
 
 .. note::
