@@ -209,7 +209,7 @@ Interestingly we can not see here the module URI (e.g. **org.example.io**). This
 
 When you look into your project directory you will find a qmldir file. This file specifies the content of your qml plugin or better the QML side of your plugin. It should look like this for you.
 
-.. code-block::
+.. code-block:: qml
 
     module org.example.io
     plugin fileio
