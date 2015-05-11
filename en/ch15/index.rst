@@ -93,7 +93,7 @@ The QObject
 
 .. issues:: ch15
 
-As described in the introduction, the ``QObject`` is what enables Qt's introspection. Is the base class of almost all classes in Qt. Exceptions are value types such as ``QColor``, ``QString`` and ``QList``.
+As described in the introduction, the ``QObject`` is what enables Qt's introspection. It is the base class of almost all classes in Qt. Exceptions are value types such as ``QColor``, ``QString`` and ``QList``.
 
 A Qt object is a standard C++ object, but with more abilities. These can be divided into two groups: introspection and memory management. The first means that a Qt object is aware of its class name, its relationship to other classes, as well as its methods and properties. The memory management concept means that each Qt object can be the parent of child objects. The parent *owns* the children, and when the parent is destroyed, it is responsible for destroying its children.
 
@@ -138,7 +138,7 @@ The person class is a data class with a name and gender properties. The person c
     };
 
 
-The constructor passes on the parent to the super class and initialize the members. Qt's value classes are automatically initialized. In this case ``QString`` will initialize to a null string (``QString::isNull()``) and the gender member will explicitly initialize to the unknown gender.
+The constructor passes the parent on to the super class and initialize the members. Qt's value classes are automatically initialized. In this case ``QString`` will initialize to a null string (``QString::isNull()``) and the gender member will explicitly initialize to the unknown gender.
 
 .. code-block:: cpp
 
@@ -182,7 +182,7 @@ Build Systems
 
 .. issues:: ch15
 
-Building software reliable on different platforms can be a complex task. You will encounter different environments with different compilers, paths and library variations. The purpose of Qt is to shield the application developer from these cross platform issues. For this Qt introduced the ``qmake`` build file generator. ``qmake`` operator on a project file with the ending ``.pro``. This project file contains instructions about the appication and the sources to be used. Running qmake on this project file will generate for you a ``Makefile`` on unix and mac and even under windows if the mingw compiler toolchain shall be used. Otherwise it may create a visual studio project or an xcode project.
+Building software reliably on different platforms can be a complex task. You will encounter different environments with different compilers, paths and library variations. The purpose of Qt is to shield the application developer from these cross platform issues. For this Qt introduced the ``qmake`` build file generator. ``qmake`` operator on a project file with the ending ``.pro``. This project file contains instructions about the application and the sources to be used. Running qmake on this project file will generate for you a ``Makefile`` on unix and mac and even under windows if the mingw compiler toolchain shall be used. Otherwise it may create a visual studio project or an xcode project.
 
 A typical build flow in Qt would be under unix::
 
@@ -240,7 +240,7 @@ When you want to build a library instead of an application you need to change th
 
 Now the project will build as a library without UI dependencies and used the ``utils.h`` header and the ``utils.cpp`` source file. The format of the library will depend on the OS you are building the project.
 
-Often you wil have more complicated setups and need to build a set of projects. For this qmake offers the ``subdirs`` template. Assumy we would have a mylib and a myapp project. Then our setup could be like this::
+Often you wil have more complicated setups and need to build a set of projects. For this qmake offers the ``subdirs`` template. Assume we would have a mylib and a myapp project. Then our setup could be like this::
 
     my.pro
     mylib/mylib.pro
@@ -259,7 +259,7 @@ We know already how the mylib.pro and myapp.pro would look like. The my.pro as t
 
     myapp.depends = mylib
 
-This declares a project with two subproject ``mylib`` and ``myapp``. Where ``myapp`` depends on ``mylib``. When you run qmake on this project file it will generate for each project file a build file in the corresponding folder. When running the make file for ``my.pro`` then all subproject are also build.
+This declares a project with two subprojects ``mylib`` and ``myapp``, were ``myapp`` depends on ``mylib``. When you run qmake on this project file it will generate for each project file a build file in the corresponding folder. When you run the make file for ``my.pro`` then all subproject are also built.
 
 Sometimes you need to do one thing on one platform and another thing on other platforms based on your configuration. For this qmake introduces the concept of scopes. A scope is a applied when a configuration option is set to true.
 
@@ -298,7 +298,7 @@ CMake
 
 CMake is a tool create by Kitware. Kitware is very well known for their 3D visualitation software VTK and also CMake, the cross platform makefile generator. It uses a series of ``CMakeLists.txt`` files to generate platform specific make files. CMake is used by the KDE project and as such has a special relationship with the Qt community.
 
-The ``CMakeLists.txt`` file to store the project configuration. For a simple hello world using QtCore the project file would look like this::
+The ``CMakeLists.txt`` is file to store the project configuration. For a simple hello world using QtCore the project file would look like this::
 
     // ensure cmake version is at least 3.0
     cmake_minimum_required(VERSION 3.0)
@@ -329,7 +329,7 @@ This will build a helloworld executable using main.cpp and linked agains the ext
     // links Qt5Core to the project executable
     target_link_libraries(${PROJECT_NAME} Qt5::Core)
 
-You see CMake is quit powerful. It takes some time to get used to the syntax. What is said in general that CMake is better suited for large and complex projects.
+You see CMake is quite powerful. It takes some time to get used to the syntax. In general it is said that CMake is better suited for large and complex projects.
 
 .. rubric:: References
 
@@ -346,14 +346,14 @@ Common Qt Classes
 
 The ``QObject`` class forms the foundations of Qt, but there are many more classes in the framework. Before we continue looking at QML and how to extend it, we will look at some basic Qt classes that are useful to know about.
 
-The code examples shown in this section are written using the Qt Test library. It offers a great way to explore the Qt API and store it for later reference. ``QVERIFY``, ``QCOMPARE`` are functions provided by the test library to assert a certain condition. We will also use later in the examples ``{ }`` scopes to avoid variable name clashes. So do not get confused.
+The code examples shown in this section are written using the Qt Test library. It offers a great way to explore the Qt API and store it for later reference. ``QVERIFY``, ``QCOMPARE`` are functions provided by the test library to assert a certain condition. We will also use ``{}`` scopes to avoid identifier name collisions. So do not get confused.
 
 QString
 -------
 
-Text handling in Qt is in general unicode based. For this you use the ``QString`` class. It comes with a variety of great functions which you would expect from a modern framework. For 8-bit data you would use normally the ``QByteArray`` class and for ASCII identifiers the ``QLatin1String`` to preserve memory. For a list of strings you can use a ``QList<QString>`` or simple the ``QStringList`` class (which is derived from ``QList<QString>``).
+Text handling in Qt is in general unicode based. For this you use the ``QString`` class. It comes with a variety of great functions which you would expect from a modern framework. For 8-bit data you would use normally the ``QByteArray`` class and for ASCII identifiers the ``QLatin1String`` to preserve memory. For a list of strings you can use a ``QList<QString>`` or simply the ``QStringList`` class (which is derived from ``QList<QString>``).
 
-Here are some example how to use the ``QString`` class. QString should be created on the stack and contains it data internally on the heap. Also by assigning one string to another the data will not be copied only a reference to the data. So this is really cheap and lets the developer concentrate on the code and not on the memory handling. ``QString`` uses reference counters to know when the data can be safely deleted. This feature is called :qt5:`Implicit Sharing <implicit-sharing>` and it is used in many Qt classes.
+Here are some examples of how to use the ``QString`` class. QString can be created on the stack but it stores its data on the heap. Also by assigning one string to another the data will not be copied only a reference to the data. So this is really cheap and lets the developer concentrate on the code and not on the memory handling. ``QString`` uses reference counters to know when the data can be safely deleted. This feature is called :qt5:`Implicit Sharing <implicit-sharing>` and it is used in many Qt classes.
 
 
 .. literalinclude:: src/qtfoundation/tst_foundation.cpp
@@ -368,7 +368,7 @@ Here we will show how to convert a number to a string and back. There are also c
     :start-after: M2>>
     :end-before:  M2<<
 
-Often in text you need to have parameterized text. One option could be to use ``QString("Hello" + name)`` more flexible is the ``arg`` marker approach as it keeps the order also during translation when the order might change.
+Often in text you need to have parameterized text. One option could be to use ``QString("Hello" + name)`` but a more flexible is the ``arg`` marker approach as it keeps the order also during translation when the order might change.
 
 .. literalinclude:: src/qtfoundation/tst_foundation.cpp
     :language: cpp
@@ -409,7 +409,7 @@ A map, dictionary or a set are examples for associative containers. They store a
 File IO
 -------
 
-Often it is required to read and write from files. ``QFile`` is actually a ``QObject`` but it in most cases created on the stack. ``QFile`` contains signals to inform the user about when data can be read. This allows to asynchronously read chunks of data until the whole file is read. For convenience it allows also to read data in blocking mode. This should only be used for smaller amount of data and not large files. Luckily we only use small data in these examples.
+It is often required to read and write from files. ``QFile`` is actually a ``QObject`` but in most cases it is created on the stack. ``QFile`` contains signals to inform the user when data can be read. This allows reading chunks of data asynchronously until the whole file is read. For convenience it also allows reading data in blocking mode. This should only be used for smaller amounts of data and not large files. Luckily we only use small data in these examples.
 
 Besides reading raw data from a file into a ``QByteArray`` you can also read data types using the ``QDataStream`` and unicode string using the ``QTextStream``. We will show you how.
 
@@ -424,7 +424,7 @@ More Classes
 
 .. issues:: ch15
 
-Qt is a rich application framework. As such it has thousands of classes. It takes some time to get used to all of these classes and how to use them. Luckily Qt has a very good documentation with many useful examples includes. Most of the time you search for a class and the most common use cases are already provided as snippets. Which means for you to just compy and adapt these snippet. Also Qt's examples wich come with the Qt source code are a great help. Make sure you have them available and searchable to make your life more productive. Do not waste time. The Qt community is always helpful. When you ask it is very helpful to ask exact questions and a simple example which displays your needs will drastically increase the response time of others. So invest a litte bit of time to make the life of others who want to help you easier:-).
+Qt is a rich application framework. As such it has thousands of classes. It takes some time to get used to all of these classes and how to use them. Luckily Qt has a very good documentation with many useful examples includes. Most of the time you search for a class and the most common use cases are already provided as snippets. Which means for you to just copy and adapt these snippets. Also Qt's examples wich come with the Qt source code are a great help. Make sure you have them available and searchable to make your life more productive. Do not waste time. The Qt community is always helpful. When you ask it is very helpful to ask exact questions and provide a simple example which displays your needs. This will drastically improve the response time of others. So invest a litte bit of time to make the life of others who want to help you easier:-).
 
 Here some classes which the author things is a must read: :qt5:`QObject <qobject>`, :qt5:`QString <qstring>`, :qt5:`QByteArray <qbytearray>`, :qt5:`QFile <qfile>`, :qt5:`QDir <qdir>`, :qt5:`QFileInfo <qfileinfo>`, :qt5:`QIODevice <qiodevice>`, :qt5:`QTextStream <qtextstream>`, :qt5:`QDataStream <qdatastream>`, :qt5:`QDebug <qdebug>`, :qt5:`QLoggingCategory <qloggingcategory>`, :qt5:`QTcpServer <qtcpserver>`, :qt5:`QTcpSocket <qtcpsocket>`, :qt5:`QNetworkRequest <qnetworkrequest>`, :qt5:`QNetworkReply <qnetworkreply>`, :qt5:`QAbstractItemModel <qabstractitemmodel>`, :qt5:`QRegExp <qregexp>`, :qt5:`QList <qlist>`, :qt5:`QHash <qhash>`, :qt5:`QThread <qthread>`, :qt5:`QProcess <qprocess>`, :qt5:`QJsonDocument <qjsondocument>`, :qt5:`QJSValue <qjsvalue>`.
 
