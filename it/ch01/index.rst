@@ -20,7 +20,7 @@ Prefazione
 
 .. rubric:: Storia
 
-Qt 4 ha visto un progresso costante dal 2005, ed ha rappresentato una base solida per migliaia di applicazioni, e persino sistemi desktop e mobile completi. Negli ultimi anni, gli utenti dei personal computer hanno modificato considerevolmente le proprie abitudini di utilizzo. Dai PC da tavolo si è passati ai notebook portatili e, infine, ai computer tascabili. Il desktop classico viene via via rimpiazzato da schermi portatili, basati sul touch e costantemente connessi. Questi cambiamenti vanno di passo con cambiamenti nella User Experience anche su desktop. Mentre nel passato le interfacce utente di Windows dominavano il mondo, oggigiorno spendiamo più tempo su schermi di altro tipo e interfacce che utilizzano un linguaggio differente.
+Qt 4 ha visto un progresso costante dal 2005, ed ha rappresentato una base solida per migliaia di applicazioni, e persino sistemi desktop e mobile completi.- Negli ultimi anni, gli utenti dei personal computer hanno modificato considerevolmente le proprie abitudini di utilizzo. Dai PC da tavolo si è passati ai notebook portatili e, infine, ai computer tascabili. Il desktop classico viene via via rimpiazzato da schermi portatili, basati sul touch e costantemente connessi. Questi cambiamenti vanno di passo con cambiamenti nella User Experience anche su desktop. Mentre nel passato le interfacce utente di Windows dominavano il mondo, oggigiorno spendiamo più tempo su schermi di altro tipo e interfacce che utilizzano un linguaggio differente.
 
 Qt 4 è stato disegnato per soddisfare il mondo desktop e per fornire un set di widget per interfacce utente su tutte le maggiori piattaforme. La sfida per gli utenti di Qt oggi è cambiata, e la sfida principale è quella di fornire interfacce utente basate sul touch, i cui requisiti vengono definiti dai clienti, e che devono essere in grado di fornire un'esperienza d'uso moderna su tutti i maggiori sistemi desktop e mobile. Qt 4.7 ha introdotto la tecnologia QtQuick, che permette agli utenti di creare una serie di componenti UI partendo da elementi semplici, per poter così ottenere interfacce utente completamente nuove, definite dalle richieste dei clienti.
 
@@ -283,7 +283,7 @@ Il Qt Project
 
 Dalla `wiki del qt-project <http://wiki.qt-project.org>`_:
 
-"Il Qt Project è una comunità meritocratica e basata sul consenso interessata a Qt. Anyone who shares that interest can join the community, participate in its decision making processes, and contribute to Qt’s development."
+"Il Qt Project è una community meritocratica e basata sul consenso interessata a Qt. Chiunque sia interessato può unirsi alla community, partecipare ai processi decisionali, e contribuire allo sviluppo di Qt."
 
 Il Qt-Project è un'organizzazione che porta avanti lo sviluppo della parte open-source di Qt. Costituisce la base a cui altri utenti possono contribuire. Il contributore maggiore è DIGIA, che detiene anche i diritti commerciali di Qt.
 
