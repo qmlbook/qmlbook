@@ -23,11 +23,11 @@ def build_epub():
 def build_qt():
     sh('export QTHELP=True; make qthelp')
     sh('qcollectiongenerator _build/qthelp/Qt5CadaquesBook.qhcp')
-    path('_build/qthelp/Qt5CadaquesBook.qhc').copy('assets')
+    path('_build/qthelp/Qt5CadaquesBook.qch').copy('assets')
 
 @task
 def show_qt():
-    sh('assistant -collectionFile _build/qthelp/Qt5CadaquesBook.qhc')
+    sh('assistant -collectionFile _build/qthelp/Qt5CadaquesBook.qch')
 
 @task
 def clean():
