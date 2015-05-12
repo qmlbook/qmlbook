@@ -29,8 +29,7 @@ We are heavily working on this book and that means several things:
 **Enjoy!**
 
 
-Content
--------
+.. rubric:: Content
 
 
 .. toctree::
@@ -58,8 +57,7 @@ Content
 
 
 
-Chapter Queue
--------------
+.. rubric:: Chapter Queue
 
 The chapter queue are the chapters we are working on. They might be almost ready or in an infante state. Give it a try if you like.
 
