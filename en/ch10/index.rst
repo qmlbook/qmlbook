@@ -6,6 +6,13 @@ Multimedia
 
 .. issues:: ch10
 
+.. note::
+
+    Last Build: |today|
+
+    The source code for this chapter can be found in the `assets folder <../../assets>`_.
+
+
 The multimedia elements in the QtMultimedia makes it possible to playback and record media such as sound, video or pictures. Decoding and encoding is handled through platform specific backends. For instance, the popular gstreamer framework is used on Linux, while DirectShow is used on Windows and QuickTime on OS X.
 
 The multimedia elements are not a part of the QtQuick core API. Instead, they are provided through a separate API made available by importing QtMultimedia 5.0 as shown below::

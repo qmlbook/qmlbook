@@ -6,6 +6,12 @@ JavaScript
 
 .. issues:: ch14
 
+.. note::
+
+    Last Build: |today|
+
+    The source code for this chapter can be found in the `assets folder <../../assets>`_.
+
 
 JavaScript is the lingua-franca on web client development. It also starts to get traction on web server development mainly by node js. As such it is well suited add an imperative language onto the side of declarative QML language. QML itself as a declarative language is used to express the user interface hierachy but is limited to express operational code. Sometimes you need a way to express operations, here JavaScript comes into play.
 

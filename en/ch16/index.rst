@@ -10,7 +10,7 @@ Extending QML with C++
 
     Last Build: |today|
 
-    The source code for this chapter can be found in the `assets folder <../assets>`_.
+    The source code for this chapter can be found in the `assets folder <../../assets>`_.
 
 
 Executing QML within the confined space that QML as a language offers can sometimes be limiting. By extending the QML run-time with native functionality written in C++, the application can utilize the full performance and freedom of the base platform.

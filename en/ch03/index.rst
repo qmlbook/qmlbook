@@ -12,7 +12,7 @@ Qt Creator is the default integrated development environment for Qt. It's writte
 
 .. note::
 
-    The source code of this chapter can be found in the `assets folder <../assets>`_.
+    The source code of this chapter can be found in the `assets folder <../../assets>`_.
 
 The User Interface
 ==================

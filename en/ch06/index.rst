@@ -12,7 +12,7 @@ Model-View-Delegate
 
     Last Build: |today|
 
-    The source code for this chapter can be found in the `assets folder <../assets>`_.
+    The source code for this chapter can be found in the `assets folder <../../assets>`_.
 
 
 

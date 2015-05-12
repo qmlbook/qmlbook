@@ -11,7 +11,7 @@ Particle Simulations
 
     Last Build: |today|
 
-    The source code for this chapter can be found in the `assets folder <../assets>`_.
+    The source code for this chapter can be found in the `assets folder <../../assets>`_.
 
 
 Particles are a computer graphics techniques to visualize certain graphics effects. Typical effects could be: falling leaves, fire, explosions, meteors, clouds, etc.
