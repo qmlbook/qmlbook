@@ -464,7 +464,7 @@ Till now we have mostly covered basic data types and how to use widgets and grap
     cities << "Munich" << "Paris" << "London";
     model->setStringList(cities);
 
-Another popular way to store or retrieve data is SQL. Qt comes with SQLLite embedded and has also support for other data base engines (e.g. MySQL, PostgresSQL, ...). First you need to create your database using a schema, like this:
+Another popular way to store or retrieve data is SQL. Qt comes with SQLite embedded and has also support for other data base engines (e.g. MySQL, PostgresSQL, ...). First you need to create your database using a schema, like this:
 
 .. code-block:: sql
 
@@ -479,7 +479,7 @@ To use sql we need to add the sql module to our .pro file
 
     QT += sql
 
-And then we can open our database using c++. First we need to retrieve a new data base object for the specified database engine. With this database object we open the database. For SQLLite  it's enough to specify the path to the database file. Qt provides some high-level database model, one of them is the table model, which uses a table identifier and an option where clause to select the data. The resulting model can be attached to a list view as the other model before.
+And then we can open our database using c++. First we need to retrieve a new data base object for the specified database engine. With this database object we open the database. For SQLite  it's enough to specify the path to the database file. Qt provides some high-level database model, one of them is the table model, which uses a table identifier and an option where clause to select the data. The resulting model can be attached to a list view as the other model before.
 
 .. code-block:: cpp
 
