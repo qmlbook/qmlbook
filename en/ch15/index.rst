@@ -76,7 +76,7 @@ Qt offers several UI technologies. For this example we use the Desktop Widgets u
 
 .. image:: images/storecontent.png
 
-The main window itself is a widget, which if it does not has a parent is a window. This resembles also how Qt sees a user interface as a tree of ui elements. In this case is the main window our root element nd the push button a child of the main window.
+The main window itself is a widget, which if it does not has a parent is a window. This resembles also how Qt sees a user interface as a tree of ui elements. In this case the main window is our root element and the push button a child of the main window.
 
 .. literalinclude:: src/uiapp/mainwindow.h
     :language: cpp
