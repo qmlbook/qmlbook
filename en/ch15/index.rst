@@ -138,7 +138,7 @@ The person class is a data class with a name and gender properties. The person c
     };
 
 
-The constructor passes the parent on to the super class and initialize the members. Qt's value classes are automatically initialized. In this case ``QString`` will initialize to a null string (``QString::isNull()``) and the gender member will explicitly initialize to the unknown gender.
+The constructor passes the parent to the super class and initialize the members. Qt's value classes are automatically initialized. In this case ``QString`` will initialize to a null string (``QString::isNull()``) and the gender member will explicitly initialize to the unknown gender.
 
 .. code-block:: cpp
 
