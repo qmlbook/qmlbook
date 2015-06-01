@@ -81,7 +81,7 @@ The main window itself is a widget, which if it does not has a parent is a windo
 .. literalinclude:: src/uiapp/mainwindow.h
     :language: cpp
 
-Additional we define a public slot called ``storeContent()`` whih shall be called when the button is clicked. A slot is a C++ method which is registered with the Qt meta object system and can be dynamically called.
+Additional we define a public slot called ``storeContent()`` which shall be called when the button is clicked. A slot is a C++ method which is registered with the Qt meta object system and can be dynamically called.
 
 .. literalinclude:: src/uiapp/mainwindow.cpp
     :language: cpp
