@@ -205,7 +205,7 @@ QMake
 
 .. issues:: ch15
 
-QMake is the tool which reads your project file and generates the build file. A project file is a simplified write down of your project configuration, external dependencies and your source files. The simplest source file is probably this::
+QMake is the tool which reads your project file and generates the build file. A project file is a simplified write down of your project configuration, external dependencies and your source files. The simplest project file is probably this::
 
     // myproject.pro
 
