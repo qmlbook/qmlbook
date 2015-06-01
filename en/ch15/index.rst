@@ -277,7 +277,7 @@ What it says is if the CONFIG variable contains a unix option then apply this sc
         CONFIG -= app_bundle
     }
 
-This will create your application as a plain executable under mac and not as a ``.app`` folder which is used for application instalation.
+This will create your application as a plain executable under mac and not as a ``.app`` folder which is used for application installation.
 
 QMake based projects are normally the choice number one when you start programming Qt applications. But there are also other options out there. All have their benefits and drawbacks. We will shortly discuss these other options in the next topcis.
 
