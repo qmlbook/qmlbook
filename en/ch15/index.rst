@@ -382,7 +382,7 @@ Sometimes you want to use unicode characters directly in you code. For this you 
     :start-after: M4>>
     :end-before:  M4<<
 
-This gives you some examples how to easily treat unicode aware text in Qt. For non-unicode the ``QByteArray`` class has also many helper functions for conversion. Please read the Qt documentation for ``QString`` as it contains tones of good examples.
+This gives you some examples how to easily treat unicode aware text in Qt. For non-unicode the ``QByteArray`` class has also many helper functions for conversion. Please read the Qt documentation for ``QString`` as it contains tons of good examples.
 
 Sequential Containers
 ---------------------
