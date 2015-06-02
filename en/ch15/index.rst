@@ -52,7 +52,7 @@ You build the application using qmake and make. QMake reads a project file and g
 
 We will not go into depth into this topic just remember Qt uses project files for projects and qmake generates the platform specific make files from these project files.
 
-The simple code example above just writes the text and exists the application. For a command line tool this is good enough. For a user interface you would need an event loop which waits for user input and and somehow schedules re-draw operations. So here the same example now using a desktop button to trigger the writing.
+The simple code example above just writes the text and exits the application. For a command line tool this is good enough. For a user interface you would need an event loop which waits for user input and and somehow schedules re-draw operations. So here the same example now using a desktop button to trigger the writing.
 
 Our ``main.cpp`` suprisingly got smaller. We moved code into an own class to be able to use signal/slots for the user input, e.g. the button click. The signal/slot mechanism normally needs an own object as you will see shortly.
 
