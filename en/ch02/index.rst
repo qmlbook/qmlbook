@@ -20,7 +20,7 @@ Installing Qt 5 SDK
 
 .. issues:: ch02
 
-The Qt SDK include the tools needed to build desktop or embedded applications. The latest version can be grabbed from the `Qt-Project homepage <http://qt-project.org>`_. . This is the recommended way to start. The SDK itself has a maintenance tool which will allow you to update the SDK to the latest version.
+The Qt SDK include the tools needed to build desktop or embedded applications. The latest version can be grabbed from the `Qt-Project homepage <http://qt.io>`_. . This is the recommended way to start. The SDK itself has a maintenance tool which will allow you to update the SDK to the latest version.
 
 The Qt SDK is easy to install and comes with its own IDE for rapid development called *Qt Creator*. The IDE is a highly productive environment for Qt coding and recommended to all readers. For any circumstances Qt can be used from the command line and you are free to use a code editor of your choice.
 
@@ -588,7 +588,7 @@ To enable the ``cityModel`` we can mostly re-use our previous model and add a co
 
 .. warning::
 
-    This is not completely correct, as the SQL table model contains the data in columns and a QML model expects the data as roles. So there needs to be a mapping between columns and roles. Please see `QML and QSqlTableModel <http://qt-project.org/wiki/QML_and_QSqlTableModel>`_ wiki page.
+    This is not completely correct, as the SQL table model contains the data in columns and a QML model expects the data as roles. So there needs to be a mapping between columns and roles. Please see `QML and QSqlTableModel <http://wiki.qt.io/QML_and_QSqlTableModel>`_ wiki page.
 
 
 Summary

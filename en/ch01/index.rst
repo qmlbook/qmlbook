@@ -35,7 +35,7 @@ Qt 5 is a complete refreshment of the very successful Qt 4 release. With Qt 4.8,
 
 * **Cross-platform portability**: With the consolidated Qt Platform Abstraction, it is now possible to port Qt to a wider range of platforms easier and faster. Qt 5 is structured around the concept of Qt Essentials and Add-ons, which allows OS developer to focus on the essentials modules and leads to a smaller runtime altogether.
 
-* **Open Development**: Qt is now a truly open-governance project hosted at `Qt-Project <http://qt-project.org>`_. The development is open and community driven.
+* **Open Development**: Qt is now a truly open-governance project hosted at `qt.io <http://qt.io>`_. The development is open and community driven.
 
 
 
@@ -273,7 +273,7 @@ Supported Platforms
 
 Qt supports a variety of platforms. All major desktop and embedded platforms are supported. Through the Qt Application Abstraction, nowadays it's easier to port Qt over to your own platform if required.
 
-Testing Qt 5 on a platform is time consuming. A sub-set of platforms was selected by the qt-project to build the reference platforms set. These platforms are thoroughly tested through the system testing to ensure the best quality. Mind you though: no code is error free.
+Testing Qt 5 on a platform is time consuming. A sub-set of platforms was selected by the Qt Project to build the reference platforms set. These platforms are thoroughly tested through the system testing to ensure the best quality. Mind you though: no code is error free.
 
 
 
@@ -281,14 +281,14 @@ Testing Qt 5 on a platform is time consuming. A sub-set of platforms was selecte
 Qt Project
 ==========
 
-From the `qt-project wiki <http://wiki.qt-project.org>`_:
+From the `Qt Project wiki <http://wiki.qt.io/>`_:
 
 "The Qt Project is a meritocratic consensus-based community interested in Qt. Anyone who shares that interest can join the community, participate in its decision making processes, and contribute to Qt’s development."
 
-The Qt-Project is an organisation which developes the open-source part of the Qt further. It forms the base for other users to contribute. The biggest contributor is DIGIA, which holds also the comercial rights to Qt.
+The Qt Project is an organisation which developes the open-source part of the Qt further. It forms the base for other users to contribute. The biggest contributor is DIGIA, which holds also the comercial rights to Qt.
 
-Qt has an open-source aspect and a comercial aspect for companies. The comercial aspect is for companies which can not or will not comply with the open-source licenses. Without the comercial aspect these companies would not be able to use Qt and it would not allow DIGIA to contribute so much code to the Qt-Project.
+Qt has an open-source aspect and a comercial aspect for companies. The comercial aspect is for companies which can not or will not comply with the open-source licenses. Without the comercial aspect these companies would not be able to use Qt and it would not allow DIGIA to contribute so much code to the Qt Project.
 
 There are many companies world-wide, which make their living out of consultancy and product development using Qt on the various platforms. There are many open-source projects and open-source developers, which rely on Qt as their major development library. It feels good to be part of this vibrant community and to work with this awesome tools and libraries. Does it make you a better person? Maybe:-)
 
-**Contribute here: http://wiki.qt-project.org**
+**Contribute here: http://wiki.qt.io/**

@@ -18,7 +18,7 @@ Shader Effects
 
     * http://labs.qt.nokia.com/2012/02/02/qt-graphical-effects-in-qt-labs/
     * http://labs.qt.nokia.com/2011/05/03/qml-shadereffectitem-on-qgraphicsview/
-    * http://qt-project.org/doc/qt-4.8/declarative-shadereffects.html
+    * http://doc.qt.io/qt-5/qml-qtquick-shadereffect.html
     * http://www.opengl.org/registry/doc/GLSLangSpec.4.20.6.clean.pdf
     * http://www.khronos.org/registry/gles/specs/2.0/GLSL_ES_Specification_1.0.17.pdf
     * http://www.lighthouse3d.com/opengl/glsl/

@@ -110,7 +110,7 @@ Qt Creator comes with C++ and QML debugging support.
 
 .. note::
 
-	Hmm, I just realized I have not used debugging a lot. I hope this is a good sign. Need to ask someone to help me out here. In the meantime have a look at the `Qt Creator documentation <http://qt-project.org/doc/qtcreator-2.8/>`_.
+	Hmm, I just realized I have not used debugging a lot. I hope this is a good sign. Need to ask someone to help me out here. In the meantime have a look at the `Qt Creator documentation <http://http://doc.qt.io/qtcreator/index.html>`_.
 
 Shortcuts
 =========
@@ -129,7 +129,7 @@ To get started we have collection some basic shortcuts (in Windows notation):
 * :kbd:`F2` - Follow Symbol under cursor
 * :kbd:`F4` - Switch between header and source (only useful for c++ code)
 
-List of `Qt Creator shortcuts <http://qt-project.org/doc/qtcreator-2.8/creator-keyboard-shortcuts.html>`_ from the documentation.
+List of `Qt Creator shortcuts <http://doc.qt.io/qtcreator/creator-keyboard-shortcuts.html>`_ from the documentation.
 
 
 .. note::
