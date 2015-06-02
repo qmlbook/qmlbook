@@ -298,7 +298,7 @@ CMake
 
 CMake is a tool create by Kitware. Kitware is very well known for their 3D visualitation software VTK and also CMake, the cross platform makefile generator. It uses a series of ``CMakeLists.txt`` files to generate platform specific make files. CMake is used by the KDE project and as such has a special relationship with the Qt community.
 
-The ``CMakeLists.txt`` is file to store the project configuration. For a simple hello world using QtCore the project file would look like this::
+The ``CMakeLists.txt`` is the file used to store the project configuration. For a simple hello world using QtCore the project file would look like this::
 
     // ensure cmake version is at least 3.0
     cmake_minimum_required(VERSION 3.0)
