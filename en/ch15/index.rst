@@ -182,7 +182,7 @@ Build Systems
 
 .. issues:: ch15
 
-Building software reliably on different platforms can be a complex task. You will encounter different environments with different compilers, paths and library variations. The purpose of Qt is to shield the application developer from these cross platform issues. For this Qt introduced the ``qmake`` build file generator. ``qmake`` operate on a project file with the ending ``.pro``. This project file contains instructions about the application and the sources to be used. Running qmake on this project file will generate for you a ``Makefile`` on unix and mac and even under windows if the mingw compiler toolchain shall be used. Otherwise it may create a visual studio project or an xcode project.
+Building software reliably on different platforms can be a complex task. You will encounter different environments with different compilers, paths and library variations. The purpose of Qt is to shield the application developer from these cross platform issues. For this Qt introduced the ``qmake`` build file generator. ``qmake`` operates on a project file with the ending ``.pro``. This project file contains instructions about the application and the sources to be used. Running qmake on this project file will generate for you a ``Makefile`` on unix and mac and even under windows if the mingw compiler toolchain shall be used. Otherwise it may create a visual studio project or an xcode project.
 
 A typical build flow in Qt would be under unix::
 
@@ -259,7 +259,7 @@ We know already how the mylib.pro and myapp.pro would look like. The my.pro as t
 
     myapp.depends = mylib
 
-This declares a project with two subprojects ``mylib`` and ``myapp``, were ``myapp`` depends on ``mylib``. When you run qmake on this project file it will generate for each project file a build file in the corresponding folder. When you run the make file for ``my.pro`` then all subproject are also built.
+This declares a project with two subprojects: ``mylib`` and ``myapp``, where ``myapp`` depends on ``mylib``. When you run qmake on this project file it will generate for each project file a build file in the corresponding folder. When you run the make file for ``my.pro``, all subprojects are also built.
 
 Sometimes you need to do one thing on one platform and another thing on other platforms based on your configuration. For this qmake introduces the concept of scopes. A scope is a applied when a configuration option is set to true.
 
@@ -329,7 +329,7 @@ This will build a helloworld executable using main.cpp and linked agains the ext
     // links Qt5Core to the project executable
     target_link_libraries(${PROJECT_NAME} Qt5::Core)
 
-You see CMake is quite powerful. It takes some time to get used to the syntax. In general it is said that CMake is better suited for large and complex projects.
+You see CMake is quite powerful. It takes some time to get used to the syntax. In general, it is said that CMake is better suited for large and complex projects.
 
 .. rubric:: References
 
@@ -346,7 +346,7 @@ Common Qt Classes
 
 The ``QObject`` class forms the foundations of Qt, but there are many more classes in the framework. Before we continue looking at QML and how to extend it, we will look at some basic Qt classes that are useful to know about.
 
-The code examples shown in this section are written using the Qt Test library. It offers a great way to explore the Qt API and store it for later reference. ``QVERIFY``, ``QCOMPARE`` are functions provided by the test library to assert a certain condition. We will also use ``{}`` scopes to avoid identifier name collisions. So do not get confused.
+The code examples shown in this section are written using the Qt Test library. It offers a great way to explore the Qt API and store it for later reference. ``QVERIFY``, ``QCOMPARE`` are functions provided by the test library to assert a certain condition. We will use ``{}`` scopes to avoid name collisions. So do not get confused.
 
 QString
 -------
@@ -409,7 +409,7 @@ A map, dictionary or a set are examples for associative containers. They store a
 File IO
 -------
 
-It is often required to read and write from files. ``QFile`` is actually a ``QObject`` but in most cases it is created on the stack. ``QFile`` contains signals to inform the user when data can be read. This allows reading chunks of data asynchronously until the whole file is read. For convenience it also allows reading data in blocking mode. This should only be used for smaller amounts of data and not large files. Luckily we only use small data in these examples.
+It is often required to read and write from files. ``QFile`` is actually a ``QObject`` but in most cases it is created on the stack. ``QFile`` contains signals to inform the user when data can be read. This allows reading chunks of data asynchronously until the whole file is read. For convenience it also allows reading data in blocking mode. This should only be used for smaller amounts of data and not large files. Luckily we only use small amounts of data in these examples.
 
 Besides reading raw data from a file into a ``QByteArray`` you can also read data types using the ``QDataStream`` and unicode string using the ``QTextStream``. We will show you how.
 
