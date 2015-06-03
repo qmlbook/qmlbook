@@ -17,19 +17,19 @@ Qt is a C++ toolkit with an extension for QML and Javascript. There exists many 
 
 This chapter will, just as Qt, require the reader to have some basic knowledge of C++. Qt does not rely on advanced C++ features, and I generally consider the Qt style of C++ to be very readable, so do not worry if you feel that your C++ knowledge is shaky.
 
-Approaching Qt from a C++ direction, you will find that Qt enrichen C++ with a number of modern language features enabled through making introspection data available. This is made possible through the use of the ``QObject`` base class. Introspection data, or meta data, maintains information of the classes at run-time. Something that ordinary C++ does not do. This makes it possible to dynamically probe objects for information about such details as their properties and available methods.
+Approaching Qt from a C++ direction, you will find that Qt enriches C++ with a number of modern language features enabled through making introspection data available. This is made possible through the use of the ``QObject`` base class. Introspection data, or meta data, maintains information of the classes at run-time, something that ordinary C++ does not do. This makes it possible to dynamically probe objects for information about such details as their properties and available methods.
 
-Qt uses this meta information to enable a very losely bound callback concept using signals and slots. Each signal can be connected to any number of slots or even other signals. When a signal is emitted from an object instance, the connected slots are invoked. As the signal emitting object does not need to know anything about the object owning the slot and vise versa, this mechanism is used to create very reusable components with very few inter-component dependencies.
+Qt uses this meta information to enable a very loosely bound callback concept using signals and slots. Each signal can be connected to any number of slots or even other signals. When a signal is emitted from an object instance, the connected slots are invoked. As the signal emitting object does not need to know anything about the object owning the slot and vise versa, this mechanism is used to create very reusable components with very few inter-component dependencies.
 
-The introspection features are also used to create dynamic language bindings, making it possible to expose a C++ object instance to QML and making C++ functions callable from Javascript. Other bindings for Qt C++ exists and besides the standard Javascript binding a popular one is the Python binding called `PyQt <http://www.riverbankcomputing.co.uk/software/pyqt/intro>`_.
+The introspection features are also used to create dynamic language bindings, making it possible to expose a C++ object instance to QML and making C++ functions callable from Javascript. Other bindings for Qt C++ exist and besides the standard Javascript binding a popular one is the Python binding called `PyQt <http://www.riverbankcomputing.co.uk/software/pyqt/intro>`_.
 
-In addition to this central concept Qt makes it possible to develop cross platform applications using C++. Qt C++ provides a platform abstraction on the different operating systems, which allows the developer to concentrate on the task at hand and not how you open a file on different operating systems. This means you can re-compile the same source code for Windows, OS X and Linux and Qt takes care about the different OS ways of handling certain things. The end result are natively built applications with the look and feel of the target platform. As the mobile is the new desktop newer Qt version can also target a number of mobile platforms using the same source code, e.g. iOS, Android, Jolla, BlackBerry, Ubuntu Phone, Tizen.
+In addition to this central concept Qt makes it possible to develop cross platform applications using C++. Qt C++ provides a platform abstraction on the different operating systems, which allows the developer to concentrate on the task at hand and not how you open a file on different operating systems. This means you can re-compile the same source code for Windows, OS X and Linux and Qt takes care of the different OS ways of handling certain things. The end result are natively built applications with the look and feel of the target platform. As the mobile is the new desktop, newer Qt versions can also target a number of mobile platforms using the same source code, e.g. iOS, Android, Jolla, BlackBerry, Ubuntu Phone, Tizen.
 
-When it comes to re-use it is not only the source code which can be re-used it is also the developer skills which are much better re-usable. A team knowing Qt can reach out to far more platforms then a team just focusing on a single platform specific technology and as Qt is so flexible the team can create different system components using the same technology.
+When it comes to re-use, not only can source code be re-used but developer skills are also reusable. A team knowing Qt can reach out to far more platforms then a team just focusing on a single platform specific technology and as Qt is so flexible the team can create different system components using the same technology.
 
 .. image:: images/yourapplication.png
 
-For all platform, Qt offers a set of basic types, e.g. strings with full unicode support, lists, vectors, buffers. It also provides a common abstraction to the target platforms main loop, and cross platform threading  and networking support. The general philosophy is that for an application developer Qt comes with all required functionality included. For domain specific tasks such as to interface to your native libraries Qt comes with several helper classes to make this easier.
+For all platform, Qt offers a set of basic types, e.g. strings with full unicode support, lists, vectors, buffers. It also provides a common abstraction to the target platform's main loop, and cross platform threading  and networking support. The general philosophy is that for an application developer Qt comes with all required functionality included. For domain specific tasks such as to interface to your native libraries Qt comes with several helper classes to make this easier.
 
 
 A Boilerplate Application
@@ -45,21 +45,21 @@ The best way to understand Qt is to start from a small demonstration application
 
 The simple example demonstrates the use of file access and the correct way of writing text into a file using text codecs via the text stream. For binary data there is a cross platform binary stream called ``QDataStream``. The different classes we use are included using their class name. Another possibility would be to use a module and class name e.g. ``#include <QtCore/QFile>``. For the lazy there is also the possibility to include a whole module using ``#include <QtCore>``. E.g. in ``QtCore`` you have the most common classes used for an application, which are not UI dependent. Have a look at the `QtCore class list <http://doc.qt.io/qt-5/qtcore-module.html>`_ or the `QtCore overview <http://doc.qt.io/qt-5/qtcore-index.html>`_.
 
-You build the application using qmake and make. QMake reads a project file and generates a Makefile which then can be called using make. The project file is platform independent and qmake has some rules to apply the platform specific settings to the generated make file. The project can also contain platform scopes for platform sepcific rules, which are required in some specific cases. Here is an example of a simple project file.
+You build the application using qmake and make. QMake reads a project file and generates a Makefile which then can be called using make. The project file is platform independent and qmake has some rules to apply the platform specific settings to the generated make file. The project can also contain platform scopes for platform specific rules, which are required in some specific cases. Here is an example of a simple project file.
 
 .. literalinclude:: src/coreapp/coreapp.pro
     :language: cpp
 
-We will not go into depth into this topic just remember Qt uses project files for projects and qmake generates the platform specific make files from these project files.
+We will not go into depth into this topic. Just remember Qt uses project files for projects and qmake generates the platform specific make files from these project files.
 
-The simple code example above just writes the text and exits the application. For a command line tool this is good enough. For a user interface you would need an event loop which waits for user input and and somehow schedules re-draw operations. So here the same example now using a desktop button to trigger the writing.
+The simple code example above just writes the text and exits the application. For a command line tool this is good enough. For a user interface you would need an event loop which waits for user input and and somehow schedules re-draw operations. So here follows the same example now uses a desktop button to trigger the writing.
 
-Our ``main.cpp`` suprisingly got smaller. We moved code into an own class to be able to use signal/slots for the user input, e.g. the button click. The signal/slot mechanism normally needs an own object as you will see shortly.
+Our ``main.cpp`` suprisingly got smaller. We moved code into an own class to be able to use signal/slots for the user input, e.g. the button click. The signal/slot mechanism normally needs an object instance as you will see shortly.
 
 .. literalinclude:: src/uiapp/main.cpp
     :language: cpp
 
-In the main we simple create the application object and start the event loop using ``exec()``. For now the application sits in the event loop and waits for user input.
+In the ``main`` function we simple create the application object and start the event loop using ``exec()``. For now the application sits in the event loop and waits for user input.
 
 .. code-block:: cpp
 
@@ -72,11 +72,11 @@ In the main we simple create the application object and start the event loop usi
         return app.exec(); // execute event loop
     }
 
-Qt offers several UI technologies. For this example we use the Desktop Widgets user interface library using pure Qt C++. For this we create a main window which will host a push button to trigger the functionality and also the main window will host our core functionality which we know from the previous example.
+Qt offers several UI technologies. For this example we use the Desktop Widgets user interface library using pure Qt C++. We create a main window which will host a push button to trigger the functionality and also the main window will host our core functionality which we know from the previous example.
 
 .. image:: images/storecontent.png
 
-The main window itself is a widget, which if it does not has a parent is a window. This resembles also how Qt sees a user interface as a tree of ui elements. In this case is the main window our root element nd the push button a child of the main window.
+The main window itself is a widget. It becomes a top level window as it does not have any parent. This comes from how Qt sees a user interface as a tree of ui elements. In this case the main window is the root element, thus becomes a window, while the push button a child of the main window and becomes a widget inside the window.
 
 .. literalinclude:: src/uiapp/mainwindow.h
     :language: cpp
@@ -86,7 +86,7 @@ Additional we define a public slot called ``storeContent()`` whih shall be calle
 .. literalinclude:: src/uiapp/mainwindow.cpp
     :language: cpp
 
-In the main window we create fist the push button and then register the signal ``clicked()`` with the slot ``storeContent()`` using the connect method. Every time the signal clicked is emitted the slot slot ``storeContent()`` is called. As simple as this, objects communicate via signal and slots with loose coupling.
+In the main window we first create the push button and then register the signal ``clicked()`` with the slot ``storeContent()`` using the connect method. Every time the signal clicked is emitted the slot ``storeContent()`` is called. As simple as this, objects communicate via signal and slots with loose coupling.
 
 The QObject
 ===========
