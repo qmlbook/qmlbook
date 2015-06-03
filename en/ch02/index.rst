@@ -76,7 +76,7 @@ Another file, ``HelloWorld.qml``, is our application code. Open it and try to gu
         }
     }
 
-The ``HelloWord.qml`` is written in the QML language. We will discuss the QML language in more depth in the next chapter, just so much it's describes the user interface in a series of hierarchical elements. This code in particular show a rectangle of 360 x 360 pixel geometry with a centered text "Hello World". A mouse area spans the whole rectangle and when the user clicks it, the application quits.
+The ``HelloWord.qml`` is written in the QML language. We will discuss the QML language in more depth in the next chapter. This example describes the user interface as a series of hierarchical elements. Specifically, a rectangle of 360 x 360 pixels with a centered text reading "Hello World". A mouse area spans the whole rectangle and when the user clicks it, the application quits.
 
 .. todo:: "just so much it's describes the user interface in a series of hierarchical elements"
 
@@ -152,7 +152,7 @@ Console Application
 
 .. issues:: ch02
 
-A console application does not provide any graphical HMI and will normally be called as part of a system service or from the command line. Qt5 comes with a series of ready made components which help you to create console applications cross platform and very efficient. For example networking API or file API. Also string handling or since Qt 5.1 efficient command line parser. As Qt is a high-level API on top of C++ you get programming speed paired with execution speed. Don't think as Qt being *just* as UI toolkit it has so much more to offer.
+A console application does not provide any graphical user interface and will normally be called as part of a system service or from the command line. Qt5 comes with a series of ready made components which help you to create console applications cross platform and very efficient. For example networking API or file API. Also string handling or since Qt 5.1 efficient command line parser. As Qt is a high-level API on top of C++ you get programming speed paired with execution speed. Don't think as Qt being *just* as UI toolkit it has so much more to offer.
 
 .. rubric:: String Handling
 

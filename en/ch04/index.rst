@@ -522,14 +522,14 @@ An element has 6 major anchor lines (top, bottom, left, right, horizontalCenter,
         :end-before: <<M4
 
 
-#. A element is centered on a parent element
+#. An element is centered on a parent element
 
     .. literalinclude:: src/anchors/anchors.qml
         :start-after: M5>>
         :end-before: <<M5
 
 
-#. A element is centered with an left-offset on a parent element using horizontal and vertical center lines
+#. An element is centered with an left-offset on a parent element using horizontal and vertical center lines
 
     .. literalinclude:: src/anchors/anchors.qml
         :start-after: M6>>
