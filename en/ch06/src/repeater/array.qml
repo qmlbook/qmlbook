@@ -33,7 +33,7 @@ Column {
     spacing: 2
 
     Repeater {
-        model: ["Enterprise", "Colombia", "Challenger", "Discovery", "Endeavour", "Atlantis"]
+        model: ["Enterprise", "Columbia", "Challenger", "Discovery", "Endeavour", "Atlantis"]
 
         BlueBox {
             width: 100
