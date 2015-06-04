@@ -81,7 +81,7 @@ The main window itself is a widget. It becomes a top level window as it does not
 .. literalinclude:: src/uiapp/mainwindow.h
     :language: cpp
 
-Additional we define a public slot called ``storeContent()`` whih shall be called when the button is clicked. A slot is a C++ method which is registered with the Qt meta object system and can be dynamically called.
+Additional we define a public slot called ``storeContent()`` which shall be called when the button is clicked. A slot is a C++ method which is registered with the Qt meta object system and can be dynamically called.
 
 .. literalinclude:: src/uiapp/mainwindow.cpp
     :language: cpp
@@ -138,7 +138,7 @@ The person class is a data class with a name and gender properties. The person c
     };
 
 
-The constructor passes the parent on to the super class and initialize the members. Qt's value classes are automatically initialized. In this case ``QString`` will initialize to a null string (``QString::isNull()``) and the gender member will explicitly initialize to the unknown gender.
+The constructor passes the parent to the super class and initialize the members. Qt's value classes are automatically initialized. In this case ``QString`` will initialize to a null string (``QString::isNull()``) and the gender member will explicitly initialize to the unknown gender.
 
 .. code-block:: cpp
 
@@ -205,7 +205,7 @@ QMake
 
 .. issues:: ch15
 
-QMake is the tool which reads your project file and generates the build file. A project file is a simplified write down of your project configiration, external dependencies and your source files. The simplest source file is probably this::
+QMake is the tool which reads your project file and generates the build file. A project file is a simplified write down of your project configuration, external dependencies and your source files. The simplest project file is probably this::
 
     // myproject.pro
 
@@ -277,7 +277,7 @@ What it says is if the CONFIG variable contains a unix option then apply this sc
         CONFIG -= app_bundle
     }
 
-This will create your application as a plain executable under mac and not as a ``.app`` folder which is used for application instalation.
+This will create your application as a plain executable under mac and not as a ``.app`` folder which is used for application installation.
 
 QMake based projects are normally the choice number one when you start programming Qt applications. But there are also other options out there. All have their benefits and drawbacks. We will shortly discuss these other options in the next topcis.
 
@@ -542,9 +542,9 @@ In the header we added the role mapping to be used for QML. When QML tries now t
 .. literalinclude:: src/modelview/roleentrymodel.cpp
     :language: cpp
 
-The implemantation now has changed only in two places. First in the initialization. We now initialize the data list with QColor data types. Additionally we define our role name map to be accessible for QML. This map is returned later in the ``::roleNames`` function.
+The implementation now has changed only in two places. First in the initialization. We now initialize the data list with QColor data types. Additionally we define our role name map to be accessible for QML. This map is returned later in the ``::roleNames`` function.
 
-The second change is in the ``::data`` function. We extend the switch to cover the other roles (e.g hue, saturation, brightness). There is no way to return a SVG name from a color, as a color can take one any color and SVG names are limited. So we skip this. Storing the names would require to create a structure ``struct { QColor, QString }`` to be able to identify the named color.
+The second change is in the ``::data`` function. We extend the switch to cover the other roles (e.g hue, saturation, brightness). There is no way to return a SVG name from a color, as a color can take any color and SVG names are limited. So we skip this. Storing the names would require to create a structure ``struct { QColor, QString }`` to be able to identify the named color.
 
 After registering the type we can use the model and its entries in our user interface.
 
