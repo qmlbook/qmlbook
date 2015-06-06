@@ -161,7 +161,7 @@ HTTP Requests
 
 .. issues:: ch11
 
-A http request is in Qt typical done using ``QNetworkRequest`` and ``QNetworkReply`` from the c++ site and then the response would be pushed using the Qt/C++ integration into the QML space. So we try to push the envelope here a little bit to use the current tools Qt Quick gives us to communicate with a network endpoint. For this we use a helper object to make http request, response cycle. It comes in the form of the java script ``XMLHttpRequest`` object.
+A http request is in Qt typically done using ``QNetworkRequest`` and ``QNetworkReply`` from the c++ site and then the response would be pushed using the Qt/C++ integration into the QML space. So we try to push the envelope here a little bit to use the current tools Qt Quick gives us to communicate with a network endpoint. For this we use a helper object to make http request, response cycle. It comes in the form of the java script ``XMLHttpRequest`` object.
 
 The ``XMLHttpRequest`` object allows the user to register a response handle function and a url. A request can be sent using one of the http verbs (get, post, put, delete, ...) to make the request. When the response arrive the handle function is called. The handle function is called several times. Every-time the request state has changed (for example headers have arrived or request is done).
 
