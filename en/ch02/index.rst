@@ -528,7 +528,7 @@ Qt Quick Application
 
 .. issues:: ch02
 
-There is an inherent conflict in modern software development. The user interface is moving much faster then our back-end services. In a traditional technology you develop the so called front-end with the same pace as the back-end. Which results into conflicts when customers want to change the user interface during a project, or develop the idea of an user interface during the project. Agile projects, require agile methods.
+There is an inherent conflict in modern software development. The user interface is moving much faster than our back-end services. In a traditional technology you develop the so called front-end with the same pace as the back-end. Which results into conflicts when customers want to change the user interface during a project, or develop the idea of an user interface during the project. Agile projects, require agile methods.
 
 Qt Quick provides a declarative environment where your user interface (the front-end) is declared like HTML and your back-end is in native C++ code. This allows you to get both from both worlds.
 
