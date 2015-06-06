@@ -29,7 +29,7 @@ On the left side you will see the mode-selector. The mode selectors contain typi
 * Debug mode: Retrieve information about a running application
 * Projects mode: Modify your projects run and build configuration
 * Analyze mode: For detecting memory leaks and profiling
-* Help mode: For people who need from time time read the Qt documentation
+* Help mode: Easy access to the Qt documentation
 
 Below the mode-selectors you will find the actual project-configuration selector and the run/debug
 
