@@ -343,7 +343,7 @@ In the implementation we draw a small border on our widget and a small rectangle
 
 .. rubric:: Desktop Widgets
 
-The Qt developers have done all of this for you already and provide a set of desktop widgets, which will look native an the different systems. Your job is then to arrange these different widgets in a widget container to larger panels. A widget in Qt can also be a container for other widgets. This is accomplished by the parent-child relationship. This mean we need to make our ready made widgets like buttons, check boxes, radio button but also lists and grids a child of another widget. One way to accomplish this is displayed below.
+The Qt developers have done all of this for you already and provide a set of desktop widgets, which will look native on different operating systems. Your job is then to arrange these different widgets in a widget container to larger panels. A widget in Qt can also be a container for other widgets. This is accomplished by the parent-child relationship. This mean we need to make our ready made widgets like buttons, check boxes, radio button but also lists and grids a child of another widget. One way to accomplish this is displayed below.
 
 Here is the header file for a so called widget container.
 
