@@ -169,7 +169,7 @@ Rectangle Element
 
 .. issues:: ch04
 
-The ``Rectangle`` extends ``Item`` and adds a fill color to it. Additional it supports borders defined by ``border.color`` and ``border.width``. To create rounded rectangles you can use the ``radius`` property.
+The ``Rectangle`` extends ``Item`` and adds a fill color to it. Additionally it supports borders defined by ``border.color`` and ``border.width``. To create rounded rectangles you can use the ``radius`` property.
 
 .. literalinclude:: src/concepts/rectangle2.qml
     :start-after: M1>>
