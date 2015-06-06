@@ -13,7 +13,7 @@ Networking
     The source code for this chapter can be found in the `assets folder <../../assets>`_.
 
 
-Qt5 comes with a rich set of networking classes on the C++ side. There are for example high level classes on the http protocol layer in a request-reply fashion such as ``QNetworkRequest``, ``QNetworkReply`` and ``QNetworkAccessManager``. But also lower levels classes on the TCP/IP or UDP protocol layer such as ``QTcpSocket``, ``QTcpServer`` and ``QUdpSocket``. Additional classes exists to manage proxies, network cache and also the systems network configuration.
+Qt 5 comes with a rich set of networking classes on the C++ side. There are for example high level classes on the http protocol layer in a request-reply fashion such as ``QNetworkRequest``, ``QNetworkReply`` and ``QNetworkAccessManager``. But also lower levels classes on the TCP/IP or UDP protocol layer such as ``QTcpSocket``, ``QTcpServer`` and ``QUdpSocket``. Additional classes exists to manage proxies, network cache and also the systems network configuration.
 
 This chapter will not be about C++ networking, this chapter is about QtQuick and networking. So how can I connect my QML/JS user interface directly with a network service or how can I serve my user interface via a network service. There are good books and references out there to cover network programming with Qt/C++. Then it is just a manner to read the chapter about C++ integration to come up with an integration layer to feed your data into the QtQuick world.
 
@@ -683,7 +683,7 @@ Web Sockets
 
 WebSockets are not yet part of the Qt delivery. There are some efforts to get WebSockets into Qt/QML. From the author perspective WebSockets have a great potential to add the missing feature to networked HTTP services - notification. HTTP gives us get and post but not yet a notification. Currently the client polls the server bit for real applications the server needs to be able to notify the client also about changes and events. You can compare this to the QML API: properties, functions, signals. Also called get/set/call and notifications.
 
-As it looks like a QML WebSocket plugin will be on the way to Qt5. You can try the new web sockets plugin from the qt playground. For a test run we implement and echo server using an existing web socket server.
+As it looks like a QML WebSocket plugin will be on the way to Qt 5. You can try the new web sockets plugin from the qt playground. For a test run we implement and echo server using an existing web socket server.
 
 First check you are using Qt 5.2.x by querying qmake.
 

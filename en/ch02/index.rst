@@ -45,7 +45,7 @@ To test your installation, we will create a small *hello world* application. Ple
 
 .. hint::
 
-    A typical Qt Quick application is made out of a runtime as well as either native plug-ins or native code which launches the runtime code. For the beginning we will not cover the native side of development and focus only of the runtime aspects of Qt5.
+    A typical Qt Quick application is made out of a runtime as well as either native plug-ins or native code which launches the runtime code. For the beginning we will not cover the native side of development and focus only of the runtime aspects of Qt 5.
 
 .. todo:: can native plug-ins launch the runtime code?
 
@@ -97,7 +97,7 @@ Qt 5 seems to be working and we are ready to continue.
 
 .. topic:: Build from Scratch
 
-    If you'd like to build Qt5 from the command line, you'll first need to grab a copy of the code repository and build it.
+    If you'd like to build Qt 5 from the command line, you'll first need to grab a copy of the code repository and build it.
 
     .. code-block:: sh
 
@@ -126,7 +126,7 @@ Qt 5 seems to be working and we are ready to continue.
             height: 360
             Text {
                 anchors.centerIn: parent
-                text: "Greetings from Qt5"
+                text: "Greetings from Qt 5"
             }
             MouseArea {
                 anchors.fill: parent
@@ -145,14 +145,14 @@ Application Types
 
 .. issues:: ch02
 
-This section is a run through the different types of possible application types someone could write with Qt5. It's not limited to the presented selection but it should give the reader a better idea about what could be done with Qt5 in general.
+This section is a run through the different types of possible application types someone could write with Qt 5. It's not limited to the presented selection but it should give the reader a better idea about what could be done with Qt 5 in general.
 
 Console Application
 -------------------
 
 .. issues:: ch02
 
-A console application does not provide any graphical user interface and will normally be called as part of a system service or from the command line. Qt5 comes with a series of ready made components which help you to create console applications cross platform and very efficient. For example networking API or file API. Also string handling or since Qt 5.1 efficient command line parser. As Qt is a high-level API on top of C++ you get programming speed paired with execution speed. Don't think as Qt being *just* as UI toolkit it has so much more to offer.
+A console application does not provide any graphical user interface and will normally be called as part of a system service or from the command line. Qt 5 comes with a series of ready made components which help you to create console applications cross platform and very efficient. For example networking API or file API. Also string handling or since Qt 5.1 efficient command line parser. As Qt is a high-level API on top of C++ you get programming speed paired with execution speed. Don't think as Qt being *just* as UI toolkit it has so much more to offer.
 
 .. rubric:: String Handling
 
@@ -519,7 +519,7 @@ The filter proxy model is much more powerful than demonstrated here. For now it 
 
 .. note::
 
-    This was an overview of the different kind of classical application you could develop with Qt5. The desktop is moving and soon the mobile devices will be our desktop of tomorrow. Mobile devices have a different user interface design. They are much more simplistic then desktop applications. They do one thing and this simple and focused. Animations is an important part. A user interface needs to feel alive and fluent. The traditional Qt technologies are not well suited for this market.
+    This was an overview of the different kind of classical application you could develop with Qt 5. The desktop is moving and soon the mobile devices will be our desktop of tomorrow. Mobile devices have a different user interface design. They are much more simplistic then desktop applications. They do one thing and this simple and focused. Animations is an important part. A user interface needs to feel alive and fluent. The traditional Qt technologies are not well suited for this market.
 
     Coming next: Qt Quick for the rescue.
 

@@ -24,7 +24,7 @@ Qt 4 has evolved since 2005 and provided a solid ground for thousands of applica
 
 Qt 4 was designed to satisfy the desktop world to have a coherent set of UI widgets available on all major platforms. The challenge for Qt users has changed today and it lies more to provide a touch-based user interface for a customer driven user interface and to enable modern user interface on all major desktop and mobile systems. Qt 4.7 started to introduce the QtQuick technology which allows users to create a set of user interface components from simple elements to achieve a complete new UI, driven by customer demands.
 
-Qt5 Focus
+Qt 5 Focus
 ---------
 
 Qt 5 is a complete refreshment of the very successful Qt 4 release. With Qt 4.8, the Qt 4 release is almost 7 years old. It's time to make an amazing toolkit even more amazing. Qt 5 is focused on the the following:
@@ -39,14 +39,14 @@ Qt 5 is a complete refreshment of the very successful Qt 4 release. With Qt 4.8,
 
 
 
-Qt5 Introduction
-================
+Qt 5 Introduction
+=================
 
 
 Qt Quick
 --------
 
-Qt Quick is the umbrella term for the user interface technology used in Qt5. Qt Quick itself is a collection of several technologies:
+Qt Quick is the umbrella term for the user interface technology used in Qt 5. Qt Quick itself is a collection of several technologies:
 
 * QML - Markup language for user interfaces
 * JavaScript - The dynamic scripting language

@@ -1,7 +1,7 @@
-.. title:: Qt5 Cadaques in English
+.. title:: Qt 5 Cadaques in English
 
-A Book about Qt5 in English
-===========================
+A Book about Qt 5 in English
+============================
 
 Last Build: |today|
 

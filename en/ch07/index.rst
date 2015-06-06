@@ -20,7 +20,7 @@ Canvas Element
 
 Early on when QML was introduced in Qt4 there where some discussions about if QtQuick needs an ellipse. The problem with the ellipse is that others can argue other shapes need also be supported. So there is no ellipse in Qt Quick only rectangular shapes. If you needed one in Qt4 you would need to use an image or write your own C++ ellipse element.
 
-To allow scripted drawings Qt5 introduces the canvas element. The canvas elements provides a resolution-dependent bitmap canvas, which can be used for graphics, games or to paint other visual images on the fly using JavaScript. The canvas element is based on the HTML5 canvas element.
+To allow scripted drawings Qt 5 introduces the canvas element. The canvas elements provides a resolution-dependent bitmap canvas, which can be used for graphics, games or to paint other visual images on the fly using JavaScript. The canvas element is based on the HTML5 canvas element.
 
 The fundamental idea of the canvas element is to render paths using a context 2D object. The context 2D object, contains the necessary graphics functions, whereas the canvas acts as the drawing canvas. The 2D context supports strokes, fills, gradients, text and a different sets of path creation commands.
 
@@ -113,7 +113,7 @@ Shadows
 
 .. note::
 
-    We had difficulties with shadows in the Qt5 alpha release.
+    We had difficulties with shadows in the Qt 5 alpha release.
 
 A path can be visually enhanced using shadows with the 2D context object. A shadow is an area around the path with an offset, color and specified blurring. For this you need can specify a ``shadowColor``, ``shadowOffsetX``, ``shadowOffsetY`` and a ``shadowBlur``. All of this needs to be defined using the 2D context. The 2D context is your only API to the drawing operations.
 
@@ -137,7 +137,7 @@ Finally we draw our "Earth" text using a large bold 80px font from the *Ubuntu* 
     :start-after: M3>>
     :end-before: <<M3
 
-.. todo:: show screen-shot from example, when shadows will work on Qt5
+.. todo:: show screen-shot from example, when shadows will work on Qt 5
 
 Images
 ------
@@ -220,7 +220,7 @@ Another way to retrieve the content of the canvas is to store the data into an i
 
 In our little example we paint every second a small circle in the left canvas. When the use clicks on the mouse area the canvas content is stored and a image url is retrieved. On the right side of our example the image is then displayed.
 
-.. note:: Retrieving image data seems not to work currently in the Qt5 Alpha SDK.
+.. note:: Retrieving image data seems not to work currently in the Qt 5 Alpha SDK.
 
 Canvas Paint
 ------------

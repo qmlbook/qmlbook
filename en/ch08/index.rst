@@ -505,7 +505,7 @@ We change to the particle group using a ``GroupGoal`` affector. The group goal a
 
 The *jump* property states the change in groups shall be immediately and not after a certain duration.
 
-.. note:: In the Qt5 alpha release we could the *duration* for the group change not get working. Any ideas?
+.. note:: In the Qt 5 alpha release we could the *duration* for the group change not get working. Any ideas?
 
 As the group of the rocket now changes to our 'explosion' particle group when the rocket particle enters the group goal area we need to add the firework inside the particle group::
 
@@ -569,6 +569,6 @@ Summary
 
 .. issues:: ch08
 
-Particles are a very powerful and fun way to express graphical phenomena like smoke. firework, random visual elements. The extended API in Qt5 is very powerful and we have just scratched on the surface. There are several elements we haven't yet played with like sprites, size tables or color tables. Also when the particles look very playful they have a great potential when used wisely to create some eye catcher in any user interface. Using to many particle effects inside an user interface will definitely lead to the impression towards a game. Creating games is also the real strength of the particles.
+Particles are a very powerful and fun way to express graphical phenomena like smoke. firework, random visual elements. The extended API in Qt 5 is very powerful and we have just scratched on the surface. There are several elements we haven't yet played with like sprites, size tables or color tables. Also when the particles look very playful they have a great potential when used wisely to create some eye catcher in any user interface. Using to many particle effects inside an user interface will definitely lead to the impression towards a game. Creating games is also the real strength of the particles.
 
 

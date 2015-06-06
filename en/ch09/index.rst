@@ -59,7 +59,7 @@ The default shader uses the source and renders it unmodified.
 
 .. image:: assets/defaultshader.png
 
-In the above example we have a row of 3 images. The first is the real image. The second is rendered using the default shader and the third is rendered using the default shader code for the fragment and vertex extracted from the Qt5 source code.
+In the above example we have a row of 3 images. The first is the real image. The second is rendered using the default shader and the third is rendered using the default shader code for the fragment and vertex extracted from the Qt 5 source code.
 
 .. note::
 
@@ -365,7 +365,7 @@ In the last example for custom shader effects I would like to bring you the curt
 
 At that time I really loved these effects and the curtain effect was my favorite out of them. I just love how the curtain opens and hide the background object.
 
-I took the code and adapted it towards Qt5, which was straightforward. Also O did some simplifications to be able to use it better for a showcase. So if you are interested in the full example, please visit the labs blog.
+I took the code and adapted it towards Qt 5, which was straightforward. Also O did some simplifications to be able to use it better for a showcase. So if you are interested in the full example, please visit the labs blog.
 
 Just a little bot for the background, the curtain is actually an image called *fabric.jpg* and it is the source for a shader effect. The effect uses the vertex shader to swing the curtain and uses the fragment shader to provide some shades. Here is a simple diagram to make you hopefully better understand the code.
 
