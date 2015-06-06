@@ -547,7 +547,7 @@ This is a simple Qt Quick UI below
         }
     }
 
-The declaration language is called QML and it needs to runtime to run it. Qt provides a standard runtime called ``qmlscene`` but it's also not so difficult to write a custom runtime. For this we need a quick view and set the main QML document as source. The only thing left is to show the user interface.
+The declaration language is called QML and it needs a runtime to execute in. Qt provides a standard runtime called ``qmlscene`` but it's also not so difficult to write a custom runtime. For this we need a quick view and set the main QML document as source. The only thing left is to show the user interface.
 
 .. code-block:: cpp
 
