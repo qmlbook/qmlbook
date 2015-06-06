@@ -19,7 +19,7 @@ The User Interface
 
 .. issues:: ch03
 
-When starting Qt Creator you it comes up in a *Welcome* screen. There you will find the most important hints how to continue inside Qt Creator but also your recently used projects. You will also see the sessions list, which might be empty for you. A session is a collection of projects stored for your reference. This comes really handy when you have several customers with larger projects.
+When starting Qt Creator you are greeted by the *Welcome* screen. There you will find the most important hints how to continue inside Qt Creator but also your recently used projects. You will also see the sessions list, which might be empty for you. A session is a collection of projects stored for your reference. This comes really handy when you have several customers with larger projects.
 
 On the left side you will see the mode-selector. The mode selectors contain typical steps from your work flow.
 
