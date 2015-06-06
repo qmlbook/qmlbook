@@ -198,7 +198,7 @@ A gradient is defined by a series of gradient stops. Each stop has a position an
 
 .. note::
 
-    It is not possible to create an angled gradient. For this it's better to use predefined images. One possibility would be to just rotate the rectangle with the gradient, but be aware the geometry of an rotated rectangle will not change and thus will lead to confusion as the geometry is of the element is not the same as the visible area. From the authors perspective it's really better to use designed gradient images in that case.
+    It is not possible to create an angled gradient. For this it's better to use predefined images. One possibility would be to just rotate the rectangle with the gradient, but be aware the geometry of an rotated rectangle will not change and thus will lead to confusion as the geometry of the element is not the same as the visible area. From the authors perspective it's really better to use designed gradient images in that case.
 
 Text Element
 ------------
