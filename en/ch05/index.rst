@@ -22,7 +22,7 @@ Animations
 
 .. issues:: ch05
 
-Animations are applied to property changes. An animation defines the interpolation curve when for property value changes to create smooth transitions from one value to another. An animation is defined by a series of target properties to be animated, an easing curve for the interpolation curve and in the most cases a duration, which defines the time for the property change. All animations in QtQuick are controlled by the same timer, and are therefore synchronized. This improves the performance and visual quality of animations.
+Animations are applied to property changes. An animation defines the interpolation curve when for property value changes to create smooth transitions from one value to another. An animation is defined by a series of target properties to be animated, an easing curve for the interpolation curve and in the most cases a duration, which defines the time for the property change. All animations in Qt Quick are controlled by the same timer, and are therefore synchronized. This improves the performance and visual quality of animations.
 
 .. note::
 
@@ -54,7 +54,7 @@ There are several types of animation elements, each optimized for a specific use
 * ``RotationAnimation`` - Animates changes in rotation values
 
 
-Besides these basic and widely used animation elements, QtQuick provides also more specialized animations for specific use cases:
+Besides these basic and widely used animation elements, Qt Quick provides also more specialized animations for specific use cases:
 
 * ``PauseAnimation`` - Provides a pause for an animation
 * ``SequentialAnimation`` - Allows animations to be run sequentially
@@ -66,7 +66,7 @@ Besides these basic and widely used animation elements, QtQuick provides also mo
 * ``PathAnimation`` - Animates an item along a path
 * ``Vector3dAnimation`` - Animates changes in QVector3d values
 
-We will learn later how to create a sequence of animations. While working on more complex animations there comes up the need to change a property or to run a script during an an ongoing animation. For this QtQuick offers the action elements, which can be used everywhere where the other animation elements can be used:
+We will learn later how to create a sequence of animations. While working on more complex animations there comes up the need to change a property or to run a script during an an ongoing animation. For this Qt Quick offers the action elements, which can be used everywhere where the other animation elements can be used:
 
 * ``PropertyAction`` - Specifies immediate property changes during animation
 * ``ScriptAction`` - Defines scripts to be run during an animation

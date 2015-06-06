@@ -16,7 +16,7 @@ Model-View-Delegate
 
 
 
-In QtQuick, data is separated from the presentation through a model-view separation. For each view, the visualization of each data element is separated into a delegate. QtQuick comes with a set of predefined models and views. To utilize the system, one must understand these classes and know how to create appropriate delegates to get the right look and feel.
+In Qt Quick, data is separated from the presentation through a model-view separation. For each view, the visualization of each data element is separated into a delegate. Qt Quick comes with a set of predefined models and views. To utilize the system, one must understand these classes and know how to create appropriate delegates to get the right look and feel.
 
 
 Concept
@@ -88,7 +88,7 @@ Dynamic Views
 
 .. issues:: ch06
 
-Repeaters work well for limited and static sets of data, but in the real world, models are commonly more complex -- and larger. Here, a smarter solution is needed. For this, QtQuick provides the ``ListView`` and ``GridView`` elements. These are both based on a ``Flickable`` area, so the user can move around in a larger data set. At the same time, they limit the number of concurrently instantiated delegates. For a large model, that means fewer elements in the scene at once.
+Repeaters work well for limited and static sets of data, but in the real world, models are commonly more complex -- and larger. Here, a smarter solution is needed. For this, Qt Quick provides the ``ListView`` and ``GridView`` elements. These are both based on a ``Flickable`` area, so the user can move around in a larger data set. At the same time, they limit the number of concurrently instantiated delegates. For a large model, that means fewer elements in the scene at once.
 
 .. image:: assets/automatic/listview-basic.png
 .. image:: assets/automatic/gridview-basic.png
@@ -103,7 +103,7 @@ The ``ListView`` is similar to the ``Repeater`` element. It uses a ``model``, in
 
 .. image:: assets/automatic/listview-basic.png
 
-If the model contains more data than can fit onto the screen, the ``ListView`` only shows part of the list. However, as a consequence of the default behavior of QtQuick, the list view does not limit the screen area within which the delegates are shown. This means that delegates may be visible outside the list view, and that the dynamic creation and destruction of delegates outside the list view is visible to the user. To prevent this, clipping must be activated on the ``ListView`` element by setting the ``clip`` property to ``true``. The illustration below shows the result of this, compared to when the ``clip`` property is left as ``false``.
+If the model contains more data than can fit onto the screen, the ``ListView`` only shows part of the list. However, as a consequence of the default behavior of Qt Quick, the list view does not limit the screen area within which the delegates are shown. This means that delegates may be visible outside the list view, and that the dynamic creation and destruction of delegates outside the list view is visible to the user. To prevent this, clipping must be activated on the ``ListView`` element by setting the ``clip`` property to ``true``. The illustration below shows the result of this, compared to when the ``clip`` property is left as ``false``.
 
 .. image:: assets/automatic/listview-clip.png
 
@@ -273,7 +273,7 @@ The PathView
 
 .. issues:: ch06
 
-The ``PathView`` element is the most powerful, but also the most complex, view provided in QtQuick. It makes it possible to create a view where the items are laid out along an arbitrary path. Along the same path, attributes such as scale, opacity and more can be controlled in detail.
+The ``PathView`` element is the most powerful, but also the most complex, view provided in Qt Quick. It makes it possible to create a view where the items are laid out along an arbitrary path. Along the same path, attributes such as scale, opacity and more can be controlled in detail.
 
 When using the ``PathView``, you have to define a delegate and a path. In addition to this, the ``PathView`` itself can be customized through a range of properties. The most common being ``pathItemCount``, controlling the number of visible items at once, and the highlight range control properties ``preferredHighlightBegin``, ``preferredHighlightEnd`` and ``highlightRangeMode``, controlling where along the path the current item is to be shown.
 
