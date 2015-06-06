@@ -63,7 +63,7 @@ As nice as lists of numbered items are, it is sometimes interesting to display a
 
 .. image:: assets/automatic/repeater-array.png
 
-Being able to expose the data of an array, you soon find yourself in a position where you need multiple pieces of data per item in the array. This is where models enter the picture. One of the most trivial models, and one of the most commonly used, is the ``ListModel``. A list model is simply a collection of ``ListElement`` items. Inside each list element, a number of properties can be bound to values. For instance, in the example below, a name and an image URL is provided for each element.
+Being able to expose the data of an array, you soon find yourself in a position where you need multiple pieces of data per item in the array. This is where models enter the picture. One of the most trivial models, and one of the most commonly used, is the ``ListModel``. A list model is simply a collection of ``ListElement`` items. Inside each list element, a number of properties can be bound to values. For instance, in the example below, a name and a color is provided for each element.
 
 The properties bound inside each element are attached to each instantiated item by the repeater. This means that the variables ``name`` and ``surfaceColor`` are available from within the scope of each ``Rectangle`` and ``Text`` item created by the repeater. This not only makes it easy to access the data, it also makes it easy to read the source code. The ``surfaceColor`` is the color of the circle to the left of the name, not something obscure as data from column ``i`` of row ``j``.
 
