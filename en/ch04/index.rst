@@ -348,6 +348,11 @@ Now you can use as many buttons as you like in your UI by just using ``Button { 
 
         Item {
             id: root
+            width: 116; height: 26
+            
+            property alias text: label.text
+            signal clicked
+            
             Rectangle {
                 anchors.fill parent
                 color: "lightsteelblue"
