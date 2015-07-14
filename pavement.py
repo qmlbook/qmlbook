@@ -1,4 +1,5 @@
 from paver.easy import *
+from livereload import Server, shell
 
 @task
 @needs('assets_init', 'build_html', 'build_pdf', 'build_epub', 'build_qt', 'build_assets')
@@ -39,6 +40,14 @@ def serve():
     with pushd('_build/html'):
         sh('python -m SimpleHTTPServer')
 
+
+@task
+def live():
+    server = Server()
+    server.watch('*.py', shell('make html', cwd='.'))
+    server.watch('*.rst', shell('make html', cwd='.'))
+    server.watch('ch*/', shell('make html', cwd='.'))
+    server.serve(root='_build/html', liveport=35729, open_url_delay=1, debug=False)
 
 ROOT = path('.').abspath()
 ASSETS = path('assets').abspath()
