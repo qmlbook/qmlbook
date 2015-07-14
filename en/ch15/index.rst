@@ -657,6 +657,7 @@ You need to be carefull that you only return a value which QML understands. If i
 Now you can use the model in QML and insert, append, remove entries from the model. Here is a small example which allows the user to enter a color name or color hex value and the color is then appended onto the model and shown in the list view. The red circle on the delegate allows the user to remove this entry from the model. After the entry is remove the list view is notified by the model and updates its content.
 
 .. image:: images/modelview.png
+    :scale: 50%
 
 |
 

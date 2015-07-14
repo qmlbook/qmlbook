@@ -3,7 +3,7 @@ Model-View-Delegate
 ===================
 
 .. sectionauthor:: `e8johan <https://bitbucket.org/e8johan>`_
-	
+
 .. index:: GridView, ListElement, ListModel, ListView, PathView, Repeater, XmlListModel
 
 .. issues:: ch06
@@ -33,7 +33,7 @@ In QML, the model and view are joined by the delegate. The responsibility are di
     View -> Model [label="Visualizes Model"]
     Delegate -> Model [label="Visualizes Model Rows"]
     View -> Delegate [label="Creates and Places"]
-    
+
 
 Basic Models
 ============
@@ -52,6 +52,7 @@ In its simplest form, the repeater can be used to instantiate a specified number
 .. _ex01:
 
 .. image:: assets/automatic/repeater-number.png
+    :scale: 50%
 
 As nice as lists of numbered items are, it is sometimes interesting to display a more complex data set. By replacing the integer ``model`` value with a JavaScript array, we can achieve that. The contents of the array can be of any type, be it strings, integers or objects. In the example below, a list of strings is used. We can still access and use the ``index`` variable, but we also have access to ``modelData`` containing the data for each element in the array.
 
@@ -62,6 +63,7 @@ As nice as lists of numbered items are, it is sometimes interesting to display a
     :end-before: <<M1
 
 .. image:: assets/automatic/repeater-array.png
+    :scale: 50%
 
 Being able to expose the data of an array, you soon find yourself in a position where you need multiple pieces of data per item in the array. This is where models enter the picture. One of the most trivial models, and one of the most commonly used, is the ``ListModel``. A list model is simply a collection of ``ListElement`` items. Inside each list element, a number of properties can be bound to values. For instance, in the example below, a name and a color is provided for each element.
 
@@ -74,6 +76,7 @@ The properties bound inside each element are attached to each instantiated item 
     :end-before: <<M1
 
 .. image:: assets/automatic/repeater-model.png
+    :scale: 50%
 
 The contents of the repeater that is being instantiated for each item is actually what is bound to the default property, ``delegate``. This means that the code of example :ref:`Example 01 <ex01>` is synonymous to the code shown below. Notice that the only difference is that the ``delegate`` property name is spelled out explicitly in the latter.
 
@@ -91,7 +94,10 @@ Dynamic Views
 Repeaters work well for limited and static sets of data, but in the real world, models are commonly more complex -- and larger. Here, a smarter solution is needed. For this, Qt Quick provides the ``ListView`` and ``GridView`` elements. These are both based on a ``Flickable`` area, so the user can move around in a larger data set. At the same time, they limit the number of concurrently instantiated delegates. For a large model, that means fewer elements in the scene at once.
 
 .. image:: assets/automatic/listview-basic.png
+    :scale: 50%
+
 .. image:: assets/automatic/gridview-basic.png
+    :scale: 50%
 
 The two elements are similar in their usage. Thus, we will begin with the ``ListView`` and then describe the ``GridView`` with the former as the starting point of the comparison.
 
@@ -102,10 +108,12 @@ The ``ListView`` is similar to the ``Repeater`` element. It uses a ``model``, in
     :end-before: <<M1
 
 .. image:: assets/automatic/listview-basic.png
+    :scale: 50%
 
 If the model contains more data than can fit onto the screen, the ``ListView`` only shows part of the list. However, as a consequence of the default behavior of Qt Quick, the list view does not limit the screen area within which the delegates are shown. This means that delegates may be visible outside the list view, and that the dynamic creation and destruction of delegates outside the list view is visible to the user. To prevent this, clipping must be activated on the ``ListView`` element by setting the ``clip`` property to ``true``. The illustration below shows the result of this, compared to when the ``clip`` property is left as ``false``.
 
 .. image:: assets/automatic/listview-clip.png
+    :scale: 50%
 
 To the user, the ``ListView`` is a scrollable area. It supports kinetic scrolling, which means that it can be flicked to quickly move through the contents. By default, it also can be stretched beyond the end of contents, and then bounces back, to signal to the user that the end has been reached.
 
@@ -125,6 +133,7 @@ The list view provides a vertically scrolling list by default, but horizontal sc
     :end-before: <<M1
 
 .. image:: assets/automatic/listview-horizontal.png
+    :scale: 50%
 
 As you can tell, the direction of the horizontal flows from the left to the right by default. This can be controlled through the ``layoutDirection`` property, which can be set to either ``Qt.LeftToRight`` or ``Qt.RightToLeft``, depending on the flow direction.
 
@@ -146,6 +155,7 @@ In the example, the ``ListView.view.width`` attached property is used for width.
     :end-before: <<M1
 
 .. image:: assets/automatic/listview-highlight.png
+    :scale: 50%
 
 When using a highlight in conjunction with a ``ListView``, a number of properties can be used to control its behavior. The ``highlightRangeMode`` controls how the highlight is affected by what is shown in the view. The default setting, ``ListView.NoHighlightRange`` means that the highlight and the visible range of items in the view not are related at all.
 
@@ -179,6 +189,7 @@ The example below illustrates how an header and footer can be used to enhance th
 .. note:: Header and footer delegates do not respect the ``spacing`` property of a ``ListView``, instead they are placed directly adjacent to the next item delegate in the list. This means that any spacing must be a part of the header and footer items.
 
 .. image:: assets/automatic/listview-header-footer.png
+    :scale: 50%
 
 The GridView
 ------------
@@ -188,6 +199,7 @@ The GridView
 Using a ``GridView`` is very similar to using a ``ListView``. The only real difference is that the grid view places the delegates in a two dimensional grid instead of in a linear list.
 
 .. image:: assets/automatic/gridview-basic.png
+    :scale: 50%
 
 Compared to a list view, the grid view does not rely on spacing and the size of its delegates. Instead, it uses the ``cellWidth`` and ``cellHeight`` properties to control the dimensions of the contents delegates. Each delegate item is then places in the top left corner of each such cell.
 
@@ -217,6 +229,7 @@ The most commonly used properties attached from the view are ``ListView.isCurren
     :end-before: <<M1
 
 .. image:: assets/automatic/delegates-basic.png
+    :scale: 50%
 
 If each item in the model is associated with an action, for instance, clicking an item acts upon it, that functionality is a part of each delegate. This divides the event management between the view, which handles the navigation between items in the view, and the delegate which handles actions on a specific item.
 
@@ -259,7 +272,10 @@ As the item first is clicked, it enters the ``expanded`` state, causing the item
     :end-before: <<M1
 
 .. image:: assets/automatic/delegates-expanding-small.png
+    :scale: 50%
+
 .. image:: assets/automatic/delegates-expanding-large.png
+    :scale: 50%
 
 The techniques demonstrated here to expand the delegate to fill the entire view can be employed to make an item delegate shift shape in a much smaller way. For instance, when browsing through a list of songs, the current item could be made slightly larger, accommodating more information about that particular item.
 
@@ -277,7 +293,7 @@ The ``PathView`` element is the most powerful, but also the most complex, view p
 
 When using the ``PathView``, you have to define a delegate and a path. In addition to this, the ``PathView`` itself can be customized through a range of properties. The most common being ``pathItemCount``, controlling the number of visible items at once, and the highlight range control properties ``preferredHighlightBegin``, ``preferredHighlightEnd`` and ``highlightRangeMode``, controlling where along the path the current item is to be shown.
 
-Before looking at the highlight range control properties in depth, we must look at the ``path`` property. The ``path`` property expects a ``Path`` element defining the path that the delegates follows as the ``PathView`` is being scrolled. The path is defined using the ``startX`` and ``startY`` properties in combinations with path elements such as ``PathLine``, ``PathQuad`` and ``PathCubic``.  These elements are joined together to form a two-dimensional path. 
+Before looking at the highlight range control properties in depth, we must look at the ``path`` property. The ``path`` property expects a ``Path`` element defining the path that the delegates follows as the ``PathView`` is being scrolled. The path is defined using the ``startX`` and ``startY`` properties in combinations with path elements such as ``PathLine``, ``PathQuad`` and ``PathCubic``.  These elements are joined together to form a two-dimensional path.
 
 .. todo:: do we cover the line, quad and cubic through an illustration, or do we need a paragraph on them?
 
@@ -288,6 +304,7 @@ This is where the ``preferredHighlightBegin`` and ``preferredHighlightEnd`` prop
 In the ``Path``, the ``PathAttribute`` elements are placed between elements, just as ``PathPercent`` elements. They let you specify property values that are interpolated along the path. These properties are attached to the delegates and can be used to control any conceivable property.
 
 .. image:: assets/automatic/pathview-coverview.png
+    :scale: 50%
 
 The example below demonstrates how the ``PathView`` element is used to create view of cards that the user can flip through. It employs a number of tricks to do this. The path consists of three ``PathLine`` elements. Using ``PathPercent`` elements, the central element is properly centered and provided enough space not to be cluttered by other elements. Using ``PathAttribute`` elements, the rotation, size and ``z``-value are controlled.
 
@@ -297,7 +314,7 @@ In addition to the ``path``, the ``pathItemCount`` property of the ``PathView`` 
     :start-after: M1>>
     :end-before: <<M1
 
-The delegate, shown below, utilizes the attached properties ``itemZ``, ``itemAngle`` and ``itemScale`` from the ``PathAttribute`` elements. It is worth noticing that the attached properties of the delegate only are available from the ``wrapper``. Thus, the ``rotX`` property is defined to be able to access the value from within the ``Rotation`` element. 
+The delegate, shown below, utilizes the attached properties ``itemZ``, ``itemAngle`` and ``itemScale`` from the ``PathAttribute`` elements. It is worth noticing that the attached properties of the delegate only are available from the ``wrapper``. Thus, the ``rotX`` property is defined to be able to access the value from within the ``Rotation`` element.
 
 Another detail specific to ``PathView`` worth noticing is the usage of the attached ``PathView.onPath`` property. It is common practice to bind the visibility to this, as this allows the ``PathView`` to keep invisible elements for caching purposes. This can usually not be handled through clipping, as the item delegates of a ``PathView`` are placed more freely than the item delegates of ``ListView`` or ``GridView`` views.
 
@@ -305,7 +322,7 @@ Another detail specific to ``PathView`` worth noticing is the usage of the attac
     :start-after: M2>>
     :end-before: <<M2
 
-When transforming images or other complex elements on in ``PathView``, a performance optimization trick that is common to use is to bind the ``smooth`` property of the ``Image`` element to the attached property ``PathView.view.moving``. This means that the images are less pretty while moving, but smoothly transformed when stationary. There is no point spending processing power on smooth scaling when the view is in motion, as the user will not be able to see this anyway. 
+When transforming images or other complex elements on in ``PathView``, a performance optimization trick that is common to use is to bind the ``smooth`` property of the ``Image`` element to the attached property ``PathView.view.moving``. This means that the images are less pretty while moving, but smoothly transformed when stationary. There is no point spending processing power on smooth scaling when the view is in motion, as the user will not be able to see this anyway.
 
 
 A Model from XML
@@ -318,6 +335,7 @@ As XML is an ubiquitous data format, QML provides the ``XmlListModel`` element t
 The example below demonstrates fetching images from an RSS flow. The ``source`` property refers to a remove location over HTTP, and the data is automatically downloaded.
 
 .. image:: assets/automatic/xmllistmodel-images.png
+    :scale: 50%
 
 When the data has been downloaded, it is processed into model items and roles. The ``query`` property is an XPath representing the base query for creating model items. In this example, the path is ``/rss/channel/item``, so for every item tag, inside a channel tag, inside an RSS tag, a model item is created.
 
@@ -337,6 +355,7 @@ Lists with Sections
 Sometimes, the data in a list can be divided into sections. It can be as simple as dividing a list of contacts into sections under each letter of the alphabet or music tracks under albums. Using a ``ListView`` it is possible to divide a flat list into categories, providing more depth to the experience.
 
 .. image:: assets/automatic/listview-sections.png
+    :scale: 50%
 
 In order to use sections, the ``section.property`` and ``section.criteria`` must be setup. The ``section.property`` defines which property to use to divide the contents into sections. Here, it is important to know that the model must be sorted so that each section consists of continuous elements, otherwise, the same property name might appear in multiple locations.
 

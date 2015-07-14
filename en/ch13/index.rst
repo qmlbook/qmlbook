@@ -27,7 +27,10 @@ As the loader serves as a placeholder for the item being loaded, its size depend
 The example described below demonstrates how two separate user interface parts can be loaded into the same space using a ``Loader`` element. The idea is to have a speed dial that can be either digital or analog, as shown in the illustration below. The code surrounding the dial is unaffected by which item that is loaded for the moment.
 
 .. image:: assets/automatic/loader-analog.png
+    :scale: 50%
+
 .. image:: assets/automatic/loader-digital.png
+    :scale: 50%
 
 The first step in the application is to declare a ``Loader`` element. Notice that the ``source`` property is left out. This is because the ``source`` depends on which state the user interface is in.
 
@@ -65,6 +68,7 @@ When creating QML elements dynamically, you cannot connect to signals using the 
 Having set the ``target`` property of a ``Connections`` element, the signals can be connected as usual, that is, using the ``onSignalName`` approach. However, by altering the ``target`` property, different elements can be monitored at different times.
 
 .. image:: assets/automatic/connections.png
+    :scale: 50%
 
 In the example show above, a user interface consisting of two clickable areas is presented to the user. When either area is clicked, it is flashed using an animation. The left area is shown in the code snippet below. In the ``MouseArea``, the ``leftClickedAnimation`` is triggered, causing the area to flash.
 
