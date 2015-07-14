@@ -51,7 +51,7 @@ To test your installation, we will create a small *hello world* application. Ple
 
 Qt Creator will create several files for you. The ``HelloWorld.qmlproject`` file is the project file where the relevant project configuration is stored. This file is managed by Qt Creator so don't edit.
 
-Another file, ``HelloWorld.qml``, is our application code. Open it and try to guess what the application does and than continue to read-on.
+Another file, ``HelloWorld.qml``, is our application code. Open it and try to guess what the application does and then continue to read-on.
 
 .. todo:: "read-on"
 
@@ -181,7 +181,7 @@ In the fist example we demonstrate how someone could very simple add 2 constant 
 
 .. rubric:: Container Classes
 
-This example adds a lists and list iteration to the application. Qt comes with a large collections of container classes which are easy to use and use the same API paradigms then the rest of Qt classes.
+This example adds a lists and list iteration to the application. Qt comes with a large collections of container classes which are easy to use and use the same API paradigms than the rest of Qt classes.
 
 .. code-block:: cpp
 
@@ -519,7 +519,7 @@ The filter proxy model is much more powerful than demonstrated here. For now it 
 
 .. note::
 
-    This was an overview of the different kind of classical application you could develop with Qt 5. The desktop is moving and soon the mobile devices will be our desktop of tomorrow. Mobile devices have a different user interface design. They are much more simplistic then desktop applications. They do one thing and this simple and focused. Animations is an important part. A user interface needs to feel alive and fluent. The traditional Qt technologies are not well suited for this market.
+    This was an overview of the different kind of classical application you could develop with Qt 5. The desktop is moving and soon the mobile devices will be our desktop of tomorrow. Mobile devices have a different user interface design. They are much more simplistic than desktop applications. They do one thing and this simple and focused. Animations is an important part. A user interface needs to feel alive and fluent. The traditional Qt technologies are not well suited for this market.
 
     Coming next: Qt Quick for the rescue.
 
