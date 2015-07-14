@@ -51,7 +51,7 @@ To test your installation, we will create a small *hello world* application. Ple
 
 Qt Creator will create several files for you. The ``HelloWorld.qmlproject`` file is the project file where the relevant project configuration is stored. This file is managed by Qt Creator so don't edit.
 
-Another file, ``HelloWorld.qml``, is our application code. Open it and try to guess what the application does and then continue to read-on.
+Another file, ``HelloWorld.qml``, is our application code. Open it and try to guess what the application does and than continue to read-on.
 
 .. todo:: "read-on"
 
