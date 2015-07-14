@@ -26,20 +26,18 @@ Here a short example how JS looks like, misxtured in QML::
   Button {
     width: 200
     height: 300
-    property bool toggle: false
-    text: "Click twice to exit"
+    property bool checked: false
+    text: "Click to toggle"
 
     // JS function
     function doToggle() {
-      toggle = !toggle
+      checked = !checked
     }
 
     onTriggered: {
-      // this is JavaScript
+      // this is also JavaScript
       doToggle();
-      if(toggle) {
-        Qt.quit()
-      }
+      console.log('checked: ' + checked)
     }
   }
 
