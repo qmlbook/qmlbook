@@ -59,7 +59,7 @@ Our ``main.cpp`` suprisingly got smaller. We moved code into an own class to be 
 .. literalinclude:: src/uiapp/main.cpp
     :language: cpp
 
-In the ``main`` function we simple create the application object and start the event loop using ``exec()``. For now the application sits in the event loop and waits for user input.
+In the ``main`` function we simply create the application object and start the event loop using ``exec()``. For now the application sits in the event loop and waits for user input.
 
 .. code-block:: cpp
 

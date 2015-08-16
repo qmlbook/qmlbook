@@ -330,7 +330,7 @@ To achieve this we create a ``Button.qml`` file and copy our button UI inside. A
 
 We have exported the text and clicked signal on the root level. Typically we name our root element root to make the referencing easier. We use the ``alias`` feature of QML, which is a way to export properties inside nested QML elements to the root level and make this available for the outside world. It is important to know, that only the root level properties can be accessed from outside this file by other components.
 
-To use our new ``Button`` element we can simple declare it in our file. So the earlier example will become a little bit simplified.
+To use our new ``Button`` element we can simply declare it in our file. So the earlier example will become a little bit simplified.
 
 .. literalinclude:: src/elements/reusable_component.qml
     :start-after: M1>>
