@@ -108,28 +108,28 @@ Animation can be applied in several ways:
 The three rockets are all at the same y-position (``y=200``). They need to travel all to ``y=40``. Each of them using a different method with different side-effects and features.
 
 
+.. rubric:: 1st rocket
+
 .. literalinclude:: src/animation/animationtypes.qml
     :start-after: M1>>
     :end-before: <<M1
 
 
-.. rubric:: 1st rocket
-
 The 1st rocket travels using the ``Animation on <property>`` strategy. The animation starts immediately. When a rocket is clicked their y-position is reset to the start position, this applies to all rockets. On the 1st rocket the reset does not have any effect as long as the animation is running. It's even disturbing as the y-position is set for a fraction of a second to a new value before the animation starts. *Such competing property changes should be avoided*.
+
+.. rubric:: 2nd rocket
 
 .. literalinclude:: src/animation/animationtypes.qml
     :start-after: M2>>
     :end-before: <<M2
 
-.. rubric:: 2nd rocket
-
 The 2nd rocket travels using a ``behavior on`` animation. This behavior tells the property, every time the property value changes, it changes through this animation. The behavior can be disabled by ``enabled : false`` on the ``Behavior`` element. The rocket will start traveling when you click it (y-position is then set to 40). Another click has no influence as the position is already set. You could try to use a random value (e.g. ``40+(Math.random()*(205-40)``) for the y-position. You will see that the rocket will always animate to the new position and adapt is speed to match the 4 seconds to the destination defined by the animations duration.
+
+.. rubric:: 3rd rocket
 
 .. literalinclude:: src/animation/animationtypes.qml
     :start-after: M3>>
     :end-before: <<M3
-
-.. rubric:: 3rd rocket
 
 The 3rd rocket uses a ``standalone animation``. The animation is defined as an own element and could be everywhere in the document. The click will start the animation using the animations function ``start()``. Each animation has a start(), stop(), resume(), restart() function. The animation itself contains much more information then the other animation types earlier. We need to define the target and properties to declare the target element to be animated and which properties we want to animate. We need to define a ``to`` value and in this case we define also a ``from`` value to allow a re-start of the animation.
 
