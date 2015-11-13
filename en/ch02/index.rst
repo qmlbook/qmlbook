@@ -145,18 +145,18 @@ Application Types
 
 .. issues:: ch02
 
-This section is a run through the different types of possible application types someone could write with Qt 5. It's not limited to the presented selection but it should give the reader a better idea about what could be done with Qt 5 in general.
+This section is a run through of the different possible application types someone could write with Qt 5. It's not limited to the presented selection but it should give the reader a better idea about what can be done with Qt 5 in general.
 
 Console Application
 -------------------
 
 .. issues:: ch02
 
-A console application does not provide any graphical user interface and will normally be called as part of a system service or from the command line. Qt 5 comes with a series of ready made components which help you to create console applications cross platform and very efficient. For example networking API or file API. Also string handling or since Qt 5.1 efficient command line parser. As Qt is a high-level API on top of C++ you get programming speed paired with execution speed. Don't think as Qt being *just* as UI toolkit it has so much more to offer.
+A console application does not provide any graphical user interface and will normally be called as part of a system service or from the command line. Qt 5 comes with a series of ready made components which help you to create console cross platform applications very efficiently. For example the networking file APIs. Also string handling and, since Qt 5.1, efficient command line parser. As Qt is a high-level API on top of C++, you get programming speed paired with execution speed. Don't think of Qt as being *just* a UI toolkit -- it has so much more to offer.
 
 .. rubric:: String Handling
 
-In the fist example we demonstrate how someone could very simple add 2 constant strings. This is not a very useful application but gives you the idea how a native C++ application without an event loop could look like.
+In the first example we demonstrate how someone could very simply add 2 constant strings. This is not a very useful application but it gives you an idea of what a native C++ application, without an event loop, could look like.
 
 
 .. code-block:: cpp
@@ -181,7 +181,7 @@ In the fist example we demonstrate how someone could very simple add 2 constant 
 
 .. rubric:: Container Classes
 
-This example adds a lists and list iteration to the application. Qt comes with a large collections of container classes which are easy to use and use the same API paradigms than the rest of Qt classes.
+This example adds a list and list iteration to the application. Qt comes with a large collections of container classes which are easy to use and use the same API paradigms as the rest of Qt classes.
 
 .. code-block:: cpp
 
@@ -217,7 +217,7 @@ Here we show some advanced list function, which allow you to join a list of stri
 
 .. rubric:: File IO
 
-In the next snippet we read a CSV file from the local directory and loop over the rows to extract the cells from each row. By this we get the table data from the CSV file in ca. 20 lines of code. File reading gives us just a byte stream, to be able to convert it into a valid Unicode text we need to use the text stream and pass in the file as a lower-level stream. For writing CSV files you would just need to open the file in the write mode and pipe the lines into the text stream.
+In the next snippet we read a CSV file from the local directory and loop over the rows to extract the cells from each row. Doing this we get the table data from the CSV file in ca. 20 lines of code. File reading gives us just a byte stream, to be able to convert it into a valid Unicode text we need to use the text stream and pass in the file as a lower-level stream. For writing CSV files you would just need to open the file in the write mode and pipe the lines into the text stream.
 
 .. code-block:: cpp
 
@@ -248,17 +248,17 @@ In the next snippet we read a CSV file from the local directory and loop over th
     }
     // No cleanup necessary.
 
-This closes our section about console based application with Qt.
+This concludes our section about console based application with Qt.
 
 Widget Application
 ------------------
 
 .. issues:: ch02
 
-Console based applications are very handy but sometimes you need to have some UI to show. But also UI based applications will need some back-end to read/write files, communicate over the network or keep data in a container.
+Console based applications are very handy but sometimes you need to have a UI to show. In addition, UI-based applications will likely need a back-end to read/write files, communicate over the network, or keep data in a container.
 
 
-In the first snippet for widget based applications we do as little as creating a window and show it. A widget without a parent is in the Qt world a window. We use the scope pointer to ensure the widget is deleted when the scoped pointer goes out of scope. The application object encapsulate the qt runtime and with the exec call we start the event loop. From there on the application re-acts only on events triggered by mouse or keyboard or other event providers like networking or file IO. The application will only exits when the event loop is exited, this is done by call 'quit()' on the application or by closing the window.
+In this first snippet for widget-based applications we do as little as needed to create a window and show it. A widget without a parent in the Qt world is a window. We use the scoped pointer to ensure the widget is deleted when the scoped pointer goes out of scope. The application object encapsulates the Qt runtime and with the ``exec()`` call we start the event loop. From there on the application re-acts only on events triggered by mouse or keyboard or other event providers like networking or file IO. The application will only exits when the event loop is exited, this is done by call 'quit()' on the application or by closing the window.
 
 When you run the code you will see a window with the size of 240 x 120 pixel. That's all.
 
