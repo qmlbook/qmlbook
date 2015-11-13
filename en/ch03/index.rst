@@ -6,7 +6,7 @@ Qt Creator IDE
 
 .. issues:: ch03
 
-Qt Creator is the default integrated development environment for Qt. It's written from Qt developers for Qt developers. The IDE is available on all major desktop platforms, e.g. Windows/Mac/Linux. We have already seen customers using Qt Creator on an embedded device. Qt Creator has a lean efficient user interface and it shines really in making the developer productive. Qt Creator can be used to run your Qt Quick user interface but also to compile c++ code and this for your host system or for another device using a cross-compiler.
+Qt Creator is the default integrated development environment for Qt. It's written from Qt developers for Qt developers. The IDE is available on all major desktop platforms, e.g. Windows/Mac/Linux. We have already seen customers using Qt Creator on an embedded device. Qt Creator has a lean efficient user interface and it really shines in making the developer productive. Qt Creator can be used to run your Qt Quick user interface but also to compile c++ code and this for your host system or for another device using a cross-compiler.
 
 .. image:: assets/qtcreator-screenshots.png
 
@@ -19,7 +19,7 @@ The User Interface
 
 .. issues:: ch03
 
-When starting Qt Creator you are greeted by the *Welcome* screen. There you will find the most important hints how to continue inside Qt Creator but also your recently used projects. You will also see the sessions list, which might be empty for you. A session is a collection of projects stored for your reference. This comes really handy when you have several customers with larger projects.
+When starting Qt Creator you are greeted by the *Welcome* screen. There you will find the most important hints on how to continue inside Qt Creator and your recently used projects. You will also see the sessions list, which might be empty for you. A session is a collection of projects stored for your reference. This comes really handy when you have several customers with larger projects.
 
 On the left side you will see the mode-selector. The mode selectors contain typical steps from your work flow.
 
@@ -37,9 +37,9 @@ Below the mode-selectors you will find the actual project-configuration selector
 	:scale: 50%
 
 
-Most of the time you will be in the edit mode with the code-editor in the central panel. When you need to configure your project you will visit from time to time the Projects mode. And then you press Run. Qt Creator is smart enough to ensure you project is fully build before running it.
+Most of the time you will be in the edit mode with the code-editor in the central panel. From time to time, you will visit the Projects mode when you need to configure your project. And then you press ``Run``. Qt Creator is smart enough to ensure you project is fully built before running it.
 
-In the bottom are the output panes for issues, application messages, compile messages and other messages.
+In the bottom are the output panes for issues, application messages, compile messages, and other messages.
 
 Registering your Qt Kit
 =======================
