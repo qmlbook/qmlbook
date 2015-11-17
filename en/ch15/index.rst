@@ -23,7 +23,7 @@ Qt uses this meta information to enable a very loosely bound callback concept us
 
 The introspection features are also used to create dynamic language bindings, making it possible to expose a C++ object instance to QML and making C++ functions callable from Javascript. Other bindings for Qt C++ exist and besides the standard Javascript binding a popular one is the Python binding called `PyQt <http://www.riverbankcomputing.co.uk/software/pyqt/intro>`_.
 
-In addition to this central concept Qt makes it possible to develop cross platform applications using C++. Qt C++ provides a platform abstraction on the different operating systems, which allows the developer to concentrate on the task at hand and not how you open a file on different operating systems. This means you can re-compile the same source code for Windows, OS X and Linux and Qt takes care of the different OS ways of handling certain things. The end result are natively built applications with the look and feel of the target platform. As the mobile is the new desktop, newer Qt versions can also target a number of mobile platforms using the same source code, e.g. iOS, Android, Jolla, BlackBerry, Ubuntu Phone, Tizen.
+In addition to this central concept, Qt makes it possible to develop cross platform applications using C++. Qt C++ provides a platform abstraction on the different operating systems, which allows the developer to concentrate on the task at hand and not the details of how you open a file on different operating systems. This means you can re-compile the same source code for Windows, OS X and Linux and Qt takes care of the different OS ways of handling certain things. The end result are natively built applications with the look and feel of the target platform. As the mobile is the new desktop, newer Qt versions can also target a number of mobile platforms using the same source code, e.g. iOS, Android, Jolla, BlackBerry, Ubuntu Phone, Tizen.
 
 When it comes to re-use, not only can source code be re-used but developer skills are also reusable. A team knowing Qt can reach out to far more platforms then a team just focusing on a single platform specific technology and as Qt is so flexible the team can create different system components using the same technology.
 
@@ -81,7 +81,7 @@ The main window itself is a widget. It becomes a top level window as it does not
 .. literalinclude:: src/uiapp/mainwindow.h
     :language: cpp
 
-Additional we define a public slot called ``storeContent()`` which shall be called when the button is clicked. A slot is a C++ method which is registered with the Qt meta object system and can be dynamically called.
+Additionally we define a public slot called ``storeContent()`` which shall be called when the button is clicked. A slot is a C++ method which is registered with the Qt meta object system and can be dynamically called.
 
 .. literalinclude:: src/uiapp/mainwindow.cpp
     :language: cpp
@@ -182,9 +182,9 @@ Build Systems
 
 .. issues:: ch15
 
-Building software reliably on different platforms can be a complex task. You will encounter different environments with different compilers, paths and library variations. The purpose of Qt is to shield the application developer from these cross platform issues. For this Qt introduced the ``qmake`` build file generator. ``qmake`` operates on a project file with the ending ``.pro``. This project file contains instructions about the application and the sources to be used. Running qmake on this project file will generate for you a ``Makefile`` on unix and mac and even under windows if the mingw compiler toolchain shall be used. Otherwise it may create a visual studio project or an xcode project.
+Building software reliably on different platforms can be a complex task. You will encounter different environments with different compilers, paths, and library variations. The purpose of Qt is to shield the application developer from these cross platform issues. For this Qt introduced the ``qmake`` build file generator. ``qmake`` operates on a project file with the ending ``.pro``. This project file contains instructions about the application and the sources to be used. Running qmake on this project file will generate a ``Makefile`` for you on unix and mac and even under windows if the mingw compiler toolchain is being used. Otherwise it may create a visual studio project or an xcode project.
 
-A typical build flow in Qt would be under unix::
+A typical build flow in Qt under unix would be::
 
     $ edit myproject.pro
     $ qmake // generates Makefile
@@ -198,20 +198,20 @@ Qt allows you also to use shadow builds. A shadow build is a build outside of yo
 
 We create a build folder and then call qmake from inside the build folder with the location of our project folder. This will setup the make file in a way that all build artifacts are stored under the build folder instead of inside our source code folder. This allows us to create builds for different qt versions and build configurations at the same time and also it does not clutter our soruce code folder which is always a good thing.
 
-When you are using Qt Creator it does these things behind the scenes for you and you do not have to worry about these steps usually. For larger projects and more deeper understanding of the flow it is recommended that you learn to build your qt project from the command line.
+When you are using Qt Creator it does these things behind the scenes for you and you do not have to worry about these steps usually. For larger projects and for adeeper understanding of the flow, it is recommended that you learn to build your qt project from the command line.
 
 QMake
 -----
 
 .. issues:: ch15
 
-QMake is the tool which reads your project file and generates the build file. A project file is a simplified write down of your project configuration, external dependencies and your source files. The simplest project file is probably this::
+QMake is the tool which reads your project file and generates the build file. A project file is a simplified write down of your project configuration, external dependencies, and your source files. The simplest project file is probably this::
 
     // myproject.pro
 
     SOURCES += main.cpp
 
-Here we build an exectuable application which will have the name ``myproject`` based on the project file name. The build will only contain the ``main.cpp`` source file. And by default we will use the QtCore and QtGui module for this project. If our project would be a QML application we would need to add the QtQuick and QtQml module to the list::
+Here we build an exectuable application which will have the name ``myproject`` based on the project file name. The build will only contain the ``main.cpp`` source file. And by default we will use the QtCore and QtGui module for this project. If our project were a QML application we would need to add the QtQuick and QtQml module to the list::
 
     // myproject.pro
 
@@ -219,7 +219,7 @@ Here we build an exectuable application which will have the name ``myproject`` b
 
     SOURCES += main.cpp
 
-Now the build file knows to link against the QtQml and QtQuick Qt modules. QMake use the concept of ``=``, ``+=` and ``-=`` to assign, add, remove elements from a list of options. For example for a pure console build without UI dependencies you would remove the QtGui module::
+Now the build file knows to link against the QtQml and QtQuick Qt modules. QMake use the concept of ``=``, ``+=`` and ``-=`` to assign, add, remove elements from a list of options, respectively. For a pure console build without UI dependencies you would remove the QtGui module::
 
     // myproject.pro
 
@@ -227,7 +227,7 @@ Now the build file knows to link against the QtQml and QtQuick Qt modules. QMake
 
     SOURCES += main.cpp
 
-When you want to build a library instead of an application you need to change the build template::
+When you want to build a library instead of an application, you need to change the build template::
 
     // myproject.pro
     TEMPLATE = lib
@@ -240,7 +240,7 @@ When you want to build a library instead of an application you need to change th
 
 Now the project will build as a library without UI dependencies and used the ``utils.h`` header and the ``utils.cpp`` source file. The format of the library will depend on the OS you are building the project.
 
-Often you wil have more complicated setups and need to build a set of projects. For this qmake offers the ``subdirs`` template. Assume we would have a mylib and a myapp project. Then our setup could be like this::
+Often you wil have more complicated setups and need to build a set of projects. For this, qmake offers the ``subdirs`` template. Assume we would have a mylib and a myapp project. Then our setup could be like this::
 
     my.pro
     mylib/mylib.pro
@@ -259,9 +259,9 @@ We know already how the mylib.pro and myapp.pro would look like. The my.pro as t
 
     myapp.depends = mylib
 
-This declares a project with two subprojects: ``mylib`` and ``myapp``, where ``myapp`` depends on ``mylib``. When you run qmake on this project file it will generate for each project file a build file in the corresponding folder. When you run the make file for ``my.pro``, all subprojects are also built.
+This declares a project with two subprojects: ``mylib`` and ``myapp``, where ``myapp`` depends on ``mylib``. When you run qmake on this project file it will generate file a build file for each project in a corresponding folder. When you run the make file for ``my.pro``, all subprojects are also built.
 
-Sometimes you need to do one thing on one platform and another thing on other platforms based on your configuration. For this qmake introduces the concept of scopes. A scope is a applied when a configuration option is set to true.
+Sometimes you need to do one thing on one platform and another thing on other platforms based on your configuration. For this qmake introduces the concept of scopes. A scope is applied when a configuration option is set to true.
 
 For example to use a unix specific utils implementation you could use::
 
@@ -279,7 +279,7 @@ What it says is if the CONFIG variable contains a unix option then apply this sc
 
 This will create your application as a plain executable under mac and not as a ``.app`` folder which is used for application installation.
 
-QMake based projects are normally the choice number one when you start programming Qt applications. But there are also other options out there. All have their benefits and drawbacks. We will shortly discuss these other options in the next topcis.
+QMake based projects are normally the number one choice when you start programming Qt applications. There are also other options out there. All have their benefits and drawbacks. We will shortly discuss these other options next.
 
 .. rubric:: References
 
@@ -329,7 +329,7 @@ This will build a helloworld executable using main.cpp and linked agains the ext
     // links Qt5Core to the project executable
     target_link_libraries(${PROJECT_NAME} Qt5::Core)
 
-You see CMake is quite powerful. It takes some time to get used to the syntax. In general, it is said that CMake is better suited for large and complex projects.
+You can see that CMake is quite powerful. It takes some time to get used to the syntax. In general, it is said that CMake is better suited for large and complex projects.
 
 .. rubric:: References
 
@@ -351,9 +351,9 @@ The code examples shown in this section are written using the Qt Test library. I
 QString
 -------
 
-Text handling in Qt is in general unicode based. For this you use the ``QString`` class. It comes with a variety of great functions which you would expect from a modern framework. For 8-bit data you would use normally the ``QByteArray`` class and for ASCII identifiers the ``QLatin1String`` to preserve memory. For a list of strings you can use a ``QList<QString>`` or simply the ``QStringList`` class (which is derived from ``QList<QString>``).
+In general, text handling in Qt is unicode based. For this you use the ``QString`` class. It comes with a variety of great functions which you would expect from a modern framework. For 8-bit data you would use normally the ``QByteArray`` class and for ASCII identifiers the ``QLatin1String`` to preserve memory. For a list of strings you can use a ``QList<QString>`` or simply the ``QStringList`` class (which is derived from ``QList<QString>``).
 
-Here are some examples of how to use the ``QString`` class. QString can be created on the stack but it stores its data on the heap. Also by assigning one string to another the data will not be copied only a reference to the data. So this is really cheap and lets the developer concentrate on the code and not on the memory handling. ``QString`` uses reference counters to know when the data can be safely deleted. This feature is called :qt5:`Implicit Sharing <implicit-sharing>` and it is used in many Qt classes.
+Here are some examples of how to use the ``QString`` class. QString can be created on the stack but it stores its data on the heap. Also when assigning one string to another, the data will not be copied - only a reference to the data. So this is really cheap and lets the developer concentrate on the code and not on the memory handling. ``QString`` uses reference counters to know when the data can be safely deleted. This feature is called :qt5:`Implicit Sharing <implicit-sharing>` and it is used in many Qt classes.
 
 
 .. literalinclude:: src/qtfoundation/tst_foundation.cpp
@@ -368,7 +368,7 @@ Here we will show how to convert a number to a string and back. There are also c
     :start-after: M2>>
     :end-before:  M2<<
 
-Often in text you need to have parameterized text. One option could be to use ``QString("Hello" + name)`` but a more flexible is the ``arg`` marker approach as it keeps the order also during translation when the order might change.
+Often in text you need to have parameterized text. One option could be to use ``QString("Hello" + name)`` but a more flexible method is the ``arg`` marker approach.  It preserves the order also during translation when the order might change.
 
 .. literalinclude:: src/qtfoundation/tst_foundation.cpp
     :language: cpp
@@ -382,14 +382,14 @@ Sometimes you want to use unicode characters directly in you code. For this you 
     :start-after: M4>>
     :end-before:  M4<<
 
-This gives you some examples how to easily treat unicode aware text in Qt. For non-unicode the ``QByteArray`` class has also many helper functions for conversion. Please read the Qt documentation for ``QString`` as it contains tons of good examples.
+This gives you some examples of how to easily treat unicode aware text in Qt. For non-unicode the ``QByteArray`` class also has many helper functions for conversion. Please read the Qt documentation for ``QString`` as it contains tons of good examples.
 
 Sequential Containers
 ---------------------
 
 A list, queue, vector or linked-list is a sequential container. The mostly used sequential container is the ``QList`` class. It is a template based class and needs to be initialized with a type. It is also implicit shared and stores the data internally on the heap. All container classes should be created on the stack. Normally you never want to use ``new QList<T>()``, which means never use ``new`` with a container.
 
-The ``QList`` is as versatile as the ``QString`` class and offers a great API to explore your data. Below is a small example how to use and iterate over a list using also some new C++ 11 features.
+The ``QList`` is as versatile as the ``QString`` class and offers a great API to explore your data. Below is a small example how to use and iterate over a list using some new C++ 11 features.
 
 .. literalinclude:: src/qtfoundation/tst_foundation.cpp
     :language: cpp
@@ -399,7 +399,7 @@ The ``QList`` is as versatile as the ``QString`` class and offers a great API to
 Associative Containers
 ----------------------
 
-A map, dictionary or a set are examples for associative containers. They store a value using a key. They are known for their fast lookup. We demonstrate the use of the most used associative container the ``QHash`` also demonstrating some new C++ 11 features.
+A map, a dictionary, or a set are examples of associative containers. They store a value using a key. They are known for their fast lookup. We demonstrate the use of the most used associative container the ``QHash`` also demonstrating some new C++ 11 features.
 
 .. literalinclude:: src/qtfoundation/tst_foundation.cpp
     :language: cpp
@@ -424,9 +424,9 @@ More Classes
 
 .. issues:: ch15
 
-Qt is a rich application framework. As such it has thousands of classes. It takes some time to get used to all of these classes and how to use them. Luckily Qt has a very good documentation with many useful examples includes. Most of the time you search for a class and the most common use cases are already provided as snippets. Which means for you to just copy and adapt these snippets. Also Qt's examples wich come with the Qt source code are a great help. Make sure you have them available and searchable to make your life more productive. Do not waste time. The Qt community is always helpful. When you ask it is very helpful to ask exact questions and provide a simple example which displays your needs. This will drastically improve the response time of others. So invest a litte bit of time to make the life of others who want to help you easier:-).
+Qt is a rich application framework. As such it has thousands of classes. It takes some time to get used to all of these classes and how to use them. Luckily Qt has a very good documentation with many useful examples includes. Most of the time you search for a class and the most common use cases are already provided as snippets. Which means you just copy and adapt these snippets. Also Qt's examples in the Qt source code are a great help. Make sure you have them available and searchable to make your life more productive. Do not waste time. The Qt community is always helpful. When you ask, it is very helpful to ask exact questions and provide a simple example which displays your needs. This will drastically improve the response time of others. So invest a litte bit of time to make the life of others who want to help you easier :-).
 
-Here some classes which the author thinks is a must read: :qt5:`QObject <qobject>`, :qt5:`QString <qstring>`, :qt5:`QByteArray <qbytearray>`, :qt5:`QFile <qfile>`, :qt5:`QDir <qdir>`, :qt5:`QFileInfo <qfileinfo>`, :qt5:`QIODevice <qiodevice>`, :qt5:`QTextStream <qtextstream>`, :qt5:`QDataStream <qdatastream>`, :qt5:`QDebug <qdebug>`, :qt5:`QLoggingCategory <qloggingcategory>`, :qt5:`QTcpServer <qtcpserver>`, :qt5:`QTcpSocket <qtcpsocket>`, :qt5:`QNetworkRequest <qnetworkrequest>`, :qt5:`QNetworkReply <qnetworkreply>`, :qt5:`QAbstractItemModel <qabstractitemmodel>`, :qt5:`QRegExp <qregexp>`, :qt5:`QList <qlist>`, :qt5:`QHash <qhash>`, :qt5:`QThread <qthread>`, :qt5:`QProcess <qprocess>`, :qt5:`QJsonDocument <qjsondocument>`, :qt5:`QJSValue <qjsvalue>`.
+Here some classes whose documentation the author thinks are a must read: :qt5:`QObject <qobject>`, :qt5:`QString <qstring>`, :qt5:`QByteArray <qbytearray>`, :qt5:`QFile <qfile>`, :qt5:`QDir <qdir>`, :qt5:`QFileInfo <qfileinfo>`, :qt5:`QIODevice <qiodevice>`, :qt5:`QTextStream <qtextstream>`, :qt5:`QDataStream <qdatastream>`, :qt5:`QDebug <qdebug>`, :qt5:`QLoggingCategory <qloggingcategory>`, :qt5:`QTcpServer <qtcpserver>`, :qt5:`QTcpSocket <qtcpsocket>`, :qt5:`QNetworkRequest <qnetworkrequest>`, :qt5:`QNetworkReply <qnetworkreply>`, :qt5:`QAbstractItemModel <qabstractitemmodel>`, :qt5:`QRegExp <qregexp>`, :qt5:`QList <qlist>`, :qt5:`QHash <qhash>`, :qt5:`QThread <qthread>`, :qt5:`QProcess <qprocess>`, :qt5:`QJsonDocument <qjsondocument>`, :qt5:`QJSValue <qjsvalue>`.
 
 That should be enough for the beginning.
 
@@ -434,7 +434,7 @@ That should be enough for the beginning.
 Models in C++
 =============
 
-Models in QML serve the purpose to provide data to ``ListViews``, ``PathViews`` and other views which take a model and create for each entry in the model an instance of a delegate. The view is smart enough to only create these instances which are visible or in the cache range. Which makes it possible to have large models with tens of throusands of entries but still a very slick user interface. The delegate acts like a template to be rendered with the model entries data. So in summary: a view renders entries from the model using a delegate as a template. The model is a data provider to views.
+Models in QML serve the purpose of providing data to ``ListViews``, ``PathViews`` and other views which take a model and create an instance of a delegate for each entry in the model. The view is smart enough to only create these instances which are visible or in the cache range. This makes it possible to have large models with tens of throusands of entries but still have a very slick user interface. The delegate acts like a template to be rendered with the model entries data. So in summary: a view renders entries from the model using a delegate as a template. The model is a data provider to views.
 
 When you do not want to use C++ you can also define models in pure QML. You have several ways to provide a model to the view. For handling of data coming from C++ or large amount of data  the C++ model is more suitable than these pure QML approaches. But often you only need a few entries then these QML models are well suited.
 
@@ -464,7 +464,7 @@ When you do not want to use C++ you can also define models in pure QML. You have
         delegate: Text { 'Char['+ index +']: ' + model.char }
     }
 
-The QML views knows how to handle these different models. For models coming from the C++ world the view expects a specific protocol to be followed. This protocol is defined in an API (``QAbstractItemModel``) together with documentation for the dynamic behavior. The API was developed for the desktop widget world and is flexible enough to act as a base for trees, or multi column tables as also lists. In QML we mostly only use the list version of the API (``QAbstractListModel``). The API contains some mandatory functions to be implemented and some are optional. The optional parts mostly handle the dynamic use case of adding or removing of data.
+The QML views knows how to handle these different models. For models coming from the C++ world the view expects a specific protocol to be followed. This protocol is defined in an API (``QAbstractItemModel``) together with documentation for the dynamic behavior. The API was developed for the desktop widget world and is flexible enough to act as a base for trees, or multi column tables as well as lists. In QML, we almost only use the list version of the API (``QAbstractListModel``). The API contains some mandatory functions to be implemented and some are optional. The optional parts mostly handle the dynamic use case of adding or removing of data.
 
 A simple model
 --------------
@@ -594,7 +594,7 @@ Additionally we define a ``count`` property to get the size of the model and a `
     // gets a color at the index
     Q_INVOKABLE QColor get(int index);
 
-The implementation for insert checks first the boundaries and if the given value is valid. Only then we begin inserting the data.
+The implementation for insert checks first the boundaries and if the given value is valid. Only then do we begin inserting the data.
 
 .. code-block:: cpp
 
