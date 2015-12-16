@@ -123,7 +123,7 @@ The 1st rocket travels using the ``Animation on <property>`` strategy. The anima
 
 .. rubric:: 2nd rocket
 
-The 2nd rocket travels using a ``behavior on`` animation. This behavior tells the property, every time the property value changes, it changes through this animation. The behavior can be disabled by ``enabled : false`` on the ``Behavior`` element. The rocket will start traveling when you click it (y-position is then set to 40). Another click has no influence as the position is already set. You could try to use a random value (e.g. ``40+(Math.random()*(205-40)``) for the y-position. You will see that the rocket will always animate to the new position and adapt is speed to match the 4 seconds to the destination defined by the animations duration.
+The 2nd rocket travels using a ``behavior on`` animation. This behavior tells the property, every time the property value changes, it changes through this animation. The behavior can be disabled by ``enabled : false`` on the ``Behavior`` element. The rocket will start traveling when you click it (y-position is then set to 40). Another click has no influence as the position is already set. You could try to use a random value (e.g. ``40+(Math.random()*(205-40)``) for the y-position. You will see that the rocket will always animate to the new position and adapt its speed to match the 4 seconds to the destination defined by the animations duration.
 
 .. literalinclude:: src/animation/animationtypes.qml
     :start-after: M3>>
@@ -131,11 +131,11 @@ The 2nd rocket travels using a ``behavior on`` animation. This behavior tells th
 
 .. rubric:: 3rd rocket
 
-The 3rd rocket uses a ``standalone animation``. The animation is defined as an own element and could be everywhere in the document. The click will start the animation using the animations function ``start()``. Each animation has a start(), stop(), resume(), restart() function. The animation itself contains much more information then the other animation types earlier. We need to define the target and properties to declare the target element to be animated and which properties we want to animate. We need to define a ``to`` value and in this case we define also a ``from`` value to allow a re-start of the animation.
+The 3rd rocket uses a ``standalone animation``. The animation is defined as its own element and could be everywhere in the document. The click will start the animation using the animations function ``start()``. Each animation has a start(), stop(), resume(), restart() function. The animation itself contains much more information then the other animation types earlier. We need to define the target and properties to declare the target element to be animated and which properties we want to animate. We need to define a ``to`` value and in this case we define also a ``from`` value to allow a re-start of the animation.
 
 .. image:: assets/animationtypes.png
 
-A click on the background will reset all rockets to their initial position. The 1st rocket can't be restarted only be re-starting the program which triggers the re-loading of the element.
+A click on the background will reset all rockets to their initial position. The 1st rocket can't be restarted except by re-starting the program which triggers the re-loading of the element.
 
 .. note::
 
@@ -157,13 +157,13 @@ Easing Curves
 
 .. issues:: ch05
 
-The value change of a property can be controlled by an animation. Easing attributes allows to influence the interpolation curve of a property change. All animations we have defined by now use a linear interpolation because the initial easing type of an animation is ``Easing.Linear``. It's best visualized with a small plot, where the y-axis is the property to be animated and the x-axis is the time (*duration*). A linear interpolation would draw a straight line from the ``from`` value at the start of the animation to the ``to`` value at the end of the animation. So the easing type defines the curve of change. Easing types are carefully chosen to support a natural fit for a moving object, for example when a page slides out. Initially the page should slide out slowly and then gaining the speed to finally slide out on high speed, similar to turning a book side.
+The value change of a property can be controlled by an animation. Easing attributes allows influencing the interpolation curve of a property change. All animations we have defined by now use a linear interpolation because the initial easing type of an animation is ``Easing.Linear``. It's best visualized with a small plot, where the y-axis is the property to be animated and the x-axis is the time (*duration*). A linear interpolation would draw a straight line from the ``from`` value at the start of the animation to the ``to`` value at the end of the animation. So the easing type defines the curve of change. Easing types are carefully chosen to support a natural fit for a moving object, for example when a page slides out. Initially the page should slide out slowly and then gaining the speed to finally slide out on high speed, similar to turning the page of a book.
 
 .. note::
 
-    Animations should not be overused. As other aspects of UI design also animations should be designed carefully and support the UI flow and not dominate it. The eye reacts very sensible on moving objects and can easily distract the user.
+    Animations should not be overused. As other aspects of UI design also animations should be designed carefully and support the UI flow and not dominate it. The eye is very sensitive to moving objects and animations can easily distract the user.
 
-In the next example we will try some easing curves. Each easing curve is displayed by a click-able image and when clicked will set a new easing type on the ``square`` animation as also trigger a ``restart()`` to run the animation with the new curve.
+In the next example we will try some easing curves. Each easing curve is displayed by a click-able image and, when clicked, will set a new easing type on the ``square`` animation and then trigger a ``restart()`` to run the animation with the new curve.
 
 .. image:: assets/automatic/easingcurves.png
     :scale: 50%
@@ -171,7 +171,7 @@ In the next example we will try some easing curves. Each easing curve is display
 
 .. topic:: Extended ClickableImage V3
 
-    We enhanced the ClickableImage for another time be able to add a small frame around the image and text. For that we added a ``property bool framed: false`` property to our API and based on ``framed`` value we set the visibility of the frame to not break existing element users. Here are the changes we did.
+    Once more, we're going to enhance ClickableImage such that the user is able to add a small frame around the image and text. For that we added a ``property bool framed: false`` property to our API and based on the value of ``framed`` we set the visibility of the frame to not break existing element users. Here are the changes we did.
 
     .. literalinclude:: src/animation/ClickableImageV3.qml
         :start-after: M1>>
@@ -184,20 +184,20 @@ The code for this example was made compact. We use an array of easing curve name
     :start-after: M1>>
     :end-before: <<M1
 
-When you run it and play with it, please observe the change of speed during an animation. Some animations feel more natural for the object and some feel irritating.
+A you play with it, please observe the change of speed during an animation. Some animations feel more natural for the object and some feel irritating.
 
-Besides the ``duration`` and ``easing.type`` you are able to fine tune animations. For example the general ``PropertyAnimation`` where most animation inherit from supports additionally an ``easing.amplitude``, ``easing.overshoot`` and ``easing.period`` property which allows you to fine-tune the behavior of particular easing curve. Not all easing curves support these parameters. Please consult the :qt5:`easing table <qml-qtquick2-propertyanimation.html#easing.type-prop>` from the ``PropertyAnimation`` documentation to check if an easing parameter has influence on an easing curve.
+Besides the ``duration`` and ``easing.type`` you are able to fine tune animations. For example the general ``PropertyAnimation`` where most animation inherit from additionally supports an ``easing.amplitude``, ``easing.overshoot`` and ``easing.period`` property which allows you to fine-tune the behavior of particular easing curves. Not all easing curves support these parameters. Please consult the :qt5:`easing table <qml-qtquick2-propertyanimation.html#easing.type-prop>` from the ``PropertyAnimation`` documentation to check if an easing parameter has influence on an easing curve.
 
 .. note::
 
-    Choosing the right animation for the element in the user interface context is crucial for the outcome. Remember the animation shall support the UI flow not irritate the user.
+    Choosing the right animation for the element in the user interface context is crucial for the outcome. Remember the animation shall support the UI flow; not irritate the user.
 
 Grouped Animations
 ------------------
 
 .. issues:: ch05
 
-Often animations will be more complex then just animating one property. It might be you want to run several animation combined at the same time or one-after another or even execute a script between two animations. For this the grouped animation offer you a possibility. As the named suggests it's possible to group animation. Grouping can be in two ways: parallel or sequential. For this you can use the ``SequentialAnimation`` or the ``ParallelAnimation`` element, which act as an animation containers for other animation elements. These grouped animations are animations themselves and can be used exactly as such.
+Often animations will be more complex then just animating one property. You might want to run several animations at the same time or one after another or even execute a script between two animations. For this, the grouped animation offer you a possibility. As the named suggests it's possible to group animations. Grouping can be done in two ways: parallel or sequential. You can use the ``SequentialAnimation`` or the ``ParallelAnimation`` element, which act as animation containers for other animation elements. These grouped animations are animations themselves and can be used exactly as such.
 
 .. image:: assets/groupedanimation.png
 
@@ -268,7 +268,7 @@ Let's bring the soccer ball onto the green. The ball is an image, stored under "
 
 The image has a mouse area attached to it. If the ball is clicked the position of the ball will reset and the animation restarted.
 
-Let's start with an sequential animation for the two y translation first.
+Let's start with an sequential animation for the two y translations first.
 
 .. code-block:: js
 
@@ -290,10 +290,10 @@ Let's start with an sequential animation for the two y translation first.
 
 .. image:: assets/soccer_stage3.png
 
-This gives during 40% of the total animation duration the up animation and for 60% the down animation. One animation after another as a sequence. The transformations are animated on a linear path but there is no curve currently. Curves will be added later using the easing curves, at the moment we concentrate on getting the transformations animated.
+This specifies that 40% of the total animation duration is the up animation and 60% the down animation. One animation after another as a sequence. The transformations are animated on a linear path but there is no curve currently. Curves will be added later using the easing curves, at the moment we're concentrating on getting the transformations animated.
 
 
-Now we need to add the x-translation. The x-translation shall run in parallel with the y-translation so we need to encapsulate the sequence of y-translations into a parallel animation together with the x-translation.
+Next, we need to add the x-translation. The x-translation shall run in parallel with the y-translation so we need to encapsulate the sequence of y-translations into a parallel animation together with the x-translation.
 
 .. code-block:: js
 
@@ -332,7 +332,7 @@ At the end we would like the ball to be rotating. For this we need to add anothe
         }
     }
 
-That's the whole animation sequence. The one thing left is to provide the correct easing curves for the movements of the ball. For the *Y1* animation I use a ``Easing.OutCirc`` curve as this shall look more like a circular movement. *Y2* is enhanced using a ``Easing.OutBounce`` as the ball shall bounce and the bouncing shall happening at the end (try an ``Easing.InBounce`` and you see the bouncing will start right away).
+That's the whole animation sequence. The one thing left is to provide the correct easing curves for the movements of the ball. For the *Y1* animation I use a ``Easing.OutCirc`` curve as this should look more like a circular movement. *Y2* is enhanced using an ``Easing.OutBounce`` as the ball should bounce and the bouncing should happen at the end (try an ``Easing.InBounce`` and you see the bouncing will start right away).
 The *X1* and *ROT1* animation are left as is with a linear curve.
 
 Here is the final animation code for your reference:
@@ -354,7 +354,7 @@ States
 
 .. issues:: ch05
 
-You define states in QML with the ``State`` element, which needs to be bound to the ``states`` array of any item element. A state is identified through a state name and consist in its simplest form of a series of property changes elements. The default state is defined by the initial properties of the element and is named ``""`` (the empty string).
+You define states in QML with the ``State`` element, which needs to be bound to the ``states`` array of any item element. A state is identified through a state name and consist, in its simplest form, of a series of property changes on elements. The default state is defined by the initial properties of the element and is named ``""`` (the empty string).
 
 .. code-block:: js
 
@@ -395,11 +395,11 @@ A state is changed by assigning a new state name to the ``state`` property of th
 
 .. image:: assets/trafficlight_sketch.png
 
-For example a traffic light might have two signaling lights. The upper one signaling stop with a red color and the lower one signaling go with a green color. In this example both lights should not shine at the same time. Let's have a look at the state chart diagram.
+For example, a traffic light might have two signaling lights. The upper one signaling stop with a red color and the lower one signaling go with a green color. In this example both lights should not shine at the same time. Let's have a look at the state chart diagram.
 
 .. image:: assets/trafficlight_states.png
 
-When the system is switched on it goes automatically into the stop mode as default state. The stop state changes the ``light1`` to red and ``light2`` to black (off). An external event can trigger now a state switch to the ``"go"`` state. In the go state we change the color properties from ``light1`` to black (off) and ``light2`` to green to indicate the passers may walk now.
+When the system is switched on it goes automatically into the stop mode as default state. The stop state changes the ``light1`` to red and ``light2`` to black (off). An external event can now trigger a state switch to the ``"go"`` state. In the go state we change the color properties from ``light1`` to black (off) and ``light2`` to green to indicate the passers may walk now.
 
 To realize this scenario we start sketching our user interface for the 2 lights. For simplicity we use 2 rectangles with the radius set to the half of the width (and the width is the same as the height, which means it's a square).
 
@@ -438,9 +438,9 @@ Transitions
 
 .. issues:: ch05
 
-A series of transitions can be added to every item. A transition is executed by a state change. You can define on which state change a particular transition can be applied using the ``from:`` and ``to:`` properties. These two properties act like a filter, when the filter is true the transition will be applied. You can also use the wild-cast "*" which means "any state". For example ``from:”*”; to:”*”`` means from any state to any other state and is the default value for ``from`` and ``to``, which means the transition is applied to every state switch.
+A series of transitions can be added to every item. A transition is executed by a state change. You can define on which state change a particular transition can be applied using the ``from:`` and ``to:`` properties. These two properties act like a filter, when the filter is true the transition will be applied. You can also use the wild-cast "*" which means "any state". For example ``from:"*"; to:"*"`` means from any state to any other state and is the default value for ``from`` and ``to``, which means the transition is applied to every state switch.
 
-For this example we would like to animate the color changes when switching state from "go" to "stop". For the other reversed state change ("stop" to "go") we want to keep an immediate color change and don't apply a transition. We restrict the transition with the ``from`` and ``to`` properties to filter only the state change from "go" to "stop". Insite the transition we add two color animations for each light, which shall animate the property changes defined in the state description.
+For this example we would like to animate the color changes when switching state from "go" to "stop". For the other reversed state change ("stop" to "go") we want to keep an immediate color change and don't apply a transition. We restrict the transition with the ``from`` and ``to`` properties to filter only the state change from "go" to "stop". Inside the transition we add two color animations for each light, which shall animate the property changes defined in the state description.
 
 .. literalinclude:: src/animation/states.qml
     :start-after: M4>>
@@ -450,7 +450,7 @@ You can change the state though clicking the UI. The state is applied immediatel
 
 .. image:: assets/trafficlight_transition.png
 
-You could play around with this UI for example by scaling the inactive light down to highlight the active light. For this you would need to add another property change for scaling to the states and also handle the animation for the scaling property in the transition. Another option would be to add a "attention" state where the lights are blinking yellow. For this you would need to add a sequential animation to the transition for one second going to yellow ("to" property of the animation and one sec going to "black"). Maybe you also want to change the easing curve to make it more appealing.
+You could play around with this UI by, for example, scaling the inactive light down to highlight the active light. For this you would need to add another property change for scaling to the states and also handle the animation for the scaling property in the transition. Another option would be to add an "attention" state where the lights are blinking yellow. For this, you would need to add a sequential animation to the transition for one second going to yellow ("to" property of the animation and one sec going to "black"). Maybe you would also want to change the easing curve to make it more visually appealing.
 
 Advanced Techniques
 ===================

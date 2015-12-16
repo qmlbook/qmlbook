@@ -27,7 +27,7 @@ Qt 4 was designed to satisfy the desktop world to have a coherent set of UI widg
 Qt 5 Focus
 ---------
 
-Qt 5 is a complete refreshment of the very successful Qt 4 release. With Qt 4.8, the Qt 4 release is almost 7 years old. It's time to make an amazing toolkit even more amazing. Qt 5 is focused on the the following:
+Qt 5 is a complete refreshing of the very successful Qt 4 release. With Qt 4.8, the Qt 4 release is almost 7 years old. It's time to make an amazing toolkit even more amazing. Qt 5 is focused on the the following:
 
 * **Outstanding Graphics**: Qt Quick 2 is based on OpenGL (ES) using a scene graph implementation. The recomposed graphics stack allows a new level of graphic effects combined with an ease of use never seen before in this field.
 
@@ -57,7 +57,7 @@ Qt Quick is the umbrella term for the user interface technology used in Qt 5. Qt
 
 Similar to HTML, QML is a markup language. It is composed of tags called elements in Qt Quick enclosed in curly brackets ``Item {}``. It was designed from the ground up for the creation of user interfaces, speed and easier reading for developers. The user interface can be enhanced using JavaScript code. Qt Quick is easily extendable with your own native functionality using Qt C++. In short the declarative UI is called the front-end and the native parts are called the back-end. This allows you to separate the computing intensive and native operation of your application from the user interface part.
 
-In a typical project the front-end is developed in QML/JavaScript and the back-end code, which interfaces with the system and does the heavy lifting is developed using Qt C++. This allows a natural split between the more design oriented developers and the functional developers. Typically the back-end is tested using Qt own unit testing framework and exported for the front-end developers to be used.
+In a typical project the front-end is developed in QML/JavaScript and the back-end code, which interfaces with the system and does the heavy lifting, is developed using Qt C++. This allows a natural split between the more design oriented developers and the functional developers. Typically the back-end is tested using Qt own unit testing framework and exported for the front-end developers to be used.
 
 
 Digesting an User Interface
@@ -89,7 +89,7 @@ As QML does not make any restriction which element type is the root element we u
 
 .. note::
 
-    Each element has properties, e.g. a image has a ``width``, ``height`` but also other properties like a ``source`` property.  The size of the image element is automatically deducted from the image size. Otherwise we would need to set the ``width`` and ``height`` property to some useful pixel values.
+    Each element has properties, e.g. an image has a ``width``, ``height`` but also other properties like a ``source`` property.  The size of the image element is automatically deduced from the image size. Otherwise we would need to set the ``width`` and ``height`` property to some useful pixel values.
 
     The most standard elements are located in the ``QtQuick`` module which we include in the first line with the import statement.
 
@@ -127,7 +127,7 @@ Normally your user interface will be composed of many different element types an
 
 
 
-To place the pin wheel at the central location we use a complex property called ``anchor``. Anchoring allows you to specify geometric relations between parent and sibling objects. E.g. Place me in the center of another element ( ``anchors.centerIn: parent`` ). There are left, right, top, bottom, centerIn, fill, verticalCenter and horizontalCenter relations on both ends. Sure they need to match, it does not make sense to anchor my left side to the top side of an element.
+To place the pin wheel at the central location we use a complex property called ``anchor``. Anchoring allows you to specify geometric relations between parent and sibling objects. E.g. Place me in the center of another element ( ``anchors.centerIn: parent`` ). There are left, right, top, bottom, centerIn, fill, verticalCenter and horizontalCenter relations on both ends. Sure, they need to match.  It does not make sense to anchor my left side to the top side of an element.
 
 So we set the pinwheel to be centered in the parent our background.
 
