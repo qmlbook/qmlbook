@@ -190,7 +190,7 @@ The plugin class is dervived from ``QQmlExtensionPlugin`` and implements the ``r
 
     #endif // FILEIO_PLUGIN_H
 
-In the implementation of the ``registerTypes`` we simple register our ``FileIO`` class using the ``qmlRegisterType`` function.
+In the implementation of the ``registerTypes`` we simply register our ``FileIO`` class using the ``qmlRegisterType`` function.
 
 .. code-block:: cpp
 

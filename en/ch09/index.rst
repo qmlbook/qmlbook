@@ -146,7 +146,7 @@ Next we will add a shader, which displays a red rectangle. As we don't need the 
     :start-after: M1>>
     :end-before: <<M1
 
-In the fragment shader we simple assign a *vec4(1.0, 0.0, 0.0, 1.0)* which represents a red color with full opacity (alpha=1.0) to the *gl_FragColor*.
+In the fragment shader we simply assign a *vec4(1.0, 0.0, 0.0, 1.0)* which represents a red color with full opacity (alpha=1.0) to the *gl_FragColor*.
 
 .. image:: assets/redlense2.png
 
