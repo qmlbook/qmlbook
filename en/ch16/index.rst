@@ -27,7 +27,7 @@ When running QML, it is being executed in a run-time environment. The run-time i
     :language: cpp
 
 
-In the example the ``QGuiApplication`` encapsulates all that is related to the application instance (e.g. application name, command line arguments and managing the event loop). The ``QQmlApplicationEngine`` manages the hierachical order of contexts and components. It requires typical a qml file to be loaded as the starting point of your application. In this case it is a ``main.qml`` containing a window and a text type.
+In the example the ``QGuiApplication`` encapsulates all that is related to the application instance (e.g. application name, command line arguments and managing the event loop). The ``QQmlApplicationEngine`` manages the hierarchical order of contexts and components. It requires typical a qml file to be loaded as the starting point of your application. In this case it is a ``main.qml`` containing a window and a text type.
 
 .. note::
 
