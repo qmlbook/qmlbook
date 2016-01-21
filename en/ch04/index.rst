@@ -87,7 +87,7 @@ Let's go through the different features of properties:
 
 (8) Some properties are attached to the element itself. This is done for global relevant elements which appear only once in the application (e.g. keyboard input). The writing is ``<Element>.<property>: <value>``.
 
-(9) For every property you can provide an signal handler. This handler is called after the property changes. For example here we want to be notified whenever the height changes and use the built-in console to log a message to the system.
+(9) For every property you can provide a signal handler. This handler is called after the property changes. For example here we want to be notified whenever the height changes and use the built-in console to log a message to the system.
 
 .. warning:: An element id should only be used to reference elements inside your document (e.g. the current file). QML provides a mechanism called dynamic-scoping where later loaded documents overwrite the element id's from earlier loaded documents. This makes it possible to reference element id's from earlier loaded documents, if they are not yet overwritten. It's like creating global variables. Unfortunately this frequently leads to really bad code in practice, where the program depends on the order of execution. Unfortunately this can't be turned off. Please only use this with care or even better don't use this mechanism at all. It's better to export the element you want to provide to the outside world using properties on the root element of your document.
 
@@ -128,7 +128,7 @@ Basic Elements
 
 .. index:: Item, Rectangle, Text, MouseArea, Image, gradients
 
-Elements can be grouped into visual and non-visual elements. A visual element (like the ``Rectangle``) has a geometry and normally present an area on the screen. A non-visual element (like a ``Timer``) provides general functionality, normally used to manipulate the visual elements.
+Elements can be grouped into visual and non-visual elements. A visual element (like the ``Rectangle``) has a geometry and normally presents an area on the screen. A non-visual element (like a ``Timer``) provides general functionality, normally used to manipulate the visual elements.
 
 Currently, we will focus on the fundamental visual elements, such as ``Item``, ``Rectangle``, ``Text``, ``Image`` and ``MouseArea``.
 
@@ -271,7 +271,7 @@ MouseArea Element
 
 .. issues:: ch04
 
-To interact with these elements you often will use a ``MouseArea``. Its a rectangular invisible item in where you can capture mouse events. The mouse area is often used together with a visible item to execute commands when the user interacts with the visual part.
+To interact with these elements you often will use a ``MouseArea``. It's a rectangular invisible item in where you can capture mouse events. The mouse area is often used together with a visible item to execute commands when the user interacts with the visual part.
 
 .. literalinclude:: src/concepts/mousearea.qml
     :start-after: M1>>
@@ -372,7 +372,7 @@ Simple Transformations
 
 .. index:: Transformation, Translation, Rotation, Scaling, ClickableImage Helper, Stacking order
 
-A transformation manipulates the geometry of an object. QML Items can in general be translated, rotated and scaled. There is a simple form of these operation and a more advanced way.
+A transformation manipulates the geometry of an object. QML Items can in general be translated, rotated and scaled. There is a simple form of these operations and a more advanced way.
 
 Let's start with the simple transformations. Here is our scene as our starting point.
 
@@ -412,7 +412,7 @@ The background clicker ``MouseArea`` covers the whole background and resets the 
 
     .. image:: assets/order_matters.png
 
-    This is because ``rocket2`` appears later in the code. The same applies also to mouse areas. A mouse area later in the code will overlap (an thus grab the mouse events) of a mouse area earlier in the code.
+    This is because ``rocket2`` appears later in the code. The same applies also to mouse areas. A mouse area later in the code will overlap (and thus grab the mouse events) of a mouse area earlier in the code.
 
     Please remember: *The order of elements in the document matters*.
 
@@ -429,13 +429,13 @@ There are a number of QML elements used to position items. These are called posi
 
 .. note::
 
-    Before we go into details, let me introduce some helper elements. The red, blue, green, lighter and darker square. Each of these components contains a 48x48 pixel colorized rectangle. As reference here is the source code for the ``RedSquare``:
+    Before we go into details, let me introduce some helper elements. The red, blue, green, lighter and darker squares. Each of these components contains a 48x48 pixels colorized rectangle. As reference here is the source code for the ``RedSquare``:
 
     .. literalinclude:: src/positioners/RedSquare.qml
         :start-after: M1>>
         :end-before: <<M1
 
-    Please note the use of ``Qt.lighter(color)`` to produce a lighter border color based on the fill color. We will use these helpers in the next examples to make the source code more compact and hopefully readable. Please remember, each rectangle is initial 48x48 pixel.
+    Please note the use of ``Qt.lighter(color)`` to produce a lighter border color based on the fill color. We will use these helpers in the next examples to make the source code more compact and hopefully readable. Please remember, each rectangle is initial 48x48 pixels.
 
 
 The ``Column`` element arranges child items into a column by stacking them on top of each other. The ``spacing`` property can be used to distance each of the child elements from each other.
