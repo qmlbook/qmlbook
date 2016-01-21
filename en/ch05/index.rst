@@ -186,7 +186,7 @@ The code for this example was made compact. We use an array of easing curve name
 
 A you play with it, please observe the change of speed during an animation. Some animations feel more natural for the object and some feel irritating.
 
-Besides the ``duration`` and ``easing.type`` you are able to fine tune animations. For example the general ``PropertyAnimation`` where most animation inherit from additionally supports an ``easing.amplitude``, ``easing.overshoot`` and ``easing.period`` property which allows you to fine-tune the behavior of particular easing curves. Not all easing curves support these parameters. Please consult the :qt5:`easing table <qml-qtquick2-propertyanimation.html#easing.type-prop>` from the ``PropertyAnimation`` documentation to check if an easing parameter has influence on an easing curve.
+Besides the ``duration`` and ``easing.type`` you are able to fine tune animations. For example the general ``PropertyAnimation`` where most animation inherit from additionally supports an ``easing.amplitude``, ``easing.overshoot`` and ``easing.period`` property which allows you to fine-tune the behavior of particular easing curves. Not all easing curves support these parameters. Please consult the :qt5:`easing table <qml-qtquick-propertyanimation.html#easing.type-prop>` from the ``PropertyAnimation`` documentation to check if an easing parameter has influence on an easing curve.
 
 .. note::
 

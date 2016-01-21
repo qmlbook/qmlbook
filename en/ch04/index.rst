@@ -314,6 +314,8 @@ The UI will look similar to this. On the left the UI in the initial state, on th
 
 Our task is now to extract the button UI in a reusable component. For this we shortly think about a possible API for our button. You can do this by imagining how someone else should use your button. Here's what I came up with:
 
+.. code-block:: js
+
     // minimal API for a button
     Button {
         text: "Click Me"
