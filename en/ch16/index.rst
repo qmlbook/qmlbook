@@ -106,7 +106,7 @@ Here are the different ways you can extend QML in general:
 
 **Registering QML types** allows the user to control the lifecycle of an c++ object from QML. This is not possible with the context properties. Also it does not pollute the global namespace. Still all types need to be registered first and by this all libraries need to be linked on application start, which in most cases is not really a problem.
 
-The most flexible system is provided by the **QML extension plugins**. They allow you to register types in a plugin which is loaded when the first QML file calls the import identifier. Also by using a QML singleton there is no need to pollute the global namespace anymore. Plugins allow you to reuse modules across projects, which comes quit handy when you do more than one project with Qt.
+The most flexible system is provided by the **QML extension plugins**. They allow you to register types in a plugin which is loaded when the first QML file calls the import identifier. Also by using a QML singleton there is no need to pollute the global namespace anymore. Plugins allow you to reuse modules across projects, which comes quite handy when you do more than one project with Qt.
 
 For the remainder of this chapter will focus on the qml extension plugins. As they provide the greates flexibility and reuse.
 
