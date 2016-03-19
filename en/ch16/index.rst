@@ -80,7 +80,7 @@ Now you can use the current property everywhere in your application. Thanks to c
 
 .. code-block:: qml
 
-    import QtQuick 2.4
+    import QtQuick 2.5
     import QtQuick.Window 2.0
 
     Window {
@@ -321,7 +321,7 @@ The basic setup is an ``ApplicationWindow`` which can contain a toolbar, menubar
 
 .. code-block:: qml
 
-    import QtQuick 2.4
+    import QtQuick 2.5
     import QtQuick.Controls 1.3
     import QtQuick.Window 2.2
     import QtQuick.Dialogs 1.2

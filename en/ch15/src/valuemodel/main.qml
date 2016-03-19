@@ -1,7 +1,7 @@
-import QtQuick 2.2
-import QtQuick.Window 2.0
-import QtQuick.Controls 1.2
-import QtQuick.Layouts 1.1
+import QtQuick 2.5
+import QtQuick.Window 2.2
+import QtQuick.Controls 1.5
+import QtQuick.Layouts 1.2
 
 // our module
 import org.example 1.0

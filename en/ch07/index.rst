@@ -387,7 +387,7 @@ Everything starts with the canvas element. For simplicity we just use the ``Canv
 
 .. code-block:: js
 
-    import QtQuick 2.0
+    import QtQuick 2.5
 
     Canvas {
        id: canvas

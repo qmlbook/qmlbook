@@ -1,4 +1,4 @@
-import QtQuick 2.0
+import QtQuick 2.5
 import Qt.WebSockets 1.0
 
 Text {

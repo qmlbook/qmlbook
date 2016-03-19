@@ -28,7 +28,7 @@ Here is a small example, which applies a color value to a base rectangle. Every 
 
 ::
 
-    import QtQuick 2.0
+    import QtQuick 2.5
     import Qt.labs.settings 1.0
 
     Rectangle {
@@ -99,7 +99,7 @@ You use the API by first creating a database object and then creating transactio
 
 For example to read from a simple notes table with a text column you could use the local storage like this::
 
-    import QtQuick 2.2
+    import QtQuick 2.5
     import QtQuick.LocalStorage 2.0
 
     Item {
@@ -126,7 +126,7 @@ Here our base example.
 
 ::
 
-    import QtQuick 2.2
+    import QtQuick 2.5
 
     Item {
         width: 400
@@ -158,7 +158,7 @@ Now we would like to add that the x/y position of the rectangle is stored inside
 
 ::
 
-    import QtQuick 2.2
+    import QtQuick 2.5
     import QtQuick.LocalStorage 2.0
 
     Item {

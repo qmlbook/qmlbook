@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2013, Juergen Bocklage-Ryannel, Johan Thelin
  * All rights reserved.
- * 
+ *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:
  *     * Redistributions of source code must retain the above copyright
@@ -12,7 +12,7 @@
  *     * Neither the name of the editors nor the
  *       names of its contributors may be used to endorse or promote products
  *       derived from this software without specific prior written permission.
- * 
+ *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
  * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
  * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -25,33 +25,33 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-import QtQuick 2.0
+import QtQuick 2.5
 
 Rectangle {
     id: container
-    
+
     width: 600
     height: 400
-    
+
     color: "white"
 
     Column {
         anchors.top: parent.top
         anchors.left: parent.left
-        
+
         spacing: 20
-        
-        Rectangle {            
+
+        Rectangle {
             width: 290
             height: 50
-            
+
             color: "lightGray"
-            
+
             MouseArea {
                 anchors.fill: parent
                 onClicked: container.state = "left"
             }
-            
+
             Text {
                 anchors.centerIn: parent
                 font.pixelSize: 30
@@ -62,18 +62,18 @@ Rectangle {
         // M1>>
         Rectangle {
             id: leftRectangle
-            
+
             width: 290
             height: 200
-            
+
             color: "green"
-            
+
             MouseArea {
                 id: leftMouseArea
                 anchors.fill: parent
                 onClicked: leftClickedAnimation.start();
             }
-            
+
             Text {
                 anchors.centerIn: parent
                 font.pixelSize: 30
@@ -83,45 +83,45 @@ Rectangle {
         }
         // <<M1
     }
-    
+
     Column {
         anchors.top: parent.top
         anchors.right: parent.right
 
         spacing: 20
-        
+
         Rectangle {
             width: 290
             height: 50
-            
+
             color: "lightGray"
 
             MouseArea {
                 anchors.fill: parent
                 onClicked: container.state = "right"
             }
-            
+
             Text {
                 anchors.centerIn: parent
                 font.pixelSize: 30
                 text: container.state==="right"?"Active":"inactive";
             }
         }
-        
+
         Rectangle {
             id: rightRectangle
-            
+
             width: 290
             height: 200
-            
+
             color: "blue"
-            
+
             MouseArea {
                 id: rightMouseArea
                 anchors.fill: parent
                 onClicked: rightClickedAnimation.start();
             }
-            
+
             Text {
                 anchors.centerIn: parent
                 font.pixelSize: 30
@@ -130,10 +130,10 @@ Rectangle {
             }
         }
     }
-    
+
     Text {
         id: activeText
-        
+
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.bottom: parent.bottom
         anchors.bottomMargin: 50
@@ -141,13 +141,13 @@ Rectangle {
         font.pixelSize: 30
         color: "red"
         text: "Active area clicked!"
-        
+
         opacity: 0
     }
-    
+
     SequentialAnimation {
         id: leftClickedAnimation
-        
+
         PropertyAction {
             target: leftRectangle
             property: "color"
@@ -160,10 +160,10 @@ Rectangle {
             duration: 3000
         }
     }
-    
+
     SequentialAnimation {
         id: rightClickedAnimation
-        
+
         PropertyAction {
             target: rightRectangle
             property: "color"
@@ -176,7 +176,7 @@ Rectangle {
             duration: 3000
         }
     }
-    
+
     SequentialAnimation {
         id: activeClickedAnimation
 
@@ -192,14 +192,14 @@ Rectangle {
             duration: 3000
         }
     }
-    
+
     // M2>>
     Connections {
         id: connections
         onClicked: activeClickedAnimation.start();
     }
     // <<M2
-    
+
     // M3>>
     states: [
         State {

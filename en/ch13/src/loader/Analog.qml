@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2013, Juergen Bocklage-Ryannel, Johan Thelin
  * All rights reserved.
- * 
+ *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:
  *     * Redistributions of source code must retain the above copyright
@@ -12,7 +12,7 @@
  *     * Neither the name of the editors nor the
  *       names of its contributors may be used to endorse or promote products
  *       derived from this software without specific prior written permission.
- * 
+ *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
  * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
  * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -25,67 +25,67 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-import QtQuick 2.0
+import QtQuick 2.5
 
 Item {
     property int speed: 0
-    
+
     Rectangle {
         anchors.centerIn: parent
-        
+
         width: 240
         height: 240
-        
+
         radius: 120
-        
+
         color: "lightGray"
     }
 
     Rectangle {
         id: needle
-        
+
         anchors.right: parent.horizontalCenter
         anchors.top: parent.verticalCenter
-        
+
         width: 120
         height: 2
-        
+
         color: "red"
-        
-        transformOrigin: Item.Right        
+
+        transformOrigin: Item.Right
         rotation: -45 + speed
     }
-    
+
     Repeater {
         model: 11
-        
+
         Item {
             anchors.right: parent.horizontalCenter
             anchors.top: parent.verticalCenter
-            
+
             width: 140
             height: 2
 
-            transformOrigin: Item.Right     
+            transformOrigin: Item.Right
             rotation: -45 + index*270/10
-            
+
             Rectangle {
                 anchors.left: parent.left
                 anchors.top: parent.top
                 anchors.bottom: parent.bottom
                 anchors.leftMargin: 16
-                
+
                 width: 8
-                
-                color: "black"                
+
+                color: "black"
             }
-            
+
             Text {
                 anchors.horizontalCenter: parent.left
                 anchors.verticalCenter: parent.top
-            
+
                 text: index*270/10
-                
+
                 rotation: 45 - index*270/10
             }
         }

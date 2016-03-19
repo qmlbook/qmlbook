@@ -25,8 +25,8 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-import QtQuick 2.0
-import QtTest 1.0
+import QtQuick 2.5
+import QtTest 1.1
 
 Loader {
 	id: root

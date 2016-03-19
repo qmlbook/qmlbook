@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2013, Juergen Bocklage-Ryannel, Johan Thelin
  * All rights reserved.
- * 
+ *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:
  *     * Redistributions of source code must retain the above copyright
@@ -12,7 +12,7 @@
  *     * Neither the name of the editors nor the
  *       names of its contributors may be used to endorse or promote products
  *       derived from this software without specific prior written permission.
- * 
+ *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
  * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
  * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -25,50 +25,50 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-import QtQuick 2.0
+import QtQuick 2.5
 import QtMultimedia 5.0
 import QtSystemInfo 5.0
 
 Item {
     width: 1024
     height: 600
-    
+
     MediaPlayer {
         id: player
         source: "trailer_400p.ogg"
     }
 
     VideoOutput {
-        anchors.fill: parent        
+        anchors.fill: parent
         source: player
     }
-    
+
     // M1>>
     Rectangle {
         id: progressBar
-        
+
         anchors.left: parent.left
         anchors.right: parent.right
         anchors.bottom: parent.bottom
         anchors.margins: 100
-        
+
         height: 30
-        
+
         color: "lightGray"
-        
+
         Rectangle {
             anchors.left: parent.left
             anchors.top: parent.top
             anchors.bottom: parent.bottom
-            
+
             width: player.duration>0?parent.width*player.position/player.duration:0
-            
+
             color: "darkGray"
         }
-        
+
         MouseArea {
             anchors.fill: parent
-            
+
             onClicked: {
                 if (player.seekable)
                     player.position = player.duration * mouse.x/width;
@@ -76,7 +76,7 @@ Item {
         }
     }
     // <<M1
-    
+
     // M2>>
     Connections {
         target: player
@@ -85,14 +85,14 @@ Item {
                 player.mediaObject.notifyInterval = 50;
         }
     }
-    // <<M2 
-    
+    // <<M2
+
     Component.onCompleted: {
         player.play();
         if (player.mediaObject)
             player.mediaObject.notifyInterval = 50;
     }
-    
+
     ScreenSaver {
         screenSaverEnabled: false;
     }

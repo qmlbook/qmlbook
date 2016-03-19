@@ -28,7 +28,7 @@
 import QtQuick.XmlListModel 2.0
 
 // M1>>
-import QtQuick 2.0
+import QtQuick 2.5
 import "create-object.js" as CreateObject
 
 Item {

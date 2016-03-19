@@ -74,7 +74,7 @@ Let us create a small experiment. We add to our remote side a small button as a 
 
 We modify our ``main.qml`` to use the button and save it as ``main2.qml``::
 
-    import QtQuick 2.0
+    import QtQuick 2.5
 
     Rectangle {
         width: 320

@@ -138,7 +138,7 @@ Also for people coming from C++ or Java which are used to a OO language JS just 
 To test some small JS snippets you can use the online `JS Console <http://jsconsole.com>`_ or just build a little piece of QML code::
 
 
-  import QtQuick 2.0
+  import QtQuick 2.5
 
   Item {
     function runJS() {

@@ -1,4 +1,4 @@
-import QtQuick 2.1
+import QtQuick 2.5
 import Qt.labs.settings 1.0
 
 Rectangle {

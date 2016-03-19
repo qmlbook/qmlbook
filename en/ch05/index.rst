@@ -235,7 +235,7 @@ We start with an empty item as root element of the width of 480 and height of 30
 
 .. code-block:: js
 
-    import QtQuick 1.1
+    import QtQuick 2.5
 
     Item {
         id: root

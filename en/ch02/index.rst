@@ -59,7 +59,7 @@ Another file, ``HelloWorld.qml``, is our application code. Open it and try to gu
 
     // HelloWorld.qml
 
-    import QtQuick 2.0
+    import QtQuick 2.5
 
     Rectangle {
         width: 360
@@ -119,7 +119,7 @@ Qt 5 seems to be working and we are ready to continue.
 
         // HelloWorld.qml
 
-        import QtQuick 2.0
+        import QtQuick 2.5
 
         Rectangle {
             width: 360
@@ -536,7 +536,7 @@ This is a simple Qt Quick UI below
 
 .. code-block:: qml
 
-    import QtQuick 2.0
+    import QtQuick 2.5
 
     Rectangle {
         width: 240; height: 1230
@@ -562,7 +562,7 @@ To enable this, we first code our front-end to see how we would want to use a ci
 
 .. code-block:: qml
 
-    import QtQuick 2.0
+    import QtQuick 2.5
 
     Rectangle {
         width: 240; height: 120

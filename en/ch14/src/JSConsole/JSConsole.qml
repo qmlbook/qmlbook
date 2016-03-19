@@ -1,7 +1,7 @@
-import QtQuick 2.2
-import QtQuick.Controls 1.1
-import QtQuick.Layouts 1.1
-import QtQuick.Window 2.0
+import QtQuick 2.5
+import QtQuick.Controls 1.5
+import QtQuick.Layouts 1.2
+import QtQuick.Window 2.2
 import "jsconsole.js" as Util
 
 ApplicationWindow {
@@ -83,7 +83,7 @@ ApplicationWindow {
             }
         }
     }
-    
+
 
 
     function jsCall(exp) {

@@ -373,7 +373,7 @@ Let's get start!
 
 To get it going we create a typical dark scene::
 
-    import QtQuick 2.0
+    import QtQuick 2.5
     import QtQuick.Particles 2.0
 
     Rectangle {

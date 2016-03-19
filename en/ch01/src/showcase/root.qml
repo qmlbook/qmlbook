@@ -27,7 +27,7 @@
 
 // root.qml
 
-import QtQuick 2.0
+import QtQuick 2.5
 
 Item {
     id: window

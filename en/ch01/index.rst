@@ -74,7 +74,7 @@ We start with an empty document called ``main.qml``. All QML files will have the
 
 .. code-block:: qml
 
-    import QtQuick 2.3
+    import QtQuick 2.5
 
     Image {
         id: root
