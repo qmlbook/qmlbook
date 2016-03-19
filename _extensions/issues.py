@@ -1,6 +1,10 @@
 from docutils import nodes
 from sphinx.util.compat import Directive
-import urllib
+
+try:
+    from urllib.parse import urlencode
+except ImportError:
+    from urllib import urlencode
 
 class issues(nodes.General, nodes.Element):
     pass
@@ -26,7 +30,7 @@ def html_visit_issues_node(self, node):
         aname = node.parent['ids'][0]
     target = self.builder.get_target_uri(self.builder.current_docname)
     back_link = 'back-link: %s#%s'%(target, aname)
-    query = urllib.urlencode({'labels': label, 'body':back_link})
+    query = urlencode({'labels': label, 'body':back_link})
     create_url = '%s/new?%s'%(base_url, query)
     view_url = '%s?labels=%s&page=1&state=open'%(base_url, label)
     self.body.append('<div class="admonition issues">')

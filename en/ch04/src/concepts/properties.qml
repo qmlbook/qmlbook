@@ -63,7 +63,7 @@ Rectangle {
         // (9) signal handler for property changes
         onHeightChanged: console.log('height:', height)
 
-        // focus is neeed to receive key events
+        // focus is need to receive key events
         focus: true
 
         // change color based on focus value

@@ -27,7 +27,7 @@ When running QML, it is being executed in a run-time environment. The run-time i
     :language: cpp
 
 
-In the example the ``QGuiApplication`` encapsulates all that is related to the application instance (e.g. application name, command line arguments and managing the event loop). The ``QQmlApplicationEngine`` manages the hierachical order of contexts and components. It requires typical a qml file to be loaded as the starting point of your application. In this case it is a ``main.qml`` containing a window and a text type.
+In the example the ``QGuiApplication`` encapsulates all that is related to the application instance (e.g. application name, command line arguments and managing the event loop). The ``QQmlApplicationEngine`` manages the hierarchical order of contexts and components. It requires typical a qml file to be loaded as the starting point of your application. In this case it is a ``main.qml`` containing a window and a text type.
 
 .. note::
 
@@ -106,7 +106,7 @@ Here are the different ways you can extend QML in general:
 
 **Registering QML types** allows the user to control the lifecycle of an c++ object from QML. This is not possible with the context properties. Also it does not pollute the global namespace. Still all types need to be registered first and by this all libraries need to be linked on application start, which in most cases is not really a problem.
 
-The most flexible system is provided by the **QML extension plugins**. They allow you to register types in a plugin which is loaded when the first QML file calls the import identifier. Also by using a QML singleton there is no need to pollute the global namespace anymore. Plugins allow you to reuse modules across projects, which comes quit handy when you do more than one project with Qt.
+The most flexible system is provided by the **QML extension plugins**. They allow you to register types in a plugin which is loaded when the first QML file calls the import identifier. Also by using a QML singleton there is no need to pollute the global namespace anymore. Plugins allow you to reuse modules across projects, which comes quite handy when you do more than one project with Qt.
 
 For the remainder of this chapter will focus on the qml extension plugins. As they provide the greates flexibility and reuse.
 
@@ -190,7 +190,7 @@ The plugin class is dervived from ``QQmlExtensionPlugin`` and implements the ``r
 
     #endif // FILEIO_PLUGIN_H
 
-In the implementation of the ``registerTypes`` we simple register our ``FileIO`` class using the ``qmlRegisterType`` function.
+In the implementation of the ``registerTypes`` we simply register our ``FileIO`` class using the ``qmlRegisterType`` function.
 
 .. code-block:: cpp
 

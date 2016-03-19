@@ -121,8 +121,7 @@ Rectangle {
                 anchors.fill: parent
 
                 onClicked: {
-                    if (!wrapper.GridView.delayRemove)
-                        theModel.remove(index);
+                    theModel.remove(index);
                 }
             }
 

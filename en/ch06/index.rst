@@ -159,7 +159,7 @@ In the example, the ``ListView.view.width`` attached property is used for width.
 
 When using a highlight in conjunction with a ``ListView``, a number of properties can be used to control its behavior. The ``highlightRangeMode`` controls how the highlight is affected by what is shown in the view. The default setting, ``ListView.NoHighlightRange`` means that the highlight and the visible range of items in the view not are related at all.
 
-The value ``ListView.StrictlyEnforceRange`` ensures that the highlight always is visible. If an action attempts to move the highlight outside the visible part of the view, the current item will change accordingly, so that the highlight remains visible.
+The value ``ListView.StrictlyEnforceRange`` ensures that the highlight is always visible. If an action attempts to move the highlight outside the visible part of the view, the current item will change accordingly, so that the highlight remains visible.
 
 The middle ground is the ``ListView.ApplyRange`` value. It attempts to keep the highlight visible, but does not alter the current item to enforce this. Instead, the highlight is allowed to move out of view if necessary.
 
@@ -240,7 +240,7 @@ Animating Added and Removed Items
 
 .. issues:: ch06
 
-In some cases, the contents shown in a view changes over time. Items are added and removed as the underlaying data model is altered. In these cases, it is often a good idea to employ visual ques to give the user a sense of direction. to help the user understand what data is added or removed.
+In some cases, the contents shown in a view changes over time. Items are added and removed as the underlaying data model is altered. In these cases, it is often a good idea to employ visual ques to give the user a sense of direction and to help the user understand what data is added or removed.
 
 Conveniently enough, QML views attaches two signals, ``onAdd`` and ``onRemove``, to each item delegate. By connecting animations to these, it is easy to create the movement necessary to aid the user in identifying what is taking place.
 
@@ -376,9 +376,9 @@ Tuning Performance
 
 .. issues:: ch06
 
-The perceived performance of a view of a model depends very much on the time needed to prepare new delegates. For instance, when scrolling downwards through a ListView, delegates are added just outside the view on the bottom and are removed just as they leave sight over the top of the view. This becomes apparent if the ``clip`` property is set to ``false``. If the delegates takes too much time to initialize, it will become apparent for the user as soon as the view is scrolled too quickly.
+The perceived performance of a view of a model depends very much on the time needed to prepare new delegates. For instance, when scrolling downwards through a ListView, delegates are added just outside the view on the bottom and are removed just as they leave sight over the top of the view. This becomes apparent if the ``clip`` property is set to ``false``. If the delegates takes too much time to initialize, it will become apparent to the user as soon as the view is scrolled too quickly.
 
-To work around this issue you can tune the, the margins, in pixels, on the sides of a scrolling view. This is done using the ``cacheBuffer`` property. In the case described above, vertical scrolling, it will control how many pixels above and below the ListView that will contain prepared delegates. Combining this with asynchronously loading ``Image`` elements can, for instance, give the images time to load before they are brought into view.
+To work around this issue you can tune the margins, in pixels, on the sides of a scrolling view. This is done using the ``cacheBuffer`` property. In the case described above, vertical scrolling, it will control how many pixels above and below the ListView that will contain prepared delegates. Combining this with asynchronously loading ``Image`` elements can, for instance, give the images time to load before they are brought into view.
 
 Having more delegates sacrifices memory for a smoother experience and slightly more time to initialize each delegate. This does not solve the problem of complex delegates. Each time a delegate is instantiated, its contents is evaluated and compiled. This takes time, and if it takes too much time, it will lead to a poor scrolling experience. Having many elements in a delegate will also degrade the scrolling performance. It simply costs cycles to move many elements.
 
