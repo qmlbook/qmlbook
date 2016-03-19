@@ -6,3 +6,6 @@ ch*/assets/automatic/*
 *.epub
 *.qhc
 
+venv
+*.qch
+*.qmlproject.user
