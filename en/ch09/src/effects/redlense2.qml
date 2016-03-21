@@ -47,12 +47,6 @@ Rectangle {
             width: 80; height: width
             visible: root.step>0
             // M1>>
-            vertexShader: "
-                uniform highp mat4 qt_Matrix;
-                attribute highp vec4 qt_Vertex;
-                void main() {
-                    gl_Position = qt_Matrix * qt_Vertex;
-                }"
             fragmentShader: "
                 uniform lowp float qt_Opacity;
                 void main() {
