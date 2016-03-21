@@ -681,29 +681,11 @@ Web Sockets
 
 .. issues:: ch11
 
-WebSockets are not yet part of the Qt delivery. There are some efforts to get WebSockets into Qt/QML. From the author perspective WebSockets have a great potential to add the missing feature to networked HTTP services - notification. HTTP gives us get and post but not yet a notification. Currently the client polls the server bit for real applications the server needs to be able to notify the client also about changes and events. You can compare this to the QML API: properties, functions, signals. Also called get/set/call and notifications.
+The WebSockets module provides an impementation of the WebSockets protocol for WebSockets clients and servers. It mirrors the Qt CPP module. It allows to send string and binary messages using a full duplex communication channel. A websocket is normally established by making a HTTP connection to the server and the server then "upgrades" the connection to a WebSocket connection.
 
-As it looks like a QML WebSocket plugin will be on the way to Qt 5. You can try the new web sockets plugin from the qt playground. For a test run we implement and echo server using an existing web socket server.
+In Qt/QML you can also simple use the `WebSocket` and `WebSocketServer` objects to creates direct websocket connection. The websocket protocol uses the "ws" url schema or "wss" for a secure connection.
 
-First check you are using Qt 5.2.x by querying qmake.
-
-.. code-block:: sh
-
-    $ qmake --version
-    ... Using Qt version 5.2.0 ...
-
-
-Then you need to clone the web socket repository and build it.
-
-.. code-block:: sh
-
-    $ git clone git@gitorious.org:qtplayground/websockets.git
-    $ cd websockets
-    $ qmake
-    $ make
-    $ make install
-
-Now you should be able to to use the web socket qml module.
+You can use the web socket qml module by importing it first.
 
 ::
 
@@ -726,6 +708,10 @@ WS Server
 ---------
 
 You can easily create your own WS server using the C++ part of the Qt WebSocket or use a different WS implementation, which I find very interesting. It is interesting because it allows to connect the amazing rendering quality of QML with the great expanding web application servers. In this example we will use a Node JS based web socket server using the `ws <https://npmjs.org/package/ws>`_ module. For this you first need to install `node js <http://nodejs.org/>`_. Afterwards create a ``ws_server`` folder and install the ws package using the node package manager (npm).
+
+The code shall create a simple echo server in NodeJS to echo our messages back to our QML client.
+
+.. figure:: images/ws_client.png
 
 .. code-block:: sh
 
