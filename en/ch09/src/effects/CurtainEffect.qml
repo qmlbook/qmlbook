@@ -63,7 +63,7 @@ ShaderEffect {
     Image {
         id: effectImage
         anchors.fill: parent
-        source: "assets/fabric.jpg"
+        source: "assets/fabric.png"
         fillMode: Image.Tile
     }
 

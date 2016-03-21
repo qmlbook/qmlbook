@@ -44,17 +44,18 @@ Canvas {
         // <<M1
 
         // M2>>
-        ctx.shadowColor = "blue";
+        // setup a blue shadow
+        ctx.shadowColor = "#2ed5fa";
         ctx.shadowOffsetX = 2;
         ctx.shadowOffsetY = 2;
-        // next line crashes
-        // ctx.shadowBlur = 10;
+        ctx.shadowBlur = 10;
         // <<M2
 
         // M3>>
-        ctx.font = 'Bold 80px Ubuntu';
-        ctx.fillStyle = "#33a9ff";
-        ctx.fillText("Earth",30,180);
+        // render green text
+        ctx.font = 'bold 80px Ubuntu';
+        ctx.fillStyle = "#24d12e";
+        ctx.fillText("Canvas!",30,180);
         // <<M3
     }
 }

@@ -1,0 +1,19 @@
+import QmlProject 1.1
+
+Project {
+    mainFile: ""
+    QmlFiles {
+        directory: "."
+    }
+    JavaScriptFiles {
+        directory: "."
+    }
+    ImageFiles {
+        directory: "."
+    }
+    Files {
+        directory: "."
+        filter: "*.py"
+    }
+    importPaths: []
+}

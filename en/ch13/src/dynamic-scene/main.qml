@@ -38,8 +38,8 @@ Item {
         id: objectsModel
     }
 
-    function addPlanet() {
-        CreateObject.create("planet.qml", root, itemAdded);
+    function addUfo() {
+        CreateObject.create("ufo.qml", root, itemAdded);
     }
 
     function addRocket() {
@@ -116,11 +116,11 @@ Item {
 
         Image {
             anchors.horizontalCenter: parent.horizontalCenter
-            source: "planet.png"
+            source: "ufo.png"
 
             MouseArea {
                 anchors.fill: parent
-                onClicked: addPlanet();
+                onClicked: addUfo();
             }
         }
 
@@ -140,7 +140,7 @@ Item {
             width: 100
             height: 40
 
-            color: "green"
+            color: "#53d769"
 
             MouseArea {
                 anchors.fill: parent
@@ -157,7 +157,7 @@ Item {
             width: 100
             height: 40
 
-            color: "yellow"
+            color: "#fed958"
 
             MouseArea {
                 anchors.fill: parent

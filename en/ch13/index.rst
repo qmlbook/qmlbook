@@ -26,10 +26,10 @@ As the loader serves as a placeholder for the item being loaded, its size depend
 
 The example described below demonstrates how two separate user interface parts can be loaded into the same space using a ``Loader`` element. The idea is to have a speed dial that can be either digital or analog, as shown in the illustration below. The code surrounding the dial is unaffected by which item that is loaded for the moment.
 
-.. image:: assets/automatic/loader-analog.png
+.. figure:: assets/automatic/loader-analog.png
     :scale: 50%
 
-.. image:: assets/automatic/loader-digital.png
+.. figure:: assets/automatic/loader-digital.png
     :scale: 50%
 
 The first step in the application is to declare a ``Loader`` element. Notice that the ``source`` property is left out. This is because the ``source`` depends on which state the user interface is in.
@@ -67,7 +67,7 @@ When creating QML elements dynamically, you cannot connect to signals using the 
 
 Having set the ``target`` property of a ``Connections`` element, the signals can be connected as usual, that is, using the ``onSignalName`` approach. However, by altering the ``target`` property, different elements can be monitored at different times.
 
-.. image:: assets/automatic/connections.png
+.. figure:: assets/automatic/connections.png
     :scale: 50%
 
 In the example show above, a user interface consisting of two clickable areas is presented to the user. When either area is clicked, it is flashed using an animation. The left area is shown in the code snippet below. In the ``MouseArea``, the ``leftClickedAnimation`` is triggered, causing the area to flash.
@@ -220,7 +220,7 @@ Tracking Dynamic Objects
 
 Working with dynamic objects, it is often necessary to track the created objects. Another common feature is to be able to store and restore the state of the dynamic objects. Both these tasks are easily handled using a ``ListModel`` that we populate dynamically.
 
-In the example shown below two types of elements, rockets and planets, can be created and moved around by the user. In order to be able to manipulate the entire scene of dynamically created elements, we use a model to track the items.
+In the example shown below two types of elements, rockets and ufos, can be created and moved around by the user. In order to be able to manipulate the entire scene of dynamically created elements, we use a model to track the items.
 
 .. todo:: illustration
 
@@ -233,7 +233,7 @@ The model, a ``ListModel``, is populated as the items are created. The object re
 
 As you can tell from the example above, the ``create-object.js`` is a more generalized form of the JavaScript introduced earlier. The ``create`` method uses three arguments: a source URL, a root element and a callback to invoke when finished. The callback gets called with two arguments: a reference to the newly created object and the source URL used.
 
-This means that each time ``addPlanet`` or ``addRocket`` functions are called, the ``itemAdded`` function will be called when the new object has been created. The latter will append the object reference and source URL to the ``objectsModel`` model.
+This means that each time ``addUfo`` or ``addRocket`` functions are called, the ``itemAdded`` function will be called when the new object has been created. The latter will append the object reference and source URL to the ``objectsModel`` model.
 
 The ``objectsModel`` can be used in many ways. In the example in question, the ``clearItems`` function relies on it. This function demonstrates two things. First, how to iterate over the model and perform a task, i.e. calling the ``destroy`` function for each item to remove it. Secondly, it highlights the fact that the model is not updated as objects are destroyed. Instead of removing the model item connected to the object in question, the ``obj`` property of that model item is set to ``null``. To remedy this, the code explicitly has to clear the model item as the objects are removed.
 

@@ -41,21 +41,20 @@ Canvas {
 
         // store current context setup
         ctx.save()
-        ctx.strokeStyle = 'red'
+        ctx.strokeStyle = '#ff2a68'
         // create a triangle as clip region
         ctx.beginPath()
-        ctx.moveTo(10,10)
-        ctx.lineTo(55,10)
-        ctx.lineTo(35,55)
+        ctx.moveTo(110,10)
+        ctx.lineTo(155,10)
+        ctx.lineTo(135,55)
         ctx.closePath()
         // translate coordinate system
-        ctx.translate(100,0)
-        ctx.clip()  // create clip from triangle path
+        ctx.clip()  // create clip from the path
         // draw image with clip applied
-        ctx.drawImage('assets/ball.png', 10, 10)
+        ctx.drawImage('assets/ball.png', 100, 10)
         // draw stroke around path
         ctx.stroke()
-        // restore previous setup
+        // restore previous context
         ctx.restore()
 
     }

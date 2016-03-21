@@ -40,7 +40,7 @@ OpenGL Shaders
 
 OpenGL uses a rendering pipeline split into stages. A simplified OpenGL pipeline would contain a vertex and fragment shader.
 
-.. image:: assets/openglpipeline.png
+.. figure:: assets/openglpipeline.png
 
 The vertex shader receives vertex data and must assign it to the *gl_Position* at the end of the routine. In the next stage the vertexes are clipped, transformed and rasterized for pixel output. From there the fragments (pixels) arrive in the fragment shader and can further be manipulated and the resulting color needs to be assigned to *gl_FragColor*. The vertex shader is called for each corner point of your polygon (vertex = point in 3D) and is responsible of any 3D manipulation of these points. The fragment (fragment = pixel) shader is called for each pixel and determines the color of that pixel.
 
@@ -57,7 +57,7 @@ The default shader uses the source and renders it unmodified.
     :start-after: M1>>
     :end-before: <<M1
 
-.. image:: assets/defaultshader.png
+.. figure:: assets/defaultshader.png
 
 In the above example we have a row of 3 images. The first is the real image. The second is rendered using the default shader and the third is rendered using the default shader code for the fragment and vertex extracted from the Qt 5 source code.
 
@@ -136,7 +136,7 @@ First we setup our scene, with a grid centered in the field and our source image
     :start-after: M1>>
     :end-before: <<M1
 
-.. image:: assets/redlense1.png
+.. figure:: assets/redlense1.png
 
 .. rubric:: A red shader
 
@@ -148,7 +148,7 @@ Next we will add a shader, which displays a red rectangle. As we don't need the 
 
 In the fragment shader we simply assign a *vec4(1.0, 0.0, 0.0, 1.0)* which represents a red color with full opacity (alpha=1.0) to the *gl_FragColor*.
 
-.. image:: assets/redlense2.png
+.. figure:: assets/redlense2.png
 
 .. rubric:: A red shader with texture
 
@@ -162,7 +162,7 @@ The full shader contains now back our image source as variant property and we ha
 
 In the fragment shader we pick the texture fragment *texture2D(source, qt_TexCoord0)* and apply the red color to it.
 
-.. image:: assets/redlense3.png
+.. figure:: assets/redlense3.png
 
 .. rubric:: The red channel property
 
@@ -174,7 +174,7 @@ It's not really nice to hard code the red channel value, so we would like to con
 
 To make the lens really a lens, we change the *vec4* color to be *vec4(redChannel, 1.0, 1.0, 1.0)* so that the other colors are multiplied by 1.0 and only the red portion is multiplied by our *redChannel* variable.
 
-.. image:: assets/redlense4.png
+.. figure:: assets/redlense4.png
 
 .. rubric:: The red channel animated
 
@@ -186,7 +186,7 @@ As the *redChannel* property is just a normal property it can also be animated a
 
 Here the final result.
 
-.. image:: assets/redlense5.png
+.. figure:: assets/redlense5.png
 
 The shader effect on the 2nd row is animated from 0.0 to 1.0 with a duration of 4 seconds. So the image goes from no red information (0.0 red) over to a normal image (1.0 red).
 
@@ -213,7 +213,7 @@ For the color we use the color at a different texture coordinate::
 
 The texture coordinate is influences by our pulse x-value. The result of this is a moving wave.
 
-.. image:: assets/wave.png
+.. figure:: assets/wave.png
 
 Also if we haven't moved pixels in this fragment shader the effect would look at first like a job for a vertex shader.
 
@@ -225,7 +225,7 @@ Vertex Shader
 
 The vertex shader can be used to manipulated the vertexes provided by the shader effect. In normal cases the shader effect has 4 vertexes (top-left, top-right, bottom-left and bottom-right). Each vertex reported is from type vec4. To visualize the vertex shader we will program a genie effect. This effect is often used to let a rectangular window area vanish into one point.
 
-.. image:: assets/genieeffect.png
+.. figure:: assets/genieeffect.png
 
 .. rubric:: Setting up the scene
 
@@ -237,7 +237,7 @@ First we will setup our scene again.
 
 This provides as a scene with a dark background and a shader effect using an image as the source texture. The original image is not visible on the image produced by our genie effect. Additional we added a dark rectangle on the same geometry as the shader effect so we can better detect where we need to click to revert the effect.
 
-.. image:: assets/geniescene.png
+.. figure:: assets/geniescene.png
 
 The effect is triggered by clicking on the image, this is defined by the mouse area covering the effect. In the *onClicked* handler we toggle the custom boolean property *minimized*. We will use this property later to toggle the effect.
 
@@ -263,7 +263,7 @@ The vertex shader is called for each vertex so four times, in our case. The defa
 
 The *mix(...)* function provides a linear interpolation between the first 2 parameters on the point (0.0-1.0) provided by the 3rd parameter. So in our case we interpolate for y between the current y position and the hight based on the current minimize value, similar for x. Bear in mind the minimize value is animated by our sequential animation and travels from 0.0 to 1.0 (or vice versa).
 
-.. image:: assets/genieminimize.png
+.. figure:: assets/genieminimize.png
 
 
 The resulting effect is not really the genie effect but is already a great step towards it.
@@ -279,7 +279,7 @@ So minimized the x and y components of our vertexes. Now we would like to slight
 
 This results into an x-position tending towards the width when the y-position is larger. In other words the upper 2 vertexes are not affect ed at all as they have an y-position of 0 and the lower two vertexes x-positions both bend towards the width, so they bend towards the same x-position.
 
-.. image:: assets/geniebending.png
+.. figure:: assets/geniebending.png
 
 
 .. literalinclude:: src/effects/genie2.qml
@@ -303,7 +303,7 @@ Additional to make the bending a smooth curve the y-effect on the x-position is 
 
 The curve starts smooth at the 0.0 value, grows then and stops smoothly towards the 1.0 value. Here is a plot of the function in the specified range. For us only the range from 0..1 is from interest.
 
-.. image:: assets/curve.png
+.. figure:: assets/curve.png
 
 The most visual change is by increasing our amount of vertex points. The vertex points used can be increased by using a mesh::
 
@@ -311,7 +311,7 @@ The most visual change is by increasing our amount of vertex points. The vertex 
 
 The shader effect now has an equality distributed grid of 16x16 vertexes instead of the 2x2 vertexes used before. This makes the interpolation between the vertexes look much smoother.
 
-.. image:: assets/geniesmoothbending.png
+.. figure:: assets/geniesmoothbending.png
 
 You can see also the influence of the curve being used, as the bending smoothes at the end nicely. This is where the bending has the strongest effect.
 
@@ -334,7 +334,7 @@ As a final enhancement we want to be able to switch sides. The side is towards w
     }
 
 
-.. image:: assets/geniehalfside.png
+.. figure:: assets/geniehalfside.png
 
 .. rubric:: Packaging
 
@@ -361,7 +361,7 @@ Curtain Effect
 
 In the last example for custom shader effects I would like to bring you the curtain effect. This effect was published first in May 2011 as part of `Qt labs for shader effects <http://labs.qt.nokia.com/2011/05/03/qml-shadereffectitem-on-qgraphicsview/>`_.
 
-.. image:: assets/curtain.png
+.. figure:: assets/curtain.png
 
 At that time I really loved these effects and the curtain effect was my favorite out of them. I just love how the curtain opens and hide the background object.
 
@@ -369,7 +369,7 @@ I took the code and adapted it towards Qt 5, which was straightforward. Also O d
 
 Just a little bot for the background, the curtain is actually an image called *fabric.jpg* and it is the source for a shader effect. The effect uses the vertex shader to swing the curtain and uses the fragment shader to provide some shades. Here is a simple diagram to make you hopefully better understand the code.
 
-.. image:: assets/curtain_diagram.png
+.. figure:: assets/curtain_diagram.png
 
 The waved shades of the curtain are computed through a sin curve with 7 up/downs (7*PI=21.99...) on the width of the curtain. The other important part is the swing. The *topWidth* of the curtain is animated when the curtain is opened or closed. The *bottomWidth* follows the *topWidth* with a *SpringAnimation*. By this we create the effect of the swinging bottom part of the curtain. The calculated *swing* provides the strength of this swing interpolated over the y-component of the vertexes.
 
@@ -399,7 +399,7 @@ The graphics effects library comes with a so called manual testbed which is a gr
 
 The testbed is located under ``$QTDIR/qtgraphicaleffects/tests/manual/testbed``.
 
-.. image:: assets/graphicseffectstestbed.png
+.. figure:: assets/graphicseffectstestbed.png
 
 The effects library contains ca 20 effects. A list of the effect and a short description can be found below.
 
@@ -418,7 +418,7 @@ Here is a example using the *FastBlur* effect from the *Blur* category:
 
 The image to the left is the original image. Clicking the image on the right will toggle blurred property and animated the blur radius from 0 to 32 during 1 second. The image on the left show the blurred image.
 
-.. image:: assets/fastblur.png
+.. figure:: assets/fastblur.png
 
 
 

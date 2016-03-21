@@ -86,7 +86,7 @@ If everything goes well you should see now something like this:
 
 .. todo:: "If everything goes well"
 
-.. image:: assets/example.png
+.. figure:: assets/example.png
     :scale: 50%
 
 Qt 5 seems to be working and we are ready to continue.

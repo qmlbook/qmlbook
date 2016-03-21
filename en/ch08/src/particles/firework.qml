@@ -65,7 +65,7 @@ Rectangle {
         maximumEmitted: 8
         lifeSpan: 4800
         lifeSpanVariation: 400
-        size: 32
+        size: 128
         velocity: AngleDirection { angle: 270; magnitude: 150; magnitudeVariation: 10 }
         acceleration: AngleDirection { angle: 90; magnitude: 50 }
         Tracer { color: 'red'; visible: root.tracer }

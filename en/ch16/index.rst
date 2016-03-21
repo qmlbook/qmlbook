@@ -293,7 +293,7 @@ Using FileIO
 
 Now we can use our newly created file to access some nice data. For this example we want to read some city data in a JSON format and display it in a table. We will use two projects, one the extension plugin (called ``fileio``) which provides us a way to read and write text from a file and the other one, which displays the data in a table (``CityUI``) by using the file io for reading and writing of files. The data used in this example is in the ``cities.json`` file.
 
-.. image:: images/cityui_mock.png
+.. figure:: images/cityui_mock.png
 
 JSON is just text, which is formatted in such a way that it can be converted into a valid JS object/array and back to text. We use our ``FileIO`` to read the JSON formatted data and convert it into a JS object using ``JSON.parse()``. The data is later used as a model to the table view. This is roughly the content of our read document function. For saving we convert the data back into a text format and use the write function for saving.
 
@@ -415,7 +415,7 @@ The content of the city data shall be displayed in a table. For this we use the 
 
 Now the application should show you a menubar with a file menu and an empty table with 4 table headers. The next step will be to populate the table with useful data using our *FileIO* extension.
 
-.. image:: images/cityui_empty.png
+.. figure:: images/cityui_empty.png
 
 The ``cities.json`` document is an array of city entries. Here is an example.
 
@@ -500,7 +500,7 @@ For saving the document, we hook up the save action to the ``saveDocument()`` fu
 
 This is basically the application with reading, writing and displaying a JSON document. Think about all the time spend by writing XML readers and writers. With JSON all you need is a way to read and write a text file or send receive a text buffer.
 
-.. image:: images/cityui_table.png
+.. figure:: images/cityui_table.png
 
 
 Finishing Touch
@@ -546,7 +546,7 @@ For the data removal operation we get hold on the view model and then remove one
 
 A JS array is unfortunately not so smart as a Qt model like the ``QAbstractItemModel``, which will notify the view about row changes or data changes. The view will not show any updated data by now as it is never notified about any changes. Only when we set the data back to the view, the view recognizes there is new data and refreshes the view content. Setting the model again using ``view.model = data`` is a way to let the view know there was a data change.
 
-.. image:: images/cityui_populated.png
+.. figure:: images/cityui_populated.png
 
 Summary
 =======

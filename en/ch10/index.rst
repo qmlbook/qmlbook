@@ -111,7 +111,7 @@ One of the key features of the ``Camera`` element is that is can be used to take
 
 The user interface is shown below. It consists of three major parts. In the background, you will find the viewfinder, to the right, a column of buttons and at the bottom, a list of images taken. The idea is to take a series of photos, then click the Play Sequence button. This will play the images back, creating a simple stop-motion film.
 
-.. image:: assets/camera-ui.png
+.. figure:: assets/camera-ui.png
     :scale: 50%
 
 The viewfinder part of the camera is simply a ``Camera`` element used as ``source`` in a ``VideoOutput``. This will show the user a live videostream from the camera.

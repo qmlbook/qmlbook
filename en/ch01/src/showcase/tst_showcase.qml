@@ -28,20 +28,45 @@
 import QtQuick 2.5
 import QtTest 1.1
 
-Loader {
-	id: root
-	width: 800; height: 600
-	// source: 'showcase.qml'
+Showcase {
+    id: root
 
-	// TestCase {
-	// 	name: 'showcase'
-	// 	when: windowShown
 
-	// 	function test_rotate_wheel() {
-	// 		mouseClick(root, 400, 400, Qt.LeftButton,Qt.NoModifier,250)
-	// 		mouseClick(root, 400, 400, Qt.LeftButton,Qt.NoModifier,250)
-	// 		mouseClick(root, 400, 400, Qt.LeftButton,Qt.NoModifier,250)
-	// 	}
-	// }
+    TestCase {
+        id: testCase
+        name: 'showcase'
+        when: windowShown
 
+        property int shots: 0;
+
+
+        function test_shoot() {
+            var shoot = false;
+            root.grabToImage(function(result) {
+                result.saveToFile("../../assets/showcase.png");
+                shots++;
+            });
+            mouseClick(root);
+            mouseClick(root);
+            mouseClick(root);
+            mouseClick(root);
+            wait(100);
+            root.grabToImage(function(result) {
+                result.saveToFile("../../assets/showcase2.png");
+                shots++;
+            });
+            wait(100);
+            root.grabToImage(function(result) {
+                result.saveToFile("../../assets/showcase3.png");
+                shots++;
+            });
+            wait(100);
+            root.grabToImage(function(result) {
+                result.saveToFile("../../assets/showcase4.png");
+                shots++;
+            });
+            tryCompare(testCase, "shots", 4);
+        }
+    }
 }
+

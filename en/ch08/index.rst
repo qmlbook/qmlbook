@@ -29,7 +29,7 @@ An emitter provides also the direction for particle using a vector space. A part
 
 Particles in a system can share timed transitions using the ``ParticleGroup`` element. By default every particle is on the empty ('') group.
 
-.. image:: assets/particlesystem.png
+.. figure:: assets/particlesystem.png
 
 * ``ParticleSystem`` - manages shared time-line between emitters
 * ``Emitter`` - emits logical particles into the system
@@ -55,7 +55,7 @@ Let us have a look at a very simple simulation to get started. Qt Quick makes it
 
 The outcome of the example will look like this:
 
-.. image:: assets/simpleparticles.png
+.. figure:: assets/simpleparticles.png
 
 We start with a a 80x80 pixel dark rectangle as our root element and background. Therein we declare a ``ParticleSystem``. This is always the first step as the system binds all other elements together. Typically the next element is the ``Emitter``, which defines the emitting area based on it's bounding box and basic parameters for the to be emitted particles. The emitter is bound to the system using the ``system`` property.
 
@@ -78,7 +78,7 @@ Changing these properties can influence the result in a drastically way
 
 Besides increasing the emit rate to 40 and the life span to 2 seconds the size now starts at 64 pixel and decreases 32 pixel at the end of a particle life span.
 
-.. image:: assets/simpleparticles2.png
+.. figure:: assets/simpleparticles2.png
 
 Increasing the ``endSize`` even more would lead to a more or less white background. Please note also when the particles are only emitted in the area defined by the emitter the rendering is not constrained to it.
 
@@ -114,7 +114,7 @@ Last but not least, we change the entry effect for the particle. This is the eff
 
 So now we have rotating golden stars appearing all over the place.
 
-.. image:: assets/particleparameters.png
+.. figure:: assets/particleparameters.png
 
 Here is the code we changed for the image particle in one block.
 
@@ -135,7 +135,7 @@ There are different vector spaces available to define the velocity or accelerati
 * ``PointDirection`` - a direction that varies in x and y components
 * ``TargetDirection`` - a direction towards the target point
 
-.. image:: assets/particle_directions.png
+.. figure:: assets/particle_directions.png
 
 Let's try to move the particles over from the left to the right side of our scene by using the velocity directions.
 
@@ -159,7 +159,7 @@ Now we have set our direction, the next thing is to specify the velocity of the 
         magnitudeVariation: 50
     }
 
-.. image:: assets/angledirection.png
+.. figure:: assets/angledirection.png
 
 Here is the full source code, with an average life time set to 6.4 seconds. We set the emitter width and height to 1px. This means all particles are emitted at the same location and from thereon travel based on our given trajectory.
 
@@ -183,7 +183,7 @@ The acceleration direction shall be 90 degree (down direction) and we choose one
 
 The result is an arc going from the center left to the bottom right.
 
-.. image:: assets/angledirection2.png
+.. figure:: assets/angledirection2.png
 
 The values are discovered by try-and-error.
 
@@ -213,7 +213,7 @@ To achieve a traveling velocity of 100 px per seconds we set our x component to 
 
 The result should be particles traveling in a 15 degree cone from right to left.
 
-.. image:: assets/pointdirection.png
+.. figure:: assets/pointdirection.png
 
 Now coming to our last contender, the ``TargetDirection``. The target direction allows us to specify a target point as an x and y coordinate relative to the emitter or an item. When an item is specified the center of the item will become the target point. You can achieve the 15 degree cone by specifying a target variation of 1/6 th of the x target::
 
@@ -230,7 +230,7 @@ I spare you the image as it looks the same as the previous one, instead I have a
 
 In the following image the red and the green circle specify each a target item for the target direction of the velocity respective the acceleration property. Each target direction has the same parameters. Here the question: Who is responsible for velocity and who is for acceleration?
 
-.. image:: assets/directionquest.png
+.. figure:: assets/directionquest.png
 
 
 Particle Painters
@@ -257,7 +257,7 @@ Our delegate in this case is a random image (using *Math.random()*), visualized 
 
 We emit 4 images per second with a life span of 4 seconds each. The particles fade automatically in and out.
 
-.. image:: assets/itemparticle.png
+.. figure:: assets/itemparticle.png
 
 For more dynamic cases it is also possible to create an item on your own and let the particle take control of it with ``take(item, priority)``. By this the particle simulation takes control of your particle and handles the item like an ordinary particle. You can get back control of the item by using ``give(item)``. You can influence item particles even more by halt their life progression using ``freeze(item)`` and resume their life using ``unfreeze(item)``.
 
@@ -292,7 +292,7 @@ Allows particle to age faster. the *lifeLeft* property specified how much life a
 In the example we shorten the life of the upper particles once, when they reach the age affector to 1200 msecs. As we have set the *advancePosition* to true, we see the particle appearing again on a position when the particle has 1200 msecs left to life.
 
 
-.. image:: assets/age.png
+.. figure:: assets/age.png
 
 
 .. rubric:: Attractor
@@ -305,7 +305,7 @@ The attractor attracts particles towards a specific point. The point is specifie
 
 It's easy to see that the upper half of the particles are affected by the attracted to the top. The attraction point is set to top-left (0/0 point) of the attractor with a force of 1.0.
 
-.. image:: assets/attractor.png
+.. figure:: assets/attractor.png
 
 .. rubric:: Friction
 
@@ -317,7 +317,7 @@ The friction affector slows down particles by a factor until a certain threshold
 
 In the upper friction area, the particles are slowed down by a factor of 0.8 until the particle reach 25 pixels per seconds velocity. The threshold act's like a filter. Particles traveling above the threshold velocity are slowed down by the given factor.
 
-.. image:: assets/friction.png
+.. figure:: assets/friction.png
 
 .. rubric:: Gravity
 
@@ -329,7 +329,7 @@ The gravity affector applies an acceleration In the example we stream the partic
 
 Particles on the left side try to climb up, but the steady applied acceleration towards the bottom drags them into the direction of the gravity.
 
-.. image:: assets/gravity.png
+.. figure:: assets/gravity.png
 
 .. rubric:: Turbulence
 
@@ -341,7 +341,7 @@ The turbulence affector, applies a *chaos* map of force vectors to the particles
 
 In the upper area of the example, particles are influenced by the turbulence. Their movement is more erratic. The amount of erratic deviation from the original path is defined by the strength.
 
-.. image:: assets/turbulence.png
+.. figure:: assets/turbulence.png
 
 .. rubric:: Wander
 
@@ -354,7 +354,7 @@ The wander manipulates the trajectory. With the property *affectedParameter* can
 
 In the top wander affector particles are shuffled around by random trajectory changes. In this case the position is changed 200 times per second in the y-direction.
 
-.. image:: assets/wander.png
+.. figure:: assets/wander.png
 
 Particle Groups
 ---------------
@@ -363,7 +363,7 @@ Particle Groups
 
 At the beginning of this chapter we stated particles are in groups, which is by default the empty group (''). Using the ``GroupGoal`` affector is it possible to let the particle change groups. To visualize this we would like to create a small firework, where rockets start into space and explode in the air into a spectacular firework.
 
-.. image:: assets/firework_teaser.png
+.. figure:: assets/firework_teaser.png
 
 The example is divided into 2 parts. The 1st part called "Launch Time" is concerned to setup the scene and introduce particle groups and the 2nd part called "Let there be fireworks" focuses on the group changes.
 
@@ -477,7 +477,7 @@ Also the turbulence need to declare which groups it shall affect. The turbulence
 
 When you start the example now you will see the rockets are climbing up and then will be slowed down by the friction and fall back to ground by the still applied downwards acceleration. The next thing would be to start the firework.
 
-.. image:: assets/firework_rockets.png
+.. figure:: assets/firework_rockets.png
 
 .. note:: The image shows the scene with the tracers enabled to show the different areas. Rocket particles are emitted in the red area and then affected by the turbulence in the blue area. Finally they are slowed down by the friction affector in the green area and start falling again, because of the steady applied downwards acceleration.
 
@@ -555,7 +555,7 @@ Otherwise the setup is similar to the other explosion trail emitter. That's it.
 
 Here is the final result.
 
-.. image:: assets/firework_final.png
+.. figure:: assets/firework_final.png
 
 
 Here is the full source code of the rocket firework.

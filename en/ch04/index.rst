@@ -26,11 +26,11 @@ QML is a declarative language used to describe the user interface of your applic
 
 In its simplest way QML is a hierarchy of elements. Child elements inherit the coordinate system from the parent. An ``x,y`` coordinate is always relative to the parent.
 
-.. image:: assets/scene.png
+.. figure:: assets/scene.png
 
 Let's start with a simple example of a QML file to explain the different syntax.
 
-.. literalinclude:: src/concepts/rectangle.qml
+.. literalinclude:: src/concepts/RectangleExample.qml
     :start-after: M1>>
     :end-before: <<M1
 
@@ -50,11 +50,11 @@ Let's start with a simple example of a QML file to explain the different syntax.
 
     You can run the example using the Qt Quick runtime from the command line from your OS like this::
 
-        $ $QTDIR/bin/qmlscene rectangle.qml
+        $ $QTDIR/bin/qmlscene RectangleExample.qml
 
     Where you need to replace the *$QTDIR* to the path to your Qt installation. The *qmlscene* executable initializes the Qt Quick runtime and interprets the provided QML file.
 
-    In Qt Creator you can open the corresponding project file and run the document ``rectangle.qml``.
+    In Qt Creator you can open the corresponding project file and run the document ``RectangleExample.qml``.
 
 Properties
 ----------
@@ -63,7 +63,7 @@ Properties
 
 Elements are declared by using their element name but are defined by using their properties or by creating custom properties. A property is a simple key-value pair, e.g. ``width : 100``, ``text: 'Greetings'``, ``color: '#FF0000'``. A property has a well-defined type and can have an initial value.
 
-.. literalinclude:: src/concepts/properties.qml
+.. literalinclude:: src/concepts/PropertiesExample.qml
     :start-after: M1>>
     :end-before: <<M1
 
@@ -96,9 +96,9 @@ Scripting
 
 .. issues:: ch04
 
-QML and JavaScript (also known as EcmaScript) are best friends. In the *JavaScript* chapter we will go into more detail on this symbiosis. Currently we just want to make you aware about this relationship.
+QML and JavaScript (also known as ECMAScript) are best friends. In the *JavaScript* chapter we will go into more detail on this symbiosis. Currently we just want to make you aware about this relationship.
 
-.. literalinclude:: src/concepts/scripting.qml
+.. literalinclude:: src/concepts/ScriptingExample.qml
     :start-after: M1>>
     :end-before: <<M1
 
@@ -171,11 +171,11 @@ Rectangle Element
 
 The ``Rectangle`` extends ``Item`` and adds a fill color to it. Additionally it supports borders defined by ``border.color`` and ``border.width``. To create rounded rectangles you can use the ``radius`` property.
 
-.. literalinclude:: src/concepts/rectangle2.qml
+.. literalinclude:: src/concepts/RectanglesExample2.qml
     :start-after: M1>>
     :end-before: <<M1
 
-.. image:: assets/rectangle2.png
+.. figure:: assets/rectangle2.png
 
 .. note::
 
@@ -184,11 +184,11 @@ The ``Rectangle`` extends ``Item`` and adds a fill color to it. Additionally it 
 Besides a fill color and a border the rectangle also supports custom gradients.
 
 
-.. literalinclude:: src/concepts/rectangle3.qml
+.. literalinclude:: src/concepts/RectanglesExample3.qml
     :start-after: M1>>
     :end-before: <<M1
 
-.. image:: assets/rectangle3.png
+.. figure:: assets/rectangle3.png
 
 A gradient is defined by a series of gradient stops. Each stop has a position and a color. The position marks the position on the y-axis (0 = top, 1 = bottom). The color of the ``GradientStop`` marks the color at that position.
 
@@ -207,13 +207,13 @@ Text Element
 
 To display text, you can use the ``Text`` element. Its most notable property is the ``text`` property of type ``string``. The element calculates its initial width and height based on the given text and the font used. The font can be influenced using the font property group (e.g. ``font.family``, ``font.pixelSize``, ...). To change the color of the text just use the color property.
 
-.. literalinclude:: src/concepts/text.qml
+.. literalinclude:: src/concepts/TextExample.qml
     :start-after: M1>>
     :end-before: <<M1
 
 |
 
-.. image:: assets/text.png
+.. figure:: assets/text.png
 
 Text can be aligned to each side and the center using the ``horizontalAlignment`` and ``verticalAlignment`` properties. To further enhance the text rendering you can use the ``style`` and ``styleColor`` property , which allows you render the text in outline, raised and sunken mode. For longer text you often want to define a *break* position like *A very ... long text*, this can be achieved using the ``elide`` property. The ``elide`` property allows you to set the elide position to the left, right or middle of your text. In case you don't want the '...' of the elide mode to appear but still want to see the full text you can also wrap the text using the ``wrapMode`` property (works only when width is explicitly set)::
 
@@ -246,13 +246,13 @@ Image Element
 
 .. issues:: ch04
 
-An ``Image`` element is able to display images in various formats (e.g. PNG, JPG, GIF, BMP). *For the full list of supported image formats, please consult the Qt documentation*. Besides the obvious ``source`` property to provide the image URL it contains a ``fillMode`` which controls the resizing behavior.
+An ``Image`` element is able to display images in various formats (e.g. PNG, JPG, GIF, BMP, WEBP). *For the full list of supported image formats, please consult the Qt documentation*. Besides the obvious ``source`` property to provide the image URL it contains a ``fillMode`` which controls the resizing behavior.
 
-.. literalinclude:: src/concepts/image.qml
+.. literalinclude:: src/concepts/ImageExample.qml
     :start-after: M1>>
     :end-before: <<M1
 
-.. image:: assets/image.png
+.. figure:: assets/image.png
 
 .. note::
 
@@ -273,15 +273,15 @@ MouseArea Element
 
 To interact with these elements you often will use a ``MouseArea``. It's a rectangular invisible item in where you can capture mouse events. The mouse area is often used together with a visible item to execute commands when the user interacts with the visual part.
 
-.. literalinclude:: src/concepts/mousearea.qml
+.. literalinclude:: src/concepts/MouseAreaExample.qml
     :start-after: M1>>
     :end-before: <<M1
 
 .. list-table::
     :widths: 50 50
 
-    *   - .. image:: assets/mousearea1.png
-        - .. image:: assets/mousearea2.png
+    *   - .. figure:: assets/mousearea1.png
+        - .. figure:: assets/mousearea2.png
 
 .. note::
 
@@ -299,7 +299,7 @@ A component is a reusable element and QML provides different ways to create comp
 For example, let's create a rectangle containing a text componenet and a mouse area. This resembles a simple button and doesn't need to be more complicated for our purposes.
 
 
-.. literalinclude:: src/elements/inlined_component.qml
+.. literalinclude:: src/elements/InlinedComponentsExample.qml
     :start-after: M1>>
     :end-before: <<M1
 
@@ -308,8 +308,8 @@ The UI will look similar to this. On the left the UI in the initial state, on th
 .. list-table::
     :widths: 50 50
 
-    *   - .. image:: assets/button_waiting.png
-        - .. image:: assets/button_clicked.png
+    *   - .. figure:: assets/button_waiting.png
+        - .. figure:: assets/button_clicked.png
 
 
 Our task is now to extract the button UI in a reusable component. For this we shortly think about a possible API for our button. You can do this by imagining how someone else should use your button. Here's what I came up with:
@@ -334,7 +334,7 @@ We have exported the text and clicked signal on the root level. Typically we nam
 
 To use our new ``Button`` element we can simply declare it in our file. So the earlier example will become a little bit simplified.
 
-.. literalinclude:: src/elements/reusable_component.qml
+.. literalinclude:: src/elements/ReusableComponentExample.qml
     :start-after: M1>>
     :end-before: <<M1
 
@@ -385,34 +385,34 @@ Before we show off the example I would like to introduce a little helper: The ``
     :end-before: <<M1
 
 
-.. image:: assets/rockets.png
+.. figure:: assets/objects.png
 
-We use our clickable image to present three rockets. Each rocket performs a simple transformation when clicked. Clicking the background will reset the scene.
+We use our clickable image to present three objects (box, circle, triangle). Each object performs a simple transformation when clicked. Clicking the background will reset the scene.
 
 
-.. literalinclude:: src/transformation/transformation.qml
+.. literalinclude:: src/transformation/TransformationExample.qml
     :start-after: M1>>
     :end-before: <<M1
 
-.. image:: assets/rockets_transformed.png
+.. figure:: assets/objects_transformed.png
 
-Rocket-1 increments the x-position by 5 px on each click and rocket-2 will continue to rotate on each click. Rocket-3 will rotate and scale the image down on each click. For the scaling and rotation operation we set ``smooth: true`` to enable anti-aliasing, which is switched off (same as the clipping property ``clip``) for performance reasons.  In your own work, when you see some rasterized edges in your graphics, then you should probably switch smooth on.
+The circle increments the x-position on each click and the box will rotate on each click. The triangle will rotate and scale the image down on each click, to demonstrate a combined transformation. For the scaling and rotation operation we set ``antialiasing: true`` to enable anti-aliasing, which is switched off (same as the clipping property ``clip``) for performance reasons.  In your own work, when you see some rasterized edges in your graphics, then you should probably switch smooth on.
 
 
 .. note::
 
-    To achieve better visual quality when scaling images it is recommended to scale images down instead of up. Scaling an image up with a larger scaling factor will result into scaling artifacts (blurred image). When scaling an image you should consider using ``smooth : true`` to enable the usage of a higher quality filter.
+    To achieve better visual quality when scaling images it is recommended to scale images down instead of up. Scaling an image up with a larger scaling factor will result into scaling artifacts (blurred image). When scaling an image you should consider using ``antialiasing : true`` to enable the usage of a higher quality filter.
 
 
-The background clicker ``MouseArea`` covers the whole background and resets the rocket values.
+The background ``MouseArea`` covers the whole background and resets the object values.
 
 .. note::
 
-    Elements which appear earlier in the code have a lower stacking order (called z-order). If you click long enough on ``rocket1`` you will see it moves below ``rocket2``. The z-order can also be manipulated by the ``z-property`` of an Item.
+    Elements which appear earlier in the code have a lower stacking order (called z-order). If you click long enough on ``circle`` you will see it moves below ``box``. The z-order can also be manipulated by the ``z-property`` of an Item.
 
-    .. image:: assets/order_matters.png
+    .. figure:: assets/objects_overlap.png
 
-    This is because ``rocket2`` appears later in the code. The same applies also to mouse areas. A mouse area later in the code will overlap (and thus grab the mouse events) of a mouse area earlier in the code.
+    This is because ``box`` appears later in the code. The same applies also to mouse areas. A mouse area later in the code will overlap (and thus grab the mouse events) of a mouse area earlier in the code.
 
     Please remember: *The order of elements in the document matters*.
 
@@ -440,41 +440,41 @@ There are a number of QML elements used to position items. These are called posi
 
 The ``Column`` element arranges child items into a column by stacking them on top of each other. The ``spacing`` property can be used to distance each of the child elements from each other.
 
-.. image:: assets/column.png
+.. figure:: assets/column.png
 
-.. literalinclude:: src/positioners/column.qml
+.. literalinclude:: src/positioners/ColumnExample.qml
     :start-after: M1>>
     :end-before: <<M1
 
 The ``Row`` element places its child items next to each other, either from the left to the right, or from the right to the left, depending on the ``layoutDirection`` property. Again, ``spacing`` is used to separate child items.
 
-.. image:: assets/row.png
+.. figure:: assets/row.png
 
-.. literalinclude:: src/positioners/row.qml
+.. literalinclude:: src/positioners/RowExample.qml
     :start-after: M1>>
     :end-before: <<M1
 
 The ``Grid`` element arranges its children in a grid, by setting the ``rows`` and ``columns`` properties, the number or rows or columns can be constrained. By not setting either of them, the other is calculated from the number of child items. For instance, setting rows to 3 and adding 6 child items will result in 2 columns. The properties ``flow`` and ``layoutDirection`` are used to control the order in which the items are added to the grid, while ``spacing`` controls the amount of space separating the child items.
 
-.. image:: assets/grid.png
+.. figure:: assets/grid.png
 
-.. literalinclude:: src/positioners/grid.qml
+.. literalinclude:: src/positioners/GridExample.qml
     :start-after: M1>>
     :end-before: <<M1
 
 The final positioner is ``Flow``. It adds its child items in a flow. The direction of the flow is controlled using ``flow`` and ``layoutDirection``. It can run sideways or from the top to the bottom. It can also run from left to right or in the opposite direction. As the items are added in the flow, they are wrapped to form new rows or columns as needed. In order for a flow to work, it must have a width or a height. This can be set either directly, or though anchor layouts.
 
-.. image:: assets/flow.png
+.. figure:: assets/flow.png
 
-.. literalinclude:: src/positioners/flow.qml
+.. literalinclude:: src/positioners/FlowExample.qml
     :start-after: M1>>
     :end-before: <<M1
 
 An element often used with positioners is the ``Repeater``. It works like a for-loop and iterates over a model. In the simplest case a model is just a value providing the amount of loops.
 
-.. image:: assets/repeater.png
+.. figure:: assets/repeater.png
 
-.. literalinclude:: src/positioners/repeater.qml
+.. literalinclude:: src/positioners/RepeaterExample.qml
     :start-after: M1>>
     :end-before: <<M1
 
@@ -497,48 +497,48 @@ Layout Items
 
 QML provides a flexible way to layout items using anchors. The concept of anchoring is part of the ``Item`` fundamental properties and available to all visual QML elements. An anchors acts like a contract and is stronger than competing geometry changes. Anchors are expressions of relativeness, you always need a related element to anchor with.
 
-.. image:: assets/anchors.png
+.. figure:: assets/anchors.png
 
 An element has 6 major anchor lines (top, bottom, left, right, horizontalCenter, verticalCenter). Additional there is the baseline anchor for text in Text elements. Each anchor line comes with an offset. In the case of top, bottom, left and right they are called margins. For horizontalCenter, verticalCenter and baseline they are called offsets.
 
-.. image:: assets/anchorgrid.png
+.. figure:: assets/anchorgrid.png
 
 #. An element fills a parent element
 
-    .. literalinclude:: src/anchors/anchors.qml
+    .. literalinclude:: src/anchors/AnchorsExample.qml
         :start-after: M1>>
         :end-before: <<M1
 
 
 #. An element is left aligned to the parent
 
-    .. literalinclude:: src/anchors/anchors.qml
+    .. literalinclude:: src/anchors/AnchorsExample.qml
         :start-after: M2>>
         :end-before: <<M2
 
 #. An element left side is aligned to the parents right side
 
-    .. literalinclude:: src/anchors/anchors.qml
+    .. literalinclude:: src/anchors/AnchorsExample.qml
         :start-after: M3>>
         :end-before: <<M3
 
 #. Center aligned elements. ``Blue1`` is horizontal centered  on the parent. ``Blue2`` is also horizontal centered but on ``Blue1`` and it's top is aligned to the ``Blue1`` bottom line.
 
-    .. literalinclude:: src/anchors/anchors.qml
+    .. literalinclude:: src/anchors/AnchorsExample.qml
         :start-after: M4>>
         :end-before: <<M4
 
 
 #. An element is centered on a parent element
 
-    .. literalinclude:: src/anchors/anchors.qml
+    .. literalinclude:: src/anchors/AnchorsExample.qml
         :start-after: M5>>
         :end-before: <<M5
 
 
 #. An element is centered with an left-offset on a parent element using horizontal and vertical center lines
 
-    .. literalinclude:: src/anchors/anchors.qml
+    .. literalinclude:: src/anchors/AnchorsExample.qml
         :start-after: M6>>
         :end-before: <<M6
 
@@ -561,15 +561,15 @@ TextInput
 
 The ``TextInput`` allows the user to enter a line of text. The element supports input constraints such as ``validator``, ``inputMask``, and ``echoMode``.
 
-.. literalinclude:: src/input/textinput.qml
+.. literalinclude:: src/input/TextInputExample.qml
     :start-after: M1>>
     :end-before: <<M1
 
-.. image:: assets/textinput.png
+.. figure:: assets/textinput.png
 
 The user can click inside a ``TextInput`` to change the focus. To support switching the focus by keyboard, we can use the ``KeyNavigation`` attached property.
 
-.. literalinclude:: src/input/textinput2.qml
+.. literalinclude:: src/input/TextInputExample2.qml
     :start-after: M1>>
     :end-before: <<M1
 
@@ -604,7 +604,7 @@ We rewrite our ``KeyNavigation`` example with the new ``TLineEditV1`` component.
         }
     }
 
-.. image:: assets/textinput3.png
+.. figure:: assets/textinput3.png
 
 And try the tab key for navigation. You will experience the focus does not change to ``input2``. The simple use of ``focus:true`` is not sufficient. The problem arises, that the focus was transferred to the ``input2`` element the top-level item inside the TlineEditV1 (our Rectangle) received focus and did not forward the focus to the TextInput. To prevent this QML offers the FocusScope.
 
@@ -651,11 +651,11 @@ The ``TextEdit`` is very similar to ``TextInput`` and support a multi-line text 
 
 You can use it like the ``TLineEdit`` component
 
-.. literalinclude:: src/input/textedit.qml
+.. literalinclude:: src/input/TextEditExample.qml
     :start-after: M1>>
     :end-before: <<M1
 
-.. image:: assets/textedit.png
+.. figure:: assets/textedit.png
 
 Keys Element
 ------------
@@ -664,11 +664,11 @@ Keys Element
 
 The attached property ``Keys`` allows executing code based on certain key presses. For example to move a square around and scale we can hook into the up, down, left and right keys to translate the element and the plus, minus key to scale the element.
 
-.. literalinclude:: src/input/keys.qml
+.. literalinclude:: src/input/KeysExample.qml
     :start-after: M1>>
     :end-before: <<M1
 
-.. image:: assets/keys.png
+.. figure:: assets/keys.png
 
 
 Advanced Techniques

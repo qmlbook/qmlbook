@@ -145,7 +145,7 @@ if on_qthelp:
   html_theme_options = {}
 else:
   html_theme_options = {
-    'bootswatch_theme': "simplex",
+    'bootswatch_theme': "yeti",
     'navbar_links': [
     ],
     'navbar_title': "QmlBook",

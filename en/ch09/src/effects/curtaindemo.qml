@@ -28,14 +28,22 @@
 // M1>>
 import QtQuick 2.5
 
-Rectangle {
+Item {
     id: root
-    width: 480; height: 240
-    color: '#1e1e1e'
+    width: background.width; height: background.height
+
 
     Image {
+        id: background
         anchors.centerIn: parent
-        source: 'assets/wiesn.jpg'
+        source: 'assets/background.png'
+    }
+
+    Text {
+        anchors.centerIn: parent
+        font.pixelSize: 48
+        color: '#efefef'
+        text: 'Qt5 Cadaques'
     }
 
     CurtainEffect {

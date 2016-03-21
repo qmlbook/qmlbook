@@ -33,6 +33,19 @@ Rectangle {
     width: 400; height: 400
     color: "#333333"
 
+    property var images: [
+        "box_blue.png",
+        "box_red.png",
+        "box_green.png",
+        "circle_blue.png",
+        "circle_red.png",
+        "circle_green.png",
+        "triangle_blue.png",
+        "triangle_red.png",
+        "triangle_green.png",
+
+    ]
+
     // M1>>
     ParticleSystem {
         id: particleSystem
@@ -60,14 +73,13 @@ Rectangle {
     // M3>>
     Component {
         id: itemDelegate
-        Rectangle {
+        Item {
             id: container
             width: 32*Math.ceil(Math.random()*3); height: width
-            color: 'white'
             Image {
                 anchors.fill: parent
                 anchors.margins: 4
-                source: 'assets/fruits'+Math.ceil(Math.random()*10)+'.jpg'
+                source: 'assets/'+images[Math.floor(Math.random()*9)]
             }
         }
     }

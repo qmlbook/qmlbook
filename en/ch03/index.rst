@@ -8,7 +8,7 @@ Qt Creator IDE
 
 Qt Creator is the default integrated development environment for Qt. It's written from Qt developers for Qt developers. The IDE is available on all major desktop platforms, e.g. Windows/Mac/Linux. We have already seen customers using Qt Creator on an embedded device. Qt Creator has a lean efficient user interface and it really shines in making the developer productive. Qt Creator can be used to run your Qt Quick user interface but also to compile c++ code and this for your host system or for another device using a cross-compiler.
 
-.. image:: assets/qtcreator-screenshots.png
+.. figure:: assets/qtcreator-screenshots.png
 
 .. note::
 
@@ -33,7 +33,7 @@ On the left side you will see the mode-selector. The mode selectors contain typi
 
 Below the mode-selectors you will find the actual project-configuration selector and the run/debug
 
-.. image:: assets/creator-welcome.png
+.. figure:: assets/creator-welcome.png
 	:scale: 50%
 
 
@@ -80,7 +80,7 @@ Using the Editor
 
 When you open a project or you just created a new project Qt Creator will switch to the edit mode. You should see on the left your project files and in the center area the code editor. Selecting files on the left will open them in the editor. The editor provides syntax highlighting, code-completion and quick-fixes. Also it supports several commands for code refactoring. When working with the editor you will have the feeling that everything reacts immediately. This is thanks to the developers of Qt Creator which made the tool feel really snappy.
 
-.. image:: assets/creator-editor.png
+.. figure:: assets/creator-editor.png
 	:scale: 50%
 
 
@@ -91,12 +91,12 @@ Locator
 
 The locator is a central component inside Qt Creator. It allows developers to navigate fast to specific locations inside the source code or inside the help. To open the locator press :kbd:`Ctrl+K`.
 
-.. image:: assets/locator.png
+.. figure:: assets/locator.png
 	:scale: 50%
 
 A pop-up is coming from the bottom left and shows a list of options. If you just search a file inside your project just hit the first letter from the file name. The locator also accepts wild-cards, so ``*main.qml`` will also work. Otherwise you can also prefix your search to search for specific content type.
 
-.. image:: assets/creator-locator.png
+.. figure:: assets/creator-locator.png
 	:scale: 50%
 
 Please try it out. For example to open the help for the QML element Rectangle open the locator and type ``? rectangle``. While you type the locator will update the suggestions until you found the reference you are looking for.
@@ -136,6 +136,6 @@ List of `Qt Creator shortcuts <http://doc.qt.io/qtcreator/creator-keyboard-short
 
 	You can edit the shortcuts from inside creator using the settings dialog.
 
-	.. image:: assets/creator-edit-shortcuts.png
+	.. figure:: assets/creator-edit-shortcuts.png
 		:scale: 50%
 

@@ -120,7 +120,7 @@ For example to read from a simple notes table with a text column you could use t
 As an example assume we would like to store the position of a rectangle on our scene.
 
 
-.. image:: images/crazy_rect.png
+.. figure:: images/crazy_rect.png
 
 Here our base example.
 

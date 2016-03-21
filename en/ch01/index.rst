@@ -52,7 +52,7 @@ Qt Quick is the umbrella term for the user interface technology used in Qt 5. Qt
 * JavaScript - The dynamic scripting language
 * Qt C++ - The highly portable enhanced c++ library
 
-.. image:: assets/qt5_overview.png
+.. figure:: assets/qt5_overview.png
 
 
 Similar to HTML, QML is a markup language. It is composed of tags called elements in Qt Quick enclosed in curly brackets ``Item {}``. It was designed from the ground up for the creation of user interfaces, speed and easier reading for developers. The user interface can be enhanced using JavaScript code. Qt Quick is easily extendable with your own native functionality using Qt C++. In short the declarative UI is called the front-end and the native parts are called the back-end. This allows you to separate the computing intensive and native operation of your application from the user interface part.
@@ -66,7 +66,7 @@ Digesting an User Interface
 Let's create a simple user interface using Qt Quick, which showcases some aspects of the QML language. At the end we will have a paper windmill with rotating blades.
 
 
-.. image:: assets/scene.png
+.. figure:: assets/scene.png
     :scale: 50%
 
 
@@ -84,7 +84,7 @@ We start with an empty document called ``main.qml``. All QML files will have the
 As QML does not make any restriction which element type is the root element we use an ``Image`` element with the source property set to our background image as the root element.
 
 
-.. image:: src/showcase/images/background.png
+.. figure:: src/showcase/images/background.png
 
 
 .. note::
@@ -97,8 +97,8 @@ As QML does not make any restriction which element type is the root element we u
 
 The foreground elements pole and pin wheel of our user interface are placed as separate images.
 
-.. image:: src/showcase/images/pole.png
-.. image:: src/showcase/images/pinwheel.png
+.. figure:: src/showcase/images/pole.png
+.. figure:: src/showcase/images/pinwheel.png
 
 The pole needs to be placed in the horizontal center of the background towards the bottom. And the pinwheel can be placed in the center of the background.
 
@@ -184,7 +184,7 @@ Now the wheel will rotate, but it is still not fluid yet. The rotation property 
 
 Now whenever the property rotation of the wheel changes it will be animated using a ``NumberAnimation`` with a duration of 250 ms. So each 90 degree turn will take 250 ms.
 
-.. image:: assets/scene2.png
+.. figure:: assets/scene2.png
     :scale: 50%
 
 .. note:: You will not actually see the wheel blurred. This is just to indicate the rotation. But a blurred wheel is in the assets folder. Maybe you want to try to use that.

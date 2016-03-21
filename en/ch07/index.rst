@@ -16,7 +16,7 @@ Canvas Element
 
 
 
-.. image:: assets/glowlines.png
+.. figure:: assets/glowlines.png
 
 Early on when QML was introduced in Qt4 there were some discussions about if Qt Quick needs an ellipse. The problem with the ellipse is that others can argue other shapes need also be supported. So there is no ellipse in Qt Quick only rectangular shapes. If you needed one in Qt4 you would need to use an image or write your own C++ ellipse element.
 
@@ -32,7 +32,7 @@ Let's see an example of a simple path drawing:
 
 This produces a filled rectangle with a starring point at 50,50 and a size of 100 and a stroke used as a border decoration.
 
-.. image:: assets/rectangle.png
+.. figure:: assets/rectangle.png
 
 The stroke width is set to 4 and uses a blue color define by ``strokeStyle``. The final shape is setup to be filled through the ``fillStyle`` to a "steelblue" color. Only by calling ``stroke`` or ``fill`` the actual path will be drawn and they can be used independently from each other. A call to ``stroke`` or ``fill`` will draw the current path. It's not possible to store a path for later reuse only a drawing state can be stored and restored.
 
@@ -64,7 +64,7 @@ A typical order of commands for this path based API is the following:
 This produces a horizontal stroked line from point ``P1(50,50)`` to point ``P2(150,50)``.
 
 
-.. image:: assets/line.png
+.. figure:: assets/line.png
 
 .. note::
 
@@ -81,7 +81,7 @@ For operations on rectangles a convenience API is provided which draws directly 
     :start-after: M1>>
     :end-before: <<M1
 
-.. image:: assets/convenient.png
+.. figure:: assets/convenient.png
 
 .. note::
 
@@ -100,7 +100,7 @@ Canvas can fill shapes with color but also with gradients or images.
 
 The gradient in this example is defined along the starting point (100,0) to the end point (100,200), which gives a vertical line in the middle of our canvas. The gradient stops can be define as a color from 0.0 (gradient start point) to 1.0 (gradient end point). Here we use a "blue" color at 0.0 (100,0) and a "lightsteelblue" color at the 0.5 (100,200) position. The gradient is defined much larger then the rectangle we want to draw, so the rectangle clips gradient to it's defined geometry.
 
-.. image:: assets/gradient.png
+.. figure:: assets/gradient.png
 
 .. note::
 
@@ -111,13 +111,9 @@ Shadows
 
 .. issues:: ch07
 
-.. note::
-
-    We had difficulties with shadows in the Qt 5 alpha release.
-
 A path can be visually enhanced using shadows with the 2D context object. A shadow is an area around the path with an offset, color and specified blurring. For this you need can specify a ``shadowColor``, ``shadowOffsetX``, ``shadowOffsetY`` and a ``shadowBlur``. All of this needs to be defined using the 2D context. The 2D context is your only API to the drawing operations.
 
-A shadow can also be used to create a glow effect around a path. In the next example we create a text "Earth" with a white glow around. All this on a dark background for better visibility.
+A shadow can also be used to create a glow effect around a path. In the next example we create a text "Canvas" with a white glow around. All this on a dark background for better visibility.
 
 First we draw the dark background:
 
@@ -131,13 +127,14 @@ then we define our shadow configuration, which will be used for the next path:
     :start-after: M2>>
     :end-before: <<M2
 
-Finally we draw our "Earth" text using a large bold 80px font from the *Ubuntu* font family.
+Finally we draw our "Canvas" text using a large bold 80px font from the *Ubuntu* font family.
 
 .. literalinclude:: src/canvas/shadow.qml
     :start-after: M3>>
     :end-before: <<M3
 
-.. todo:: show screen-shot from example, when shadows will work on Qt 5
+
+.. figure:: assets/shadow.png
 
 Images
 ------
@@ -152,7 +149,7 @@ The QML canvas supports image drawing from several sources. To use an image insi
 
 The left shows our ball image painted at the top-left position of 10x10. The right image shows the ball with a clip path applied. Images and any other path can be clipped using another path. The clipping is applied by defining a path and calling the ``clip()`` function. All following drawing operations will now be clipped by this path. The clipping is disabled again by restoring the previous state or by setting the clip region to the whole canvas.
 
-.. image:: assets/canvas_image.png
+.. figure:: assets/canvas_image.png
 
 
 Transformation
@@ -166,7 +163,7 @@ The canvas allows you to transform the coordinate system in several ways. This i
     :start-after: M1>>
     :end-before: <<M1
 
-.. image:: assets/transform.png
+.. figure:: assets/transform.png
 
 Besides translate the canvas allows also to scale using ``scale(x,y)`` around x and y axis, to rotate using ``rotate(angle)``, where the angle is given in radius (*360 degree = 2*Math.PI*) and to use a matrix transformation using the ``setTransform(m11, m12, m21, m22, dx, dy)``.
 
@@ -229,7 +226,7 @@ Canvas Paint
 
 In this example we would like to create a small paint application using the ``Canvas`` element.
 
-.. image:: assets/canvaspaint.png
+.. figure:: assets/canvaspaint.png
 
 For this we arrange four color squares on the top of our scene using a row positioner. A color square is a simple rectangle filled with a mouse area to detect clicks.
 
@@ -296,7 +293,7 @@ Finally we inmpleted our ``onPaint`` handler. Inside we acquire a context and ca
 
 The result is a ported spiro graph graphics running using the QML canvas
 
-.. image:: assets/spirograph.png
+.. figure:: assets/spirograph.png
 
 
 That's all.
@@ -306,7 +303,7 @@ That's all.
 
 Here is another more complicated port from the W3C organization. The original `pretty glowing lines <http://www.w3.org/TR/2dcontext/#examples>`_ has some pretty nice aspects, which makes the porting more challenging.
 
-.. image:: assets/html_glowlines.png
+.. figure:: assets/html_glowlines.png
 
 .. code-block:: xml
 
@@ -495,19 +492,9 @@ Same applies to the *blank* function.
     }
 
 
-The final result (without the shadows currently) will look similar to this.
+The final result will look similar to this.
 
-.. image:: assets/glowlines.png
-
-
-.. todo:: There are currently heavy issues with the shadow implementation. This currently does not work
-
-
-.. note:: Adobe Illustrator
-
-    Adobe Illustrator has a plug-in to export the artwork as HTML5 canvas code.
-
-    * `Adobe Illustrator Plug-in to HTML5 Canvas <http://visitmix.com/labs/ai2canvas/documentation.html>`_
+.. figure:: assets/glowlines.png
 
 .. seealso::
 

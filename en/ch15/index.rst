@@ -27,7 +27,7 @@ In addition to this central concept, Qt makes it possible to develop cross platf
 
 When it comes to re-use, not only can source code be re-used but developer skills are also reusable. A team knowing Qt can reach out to far more platforms then a team just focusing on a single platform specific technology and as Qt is so flexible the team can create different system components using the same technology.
 
-.. image:: images/yourapplication.png
+.. figure:: images/yourapplication.png
 
 For all platform, Qt offers a set of basic types, e.g. strings with full unicode support, lists, vectors, buffers. It also provides a common abstraction to the target platform's main loop, and cross platform threading  and networking support. The general philosophy is that for an application developer Qt comes with all required functionality included. For domain specific tasks such as to interface to your native libraries Qt comes with several helper classes to make this easier.
 
@@ -74,7 +74,7 @@ In the ``main`` function we simply create the application object and start the e
 
 Qt offers several UI technologies. For this example we use the Desktop Widgets user interface library using pure Qt C++. We create a main window which will host a push button to trigger the functionality and also the main window will host our core functionality which we know from the previous example.
 
-.. image:: images/storecontent.png
+.. figure:: images/storecontent.png
 
 The main window itself is a widget. It becomes a top level window as it does not have any parent. This comes from how Qt sees a user interface as a tree of ui elements. In this case the main window is the root element, thus becomes a window, while the push button a child of the main window and becomes a widget inside the window.
 
@@ -656,7 +656,7 @@ You need to be carefull that you only return a value which QML understands. If i
 
 Now you can use the model in QML and insert, append, remove entries from the model. Here is a small example which allows the user to enter a color name or color hex value and the color is then appended onto the model and shown in the list view. The red circle on the delegate allows the user to remove this entry from the model. After the entry is remove the list view is notified by the model and updates its content.
 
-.. image:: images/modelview.png
+.. figure:: images/modelview.png
     :scale: 50%
 
 |

@@ -250,7 +250,7 @@ As a little example we will create a JS console. We need an input field where th
   A JS console inside your next project can be really beneficial for testing. Enhanced with a Quake-Terminal effect it is also good to impress customers. To use it wisely you need to control the scope the JS console evaluates in, e.g. the current visible screen, the main data model, a singleton core object or all together.
 
 
-.. image:: assets/jsconsole.png
+.. figure:: assets/jsconsole.png
 
 
 We use Qt Creator to create a Qt Quick UI project using QtQuick controls. We call the project `JSConsole`. After the wizard has finished we have already a basic structure for the application with an application window and a menu to exit the application.

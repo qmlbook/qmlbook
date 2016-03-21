@@ -719,7 +719,7 @@ To test your web socket we will use the echo server from http://websocket.org.
 
 You should see the ping message we send ``socket.sendTextMessage("ping")`` as response in the text field.
 
-.. image:: images/ws_echo.png
+.. figure:: images/ws_echo.png
 
 
 WS Server
@@ -780,7 +780,7 @@ Running the client
 
 When entering text and pressing enter you should see something like this.
 
-.. image:: images/ws_client.png
+.. figure:: images/ws_client.png
 
 Summary
 =======
