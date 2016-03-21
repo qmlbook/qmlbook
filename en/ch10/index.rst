@@ -15,9 +15,9 @@ Multimedia
 
 The multimedia elements in the QtMultimedia makes it possible to playback and record media such as sound, video or pictures. Decoding and encoding is handled through platform specific backends. For instance, the popular gstreamer framework is used on Linux, while DirectShow is used on Windows and QuickTime on OS X.
 
-The multimedia elements are not a part of the Qt Quick core API. Instead, they are provided through a separate API made available by importing QtMultimedia 5.0 as shown below::
+The multimedia elements are not a part of the Qt Quick core API. Instead, they are provided through a separate API made available by importing QtMultimedia 5.6 as shown below::
 
-    import QtMultimedia 5.0
+    import QtMultimedia 5.6
 
 Playing Media
 -------------
@@ -33,8 +33,6 @@ In the example shown below, the ``MediaPlayer`` is given a file with video conte
 .. literalinclude:: src/basic-playback/main.qml
     :start-after: M1>>
     :end-before: <<M1
-
-In addition to the video playback demonstrated above, the example also contains a small snippet of code for disabling the screen saver. This prevents the video to be interrupted. This is achieved by setting the ``screenSaverEnabled`` property of the ``ScreenSaver`` element to ``false``. The ``ScreenSaver`` element is available through the ``QtSystemInfo 5.0`` API.
 
 Basic operations such as altering the volume when playing media is controlled through the ``volume`` property of the ``MediaPlayer`` element. There are other useful properties as well. For instance, the ``duration`` and ``position`` properties can be used to build a progress bar. If the ``seekable`` property is ``true``, it is even possible to update the ``position`` when the progress bar is tapped. The example below shows how this is added to the basic playback example above.
 

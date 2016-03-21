@@ -27,8 +27,7 @@
 
 // M1>>
 import QtQuick 2.5
-import QtMultimedia 5.0
-import QtSystemInfo 5.0
+import QtMultimedia 5.6
 
 Item {
     width: 1024
@@ -46,10 +45,6 @@ Item {
 
     Component.onCompleted: {
         player.play();
-    }
-
-    ScreenSaver {
-        screenSaverEnabled: false;
     }
 }
 // M1>>

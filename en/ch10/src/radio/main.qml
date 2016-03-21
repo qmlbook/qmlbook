@@ -27,7 +27,7 @@
 
 // M1>>
 import QtQuick 2.5
-import QtMultimedia 5.0
+import QtMultimedia 5.6
 
 Item {
 }

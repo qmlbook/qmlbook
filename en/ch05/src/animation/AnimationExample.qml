@@ -46,15 +46,12 @@ Image {
 
         NumberAnimation on x {
             to: root.width - box.width - root.padding
-
             duration: root.duration
-            loops: Animation.Infinite
             running: root.running
         }
         RotationAnimation on rotation {
             to: 360
             duration: root.duration
-            loops: Animation.Infinite
             running: root.running
         }
     }

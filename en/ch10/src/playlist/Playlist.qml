@@ -26,7 +26,7 @@
  */
 
 import QtQuick 2.5
-import QtMultimedia 5.0
+import QtMultimedia 5.6
 
 // M1>>
 Item {
@@ -36,46 +36,42 @@ Item {
     property MediaPlayer mediaPlayer
     property ListModel items: ListModel {}
 
-    function setIndex(i)
-    {
+    function setIndex(i) {
         console.log("setting index to: " + i);
 
         index = i;
 
-        if (index < 0 || index >= items.count)
-        {
+        if (index < 0 || index >= items.count) {
             index = -1;
             mediaPlayer.source = "";
-        }
-        else
+        } else {
             mediaPlayer.source = items.get(index).source;
+        }
     }
 
-    function next()
-    {
+    function next() {
         setIndex(index + 1);
     }
 
-    function previous()
-    {
+    function previous() {
         setIndex(index + 1);
     }
-// <<M1
+    // <<M1
 
-// M2>>
+    // M2>>
     Connections {
         target: root.mediaPlayer
 
         onStopped: {
-            if (root.mediaPlayer.status == MediaPlayer.EndOfMedia)
-            {
+            if (root.mediaPlayer.status == MediaPlayer.EndOfMedia) {
                 root.next();
-                if (root.index == -1)
+                if (root.index == -1) {
                     root.mediaPlayer.stop();
-                else
+                } else {
                     root.mediaPlayer.play();
+                }
             }
         }
     }
-// <<M2
+    // <<M2
 }

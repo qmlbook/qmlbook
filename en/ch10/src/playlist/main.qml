@@ -26,8 +26,7 @@
  */
 
 import QtQuick 2.5
-import QtMultimedia 5.0
-import QtSystemInfo 5.0
+import QtMultimedia 5.6
 
 Rectangle {
     id: root
@@ -37,23 +36,16 @@ Rectangle {
 
     color: "black"
 
-// M1>>
-    Playlist {
-        id: playlist
-
-        mediaPlayer: player
-
-        items: ListModel {
-            ListElement { source: "trailer_400p.ogg" }
-            ListElement { source: "trailer_400p.ogg" }
-            ListElement { source: "trailer_400p.ogg" }
-        }
-    }
-
+    // M1>>
     MediaPlayer {
         id: player
+        playlist: Playlist {
+            PlaylistItem { source: "trailer_400p.ogg" }
+            PlaylistItem { source: "trailer_400p.ogg" }
+            PlaylistItem { source: "trailer_400p.ogg" }
+        }
     }
-// <<M1
+    // <<M1
 
     VideoOutput {
         anchors.fill: parent
@@ -61,12 +53,8 @@ Rectangle {
         source: player
     }
 
-    ScreenSaver {
-        screenSaverEnabled: false;
-    }
-
     Component.onCompleted: {
-        playlist.setIndex(0);
+        player.playlist.currentIndex = 0;
         player.play();
     }
 }

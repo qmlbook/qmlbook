@@ -26,7 +26,7 @@
  */
 
 import QtQuick 2.5
-import QtMultimedia 5.0
+import QtMultimedia 5.6
 
 Item {
     id: window
@@ -37,10 +37,11 @@ Item {
     MouseArea {
         anchors.fill: parent
         onClicked: {
-            if (window.state === "upsidedown")
+            if (window.state === "upsidedown") {
                 window.state = "";
-            else
+            } else {
                 window.state = "upsidedown";
+            }
         }
     }
 

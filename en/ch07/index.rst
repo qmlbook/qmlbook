@@ -167,11 +167,6 @@ The canvas allows you to transform the coordinate system in several ways. This i
 
 Besides translate the canvas allows also to scale using ``scale(x,y)`` around x and y axis, to rotate using ``rotate(angle)``, where the angle is given in radius (*360 degree = 2*Math.PI*) and to use a matrix transformation using the ``setTransform(m11, m12, m21, m22, dx, dy)``.
 
-.. warning::
-
-    The transformation seems to behave different then the the HTML5 canvas. Not sure if this is a bug.
-
-
 .. note::
 
     To reset any transformation you can call the ``resetTransform()`` function to set the transformation matrix back to the identity matrix::
@@ -186,10 +181,10 @@ Composition Modes
 
 Composition allows you to draw a shape and blend it with the existing pixels. The canvas supports several composition modes using the ``globalCompositeOperation(mode)`` operation.
 
-* "source-over"
-* "source-in"
-* "source-out"
-* "source-atop"
+* ``source-over``
+* ``source-in``
+* ``source-out``
+* ``source-atop``
 
 .. literalinclude:: src/canvas/composition.qml
     :start-after: M1>>

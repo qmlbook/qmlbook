@@ -26,7 +26,7 @@
  */
 
 import QtQuick 2.5
-import QtMultimedia 5.0
+import QtMultimedia 5.6
 
 Rectangle {
     id: root
@@ -67,7 +67,11 @@ Rectangle {
 
         model: imagePaths
 
-        delegate: Image { source: path; fillMode: Image.PreserveAspectFit; height: 100; }
+        delegate: Image {
+            height: 100
+            source: path
+            fillMode: Image.PreserveAspectFit
+        }
 
         Rectangle {
             anchors.fill: parent
@@ -81,7 +85,6 @@ Rectangle {
 
     Image {
         id: image
-
         anchors.fill: parent
     }
 
@@ -109,9 +112,6 @@ Rectangle {
         Button {
             id: shotButton
 
-            width: 200
-            height: 75
-
             text: "Take Photo"
             onClicked: {
                 camera.imageCapture.capture();
@@ -122,9 +122,6 @@ Rectangle {
         Button {
             id: playButton
 
-            width: 200
-            height: 75
-
             text: "Play Sequence"
             onClicked: {
                 startPlayback();
@@ -133,9 +130,6 @@ Rectangle {
 
         Button {
             id: clearButton
-
-            width: 200
-            height: 75
 
             text: "Clear Sequence"
             onClicked: {

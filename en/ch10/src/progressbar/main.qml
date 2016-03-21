@@ -26,8 +26,7 @@
  */
 
 import QtQuick 2.5
-import QtMultimedia 5.0
-import QtSystemInfo 5.0
+import QtMultimedia 5.6
 
 Item {
     width: 1024
@@ -70,8 +69,9 @@ Item {
             anchors.fill: parent
 
             onClicked: {
-                if (player.seekable)
+                if (player.seekable) {
                     player.position = player.duration * mouse.x/width;
+                }
             }
         }
     }
@@ -81,19 +81,17 @@ Item {
     Connections {
         target: player
         onMediaObjectChanged: {
-            if (player.mediaObject)
+            if (player.mediaObject) {
                 player.mediaObject.notifyInterval = 50;
+            }
         }
     }
     // <<M2
 
     Component.onCompleted: {
         player.play();
-        if (player.mediaObject)
+        if (player.mediaObject) {
             player.mediaObject.notifyInterval = 50;
-    }
-
-    ScreenSaver {
-        screenSaverEnabled: false;
+        }
     }
 }
