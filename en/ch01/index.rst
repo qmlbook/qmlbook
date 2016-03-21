@@ -27,7 +27,7 @@ Qt 4 was designed to satisfy the desktop world to have a coherent set of UI widg
 Qt 5 Focus
 ---------
 
-Qt 5 is a complete refreshing of the very successful Qt 4 release. With Qt 4.8, the Qt 4 release is almost 7 years old. It's time to make an amazing toolkit even more amazing. Qt 5 is focused on the the following:
+Qt 5 is a complete refreshing of the very successful Qt 4 release. With Qt 4.8, the Qt 4 release is almost 7 years old. It's time to make an amazing toolkit even more amazing. Qt 5 is focused on the following:
 
 * **Outstanding Graphics**: Qt Quick 2 is based on OpenGL (ES) using a scene graph implementation. The recomposed graphics stack allows a new level of graphic effects combined with an ease of use never seen before in this field.
 

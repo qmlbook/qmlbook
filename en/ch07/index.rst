@@ -229,7 +229,7 @@ For this we arrange four color squares on the top of our scene using a row posit
     :start-after: M1>>
     :end-before: <<M1
 
-The colors are stored in an array and the paint color. When one the user clicks in one of the squares the color of the square is assigned to the ``paintColor`` property of the the row named *colorTools*.
+The colors are stored in an array and the paint color. When one the user clicks in one of the squares the color of the square is assigned to the ``paintColor`` property of the row named *colorTools*.
 
 To enable tracking of the mouse events on the canvas we have a ``MouseArea`` covering the canvas element and hooked up the pressed and position changed handlers.
 

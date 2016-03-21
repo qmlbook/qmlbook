@@ -176,7 +176,7 @@ To make the lens really a lens, we change the *vec4* color to be *vec4(redChanne
 
 .. rubric:: The red channel animated
 
-As the *redChannel* property is just a normal property it can also be animated as all properties in QML. So we can use QML properties to animate values on the the GPU to influence our shaders. How cool is that!
+As the *redChannel* property is just a normal property it can also be animated as all properties in QML. So we can use QML properties to animate values on the GPU to influence our shaders. How cool is that!
 
 .. literalinclude:: src/effects/redlense2.qml
     :start-after: M4>>
