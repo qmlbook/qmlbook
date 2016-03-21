@@ -53,7 +53,7 @@ def serve():
 def live():
     server = Server()
     server.watch('en', shell('paver build_html', cwd='.'))
-    server.serve(root='_build/html')
+    server.serve(root='_build/html', open_url=True)
 
 
 ROOT = path('.').abspath()

@@ -20,17 +20,11 @@ Installing Qt 5 SDK
 
 .. issues:: ch02
 
-The Qt SDK include the tools needed to build desktop or embedded applications. The latest version can be grabbed from the `Qt-Project homepage <http://qt.io>`_. . This is the recommended way to start. The SDK itself has a maintenance tool which will allow you to update the SDK to the latest version.
+The Qt SDK include the tools needed to build desktop or embedded applications. The latest version can be grabbed from the `Qt-Company <http://qt.io>`_ homepage. There are offline and online installer. The author personally prefers the online installer package as it allows you to install and update several Qt releases. This is would be the recommended way to start. The SDK itself has a maintenance tool which will allow you to update the SDK to the latest version.
 
-The Qt SDK is easy to install and comes with its own IDE for rapid development called *Qt Creator*. The IDE is a highly productive environment for Qt coding and recommended to all readers. For any circumstances Qt can be used from the command line and you are free to use a code editor of your choice.
-
-.. todo:: "the Qt SDK" or simply "Qt SDK"
-
-.. todo:: "For any circumstances"
+The Qt SDK is easy to install and comes with its own IDE for rapid development called *Qt Creator*. The IDE is a highly productive environment for Qt coding and recommended to all readers. Many developers use Qt from the command line and you are free to use a code editor of your choice.
 
 When installing the SDK, you should select the default option and ensure that Qt 5.x is enabled. Then you are ready to go.
-
-
 
 Hello World
 ===========
@@ -45,15 +39,11 @@ To test your installation, we will create a small *hello world* application. Ple
 
 .. hint::
 
-    A typical Qt Quick application is made out of a runtime as well as either native plug-ins or native code which launches the runtime code. For the beginning we will not cover the native side of development and focus only of the runtime aspects of Qt 5.
-
-.. todo:: can native plug-ins launch the runtime code?
+    A typical Qt Quick application is made out of a runtime called the QmlEngine which loads the initial QML code. The developer can register C++ types with the runtime to interface with the native code. These C++ types can also be bundled into a plugin and then dynamically loaded using an import statement. The ``qmlscene`` and ``qml`` tool are pre-made runtimes, which can be used directly. For the beginning we will not cover the native side of development and focus only on the QML aspects of Qt 5.
 
 Qt Creator will create several files for you. The ``HelloWorld.qmlproject`` file is the project file where the relevant project configuration is stored. This file is managed by Qt Creator so don't edit.
 
-Another file, ``HelloWorld.qml``, is our application code. Open it and try to guess what the application does and then continue to read-on.
-
-.. todo:: "read-on"
+Another file, ``HelloWorld.qml``, is our application code. Open it and try to guess what the application does and then continue to read on.
 
 .. code-block:: js
 
@@ -76,15 +66,11 @@ Another file, ``HelloWorld.qml``, is our application code. Open it and try to gu
         }
     }
 
-The ``HelloWord.qml`` is written in the QML language. We will discuss the QML language in more depth in the next chapter. This example describes the user interface as a series of hierarchical elements. Specifically, a rectangle of 360 x 360 pixels with a centered text reading "Hello World". A mouse area spans the whole rectangle and when the user clicks it, the application quits.
-
-.. todo:: "just so much it's describes the user interface in a series of hierarchical elements"
+The ``HelloWord.qml`` is written in the QML language. We will discuss the QML language in more depth in the next chapter. QML describes the user interface as a tree of hierarchical elements. In this case, a rectangle of 360 x 360 pixels with a centered text reading "Hello World". To capture user clicks a mouse area spans the whole rectangle and when the user clicks it, the application quits.
 
 To run the application on your own, please press the |creatorrun| :guilabel:`Run` tool on the left side or select :menuselection:`Build --> Run` from the menu.
 
-If everything goes well you should see now something like this:
-
-.. todo:: "If everything goes well"
+Qt Creator will start the ``qmlscene`` and passes the QML document as the first argument. The ``qmlscene`` will parse the document and launch the user interface. Now you should see something like this:
 
 .. figure:: assets/example.png
     :scale: 50%
@@ -586,7 +572,7 @@ To enable the ``cityModel`` we can mostly re-use our previous model and add a co
     m_model->setRoleNames(roles);
     view->rootContext()->setContextProperty("cityModel", m_model);
 
-.. warning::
+.. hint::
 
     This is not completely correct, as the SQL table model contains the data in columns and a QML model expects the data as roles. So there needs to be a mapping between columns and roles. Please see `QML and QSqlTableModel <http://wiki.qt.io/QML_and_QSqlTableModel>`_ wiki page.
 
