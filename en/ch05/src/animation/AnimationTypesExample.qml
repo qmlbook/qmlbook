@@ -49,7 +49,7 @@ Item {
     //<<M4
 
     //M1>>
-    ClickableImageV3 {
+    ClickableImageV2 {
         id: greenBox
         x: 40; y: root.height-height
         source: "assets/box_green.png"
@@ -61,7 +61,7 @@ Item {
     //<<M1
 
     //M2>>
-    ClickableImageV3 {
+    ClickableImageV2 {
         id: blueBox
         x: (root.width-width)/2; y: root.height-height
         source: "assets/box_blue.png"
@@ -77,7 +77,7 @@ Item {
     //<<M2
 
     //M3>>
-    ClickableImageV3 {
+    ClickableImageV2 {
         id: redBox
         x: root.width-width-40; y: root.height-height
         source: "assets/box_red.png"

@@ -49,7 +49,7 @@ Item {
             width: image.width
             horizontalAlignment: Text.AlignHCenter
             wrapMode: Text.WordWrap
-            color: "#111111"
+            color: "#ececec"
         }
     }
 

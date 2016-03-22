@@ -168,19 +168,11 @@ In the next example we will try some easing curves. Each easing curve is display
 .. figure:: assets/automatic/easingcurves.png
     :scale: 50%
 
+The code for this example was made a little bit more complicated.We first create a grid of ``EasingTypes`` and a ``Box`` which is controlled by the easing types. A easing type just displays the curve which the box shall use for its animation. When the user clicks on an easing curve the box moves in a direction according to the easing curve. The animation itself is a standalone-animation with the target set to the box and configured for x-property animation with a duration of 2 secs.
 
-.. topic:: Extended ClickableImage V3
+.. note:: The internals of the EasingType renders the curve in real time and the interested reader can look it up in the ``EasingCurves`` example.
 
-    Once more, we're going to enhance ClickableImage such that the user is able to add a small frame around the image and text. For that we added a ``property bool framed: false`` property to our API and based on the value of ``framed`` we set the visibility of the frame to not break existing element users. Here are the changes we did.
-
-    .. literalinclude:: src/animation/ClickableImageV3.qml
-        :start-after: M1>>
-        :end-before: <<M1
-
-
-The code for this example was made compact. We use an array of easing curve names (``property variant easings``) and assign them inside a ``Repeater`` element to a ``ClickableImage``. The image source is defined through a naming scheme, so an easing curve named "InQuad" will have a respective diagram under the location "curves/InQuad.png". If you click one curve diagram the click handler will assign the easing type to the animation and then restart the animation. The animation itself is a standalone-animation with the target set to the square and configured for x-property animation with a duration of 2 secs.
-
-.. literalinclude:: src/animation/EasingTypesExample.qml
+.. literalinclude:: src/EasingCurves/EasingCurves.qml
     :start-after: M1>>
     :end-before: <<M1
 

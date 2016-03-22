@@ -1,3 +1,6 @@
+// M1>>
+// EasingCurves.qml
+
 import QtQuick 2.5
 import QtQuick.Layouts 1.2
 
@@ -120,4 +123,5 @@ Rectangle {
         }
     }
 }
+// <<M1
 
