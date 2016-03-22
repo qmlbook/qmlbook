@@ -538,7 +538,7 @@ The declaration language is called QML and it needs a runtime to execute in. Qt 
 .. code-block:: cpp
 
     QQuickView* view = new QQuickView();
-    QUrl source = Qurl::fromLocalUrl("main.qml");
+    QUrl source = QUrl::fromLocalFile("main.qml");
     view->setSource(source);
     view.show();
 
