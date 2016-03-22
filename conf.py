@@ -109,6 +109,7 @@ todo_include_todos = True
 
 extlinks = {
     'qt5': ('http://doc.qt.io/qt-5//%s.html', 'Qt5Doc '),
+    'qt5r': ('http://doc.qt.io/qt-5//%s', 'Qt5Doc '),
     'qtvideo': ('http://qt-project.org/videos/watch/%s', 'QtVideo '),
     }
 
