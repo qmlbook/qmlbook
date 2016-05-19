@@ -60,7 +60,7 @@ Similar to HTML, QML is a markup language. It is composed of tags called element
 In a typical project the front-end is developed in QML/JavaScript and the back-end code, which interfaces with the system and does the heavy lifting, is developed using Qt C++. This allows a natural split between the more design oriented developers and the functional developers. Typically the back-end is tested using Qt own unit testing framework and exported for the front-end developers to be used.
 
 
-Digesting an User Interface
+Digesting a User Interface
 ---------------------------
 
 Let's create a simple user interface using Qt Quick, which showcases some aspects of the QML language. At the end we will have a paper windmill with rotating blades.
@@ -70,7 +70,7 @@ Let's create a simple user interface using Qt Quick, which showcases some aspect
     :scale: 50%
 
 
-We start with an empty document called ``main.qml``. All QML files will have the ending ``.qml``. As a markup language (like HTML) a QML document needs to have one and only one root element, which in our case is the ``Image`` element with a width and height based on the background image geometry:
+We start with an empty document called ``main.qml``. All our QML files will have the suffix ``.qml``. As a markup language (like HTML) a QML document needs to have one and only one root element, which in our case is the ``Image`` element with a width and height based on the background image geometry:
 
 .. code-block:: qml
 
@@ -81,7 +81,7 @@ We start with an empty document called ``main.qml``. All QML files will have the
         source: "images/background.png"
     }
 
-As QML does not make any restriction which element type is the root element we use an ``Image`` element with the source property set to our background image as the root element.
+As QML doesn't restrict the choice of element type for the root element, we use an ``Image`` element with the source property set to our background image as the root element.
 
 
 .. figure:: src/showcase/images/background.png
@@ -89,20 +89,20 @@ As QML does not make any restriction which element type is the root element we u
 
 .. note::
 
-    Each element has properties, e.g. an image has a ``width``, ``height`` but also other properties like a ``source`` property.  The size of the image element is automatically deduced from the image size. Otherwise we would need to set the ``width`` and ``height`` property to some useful pixel values.
+    Each element has properties, e.g., an image has ``width`` and ``height`` properties (each holding a count of pixels), and also other properties such as a ``source`` property.  Since the size of the image element is automatically derived from the image size, we don't need to set the ``width`` and ``height`` properties ourselves.
 
-    The most standard elements are located in the ``QtQuick`` module which we include in the first line with the import statement.
+    The most standard elements are located in the ``QtQuick`` module which is made available by the import statement at the start of the ``.qml`` file.
 
-    The ``id`` special property is optional and contains an identifier to reference this element later in other places in the document. Important: An ``id`` property cannot be changed after it has been set and it cannot be set during runtime. Using ``root`` as the id for the root-element is just a habit by the author and makes referencing the top-most element predictable in larger QML documents.
+    The ``id`` is a special optional property that contains an identifier which can be used to reference its associated element elsewhere in the document. Important: An ``id`` property cannot be changed after it has been set and it cannot be set during runtime. Using ``root`` as the id for the root-element is just a convention used in this book which makes referencing the top-most element predictable in larger QML documents.
 
-The foreground elements pole and pin wheel of our user interface are placed as separate images.
+The foreground elements representing the pole and the pin wheel in the user interface are included as separate images.
 
 .. figure:: src/showcase/images/pole.png
 .. figure:: src/showcase/images/pinwheel.png
 
-The pole needs to be placed in the horizontal center of the background towards the bottom. And the pinwheel can be placed in the center of the background.
+We want to place the pole horizontally in the center of the background, but offset vertically towards the bottom. And we want to place the pinwheel in the middle of the background.
 
-Normally your user interface will be composed of many different element types and not only image elements like in this example.
+Although this beginners example only uses image elements, as we progress you will create more sophisticated user interfaces that are composed of many different element types.
 
 
 .. code-block:: qml
@@ -127,22 +127,22 @@ Normally your user interface will be composed of many different element types an
 
 
 
-To place the pin wheel at the central location we use a complex property called ``anchor``. Anchoring allows you to specify geometric relations between parent and sibling objects. E.g. Place me in the center of another element ( ``anchors.centerIn: parent`` ). There are left, right, top, bottom, centerIn, fill, verticalCenter and horizontalCenter relations on both ends. Sure, they need to match.  It does not make sense to anchor my left side to the top side of an element.
+To place the pin wheel in the middle we use a complex property called ``anchor``. Anchoring allows you to specify geometric relations between parent and sibling objects. For example, place me in the center of another element ( ``anchors.centerIn: parent`` ). There are left, right, top, bottom, centerIn, fill, verticalCenter and horizontalCenter relations on both ends. Naturally, when two or more anchors are used together, they should complement each other: it wouldn't make sense, for instance, to anchor an element's left side to the top of another element.
 
-So we set the pinwheel to be centered in the parent our background.
-
-.. note::
-
-    Sometime you will need to make small adjustments on the exact centering. This would be possible with ``anchors.horizontalCenterOffset`` or with ``anchors.verticalCenterOffset``. Similar adjustments properties are also available to all the other anchors. Please consult the documentation for a full list of anchors properties.
+For the pinwheel, the anchoring only requires one simple anchor.
 
 .. note::
 
-    Placing an image as a child element of our root element (the ``Image`` element) shows an important concept of a declarative language. You describe the user interface in the order of layers and grouping, where the topmost layer (our rectangle) is drawn first and the child layers are drawn on top of it in the local coordinate system of the containing element.
+    Sometimes you will want to make small adjustments, for example, to nudge an element slightly off-center. This can be done with ``anchors.horizontalCenterOffset`` or with ``anchors.verticalCenterOffset``. Similar adjustment properties are also available for all the other anchors. Please consult the documentation for a full list of anchors properties.
 
-To make the showcase a little bit more interesting, we would like to make the scene interactive. The idea is to rotate the wheel when the user pressed the mouse somewhere in the scene.
+.. note::
+
+    Placing an image as a child element of our root element (the ``Image`` element) illustrates an important concept of a declarative language. You describe the visual appearance of the user interface in the order of layers and grouping, where the topmost layer (our background image) is drawn first and the child layers are drawn on top of it in the local coordinate system of the containing element.
+
+To make the showcase a bit more interesting, we would like to make the scene interactive. The idea is to rotate the wheel when the user presses the mouse somewhere in the scene.
 
 
-We use the ``MouseArea`` element and make it as big as our root element.
+We use the ``MouseArea`` element and make it cover the entire area of our root element.
 
 .. code-block:: qml
 
@@ -156,17 +156,17 @@ We use the ``MouseArea`` element and make it as big as our root element.
         ...
     }
 
-The mouse area emit signals when a user clicks inside it covered area. You can hook onto this signal overriding the ``onClicked`` function. In this case the reference the wheel image and change its rotation by +90 degree.
+The mouse area emits signals when a user clicks inside the area it covers. You can connect to this signal by overriding the ``onClicked`` function. When a signal is connected it means that the function or functions it corresponds to is called whenever the signal is emitted. In this case we have said that when the mouse area is clicked the element whose ``id`` is ``wheel`` (i.e., the pinwheel image) should rotate by +90 degrees.
 
 .. note::
 
-    This works for every signal, the naming is ``on`` + ``SignalName`` in title cases. Also all properties emit a signal when their value changed. The naming is:
+    This technique works for every signal, with the naming convention being ``on`` + ``SignalName`` in title cases. Also all properties emit a signal when their value changes. For these signals the naming convention is:
 
         ``on`` + ``PropertyName`` + ``Changed``
 
-    If a ``width`` property is changing you can observe it with ``onWidthChanged: print(width)`` for example.
+    For example, if a ``width`` property is changed you can observe it with ``onWidthChanged: print(width)``.
 
-Now the wheel will rotate, but it is still not fluid yet. The rotation property changes immediately. What we would like that the property changes by 90 degree over time. Now animations come into play. An animation defines how a property change is distributed over a duration. To enable this we use an animation type called property behavior. The ``Behaviour`` does specify an animation for a defined property for every change applied to that property. In short every time the property changes, the animation is run. This is only one of several ways of declaring an animation in QML.
+The wheel will now rotate whenever the user clicks, but the rotation takes place in one jump, rather than a fluid movement over time. We can achieve smooth movement using animation. An animation defines how a property change occurs over a period of time. To enable this we use an animation type called property behavior. The ``Behaviour`` specifies an animation for a defined property for every change applied to that property. In other words, whenever the property changes, the animation is run. This is only one of many ways of doing animation in QML.
 
 .. code-block:: qml
 
@@ -182,15 +182,15 @@ Now the wheel will rotate, but it is still not fluid yet. The rotation property 
         }
     }
 
-Now whenever the property rotation of the wheel changes it will be animated using a ``NumberAnimation`` with a duration of 250 ms. So each 90 degree turn will take 250 ms.
+Now whenever the wheel's rotation property changes it will be animated using a ``NumberAnimation`` with a duration of 250 ms. So each 90 degree turn will take 250 ms, producing a nice smooth turn.
 
 .. figure:: assets/scene2.png
     :scale: 50%
 
-.. note:: You will not actually see the wheel blurred. This is just to indicate the rotation. But a blurred wheel is in the assets folder. Maybe you want to try to use that.
+.. note:: You will not actually see the wheel blurred. This is just to indicate the rotation. (A blurred wheel is in the assets folder, in case you'd like to experiment with it.)
 
 
-Now the wheel looks already much better. I hope this has given you a short idea of how Qt Quick programming works.
+Now the wheel looks much better and behaves nicely, as well as providing a very brief insight into the basics of how Qt Quick programming works.
 
 Qt Building Blocks
 ==================
