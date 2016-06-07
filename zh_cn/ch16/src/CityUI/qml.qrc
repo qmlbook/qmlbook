@@ -1,0 +1,39 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>flags/22px-Flag_of_Argentina.svg.png</file>
+        <file>flags/22px-Flag_of_Bangladesh.svg.png</file>
+        <file>flags/22px-Flag_of_Brazil.svg.png</file>
+        <file>flags/22px-Flag_of_Chile.svg.png</file>
+        <file>flags/22px-Flag_of_Colombia.svg.png</file>
+        <file>flags/22px-Flag_of_Cote_d'Ivoire.svg.png</file>
+        <file>flags/22px-Flag_of_Egypt.svg.png</file>
+        <file>flags/22px-Flag_of_Germany.svg.png</file>
+        <file>flags/22px-Flag_of_India.svg.png</file>
+        <file>flags/22px-Flag_of_Indonesia.svg.png</file>
+        <file>flags/22px-Flag_of_Iran.svg.png</file>
+        <file>flags/22px-Flag_of_Iraq.svg.png</file>
+        <file>flags/22px-Flag_of_Japan.svg.png</file>
+        <file>flags/22px-Flag_of_Kenya.svg.png</file>
+        <file>flags/22px-Flag_of_Mexico.svg.png</file>
+        <file>flags/22px-Flag_of_Myanmar.svg.png</file>
+        <file>flags/22px-Flag_of_Nigeria.svg.png</file>
+        <file>flags/22px-Flag_of_North_Korea.svg.png</file>
+        <file>flags/22px-Flag_of_Pakistan.svg.png</file>
+        <file>flags/22px-Flag_of_Peru.svg.png</file>
+        <file>flags/22px-Flag_of_Russia.svg.png</file>
+        <file>flags/22px-Flag_of_Saudi_Arabia.svg.png</file>
+        <file>flags/22px-Flag_of_Singapore.svg.png</file>
+        <file>flags/22px-Flag_of_South_Africa.svg.png</file>
+        <file>flags/22px-Flag_of_South_Korea.svg.png</file>
+        <file>flags/22px-Flag_of_Spain.svg.png</file>
+        <file>flags/22px-Flag_of_Thailand.svg.png</file>
+        <file>flags/22px-Flag_of_the_Democratic_Republic_of_the_Congo.svg.png</file>
+        <file>flags/22px-Flag_of_the_People's_Republic_of_China.svg.png</file>
+        <file>flags/22px-Flag_of_the_United_Kingdom.svg.png</file>
+        <file>flags/22px-Flag_of_the_United_States.svg.png</file>
+        <file>flags/22px-Flag_of_Turkey.svg.png</file>
+        <file>flags/22px-Flag_of_Vietnam.svg.png</file>
+        <file>remove.png</file>
+    </qresource>
+</RCC>

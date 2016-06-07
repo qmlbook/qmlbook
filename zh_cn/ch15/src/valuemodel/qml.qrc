@@ -1,0 +1,10 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>Background.qml</file>
+        <file>ListDelegate.qml</file>
+        <file>ListHighlight.qml</file>
+        <file>remove.png</file>
+        <file>TextEntry.qml</file>
+    </qresource>
+</RCC>
