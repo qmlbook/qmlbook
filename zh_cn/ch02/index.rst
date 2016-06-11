@@ -1,6 +1,6 @@
-===========
-Get Started
-===========
+=======
+入门基础
+=======
 
 .. sectionauthor:: `jryannel <https://github.com/jryannel>`_
 
@@ -8,42 +8,42 @@ Get Started
 
 .. |creatorrun| image:: assets/qtcreator-run.png
 
-This chapter will introduce you to developing with Qt 5. We will show you how to install the Qt SDK and how you can create as well as run a simple *hello world* application using the Qt Creator IDE.
+这一章会介绍如何使用 Qt 5 进行开发。我们将展示如何安装 Qt SDK 以及如何使用 Qt Creator 集成开发环境创建和运行简单的 *hello world* 应用。
 
 .. note::
 
-    The source code of this chapter can be found in the `assets folder <../../assets>`_.
+    本章源代码收录于 `资源目录 <../../assets>`_。
 
 
-Installing Qt 5 SDK
-===================
+安装 Qt 5 SDK
+============
 
 .. issues:: ch02
 
-The Qt SDK include the tools needed to build desktop or embedded applications. The latest version can be grabbed from the `Qt-Company <http://qt.io>`_ homepage. There are offline and online installer. The author personally prefers the online installer package as it allows you to install and update several Qt releases. This is would be the recommended way to start. The SDK itself has a maintenance tool which will allow you to update the SDK to the latest version.
+Qt SDK 包含了构建桌面或嵌入式应用的工具，其最新版本可在 `Qt主页 <http://qt.io>`_ 上下载。可以选择离线安装和在线安装两种方式。作者本人更喜欢并推荐读者使用在线安装方式，因为在线安装可以一并安装和更新 Qt 发行版。SDK 本身包含一个维护工具用于更新SDK到最新版本。
 
-The Qt SDK is easy to install and comes with its own IDE for rapid development called *Qt Creator*. The IDE is a highly productive environment for Qt coding and recommended to all readers. Many developers use Qt from the command line and you are free to use a code editor of your choice.
+Qt SDK 安装简便，并附带了用于快速开发的集成开发环境 - *Qt Creator*，其开发效率非常高，推荐所有用户使用它进行 Qt 开发。当然也有许多开发者在命令行环境中使用 Qt，并且使用自己喜欢的文本编辑器编写代码。
 
-When installing the SDK, you should select the default option and ensure that Qt 5.x is enabled. Then you are ready to go.
+在安装 SDK 时，用户最好选择默认选项以确保 Qt 5.x 部署到位，然后我们就可以开始了。
 
 Hello World
 ===========
 
 .. issues:: ch02
 
-To test your installation, we will create a small *hello world* application. Please open Qt Creator and create a Qt Quick UI Project ( :menuselection:`File --> New File or Project --> Qt Quick Project --> Qt Quick UI` ) and name the project ``HelloWorld``.
+为了验证安装，我们先创建一个 *hello world* 应用。打开 Qt Creator，创建一个 Qt Quick UI 项目（ :menuselection:`File --> New File or Project --> Qt Quick Project --> Qt Quick UI` ），项目名称为``HelloWorld``。
 
 .. note::
 
-    The Qt Creator IDE allows you to create various types of applications. If not otherwise stated, we always use a :guilabeL:`Qt Quick UI` project.
+    Qt Creator 可以创建多种类型的应用。后文若没有明确说明，均使用 :guilabeL:`Qt Quick UI` 项目类型。
 
 .. hint::
 
-    A typical Qt Quick application is made out of a runtime called the QmlEngine which loads the initial QML code. The developer can register C++ types with the runtime to interface with the native code. These C++ types can also be bundled into a plugin and then dynamically loaded using an import statement. The ``qmlscene`` and ``qml`` tool are pre-made runtimes, which can be used directly. For the beginning we will not cover the native side of development and focus only on the QML aspects of Qt 5.
+    一个典型的 Qt Quick 应用由可以加载 QML 代码的 ``QmlEngine`` 在运行时创建。开发者可以使用 C++ 接口绑定本地的代码。C++ 程序也可以封装到插件中，然后使用 ``import`` 语句动态加载。``qmlscene`` 和 ``qml`` 是已经预编译的运行时工具，可以直接使用。在入门阶段，我们暂时不涉及到本地端的开发，而是聚焦于 Qt 5 的 QML 这一块。
 
-Qt Creator will create several files for you. The ``HelloWorld.qmlproject`` file is the project file where the relevant project configuration is stored. This file is managed by Qt Creator so don't edit.
+Qt Creator 会自动创建若干项目文件，项目文件 ``HelloWorld.qmlproject`` 保存了项目配置信息，这个文件由 Qt Creator 管理，最好不要手动编辑。
 
-Another file, ``HelloWorld.qml``, is our application code. Open it and try to guess what the application does and then continue to read on.
+另外，``HelloWorld.qml`` 文件是应用代码，打开并试着看看这个应用做了什么，往下阅读代码。
 
 .. code-block:: js
 
@@ -66,24 +66,24 @@ Another file, ``HelloWorld.qml``, is our application code. Open it and try to gu
         }
     }
 
-The ``HelloWord.qml`` is written in the QML language. We will discuss the QML language in more depth in the next chapter. QML describes the user interface as a tree of hierarchical elements. In this case, a rectangle of 360 x 360 pixels with a centered text reading "Hello World". To capture user clicks a mouse area spans the whole rectangle and when the user clicks it, the application quits.
+``HelloWord.qml`` 文件使用 QML 语言书写，我们将在后续章节中详细讨论 QML 语言。QML 将用户界面描述为层级元素的一个树。在示例中，创建了 360 x 360 像素大小的正方形，以及正方形中心位置的"Hello World" 文本。为了捕捉到用户的鼠标点击行为，鼠标区域覆盖了整个正方形，当用户点击鼠标时，应用将会退出。
 
-To run the application on your own, please press the |creatorrun| :guilabel:`Run` tool on the left side or select :menuselection:`Build --> Run` from the menu.
+点击界面上的 |creatorrun| :guilabel:`Run` 来运行应用，这个按钮在界面的左侧，或者可以在 :menuselection:`Build --> Run` 菜单中找到。
 
-Qt Creator will start the ``qmlscene`` and passes the QML document as the first argument. The ``qmlscene`` will parse the document and launch the user interface. Now you should see something like this:
+Qt Creator 启动 ``qmlscene`` 并且将 QML 文档作为第一个参数传给它，随后 ``qmlscene`` 会解析文档并加载用户界面。应用程序看起来差不多是这个样子：
 
 .. figure:: assets/example.png
     :scale: 50%
 
-Qt 5 seems to be working and we are ready to continue.
+看来来 Qt 5 没什么问题，我们可以继续往下看。
 
 .. tip::
 
-    If you are a system integrator, you'll want to have Qt SDK installed to get the latest stable Qt release as well as a Qt version compiled from source code for your specific device target.
+    如果你是系统集成人员，你不仅需要安装最新稳定版本的 Qt，还需要针对特定的目标设备编译源代码以得到可以运行在目标机器上的二进制版本。
 
-.. topic:: Build from Scratch
+.. topic:: 构建源代码
 
-    If you'd like to build Qt 5 from the command line, you'll first need to grab a copy of the code repository and build it.
+    如果你想在命令行中编译 Qt 5，首先你得从代码仓库中把源代码抓取下来。
 
     .. code-block:: sh
 
@@ -94,12 +94,11 @@ Qt 5 seems to be working and we are ready to continue.
         make -j4
 
 
-    After a successful compilation and 2 cups of coffee, Qt 5 will be available in the ``qtbase`` folder. Any beverage will suffice, however, we suggest coffee for best results.
+    差不多过两柱香的时间，Qt 5 就会被成功编译到 ``qtbase`` 目录中。当然喝两杯咖啡或者其它饮料也是可以的，喝咖啡的话编译成功的可能性要大一点。
 
-    If you want to test your compilation, simply start ``qtbase/bin/qmlscene`` and select a Qt Quick example to run it ...or follow just us into the next chapter.
+    为了验证编译，运行 ``qtbase/bin/qmlscene`` 并选择一个 Qt Quick 示例看看能否运行，没问题的话可以跳到下一节了。
 
-
-    To test your installation, we will create a small hello world application. Please create a simple ``example.qml`` file using your favorite text editor and paste the following content inside:
+    为了验证安装，我们先创建一个小型的 hello world 应用，使用你最喜爱的文本编辑器创建一个  ``example.qml`` 文件，把下面的代码粘贴进去：
 
     .. code-block:: js
 
@@ -122,28 +121,27 @@ Qt 5 seems to be working and we are ready to continue.
             }
         }
 
-    You can run now the example by using the default runtime which comes with Qt 5::
+    现在你可以通过 Qt 5 默认的运行时来运行示例::
 
         $ qtbase/bin/qmlscene
 
-Application Types
-=================
+应用类型
+=======
 
 .. issues:: ch02
 
-This section is a run through of the different possible application types someone could write with Qt 5. It's not limited to the presented selection but it should give the reader a better idea about what can be done with Qt 5 in general.
+这一节列举了 Qt 5 支持的不同应用类型，虽然可能并没有完全覆盖所有内容，但是应该能使得读者对于 Qt 5 有更好的了解。
 
-Console Application
--------------------
+控制台应用
+--------
 
 .. issues:: ch02
 
-A console application does not provide any graphical user interface and will normally be called as part of a system service or from the command line. Qt 5 comes with a series of ready-made components which help you to create console cross platform applications very efficiently. For example the networking file APIs. Also string handling and, since Qt 5.1, efficient command line parser. As Qt is a high-level API on top of C++, you get programming speed paired with execution speed. Don't think of Qt as being *just* a UI toolkit -- it has so much more to offer.
+控制台程序没有图形用户界面，通常作为系统服务的一部分或者在命令行中调用。Qt 5 具有一系列现成的组件，用于帮助用户高效地创建跨平台的控制台应用。例如，网络编程接口以及字符串编程接口，以及 Qt 5.1 版本引入的高效命令行参数解析器。因为 Qt 是建立在 C++ 上的高级 API，用户既能快速编程，也能保证程序的运行效率。千万别以为 Qt 仅仅是用户界面组件，它可以做的还多着呢。
 
-.. rubric:: String Handling
+.. rubric:: 字符串处理
 
-In the first example we demonstrate how someone could very simply add 2 constant strings. This is not a very useful application but it gives you an idea of what a native C++ application, without an event loop, could look like.
-
+首先我们展示如何拼接两个字符串常量，这虽然没什么用，却可以展示一个没有事件循环的本地 C++ 应用程序看起来是什么样的。
 
 .. code-block:: cpp
 
@@ -165,9 +163,9 @@ In the first example we demonstrate how someone could very simply add 2 constant
         cout << s << endl;
     }
 
-.. rubric:: Container Classes
+.. rubric:: 容器类
 
-This example adds a list and list iteration to the application. Qt comes with a large collections of container classes which are easy to use and use the same API paradigms as the rest of Qt classes.
+这个示例使用了链表和链表迭代器，Qt 附带了大量易用的容器类，并且和其他 Qt 类一样，使用了统一的 API 模式。
 
 .. code-block:: cpp
 
@@ -186,7 +184,7 @@ This example adds a list and list iteration to the application. Qt comes with a 
     }
     cout << "!" << endl;
 
-Here we show some advanced list function, which allow you to join a list of strings into one string. This is very handy when you need to proceed line based text input. The inverse (string to string-list) is also possible using ``QString::split()`` function.
+接着我们展示一些高级的链表函数，允许用户将字符串链表的元素组合成单一的字符串。这在处理行文本输入时特别方便，其逆操作可以使用 ``QString::split()`` 函数来实现（字符串转换为链表）。
 
 .. code-block:: cpp
 
@@ -201,9 +199,9 @@ Here we show some advanced list function, which allow you to join a list of stri
     cout << s << endl;
 
 
-.. rubric:: File IO
+.. rubric:: 文件 IO
 
-In the next snippet we read a CSV file from the local directory and loop over the rows to extract the cells from each row. Doing this we get the table data from the CSV file in ca. 20 lines of code. File reading gives us just a byte stream, to be able to convert it into a valid Unicode text we need to use the text stream and pass in the file as a lower-level stream. For writing CSV files you would just need to open the file in the write mode and pipe the lines into the text stream.
+下面我们会从本地目录中读取一个 CSV 文件，并且遍历每一行，从其中提取信息单元。CSV 文件中大概能读取出20行文本。文件读取将会返回一个比特流，为了将其转换为有效的 Unicode 文本，我们需要使用文本流，并且将文件作为底层流数据传递。写 CSV 文件只需要以只写模式打开文件，然后把文本一行一行地传递给文件流。
 
 .. code-block:: cpp
 
@@ -234,19 +232,18 @@ In the next snippet we read a CSV file from the local directory and loop over th
     }
     // No cleanup necessary.
 
-This concludes our section about console based application with Qt.
+关于 Qt 的控制台应用编程，我们暂时告一段落。
 
-Widget Application
-------------------
+窗口部件应用
+----------
 
 .. issues:: ch02
 
-Console based applications are very handy but sometimes you need to have a UI to show. In addition, UI-based applications will likely need a back-end to read/write files, communicate over the network, or keep data in a container.
+控制台程序开发起来简单，但也少不了用户界面用于展示。反过来说，基于用户界面的应用也需要一个能够读/写文件、网络通信、数据存储的后端。
 
+在第一个代码片段中我们仅仅创建一个窗口并展示它。在 Qt 中，没有父元素的窗口部件本身即是窗口。我们使用智能指针来确保窗口部件对象在合适的时候被删除掉。应用对象封装了 Qt 运行时，并且可以通过调用``exec()`` 开启事件循环，之后应用仅在事件被鼠标、键盘或类似于网络或文件 IO 之类的事件提供者触发时响应事件，并且仅在事件循环退出后应用才会退出。调用 ``quit()`` 或关闭窗口可以退出事件循环。
 
-In this first snippet for widget-based applications we do as little as needed to create a window and show it. A widget without a parent in the Qt world is a window. We use the scoped pointer to ensure the widget is deleted when the scoped pointer goes out of scope. The application object encapsulates the Qt runtime and with the ``exec()`` call we start the event loop. From there on the application reacts only on events triggered by mouse or keyboard or other event providers like networking or file IO. The application will only exit when the event loop is exited.  This is done by calling ``quit()`` on the application or by closing the window.
-
-When you run the code you will see a window with the size of 240 x 120 pixel. That's all.
+运行代码，将出现一个 240 x 120 像素大小的窗口。
 
 .. code-block:: cpp
 
@@ -261,9 +258,9 @@ When you run the code you will see a window with the size of 240 x 120 pixel. Th
         return app.exec();
     }
 
-.. rubric:: Custom Widgets
+.. rubric:: 自定义部件
 
-When you work on user interfaces, you will need to create custom made widgets. Typically a widget is a window area filled with painting calls. Additional the widget has internal knowledge of how to handle keyboard or mouse input and how to react to external triggers. To do this in Qt we need to derive from `QWidget` and overwrite several functions for painting and event handling.
+在与用户界面打交道的过程中可能需要创建自定义的窗口部件，一个典型的部件是填充了绘制调用的窗口区域。另外，部件本身应该知道如何去处理键盘、鼠标输入并且响应外部触发。为此，我们用自定义部件继承 `QWidget` 类并重写用于绘制和事件处理的几个函数。
 
 .. code-block:: cpp
 
@@ -287,7 +284,7 @@ When you work on user interfaces, you will need to create custom made widgets. T
     #endif // CUSTOMWIDGET_H
 
 
-In the implementation, we draw a small border on our widget and a small rectangle on the last mouse position. This is very typical for a low-level custom widget. Mouse or keyboard events change the internal state of the widget and trigger a painting update. We don't want to go into to much detail into this code, but it is good to know that you have the ability. Qt comes with a large set of ready-made desktop widgets, so that the probability is high that you don't have to do this.
+在接口实现中，我们在部件的边界绘制较窄的边界，并且在鼠标停留的最后位置绘制一个小矩形。这些操作对于底层自定义部件来说是非常典型的。鼠标或键盘事件改变部件的内部状态并触发更新绘制函数。在这一部分不必过于细究。Qt 附带了大量的开箱可用的桌面部件，有很大可能性开发者并不需要涉及到这一部分。
 
 .. code-block:: cpp
 
@@ -327,11 +324,11 @@ In the implementation, we draw a small border on our widget and a small rectangl
         update();
     }
 
-.. rubric:: Desktop Widgets
+.. rubric:: 桌面部件
 
-The Qt developers have done all of this for you already and provide a set of desktop widgets, which will look native on different operating systems. Your job is then to arrange these different widgets in a widget container into larger panels. A widget in Qt can also be a container for other widgets. This is accomplished by the parent-child relationship. This mean we need to make our ready-made widgets like buttons, check boxes, radio button but also lists and grids a child of another widget. One way to accomplish this is displayed below.
+Qt 开发者非常关怀地提供了桌面部件集合，这些部件在不同的操作系统下可以自动调整为原生界面。用户需要做的就是将部件容器中不同的部件组织进一个更大的面板中。Qt 中的部件可以作为其他部件的容器，这种机制采用父-子部件关系实现。也就是说，我们需要将这些部件（按钮、多选框、单选框、列表、网格等）作为其他部件的子部件。一种可行的实践如下所示。
 
-Here is the header file for a so called widget container.
+下面是部件容器的头文件。
 
 .. code-block:: cpp
 
@@ -349,7 +346,7 @@ Here is the header file for a so called widget container.
         QPushButton *m_button;
     };
 
-In the implementation, we use layouts to better arrange our widgets. Layout managers re-layout the widgets according to some size policies when the container widget is re-sized. In this example we have a list, a line edit, and a button arranged vertically to allow to edit a list of cities. We use Qt's ``signal`` and ``slots`` to connect sender and receiver objects.
+在接口实现中，我们使用布局来更好地组织部件。布局管理器在容器部件的尺寸发生变化时根据尺寸规则来重新组织部件。在本例中我们需要纵向地组织列表、文本框、按钮部件，使用 Qt 的信号和信号槽机制来连接事件信号的发送对象和接收对象。
 
 .. code-block:: cpp
 
@@ -392,10 +389,9 @@ In the implementation, we use layouts to better arrange our widgets. Layout mana
         }
     }
 
-.. rubric:: Drawing Shapes
+.. rubric:: 绘制形状
 
-Some problems are better visualized. If the problem at hand looks faintly like geometrical objects, qt graphics view is a good candidate. A graphics view arranges simple geometrical shapes on a scene.  The user can interact with these shapes or they are positioned using an algorithm. To populate a graphics view you need a graphics view and a graphics scene. The scene is attached to the view and populates with graphics items.
-Here is a short example. First the header file with the declaration of the view and scene.
+有些问题若能可视化表示的话那是坠吼的。如果当前的问题看起来有点像几何对象，Qt 图形视图是一个不错的选择。图形视图可以将简单的集合形状组织在一个场景中，用户可以与这些形状交互，形状的位置摆放通过特定算法实现。图形视图需要使用一个图形场景和一个图形视图来填充，场景连接到视图上并使用图形对象填充。这里有一个简单示例，首先是声明视图和场景的头文件。
 
 .. code-block:: cpp
 
@@ -410,7 +406,7 @@ Here is a short example. First the header file with the declaration of the view 
 
     };
 
-In the implementation the scene gets attached to the view first. The view is a widget and get arranged in our container widget. At the end we add a small rectangle to the scene, which then is rendered on the view.
+在接口实现中，场景首先连接到视图。视图是一个放置于容器部件内的部件。最后我们在场景中添加一个小矩形，然后渲染到视图上。
 
 .. code-block:: cpp
 
@@ -432,13 +428,13 @@ In the implementation the scene gets attached to the view first. The view is a w
         rect1->setFlags(QGraphicsItem::ItemIsFocusable|QGraphicsItem::ItemIsMovable);
     }
 
-Adapting Data
--------------
+数据适配
+-------
 
 .. issues:: ch02
 
 
-Up to now we have mostly covered basic data types and how to use widgets and graphic views. Often in your application you will need larger amount of structured data, which also has to be persistently stored. The data also needs to be displayed. For this Qt uses models. A simple model is the string list model, which gets filled with strings and then attached to a list view.
+目前为止我们已经了解了基本的数据类型以及如何使用窗口部件和图形视图。通常在应用中会涉及到更大量的结构型数据，需要进行持续的存储。另外，一些数据需要进行可视化。为此 Qt 使用了模型的概念。如下是一个字符串链表的简单模型，首先按位填充字符串，然后绑定到一个列表视图上。
 
 .. code-block:: cpp
 
@@ -450,7 +446,7 @@ Up to now we have mostly covered basic data types and how to use widgets and gra
     cities << "Munich" << "Paris" << "London";
     model->setStringList(cities);
 
-Another popular way to store or retrieve data is SQL. Qt comes with SQLite embedded and also has support for other database engines (MySQL, PostgresSQL, ...). First you need to create your database using a schema, like this:
+另外一种流行的存储和获取数据的思路是使用 SQL 语言，Qt 附带了 SQLite，并且支持其他数据库引擎（MySQL、PostgresSQL等）。首先需要使用模式来创建一个数据库，如下：
 
 .. code-block:: sql
 
@@ -459,13 +455,13 @@ Another popular way to store or retrieve data is SQL. Qt comes with SQLite embed
     INSERT INTO city value ("Paris", "France");
     INSERT INTO city value ("London", "United Kingdom");
 
-To use sql we need to add the sql module to our .pro file
+为了使用 SQL 语言，我们需要将 ``sql`` 模块添加到 ``.pro`` 文件中。
 
 .. code-block:: cpp
 
     QT += sql
 
-And then we can open our database using C++. First we need to retrieve a new database object for the specified database engine. With this database object we open the database. For SQLite it's enough to specify the path to the database file. Qt provides some high-level database model, one of them is the table model, which uses a table identifier and an option where clause to select the data. The resulting model can be attached to a list view as the other model before.
+然后使用 C++ 打开数据库，首先我们需要从特定的数据库引擎中获取一个新的数据库对象，使用该数据库对象即可打开数据库。对于 SQLite 来说，只需要指定数据库文件的路径即可。Qt 还提供了一些高级的数据库模型，其中一个是表模型，使用一个表标识符和一个选项分支语句来选择数据，然后像之前那样将得到的结果绑定到列表视图上。
 
 .. code-block:: cpp
 
@@ -483,7 +479,7 @@ And then we can open our database using C++. First we need to retrieve a new dat
     view->setModel(m_model);
     m_model->select();
 
-For higher level of model operations Qt provides a sort file proxy model, which allows you in the basic form to sort and filter another model.
+对于更高级的模型操作，Qt 提供了排序文件代理模型，允许用户使用基础的排序和过滤范式来操作模型。
 
 .. code-block:: cpp
 
@@ -492,7 +488,7 @@ For higher level of model operations Qt provides a sort file proxy model, which 
     view->setModel(proxy);
     view->setSortingEnabled(true);
 
-Filtering is done based on the column to be filters and a string as filter argument.
+过滤操作基于列编号和一个字符串作为数据过滤的参数。
 
 .. code-block:: cpp
 
@@ -500,25 +496,25 @@ Filtering is done based on the column to be filters and a string as filter argum
     proxy->setFilterCaseSensitive(Qt::CaseInsensitive);
     proxy->setFilterFixedString(QString)
 
-The filter proxy model is much more powerful than demonstrated here. For now it is enough to remember its exists.
+过滤代理模型比这里展示的还要强大许多，这里就此打住，知道这个东西的存在就行了。
 
 
 .. note::
 
-    This was an overview of the different kind of classical application you could develop with Qt 5. The desktop is moving and soon the mobile devices will be our desktop of tomorrow. Mobile devices have a different user interface design. They are much more simplistic than desktop applications. They do one thing and they do simply and focused. Animations are an important part of the experience. A user interface needs to feel alive and fluent. The traditional Qt technologies are not well suited for this market.
+    前面的内容概述了使用 Qt 5 开发不同的传统应用的场景，传统的桌面程序正在向移动设备迁移，移动设备将逐渐占领了传统桌面程序的地位。移动设备的用户界面设计与桌面用户界面设计不同，要简单许多，通常只需要完成一件事情。动画是移动用户界面体验的重要一环，用户界面需要看起来更加灵动。传统的 Qt 技术并不适用于这一市场领域。
 
-    Coming next: Qt Quick for the rescue.
+    接下来: Qt Quick 拯救世界。
 
-Qt Quick Application
+Qt Quick 应用
 --------------------
 
 .. issues:: ch02
 
-There is an inherent conflict in modern software development. The user interface is moving much faster than our back-end services. In a traditional technology you develop the so called front-end at the same pace as the back-end. This results in conflicts when customers want to change the user interface during a project, or develop the idea of an user interface during the project. Agile projects, require agile methods.
+现代化的软件开发存在一个内在冲突，用户界面的迭代更新速度远胜于后端的服务程序。传统技术中前端和后端的开发步调是一致的，这将在用户需要在项目中改变用户界面或实现新的想法时导致冲突。敏捷项目开发，需要配套敏捷的方法。
 
-Qt Quick provides a declarative environment where your user interface (the front-end) is declared like HTML and your back-end is in native C++ code. This allows you to get the best of both worlds.
+Qt Quick 提供了使用类似于 HTML 的方式声明用户界面的环境，以及使用本地 C++ 代码开发后端的接口。这样在前端和后端都可以发展得游刃有余。
 
-This is a simple Qt Quick UI below
+下面是一个简单的 Qt Quick 用户界面
 
 .. code-block:: qml
 
@@ -533,7 +529,7 @@ This is a simple Qt Quick UI below
         }
     }
 
-The declaration language is called QML and it needs a runtime to execute in. Qt provides a standard runtime called ``qmlscene`` but it's also not so difficult to write a custom runtime. For this we need a quick view and set the main QML document as source. The only thing left is to show the user interface.
+如上的声明式语言称为 QML，需要使用相因的运行时来执行。Qt 提供了一个标准运行时，叫做 ``qmlscene``，同时自己实现一个运行时看起来也不是那么难。使用快速视图并设置相应的 QML 文档作为源文件，接下来就可以展示用户界面了。
 
 .. code-block:: cpp
 
@@ -542,9 +538,10 @@ The declaration language is called QML and it needs a runtime to execute in. Qt 
     view->setSource(source);
     view.show();
 
-Coming back to our earlier examples. In one example we used a C++ city model. It would be great if we could use this model inside our declarative QML code.
 
-To enable this, we first code our front-end to see how we would want to use a city model. In this case the front-end expects a object named ``cityModel`` which we can use inside a list view.
+回到我们之前的某个例子，我们使用了一个 C++ 城市数据模型，如果我们能够在QML代码中使用它那就好了。
+
+为了实现这个目标，我们首先要编写前端代码以确定展示城市数据模型的方式。在这一个例子中前端指定了一个对象叫做 ``cityModel``，我们可以在链表视图（list view）中使用它。
 
 .. code-block:: qml
 
@@ -560,7 +557,7 @@ To enable this, we first code our front-end to see how we would want to use a ci
         }
     }
 
-To enable the ``cityModel`` we can mostly re-use our previous model and add a context property to our root context (the root context is the other root-element in the main document)
+为了使用 ``cityModel``，我们可以尽可能地重用之前的模型，在根内容中添加一个内容属性（根内容在主文档中）。
 
 .. code-block:: cpp
 
@@ -574,15 +571,12 @@ To enable the ``cityModel`` we can mostly re-use our previous model and add a co
 
 .. hint::
 
-    This is not completely correct, as the SQL table model contains the data in columns and a QML model expects the data as roles. So there needs to be a mapping between columns and roles. Please see `QML and QSqlTableModel <http://wiki.qt.io/QML_and_QSqlTableModel>`_ wiki page.
+    这里并不完全正确，因为 SQL 表包含了按列组织的数据，而 QML 模型期望的是具体的数据，所以需要有一个列数据和具体数据之间的映射表，可以参考 `QML 和 QSqlTableModel <http://wiki.qt.io/QML_and_QSqlTableModel>`_ 文档。
 
 
-Summary
-=======
+总结
+====
 
 .. issues:: ch02
 
-We have seen how to install the Qt SDK and how to create our first application. Then we walked you through the different application types to give you an overview of Qt, showing off some features Qt offers for application development. I hope you got a good impression that Qt is a very rich user interface toolkit and offers everything an application developer can hope for and more. Still, Qt does not lock you into specific libraries, as you always can use other libraries or extend Qt yourself. It is also rich when it comes to supporting different application models: console, classical desktop user interface and touch user interface.
-
-
-
+我们已经了解到如何安装 Qt SDK 以及如何创建应用程序。然后对不同的应用类型做了一个概览，以让读者对 Qt 有一个大致的了解，并展示 Qt 在应用开发中的一些特性。希望读者对 Qt 有一个不错的印象，因为 Qt 拥有强大的用户界面工具箱，并向应用开发者提供了他们所期望的东西。当然，Qt 不会限制用户使用特定的库，而是允许开发者使用其它库来扩展 Qt。Qt 在支持不同类型的应用方面也堪称强大：对于控制台应用、经典桌面程序用户界面以及触屏用户界面等方面都表现得游刃有余。
