@@ -251,6 +251,7 @@ When you run the code you will see a window with the size of 240 x 120 pixel. Th
 .. code-block:: cpp
 
     #include <QtGui>
+    #include <QApplication>
 
     int main(int argc, char** argv)
     {
