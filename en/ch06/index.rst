@@ -240,7 +240,7 @@ Animating Added and Removed Items
 
 .. issues:: ch06
 
-In some cases, the contents shown in a view changes over time. Items are added and removed as the underlaying data model is altered. In these cases, it is often a good idea to employ visual ques to give the user a sense of direction and to help the user understand what data is added or removed.
+In some cases, the contents shown in a view changes over time. Items are added and removed as the underlying data model is altered. In these cases, it is often a good idea to employ visual ques to give the user a sense of direction and to help the user understand what data is added or removed.
 
 Conveniently enough, QML views attaches two signals, ``onAdd`` and ``onRemove``, to each item delegate. By connecting animations to these, it is easy to create the movement necessary to aid the user in identifying what is taking place.
 
