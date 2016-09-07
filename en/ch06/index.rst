@@ -201,7 +201,7 @@ Using a ``GridView`` is very similar to using a ``ListView``. The only real diff
 .. figure:: assets/automatic/gridview-basic.png
     :scale: 50%
 
-Compared to a list view, the grid view does not rely on spacing and the size of its delegates. Instead, it uses the ``cellWidth`` and ``cellHeight`` properties to control the dimensions of the contents delegates. Each delegate item is then places in the top left corner of each such cell.
+Compared to a list view, the grid view does not rely on spacing and the size of its delegates. Instead, it uses the ``cellWidth`` and ``cellHeight`` properties to control the dimensions of the contents delegates. Each delegate item is then placed in the top left corner of each such cell.
 
 .. literalinclude:: src/gridview/basic.qml
     :start-after: M1>>
