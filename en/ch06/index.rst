@@ -332,7 +332,7 @@ A Model from XML
 
 As XML is an ubiquitous data format, QML provides the ``XmlListModel`` element that exposes XML data as a model. The element can fetch XML data locally or remotely and then processes the data using XPath expressions.
 
-The example below demonstrates fetching images from an RSS flow. The ``source`` property refers to a remove location over HTTP, and the data is automatically downloaded.
+The example below demonstrates fetching images from an RSS flow. The ``source`` property refers to a remote location over HTTP, and the data is automatically downloaded.
 
 .. figure:: assets/automatic/xmllistmodel-images.png
     :scale: 50%
