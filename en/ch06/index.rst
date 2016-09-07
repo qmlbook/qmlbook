@@ -180,7 +180,7 @@ Header and Footer
 
 At the end of the ``ListView`` contents, a ``header`` and a ``footer`` element can be inserted. These can be considered special delegates places at the beginning or end of the list. For a horizontal list, these will not appear at the head or foot, but rather at then beginning or end, depending on the ``layoutDirection`` used.
 
-The example below illustrates how an header and footer can be used to enhance the perception of the beginning and end of a list. There are other uses for these special list elements. For instance, they can be used to keep buttons to load more contents.
+The example below illustrates how a header and footer can be used to enhance the perception of the beginning and end of a list. There are other uses for these special list elements. For instance, they can be used to keep buttons to load more contents.
 
 .. literalinclude:: src/listview/header-footer.qml
     :start-after: M1>>
