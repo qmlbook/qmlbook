@@ -57,10 +57,10 @@ Qt Quick is the umbrella term for the user interface technology used in Qt 5. Qt
 
 Similar to HTML, QML is a markup language. It is composed of tags called elements in Qt Quick enclosed in curly brackets ``Item {}``. It was designed from the ground up for the creation of user interfaces, speed and easier reading for developers. The user interface can be enhanced using JavaScript code. Qt Quick is easily extendable with your own native functionality using Qt C++. In short the declarative UI is called the front-end and the native parts are called the back-end. This allows you to separate the computing intensive and native operation of your application from the user interface part.
 
-In a typical project the front-end is developed in QML/JavaScript and the back-end code, which interfaces with the system and does the heavy lifting, is developed using Qt C++. This allows a natural split between the more design oriented developers and the functional developers. Typically the back-end is tested using Qt own unit testing framework and exported for the front-end developers to be used.
+In a typical project the front-end is developed in QML/JavaScript and the back-end code, which interfaces with the system and does the heavy lifting, is developed using Qt C++. This allows a natural split between the more design oriented developers and the functional developers. Typically the back-end is tested using Qt Test, the Qt unit testing framework, and exported for the front-end developers to be used.
 
 
-Digesting an User Interface
+Digesting a User Interface
 ---------------------------
 
 Let's create a simple user interface using Qt Quick, which showcases some aspects of the QML language. At the end we will have a paper windmill with rotating blades.
@@ -70,7 +70,7 @@ Let's create a simple user interface using Qt Quick, which showcases some aspect
     :scale: 50%
 
 
-We start with an empty document called ``main.qml``. All QML files will have the ending ``.qml``. As a markup language (like HTML) a QML document needs to have one and only one root element, which in our case is the ``Image`` element with a width and height based on the background image geometry:
+We start with an empty document called ``main.qml``. All QML files will have the file extension ``.qml``. As a markup language (like HTML) a QML document needs to have one and only one root element, which in our case is the ``Image`` element with a width and height based on the background image geometry:
 
 .. code-block:: qml
 
@@ -95,7 +95,7 @@ As QML does not make any restriction which element type is the root element we u
 
     The ``id`` special property is optional and contains an identifier to reference this element later in other places in the document. Important: An ``id`` property cannot be changed after it has been set and it cannot be set during runtime. Using ``root`` as the id for the root-element is just a habit by the author and makes referencing the top-most element predictable in larger QML documents.
 
-The foreground elements pole and pin wheel of our user interface are placed as separate images.
+The foreground elements of our user interface, the pole and pinwheel, are placed as separate images.
 
 .. figure:: src/showcase/images/pole.png
 .. figure:: src/showcase/images/pinwheel.png
@@ -127,9 +127,9 @@ Normally your user interface will be composed of many different element types an
 
 
 
-To place the pin wheel at the central location we use a complex property called ``anchor``. Anchoring allows you to specify geometric relations between parent and sibling objects. E.g. Place me in the center of another element ( ``anchors.centerIn: parent`` ). There are left, right, top, bottom, centerIn, fill, verticalCenter and horizontalCenter relations on both ends. Sure, they need to match.  It does not make sense to anchor my left side to the top side of an element.
+To place the pinwheel at the central location we use a complex property called ``anchor``. Anchoring allows you to specify geometric relations between parent and sibling objects. E.g. Place me in the center of another element ( ``anchors.centerIn: parent`` ). There are left, right, top, bottom, centerIn, fill, verticalCenter and horizontalCenter relations on both ends. Sure, they need to match.  It does not make sense to anchor my left side to the top side of an element.
 
-So we set the pinwheel to be centered in the parent our background.
+So we set the pinwheel to be centered in the parent, which is our background.
 
 .. note::
 
@@ -156,7 +156,7 @@ We use the ``MouseArea`` element and make it as big as our root element.
         ...
     }
 
-The mouse area emit signals when a user clicks inside it covered area. You can hook onto this signal overriding the ``onClicked`` function. In this case the reference the wheel image and change its rotation by +90 degree.
+The mouse area emits a signal when a user clicks inside it's covered area. You can hook onto this signal overriding the ``onClicked`` function. In this case we reference the wheel image and change it's rotation by 90 degrees.
 
 .. note::
 
@@ -164,9 +164,9 @@ The mouse area emit signals when a user clicks inside it covered area. You can h
 
         ``on`` + ``PropertyName`` + ``Changed``
 
-    If a ``width`` property is changing you can observe it with ``onWidthChanged: print(width)`` for example.
+    For example, if a ``width`` property is changing you can observe it with ``onWidthChanged: print(width)``.
 
-Now the wheel will rotate, but it is still not fluid yet. The rotation property changes immediately. What we would like that the property changes by 90 degree over time. Now animations come into play. An animation defines how a property change is distributed over a duration. To enable this we use an animation type called property behavior. The ``Behaviour`` does specify an animation for a defined property for every change applied to that property. In short every time the property changes, the animation is run. This is only one of several ways of declaring an animation in QML.
+Now the wheel will rotate, but it isn't fluid because the rotation property changes immediately. What we would like is to have the property change by 90 degrees over time. This is where animations come into play. An animation defines how a property change is distributed over a duration. To enable this we use an animation type called property behavior. The ``Behaviour`` specifies an animation for a defined property for every change applied to that property. In short every time the property changes, the animation is run. This is only one of several ways of declaring an animation in QML.
 
 .. code-block:: qml
 
@@ -182,7 +182,7 @@ Now the wheel will rotate, but it is still not fluid yet. The rotation property 
         }
     }
 
-Now whenever the property rotation of the wheel changes it will be animated using a ``NumberAnimation`` with a duration of 250 ms. So each 90 degree turn will take 250 ms.
+Now whenever the rotation property of the wheel changes it will be animated using a ``NumberAnimation`` with a duration of 250 ms. So each 90 degree turn will take 250 ms.
 
 .. figure:: assets/scene2.png
     :scale: 50%
@@ -190,12 +190,12 @@ Now whenever the property rotation of the wheel changes it will be animated usin
 .. note:: You will not actually see the wheel blurred. This is just to indicate the rotation. But a blurred wheel is in the assets folder. Maybe you want to try to use that.
 
 
-Now the wheel looks already much better. I hope this has given you a short idea of how Qt Quick programming works.
+Now the wheel looks much better. Hopefully this has given you an idea of how Qt Quick programming works.
 
 Qt Building Blocks
 ==================
 
-Qt 5 consists of a large amount of modules. A module in general is a library for the developer to use. Some modules are mandatory for a Qt enabled platform. They form a set called *Qt Essentials Modules*. Many modules are optional and form the *Qt Add-On Modules*. It's expected that the majority of developers will not have the need to use them, but it's good to know them as they provide invaluable solutions to common challenges.
+Qt 5 consists of a large number of modules. In general, a module is a library for the developer to use. Some modules are mandatory for a Qt enabled platform and form the set called *Qt Essentials Modules*. Many modules are optional and form the *Qt Add-On Modules*. It's expected that the majority of developers will not need to use them, but it's good to know them as they provide invaluable solutions to common challenges.
 
 Qt Modules
 ---------------------
@@ -266,14 +266,14 @@ Besides the essential modules, Qt offers additional modules for software develop
 
 .. note::
 
-    As these modules are not part of the release the state differ between modules, depending how many contributors are active and how well it's get tested.
+    As these modules are not part of the release the state of each module may differ depending how many contributors are active and how well it's tested.
 
 Supported Platforms
 -------------------
 
-Qt supports a variety of platforms. All major desktop and embedded platforms are supported. Through the Qt Application Abstraction, nowadays it's easier to port Qt over to your own platform if required.
+Qt supports a variety of platforms including all major desktop and embedded platforms. Through the Qt Application Abstraction it's now easier than ever to port Qt to your own platform if required.
 
-Testing Qt 5 on a platform is time consuming. A sub-set of platforms was selected by the Qt Project to build the reference platforms set. These platforms are thoroughly tested through the system testing to ensure the best quality. Mind you though: no code is error free.
+Testing Qt 5 on a platform is time consuming. A sub-set of platforms was selected by the Qt Project to build the reference platforms set. These platforms are thoroughly tested through the system testing to ensure the best quality. However, keep in mind that no code is error free.
 
 
 
