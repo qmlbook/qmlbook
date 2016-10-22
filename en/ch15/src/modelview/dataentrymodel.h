@@ -6,7 +6,6 @@
 
 class DataEntryModel : public QAbstractListModel
 {
-    Q_OBJECT
 public:
     explicit DataEntryModel(QObject *parent = 0);
     ~DataEntryModel();
