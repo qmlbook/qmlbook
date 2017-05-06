@@ -39,13 +39,15 @@ Canvas {
         ctx.lineWidth = 4
 
         ctx.beginPath()
-        ctx.rect(-20, -20, 40, 40)
         ctx.translate(120,60)
+        ctx.rect(-20, -20, 40, 40)
         ctx.stroke()
 
         // draw path now rotated
         ctx.strokeStyle = "green"
+        ctx.beginPath();
         ctx.rotate(Math.PI/4)
+        ctx.rect(-20, -20, 40, 40)
         ctx.stroke()
     }
 }
