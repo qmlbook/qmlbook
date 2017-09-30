@@ -115,7 +115,7 @@ Plugin Content
 
 A plugin is a library with a defined interface, which is loaded on demand. This differs from a library as a library is linked and loaded on startup of the application. In the QML case the interface is called ``QQmlExtensionPlugin``. There are two methods interesting for us ``initializeEngine()`` and ``registerTypes()``. When the plugin is loaded first the ``initializeEngine()`` is called, which allows us to access the engine to expose plugin objects to the root context. In the majority you will only use the ``registerTypes()`` method. This allows you to register you custom QML types with the engine on the provided url.
 
-Let us step back a little bit and think about a potential file IO type which would allow us to read/write small text files form QML. A first iteration could look like this in a mocked QML implementation.
+Let us step back a little bit and think about a potential file IO type which would allow us to read/write small text files from QML. A first iteration could look like this in a mocked QML implementation.
 
 .. code-block:: qml
 
