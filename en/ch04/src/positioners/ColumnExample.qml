@@ -36,7 +36,7 @@ DarkSquare {
     height: 240
 
     Column {
-        id: row
+        id: column
         anchors.centerIn: parent
         spacing: 8
         RedSquare { }
