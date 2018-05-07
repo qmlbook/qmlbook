@@ -22,7 +22,7 @@ Dependencies
 Building
 ========
 
-Simply use the `Makefile` provided. I supports a number of targets. We regularly build `html`, `singlehtml` and `latexpdf`, so these aught to work out of the box. The resulting files will end up in the `_build` directory.
+Simply use the `Makefile` provided. It supports a number of targets. We regularly build `html`, `singlehtml` and `latexpdf`, so these aught to work out of the box. The resulting files will end up in the `_build` directory.
 
 Screenshots
 ===========
