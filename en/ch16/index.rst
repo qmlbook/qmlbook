@@ -115,7 +115,7 @@ Plugin Content
 
 A plugin is a library with a defined interface, which is loaded on demand. This differs from a library as a library is linked and loaded on startup of the application. In the QML case the interface is called ``QQmlExtensionPlugin``. There are two methods interesting for us ``initializeEngine()`` and ``registerTypes()``. When the plugin is loaded first the ``initializeEngine()`` is called, which allows us to access the engine to expose plugin objects to the root context. In the majority you will only use the ``registerTypes()`` method. This allows you to register you custom QML types with the engine on the provided url.
 
-Let us step back a little bit and think about a potential file IO type which would allow us to read/write small text files form QML. A first iteration could look like this in a mocked QML implementation.
+Let us step back a little bit and think about a potential file IO type which would allow us to read/write small text files from QML. A first iteration could look like this in a mocked QML implementation.
 
 .. code-block:: qml
 
@@ -214,7 +214,7 @@ When you look into your project directory you will find a qmldir file. This file
     module org.example.io
     plugin fileio
 
-The module is the URI under which your plugin is reachable by others and the plugin line must be identical with your plugin file name (under mac this would be *libfileio_debug.dylib* on the file system and *fileio* in the *qmldir*). These files where created by Qt Creator based on the given information. The module uri is also available in the .pro file. There is is used to build up the install directory.
+The module is the URI under which your plugin is reachable by others and the plugin line must be identical with your plugin file name (under mac this would be *libfileio_debug.dylib* on the file system and *fileio* in the *qmldir*). These files are created by Qt Creator based on the given information. The module uri is also available in the .pro file. There is is used to build up the install directory.
 
 When you call ``make install`` in your build folder the library will be copied into the Qt ``qml`` folder (for Qt 5.4 on mac this would be *"~/Qt/5.4/clang_64/qml"*. The exact path depends on you Qt installation location and the used compiler on your system). There you will find a the library inside the "org/example/io" folder. The content are these two files currently
 
