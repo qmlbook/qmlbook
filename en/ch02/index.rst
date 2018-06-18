@@ -448,7 +448,7 @@ Up to now we have mostly covered basic data types and how to use widgets and gra
 
     QList<QString> cities;
     cities << "Munich" << "Paris" << "London";
-    model->setStringList(cities);
+    m_model->setStringList(cities);
 
 Another popular way to store or retrieve data is SQL. Qt comes with SQLite embedded and also has support for other database engines (MySQL, PostgresSQL, ...). First you need to create your database using a schema, like this:
 
