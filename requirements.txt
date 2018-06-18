@@ -1,0 +1,6 @@
+sphinx
+sphinx-bootstrap-theme
+sphinx-autobuild
+invoke
+path.py
+
