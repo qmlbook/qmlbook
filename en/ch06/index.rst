@@ -178,9 +178,9 @@ Header and Footer
 
 .. issues:: ch06
 
-At the end of the ``ListView`` contents, a ``header`` and a ``footer`` element can be inserted. These can be considered special delegates places at the beginning or end of the list. For a horizontal list, these will not appear at the head or foot, but rather at then beginning or end, depending on the ``layoutDirection`` used.
+At the end of the ``ListView`` contents, a ``header`` and a ``footer`` element can be inserted. These can be considered special delegates placed at the beginning or end of the list. For a horizontal list, these will not appear at the head or foot, but rather at then beginning or end, depending on the ``layoutDirection`` used.
 
-The example below illustrates how an header and footer can be used to enhance the perception of the beginning and end of a list. There are other uses for these special list elements. For instance, they can be used to keep buttons to load more contents.
+The example below illustrates how a header and footer can be used to enhance the perception of the beginning and end of a list. There are other uses for these special list elements. For instance, they can be used to keep buttons to load more contents.
 
 .. literalinclude:: src/listview/header-footer.qml
     :start-after: M1>>
@@ -201,7 +201,7 @@ Using a ``GridView`` is very similar to using a ``ListView``. The only real diff
 .. figure:: assets/automatic/gridview-basic.png
     :scale: 50%
 
-Compared to a list view, the grid view does not rely on spacing and the size of its delegates. Instead, it uses the ``cellWidth`` and ``cellHeight`` properties to control the dimensions of the contents delegates. Each delegate item is then places in the top left corner of each such cell.
+Compared to a list view, the grid view does not rely on spacing and the size of its delegates. Instead, it uses the ``cellWidth`` and ``cellHeight`` properties to control the dimensions of the contents delegates. Each delegate item is then placed in the top left corner of each such cell.
 
 .. literalinclude:: src/gridview/basic.qml
     :start-after: M1>>
@@ -240,7 +240,7 @@ Animating Added and Removed Items
 
 .. issues:: ch06
 
-In some cases, the contents shown in a view changes over time. Items are added and removed as the underlaying data model is altered. In these cases, it is often a good idea to employ visual ques to give the user a sense of direction and to help the user understand what data is added or removed.
+In some cases, the contents shown in a view changes over time. Items are added and removed as the underlying data model is altered. In these cases, it is often a good idea to employ visual ques to give the user a sense of direction and to help the user understand what data is added or removed.
 
 Conveniently enough, QML views attaches two signals, ``onAdd`` and ``onRemove``, to each item delegate. By connecting animations to these, it is easy to create the movement necessary to aid the user in identifying what is taking place.
 
@@ -332,7 +332,7 @@ A Model from XML
 
 As XML is an ubiquitous data format, QML provides the ``XmlListModel`` element that exposes XML data as a model. The element can fetch XML data locally or remotely and then processes the data using XPath expressions.
 
-The example below demonstrates fetching images from an RSS flow. The ``source`` property refers to a remove location over HTTP, and the data is automatically downloaded.
+The example below demonstrates fetching images from an RSS flow. The ``source`` property refers to a remote location over HTTP, and the data is automatically downloaded.
 
 .. figure:: assets/automatic/xmllistmodel-images.png
     :scale: 50%

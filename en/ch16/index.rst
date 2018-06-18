@@ -38,7 +38,7 @@ In the example the ``QGuiApplication`` encapsulates all that is related to the a
 
 In the qml file we declare our dependencies here it is ``QtQuick`` and ``QtQuick.Window``. These declaration will trigger a lookup for these modules in the import paths and on success will load the required plugins by the engine. The newly loaded types will then be made available to the qml file controlled by a qmldir.
 
-Is it also possible to shortcut the plugin creation by adding our types directly to the engine. Here we assume we have a ``CurrentTime`` ``QObject`` based class.
+It is also possible to shortcut the plugin creation by adding our types directly to the engine. Here we assume we have a ``CurrentTime`` ``QObject`` based class.
 
 .. code-block:: cpp
 
@@ -74,7 +74,7 @@ For the really lazy there is also the very direct way through context properties
 
 .. note::
 
-    Do not mix up ``setContextProperty()`` and ``setProperty()``. The first on sets a context property on a qml context, and ``setProperty()`` sets a dynamic property value on a ``QObject`` and will not help you.
+    Do not mix up ``setContextProperty()`` and ``setProperty()``. The first one sets a context property on a qml context, and ``setProperty()`` sets a dynamic property value on a ``QObject`` and will not help you.
 
 Now you can use the current property everywhere in your application. Thanks to context inheritance.
 

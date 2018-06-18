@@ -111,7 +111,7 @@ Shadows
 
 .. issues:: ch07
 
-A path can be visually enhanced using shadows with the 2D context object. A shadow is an area around the path with an offset, color and specified blurring. For this you need can specify a ``shadowColor``, ``shadowOffsetX``, ``shadowOffsetY`` and a ``shadowBlur``. All of this needs to be defined using the 2D context. The 2D context is your only API to the drawing operations.
+A path can be visually enhanced using shadows with the 2D context object. A shadow is an area around the path with an offset, color and specified blurring. For this you can specify a ``shadowColor``, ``shadowOffsetX``, ``shadowOffsetY`` and a ``shadowBlur``. All of this needs to be defined using the 2D context. The 2D context is your only API to the drawing operations.
 
 A shadow can also be used to create a glow effect around a path. In the next example we create a text "Canvas" with a white glow around. All this on a dark background for better visibility.
 
@@ -202,7 +202,7 @@ Pixel Buffers
 
 .. issues:: ch07
 
-When working with the canvas you are able to retrieve pixel data from the canvas to read or manipulate the pixels of your canvas. To read the image data use ``createImageData(sw,sh)`` or ``getImageData(sx,sy,sw,sh)``. Both functions return an ``ImageData`` object with a ``width``, ``height`` and a ``data`` variable. The data variable contains a one-dimensional array of the pixel data retrieved in the *RGBA* format, where each value varies in the range of 0 to 255. To set pixels on the canvas you can use the ``putImageData(imagedata,, dx, dy)`` function.
+When working with the canvas you are able to retrieve pixel data from the canvas to read or manipulate the pixels of your canvas. To read the image data use ``createImageData(sw,sh)`` or ``getImageData(sx,sy,sw,sh)``. Both functions return an ``ImageData`` object with a ``width``, ``height`` and a ``data`` variable. The data variable contains a one-dimensional array of the pixel data retrieved in the *RGBA* format, where each value varies in the range of 0 to 255. To set pixels on the canvas you can use the ``putImageData(imagedata, dx, dy)`` function.
 
 Another way to retrieve the content of the canvas is to store the data into an image. This can be achieved with the ``Canvas`` functions ``save(path)`` or ``toDataURL(mimeType)``, where the later function returns an image url, which can be used to be loaded by an ``Image`` element.
 
