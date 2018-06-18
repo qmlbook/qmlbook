@@ -111,7 +111,7 @@ Shadows
 
 .. issues:: ch07
 
-A path can be visually enhanced using shadows with the 2D context object. A shadow is an area around the path with an offset, color and specified blurring. For this you need can specify a ``shadowColor``, ``shadowOffsetX``, ``shadowOffsetY`` and a ``shadowBlur``. All of this needs to be defined using the 2D context. The 2D context is your only API to the drawing operations.
+A path can be visually enhanced using shadows with the 2D context object. A shadow is an area around the path with an offset, color and specified blurring. For this you can specify a ``shadowColor``, ``shadowOffsetX``, ``shadowOffsetY`` and a ``shadowBlur``. All of this needs to be defined using the 2D context. The 2D context is your only API to the drawing operations.
 
 A shadow can also be used to create a glow effect around a path. In the next example we create a text "Canvas" with a white glow around. All this on a dark background for better visibility.
 
