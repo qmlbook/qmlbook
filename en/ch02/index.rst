@@ -175,7 +175,7 @@ This example adds a list and list iteration to the application. Qt comes with a 
     QString s2("Qt");
     QList<QString> list;
     // stream into containers
-    list <<  s1 << s2;
+    list << s1 << s2;
     // Java and STL like iterators
     QListIterator<QString> iter(list);
     while(iter.hasNext()) {
