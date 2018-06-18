@@ -15,7 +15,7 @@ Dependencies
 
 * git (http://git-scm.com/) - scm tool
 * sphinx (http://sphinx.pocoo.org/) - book engine
-    * sphinx-bootstrap-theme - bootstrap HTML theme
+    * sphinx-bootstrap-theme (https://github.com/ryan-roemer/sphinx-bootstrap-theme) - bootstrap HTML theme
 * graphviz (http://www.graphviz.org/) - diagram tool
 * shorty (https://github.com/qmlbook/shorty) - QML screenshot tool
 
