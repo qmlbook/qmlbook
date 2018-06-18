@@ -57,7 +57,7 @@ Qt Quick is the umbrella term for the user interface technology used in Qt 5. Qt
 
 Similar to HTML, QML is a markup language. It is composed of tags called elements in Qt Quick enclosed in curly brackets ``Item {}``. It was designed from the ground up for the creation of user interfaces, speed and easier reading for developers. The user interface can be enhanced using JavaScript code. Qt Quick is easily extendable with your own native functionality using Qt C++. In short the declarative UI is called the front-end and the native parts are called the back-end. This allows you to separate the computing intensive and native operation of your application from the user interface part.
 
-In a typical project the front-end is developed in QML/JavaScript and the back-end code, which interfaces with the system and does the heavy lifting, is developed using Qt C++. This allows a natural split between the more design oriented developers and the functional developers. Typically the back-end is tested using Qt own unit testing framework and exported for the front-end developers to be used.
+In a typical project the front-end is developed in QML/JavaScript and the back-end code, which interfaces with the system and does the heavy lifting, is developed using Qt C++. This allows a natural split between the more design oriented developers and the functional developers. Typically the back-end is tested using Qt Test, the Qt unit testing framework, and exported for the front-end developers to be used.
 
 
 Digesting a User Interface
@@ -189,13 +189,12 @@ Now whenever the wheel's rotation property changes it will be animated using a `
 
 .. note:: You will not actually see the wheel blurred. This is just to indicate the rotation. (A blurred wheel is in the assets folder, in case you'd like to experiment with it.)
 
-
 Now the wheel looks much better and behaves nicely, as well as providing a very brief insight into the basics of how Qt Quick programming works.
 
 Qt Building Blocks
 ==================
 
-Qt 5 consists of a large amount of modules. A module in general is a library for the developer to use. Some modules are mandatory for a Qt enabled platform. They form a set called *Qt Essentials Modules*. Many modules are optional and form the *Qt Add-On Modules*. It's expected that the majority of developers will not have the need to use them, but it's good to know them as they provide invaluable solutions to common challenges.
+Qt 5 consists of a large number of modules. In general, a module is a library for the developer to use. Some modules are mandatory for a Qt enabled platform and form the set called *Qt Essentials Modules*. Many modules are optional and form the *Qt Add-On Modules*. It's expected that the majority of developers will not need to use them, but it's good to know them as they provide invaluable solutions to common challenges.
 
 Qt Modules
 ---------------------
@@ -266,14 +265,14 @@ Besides the essential modules, Qt offers additional modules for software develop
 
 .. note::
 
-    As these modules are not part of the release the state differ between modules, depending how many contributors are active and how well it's get tested.
+    As these modules are not part of the release the state of each module may differ depending how many contributors are active and how well it's tested.
 
 Supported Platforms
 -------------------
 
-Qt supports a variety of platforms. All major desktop and embedded platforms are supported. Through the Qt Application Abstraction, nowadays it's easier to port Qt over to your own platform if required.
+Qt supports a variety of platforms including all major desktop and embedded platforms. Through the Qt Application Abstraction it's now easier than ever to port Qt to your own platform if required.
 
-Testing Qt 5 on a platform is time consuming. A sub-set of platforms was selected by the Qt Project to build the reference platforms set. These platforms are thoroughly tested through the system testing to ensure the best quality. Mind you though: no code is error free.
+Testing Qt 5 on a platform is time consuming. A sub-set of platforms was selected by the Qt Project to build the reference platforms set. These platforms are thoroughly tested through the system testing to ensure the best quality. However, keep in mind that no code is error free.
 
 
 
