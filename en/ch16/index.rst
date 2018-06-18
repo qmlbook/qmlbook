@@ -74,7 +74,7 @@ For the really lazy there is also the very direct way through context properties
 
 .. note::
 
-    Do not mix up ``setContextProperty()`` and ``setProperty()``. The first on sets a context property on a qml context, and ``setProperty()`` sets a dynamic property value on a ``QObject`` and will not help you.
+    Do not mix up ``setContextProperty()`` and ``setProperty()``. The first one sets a context property on a qml context, and ``setProperty()`` sets a dynamic property value on a ``QObject`` and will not help you.
 
 Now you can use the current property everywhere in your application. Thanks to context inheritance.
 
