@@ -19,6 +19,31 @@ Dependencies
 * graphviz (http://www.graphviz.org/) - diagram tool
 * shorty (https://github.com/qmlbook/shorty) - QML screenshot tool
 
+Setup
+=====
+
+Ideally you use a python virtual environment and install the dependencies their inside.
+
+    cd qmlbook
+    virtualenv -p python3 venv
+    source venv/bin/activate
+
+This gives you a clean python3 setup. Now you need to install the dependencies:
+    
+    source venv/bin/activate
+    pip install -r requirements.txt
+
+This will install all listed packages from the requirements document.
+
+For rebuilding the documentation we also use a screen shot tool called shorty. It takes a screenshot from a running Qt application. To build it please clone the repo and build the tool with a decent Qt version.
+
+    git clone git@github.com:qmlbook/shorty.git
+    cd shorty
+    mkdir build && cd build
+    qmake .. && make
+
+Make sure shorty is on your search path, when 
+
 Building
 ========
 

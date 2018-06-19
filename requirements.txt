@@ -1,6 +1,6 @@
 sphinx
 sphinx-bootstrap-theme
+livereload
 sphinx-autobuild
-invoke
-path.py
+paver
 

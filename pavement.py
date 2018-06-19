@@ -44,16 +44,24 @@ def clean():
 
 
 @task
+def shoot():
+    for doc in path('.').walkfiles('screenshots.qml'):
+        with pushd(doc.dirname()):
+            sh('shorty screenshots.qml')
+
+
+@task
 def serve():
     with pushd('_build/html'):
         sh('python -m SimpleHTTPServer')
 
 
 @task
+@needs('build_html')
 def live():
     server = Server()
     server.watch('en', shell('paver build_html', cwd='.'))
-    server.serve(root='_build/html', open_url=True)
+    server.serve(root='_build/html', open_url_delay=True)
 
 
 ROOT = path('.').abspath()
@@ -68,10 +76,11 @@ def assets_init():
 @task
 @needs('assets_init')
 def build_assets():
-    for ch in path('.').dirs('ch??'):
-        name = '%s-assets.tgz' % ch
-        if ch.joinpath('src').isdir():
-            sh('tar czvf assets/{0} --exclude=".*" {1}/src/'.format(name, ch))
+    with pushd('en'):
+        for ch in path('.').dirs('ch??'):
+            name = '%s-assets.tgz' % ch
+            if ch.joinpath('src').isdir():
+                sh('tar czvf ../assets/{0} --exclude=".*" {1}/src/'.format(name, ch))
 
 
 @task
