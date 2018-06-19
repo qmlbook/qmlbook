@@ -35,18 +35,26 @@ Canvas {
     width: 240; height: 120
     onPaint: {
         var ctx = getContext("2d")
-        ctx.strokeStyle = "blue"
-        ctx.lineWidth = 4
+            var ctx = getContext("2d");
+            ctx.lineWidth = 4;
+            ctx.strokeStyle = "blue";
 
-        ctx.beginPath()
-        ctx.rect(-20, -20, 40, 40)
-        ctx.translate(120,60)
-        ctx.stroke()
+            // translate x/y coordinate system
+            ctx.translate(root.width/2, root.height/2);
 
-        // draw path now rotated
-        ctx.strokeStyle = "green"
-        ctx.rotate(Math.PI/4)
-        ctx.stroke()
+            // draw path
+            ctx.beginPath();
+            ctx.rect(-20, -20, 40, 40);
+            ctx.stroke();
+
+            // rotate coordinate system
+            ctx.rotate(Math.PI/4);
+            ctx.strokeStyle = "green";
+
+            // draw path
+            ctx.beginPath();
+            ctx.rect(-20, -20, 40, 40);
+            ctx.stroke();
     }
 }
 // <<M1
