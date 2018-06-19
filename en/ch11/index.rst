@@ -4,7 +4,7 @@ Networking
 
 .. sectionauthor:: `jryannel <https://github.com/jryannel>`_
 
-.. issues:: ch11
+.. github:: ch11
 
 .. note::
 

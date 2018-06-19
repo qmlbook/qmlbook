@@ -6,7 +6,7 @@ Fluid Elements
 
 .. index:: Animations, Easing Curves, Grouped Animations, States, Transitions, SequentialAnimation, ParallelAnimation, ColorAnimation, NumberAnimation, Transition, ClickableImage, Bouncing Ball
 
-.. issues:: ch05
+.. github:: ch05
 
 .. note::
 

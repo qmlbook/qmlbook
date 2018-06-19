@@ -4,7 +4,7 @@ Meet Qt 5
 
 .. sectionauthor:: `jryannel <https://github.com/jryannel>`_
 
-.. issues:: ch01
+.. github:: ch01
 
 .. note::
 

@@ -36,10 +36,10 @@ def html_visit_issues_node(self, node):
     query = urlencode({'labels': label, 'body': back_link})
     create_url = '%s/new?%s' % (base_url, query)
     view_url = '%s?labels=%s&page=1&state=open' % (base_url, label)
-    self.body.append('<div class="alert">')
-    self.body.append('Issues: <a href="%s">Create</a>' % create_url)
-    self.body.append(' | <a href="%s">View</a>' % view_url)
-    self.body.append('</div>')
+    self.body.append('<p><div class="btn-group" role="group">')
+    self.body.append('<a class="btn btn-link btn-xs" href="%s"><i class="glyphicon glyphicon-plus"></i> Issue</a>' % create_url)
+    self.body.append('<a class="btn btn-link btn-xs" href="%s"><i class="glyphicon glyphicon-search"></i> Issues</a>' % view_url)
+    self.body.append('</div></p>')
 
 
 def html_depart_issues_node(self, node):

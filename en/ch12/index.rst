@@ -2,7 +2,7 @@
 Storage
 =======
 
-.. issues:: ch12
+.. github:: ch12
 
 .. sectionauthor:: `jryannel <https://github.com/jryannel>`_
 

@@ -4,7 +4,7 @@ Quick Starter
 
 .. sectionauthor:: `jryannel <https://github.com/jryannel>`_
 
-.. issues:: ch04
+.. github:: ch04
 
 .. note::
 

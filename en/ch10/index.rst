@@ -4,7 +4,7 @@ Multimedia
 
 .. sectionauthor:: `e8johan <https://bitbucket.org/e8johan>`_
 
-.. issues:: ch10
+.. github:: ch10
 
 .. note::
 

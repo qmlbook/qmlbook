@@ -6,7 +6,7 @@ Model-View-Delegate
 
 .. index:: GridView, ListElement, ListModel, ListView, PathView, Repeater, XmlListModel
 
-.. issues:: ch06
+.. github:: ch06
 
 .. note::
 

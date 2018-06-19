@@ -4,7 +4,7 @@ Dynamic QML
 
 .. sectionauthor:: `e8johan <https://bitbucket.org/e8johan>`_
 
-.. issues:: ch13
+.. github:: ch13
 
 .. note::
 

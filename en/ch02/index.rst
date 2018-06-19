@@ -4,7 +4,7 @@ Get Started
 
 .. sectionauthor:: `jryannel <https://github.com/jryannel>`_
 
-.. issues:: ch02
+.. github:: ch02
 
 .. |creatorrun| image:: assets/qtcreator-run.png
 
@@ -136,8 +136,6 @@ This section is a run through of the different possible application types someon
 Console Application
 -------------------
 
-.. issues:: ch02
-
 A console application does not provide any graphical user interface and will normally be called as part of a system service or from the command line. Qt 5 comes with a series of ready-made components which help you to create console cross platform applications very efficiently. For example the networking file APIs. Also string handling and, since Qt 5.1, efficient command line parser. As Qt is a high-level API on top of C++, you get programming speed paired with execution speed. Don't think of Qt as being *just* a UI toolkit -- it has so much more to offer.
 
 .. rubric:: String Handling
@@ -238,8 +236,6 @@ This concludes our section about console based application with Qt.
 
 Widget Application
 ------------------
-
-.. issues:: ch02
 
 Console based applications are very handy but sometimes you need to have a UI to show. In addition, UI-based applications will likely need a back-end to read/write files, communicate over the network, or keep data in a container.
 
@@ -435,9 +431,6 @@ In the implementation the scene gets attached to the view first. The view is a w
 Adapting Data
 -------------
 
-.. issues:: ch02
-
-
 Up to now we have mostly covered basic data types and how to use widgets and graphic views. Often in your application you will need larger amount of structured data, which also has to be persistently stored. The data also needs to be displayed. For this Qt uses models. A simple model is the string list model, which gets filled with strings and then attached to a list view.
 
 .. code-block:: cpp
@@ -511,8 +504,6 @@ The filter proxy model is much more powerful than demonstrated here. For now it 
 
 Qt Quick Application
 --------------------
-
-.. issues:: ch02
 
 There is an inherent conflict in modern software development. The user interface is moving much faster than our back-end services. In a traditional technology you develop the so called front-end at the same pace as the back-end. This results in conflicts when customers want to change the user interface during a project, or develop the idea of an user interface during the project. Agile projects, require agile methods.
 

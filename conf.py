@@ -32,9 +32,11 @@ extensions = [
     'sphinx.ext.graphviz',
     'youtube',
     'issues',
+    'github',
     ]
 
-issues_base_url = 'https://github.com/qmlbook/qmlbook/issues'
+issues_base_url = 'https://github.com/qmlbook/qmlbook/'
+github_base_url = 'https://github.com/qmlbook/qmlbook/'
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -50,7 +52,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'Qt5 Cadaques Book'
-copyright = u'2012-2014 Jürgen Bocklage-Ryannel and Johan Thelin. ' \
+copyright = u'2012-2018 Jürgen Bocklage-Ryannel and Johan Thelin. ' \
   'This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License'
 
 # The version info for the project you're documenting, acts as replacement for
@@ -58,7 +60,7 @@ copyright = u'2012-2014 Jürgen Bocklage-Ryannel and Johan Thelin. ' \
 # built documents.
 #
 # The short X.Y version.
-version = '2015-03'
+version = '2018-06'
 # The full version, including alpha/beta/rc tags.
 release = version
 
@@ -146,7 +148,7 @@ if on_qthelp:
   html_theme_options = {}
 else:
   html_theme_options = {
-    'bootswatch_theme': "yeti",
+    'bootswatch_theme': "lumen",
     'navbar_links': [
     ],
     'navbar_title': "QmlBook",

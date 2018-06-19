@@ -5,7 +5,7 @@ Canvas Element
 .. sectionauthor:: `jryannel <https://github.com/jryannel>`_
 
 
-.. issues:: ch07
+.. github:: ch07
 
 .. note::
 
