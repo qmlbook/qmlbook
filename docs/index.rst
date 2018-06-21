@@ -36,22 +36,22 @@ We are heavily working on this book and that means several things:
     :numbered:
     :maxdepth: 2
 
-    en/ch01/index
-    en/ch02/index
-    en/ch03/index
-    en/ch04/index
-    en/ch05/index
-    en/ch06/index
-    en/ch07/index
-    en/ch08/index
-    en/ch09/index
-    en/ch10/index
-    en/ch11/index
-    en/ch12/index
-    en/ch13/index
-    en/ch14/index
-    en/ch15/index
-    en/ch16/index
+    ch01/ch01.rst
+    ch02/ch02.rst
+    ch03/ch03.rst
+    ch04/ch04.rst
+    ch05/ch05.rst
+    ch06/ch06.rst
+    ch07/ch07.rst
+    ch08/ch08.rst
+    ch09/ch09.rst
+    ch10/ch10.rst
+    ch11/ch11.rst
+    ch12/ch12.rst
+    ch13/ch13.rst
+    ch14/ch14.rst
+    ch15/ch15.rst
+    ch16/ch16.rst
 
 
 .. rubric:: Assets
