@@ -36,22 +36,22 @@ We are heavily working on this book and that means several things:
     :numbered:
     :maxdepth: 2
 
-    ch01/ch01.rst
-    ch02/ch02.rst
-    ch03/ch03.rst
-    ch04/ch04.rst
-    ch05/ch05.rst
-    ch06/ch06.rst
-    ch07/ch07.rst
-    ch08/ch08.rst
-    ch09/ch09.rst
-    ch10/ch10.rst
-    ch11/ch11.rst
-    ch12/ch12.rst
-    ch13/ch13.rst
-    ch14/ch14.rst
-    ch15/ch15.rst
-    ch16/ch16.rst
+    meetqt/meetqt.rst
+    start/start.rst
+    qtcreator/qtcreator.rst
+    qmlstart/qmlstart.rst
+    fluid/fluid.rst
+    modelview/modelview.rst
+    canvas/canvas.rst
+    particles/particles.rst
+    shaders/shaders.rst
+    multimedia/multimedia.rst
+    networking/networking.rst
+    storage/storage.rst
+    dynamicqml/dynamicqml.rst
+    javascript/javascript.rst
+    qtcpp/qtcpp.rst
+    extensions/extensions.rst
 
 
 .. rubric:: Assets

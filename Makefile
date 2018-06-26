@@ -153,3 +153,6 @@ doctest:
 	$(SPHINXBUILD) -b doctest $(ALLSPHINXOPTS) $(BUILDDIR)/doctest
 	@echo "Testing of doctests in the sources finished, look at the " \
 	      "results in docs $(BUILDDIR)/doctest/output.txt."
+
+serve:
+	sphinx-autobuild --port 8080 --open-browser docs _build/html

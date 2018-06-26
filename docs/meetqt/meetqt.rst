@@ -6,7 +6,7 @@ Meet Qt 5
 
 .. github:: ch01
 
-.. note::
+.. tip::
 
     The source code of this chapter can be found in the `assets folder <../../assets>`_.
 
@@ -236,6 +236,7 @@ The minimal set of Qt 5 modules to start QML programming.
 
 
 .. digraph:: essentials
+    :align: center
 
     QtGui -> QtCore
     QtNetwork ->QtCore

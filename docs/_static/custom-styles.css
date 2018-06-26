@@ -1,0 +1,24 @@
+/*a {
+    text-decoration: underline;
+}
+*/
+.alert-info a {
+    color: white;
+    text-decoration: underline;
+}
+
+.alert-info {
+    background-color: #43ac6a;
+}
+
+code {
+    background-color: #ffffff33;
+}
+
+.figure {
+    text-align: center;
+}
+
+.bs-sidenav {
+    padding: 10px;
+}
