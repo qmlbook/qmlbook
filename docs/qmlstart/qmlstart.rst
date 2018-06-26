@@ -171,7 +171,7 @@ Rectangle Element
 
 The ``Rectangle`` extends ``Item`` and adds a fill color to it. Additionally it supports borders defined by ``border.color`` and ``border.width``. To create rounded rectangles you can use the ``radius`` property.
 
-.. literalinclude:: src/concepts/RectanglesExample2.qml
+.. literalinclude:: src/concepts/RectangleExample2.qml
     :start-after: M1>>
     :end-before: <<M1
 
@@ -184,7 +184,7 @@ The ``Rectangle`` extends ``Item`` and adds a fill color to it. Additionally it 
 Besides a fill color and a border the rectangle also supports custom gradients.
 
 
-.. literalinclude:: src/concepts/RectanglesExample3.qml
+.. literalinclude:: src/concepts/RectangleExample3.qml
     :start-after: M1>>
     :end-before: <<M1
 
@@ -299,7 +299,7 @@ A component is a reusable element and QML provides different ways to create comp
 For example, let's create a rectangle containing a text componenet and a mouse area. This resembles a simple button and doesn't need to be more complicated for our purposes.
 
 
-.. literalinclude:: src/elements/InlinedComponentsExample.qml
+.. literalinclude:: src/elements/InlinedComponentExample.qml
     :start-after: M1>>
     :end-before: <<M1
 

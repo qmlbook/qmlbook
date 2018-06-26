@@ -30,10 +30,14 @@ To load a simple user interface via HTTP we need to have a web-server, which ser
 
 To serve this file we launch a small python script::
 
+.. code-block:: sh
+
     $ cd <PROJECT>
     # python -m SimpleHTTPServer 8080
 
 Now our file should be reachable via ``http://localhost:8080/main.qml``. You can test it with::
+
+.. code-block:: sh
 
     $ curl http://localhost:8080/main.qml
 
@@ -89,6 +93,8 @@ We modify our ``main.qml`` to use the button and save it as ``main2.qml``::
     }
 
 And launch our web-server again::
+
+.. code-block:: sh
 
     $ cd src
     # python -m SimpleHTTPServer 8080

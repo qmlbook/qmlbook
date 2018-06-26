@@ -30,7 +30,7 @@ import QtQuick 2.5
 
 Rectangle {
     width: 480; height: 240
-    color: '#1e1e1e'
+    color: "#1e1e1e"
 
     Image {
         id: sourceImage
@@ -41,7 +41,7 @@ Rectangle {
     Rectangle {
         width: 160; height: width
         anchors.centerIn: parent
-        color: '#333333'
+        color: "#333333"
     }
     ShaderEffect {
         id: genieEffect

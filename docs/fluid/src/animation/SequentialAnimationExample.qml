@@ -27,7 +27,7 @@
 
 // M1>>
 
-// sequentialanimation.qml
+// SequentialAnimationExample.qml
 import QtQuick 2.5
 
 BrightSquare {

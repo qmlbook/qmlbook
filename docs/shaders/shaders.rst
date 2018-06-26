@@ -280,7 +280,6 @@ This results into an x-position tending towards the width when the y-position is
 
 .. figure:: assets/geniebending.png
 
-
 .. literalinclude:: src/effects/genie2.qml
     :start-after: M1>>
     :end-before: <<M1

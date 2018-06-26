@@ -463,7 +463,7 @@ And then we can open our database using C++. First we need to retrieve a new dat
 .. code-block:: cpp
 
     QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
-    db.setDatabaseName('cities.db');
+    db.setDatabaseName("cities.db");
     if(!db.open()) {
         qFatal("unable to open database");
     }
