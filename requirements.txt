@@ -1,6 +1,9 @@
 sphinx
 sphinx-bootstrap-theme
-livereload
 sphinx-autobuild
+sphinx-intl
 paver
+transifex-client
+
+
 
