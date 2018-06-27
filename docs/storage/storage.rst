@@ -13,16 +13,16 @@ Storage
     The source code for this chapter can be found in the `assets folder <../../assets>`_.
 
 
-This chapter will cover storing data using Qt Quick in Qt 5. Qt Quick offers only limited ways of storing local data directly. In this sense it acts more like a browser. In many projects storing data is handled by the C++ backend and the required functionality is exported to the Qt Quick frontend side. Qt Quick does not provide you with access to the host file system to read and write files as you are used from the Qt C++ side. So it would be the task of the backend engineer to write such a plugin or maybe use a network channel to communicate with a local server, which provides these capabilities.
+This chapter will cover storing data using Qt Quick in Qt 5. Qt Quick offers only limited ways of storing local data directly. In this sense, it acts more like a browser. In many projects storing data is handled by the C++ backend and the required functionality is exported to the Qt Quick frontend side. Qt Quick does not provide you with access to the host file system to read and write files as you are used from the Qt C++ side. So it would be the task of the backend engineer to write such a plugin or maybe use a network channel to communicate with a local server, which provides these capabilities.
 
-Every application need to store smaller and larger information persistently. This can be done locally on the file system or remote on a server. Some information will be structured and simple (e.g. settings), some will be large and complicated for example documentation files and some will be large and structured and will require some sort of database connection. Here we will mainly cover the built in capabilities of Qt Quick to store data as also the networked ways.
+Every application needs to store smaller and larger information persistently. This can be done locally on the file system or remote on a server. Some information will be structured and simple (e.g. settings), some will be large and complicated for example documentation files and some will be large and structured and will require some sort of database connection. Here we will mainly cover the built-in capabilities of Qt Quick to store data as also the networked ways.
 
 Settings
 ========
 
-Qt comes on its native side with the C++ ``QSettings`` class, which allows you to store the application settings (aka options, preferences) in a system dependent way. It uses the infrastructure available from your OS. Additional it supports a common INI file format for handling cross platform settings files.
+Qt comes on its native side with the C++ ``QSettings`` class, which allows you to store the application settings (aka options, preferences) in a system-dependent way. It uses the infrastructure available from your OS. Additional it supports a common INI file format for handling cross-platform settings files.
 
-In Qt 5.2 ``Settings`` have entered the QML world. The API is still in the labs module, which means the API may break in the future. So be aware.
+In Qt 5.2 ``Settings`` have entered the QML world. The API is still in the lab's module, which means the API may break in the future. So be aware.
 
 Here is a small example, which applies a color value to a base rectangle. Every time the user clicks on the window a new random color is generated. When the application is closed and relaunched again you should see your last color. The default color should be the color initially set on the root rectangle.
 
@@ -73,7 +73,7 @@ It is also possible to store settings into different categories using the ``cate
         property alias height: window.height
     }
 
-The settings are stored according your application name, organization and domain. This information is normally set in the main function of your c++ code.
+The settings are stored according to your application name, organization, and domain. This information is normally set in the main function of your c++ code.
 
 ::
 
@@ -91,13 +91,13 @@ Local Storage - SQL
 
 .. issues:: ch12
 
-Qt Quick supports an local storage API known from the web browsers the local storage API. the API is available under "import QtQuick.LocalStorage 2.0".
+Qt Quick supports a local storage API known from the web browsers the local storage API. the API is available under "import QtQuick.LocalStorage 2.0".
 
-In general it stores the content into a SQLITE database in system specific location in an unique ID based file based on the given database name and version. It is not possible to list or delete existing databases. You can find the storage location from ``QQmlEngine::offlineStoragePath()``.
+In general, it stores the content into an SQLite database in a system-specific location in a unique ID based file based on the given database name and version. It is not possible to list or delete existing databases. You can find the storage location from ``QQmlEngine::offlineStoragePath()``.
 
 You use the API by first creating a database object and then creating transactions on the database. Each transaction can contain one or more SQL queries. The transaction will roll-back when a SQL query will fail inside the transaction.
 
-For example to read from a simple notes table with a text column you could use the local storage like this::
+For example, to read from a simple notes table with a text column you could use the local storage like this::
 
     import QtQuick 2.5
     import QtQuick.LocalStorage 2.0
@@ -154,7 +154,7 @@ Here our base example.
 
 You can drag the rectangle freely around. When you close the application and launch it again the rectangle is at the same position.
 
-Now we would like to add that the x/y position of the rectangle is stored inside the SQL DB. For this we need to add an ``init``, ``read`` and ``store`` database function. These function are called when on component completed and on component destruction.
+Now we would like to add that the x/y position of the rectangle is stored inside the SQL DB. For this, we need to add an ``init``, ``read`` and ``store`` database function. These functions are called when on component completed and on component destruction.
 
 ::
 
@@ -190,7 +190,7 @@ Now we would like to add that the x/y position of the rectangle is stored inside
 
 You could also extract the DB code in an own JS library, which does all the logic. This would be the preferred way if the logic gets more complicated.
 
-In the database initialization function we create the DB object and ensure the SQL table is created.
+In the database initialization function, we create the DB object and ensure the SQL table is created.
 
 ::
 
@@ -226,7 +226,7 @@ The application next calls the read function to read existing data back from the
         });
     }
 
-We expect the data is stored a JSON string inside the value column. This is not typical SQL like, but works nicely with JS code. So instead of storing the x,y as properties in the table we store them as a complete JS object using the JSON stringify/parse methods. At the end we get a valid JS object with x and y properties, which we can apply on our crazy rectangle.
+We expect the data is stored in a JSON string inside the value column. This is not typical SQL like, but works nicely with JS code. So instead of storing the x,y as properties in the table, we store them as a complete JS object using the JSON stringify/parse methods. In the end, we get a valid JS object with x and y properties, which we can apply on our crazy rectangle.
 
 To store the data, we need to differentiate the update and insert cases. We use update when a record already exists and insert if no record under the name "crazy" exists.
 
@@ -250,7 +250,7 @@ To store the data, we need to differentiate the update and insert cases. We use 
         });
     }
 
-Instead of selecting the whole record set we could also use the SQLITE count function like this: ``SELECT COUNT(*) from data where name = "crazy"`` which would return use one row with the amount of rows affected by the select query. Otherwise this is common SQL code. As an additional feature, we use the SQL value binding using the ``?`` in the query.
+Instead of selecting the whole recordset we could also use the SQLite count function like this: ``SELECT COUNT(*) from data where name = "crazy"`` which would return use one row with the number of rows affected by the select query. Otherwise, this is common SQL code. As an additional feature, we use the SQL value binding using the ``?`` in the query.
 
 Now you can drag the rectangle and when you quit the application the database stores the x/y position and applies it on the next application run.
 

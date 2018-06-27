@@ -25,7 +25,7 @@ Shader Effects
 
     Give a short introduction to shader effects and then present the shader effects and their use.
 
-Shaders allows us to create awesome rendering effects on top to the SceneGraph API leveraging directly the power of OpenGL running on the GPU. Shaders are implemented using the ShaderEffect and ShaderEffectSource elements. The shader algorithm itself is implemented using the OpenGL Shading Language.
+Shaders allow us to create awesome rendering effects on top of the SceneGraph API leveraging directly the power of OpenGL running on the GPU. Shaders are implemented using the ShaderEffect and ShaderEffectSource elements. The shader algorithm itself is implemented using the OpenGL Shading Language.
 
 Practically it means you mix QML code with shader code. On execution will the shader code be sent over to the GPU and compiled and executed on the GPU. The shader QML elements allow you to interact through properties with the OpenGL shader implementation.
 
@@ -41,14 +41,14 @@ OpenGL uses a rendering pipeline split into stages. A simplified OpenGL pipeline
 .. figure:: assets/openglpipeline.png
     :align: center
 
-The vertex shader receives vertex data and must assign it to the *gl_Position* at the end of the routine. In the next stage the vertexes are clipped, transformed and rasterized for pixel output. From there the fragments (pixels) arrive in the fragment shader and can further be manipulated and the resulting color needs to be assigned to *gl_FragColor*. The vertex shader is called for each corner point of your polygon (vertex = point in 3D) and is responsible of any 3D manipulation of these points. The fragment (fragment = pixel) shader is called for each pixel and determines the color of that pixel.
+The vertex shader receives vertex data and must assign it to the *gl_Position* at the end of the routine. In the next stage, the vertexes are clipped, transformed and rasterized for pixel output. From there the fragments (pixels) arrive in the fragment shader and can further be manipulated and the resulting color needs to be assigned to *gl_FragColor*. The vertex shader is called for each corner point of your polygon (vertex = point in 3D) and is responsible for any 3D manipulation of these points. The fragment (fragment = pixel) shader is called for each pixel and determines the color of that pixel.
 
 Shader Elements
 ---------------
 
 .. issues:: ch09
 
-For programing shaders Qt Quick provides two elements. The ShaderEffectSource and the ShaderEffect. The shader effect applies custom shaders and the shader effect source renders a QML item into a texture and renders it. As shader effect can apply a custom shaders to it's rectangular shape and can use sources for the shader operation. A source can be an image, which is used as a texture or a shader effect source.
+For programming shaders, Qt Quick provides two elements. The ShaderEffectSource and the ShaderEffect. The shader effect applies custom shaders and the shader effect source renders a QML item into a texture and renders it. As shader effect can apply custom shaders to its rectangular shape and can use sources for the shader operation. A source can be an image, which is used as a texture or a shader effect source.
 
 The default shader uses the source and renders it unmodified.
 
@@ -58,11 +58,11 @@ The default shader uses the source and renders it unmodified.
 
 .. figure:: assets/defaultshader.png
 
-In the above example we have a row of 3 images. The first is the real image. The second is rendered using the default shader and the third is rendered using the default shader code for the fragment and vertex extracted from the Qt 5 source code.
+In the above example, we have a row of 3 images. The first is the real image. The second is rendered using the default shader and the third is rendered using the default shader code for the fragment and vertex extracted from the Qt 5 source code.
 
 .. note::
 
-    If you don't want to see the source image and only the effected image you can set the *Image* to invisible (``visible : false``). The shader effects will still use the image data just the *Image* element will not be rendered.
+    If you don't want to see the source image and only the effected image you can set the *Image* to invisible (`` visible: false``). The shader effects will still use the image data just the *Image* element will not be rendered.
 
 Let's have a closer look at the shader code.
 
@@ -96,16 +96,16 @@ float       floating scalar
 
 A better reference is the `OpenGL ES 2.0 API Quick Reference Card <http://www.khronos.org/opengles/sdk/docs/reference_cards/OpenGL-ES-2_0-Reference-card.pdf>`_
 
-Now we might be better able to understand what the variable are:
+Now we might be better able to understand what the variable is:
 
 * qt_Matrix: model-view-projection matrix
 * qt_Vertex: current vertex position
 * qt_MultiTexCoord0: texture coordinate
 * qt_TexCoord0: shared texture coordinate
 
-So we have available the projection matrix, the current vertex and the texture coordinate. The texture coordinate relates to the texture given as source. In the *main()* function we store the texture coordinate for later use in the fragment shader. Every vertex shader need to assign the *gl_Position* this is done using here by multiplying the project matrix with the vertex, our point in 3D.
+So we have available the projection matrix, the current vertex and the texture coordinate. The texture coordinate relates to the texture given as the source. In the *main()* function we store the texture coordinate for later use in the fragment shader. Every vertex shader needs to assign the *gl_Position* this is done using here by multiplying the project matrix with the vertex, our point in 3D.
 
-The fragment shader receives our texture coordinate from the vertex shader and also the texture from our QML source property. It shall be noted how easy it is to pass variable between the shader code and QML. Beautiful. Additional we have the opacity of the shader effect available as *qt_Opacity*. Every fragment shader needs to assign the *gl_FragColor* variable, this is done in the default shader code by picking the pixel from the source texture and multiplying it with the opacity.
+The fragment shader receives our texture coordinate from the vertex shader and also the texture from our QML source property. It shall be noted how easy it is to pass a variable between the shader code and QML. Beautiful. Additional we have the opacity of the shader effect available as *qt_Opacity*. Every fragment shader needs to assign the *gl_FragColor* variable, this is done in the default shader code by picking the pixel from the source texture and multiplying it with the opacity.
 
 .. code-block:: js
 
@@ -118,7 +118,7 @@ The fragment shader receives our texture coordinate from the vertex shader and a
         }"
 
 
-During the next examples we will playing around with some simple shader mechanics. First we concentrate on the fragment shader and then we will come back to the vertex shader.
+During the next examples, we will be playing around with some simple shader mechanics. First, we concentrate on the fragment shader and then we will come back to the vertex shader.
 
 Fragment Shaders
 ----------------
@@ -129,7 +129,7 @@ The fragment shader is called for every pixel to be rendered. We will develop a 
 
 .. rubric:: Setting up the scene
 
-First we setup our scene, with a grid centered in the field and our source image be displayed.
+First, we set up our scene, with a grid centered in the field and our source image be displayed.
 
 .. literalinclude:: src/effects/redlense1.qml
     :start-after: M1>>
@@ -139,7 +139,7 @@ First we setup our scene, with a grid centered in the field and our source image
 
 .. rubric:: A red shader
 
-Next we will add a shader, which displays a red rectangle by providing for each fragment a red color value.
+Next, we will add a shader, which displays a red rectangle by providing for each fragment a red color value.
 
 .. literalinclude:: src/effects/redlense2.qml
     :start-after: M1>>
@@ -151,7 +151,7 @@ In the fragment shader we simply assign a *vec4(1.0, 0.0, 0.0, 1.0)* which repre
 
 .. rubric:: A red shader with texture
 
-Now we want to apply the red color to each texture pixel. For this we need the texture back in the vertex shader. As we don't do anything else in the vertex shader the default vertex shader is enough for us.
+Now we want to apply the red color to each texture pixel. For this, we need the texture back in the vertex shader. As we don't do anything else in the vertex shader the default vertex shader is enough for us.
 
 .. literalinclude:: src/effects/redlense2.qml
     :start-after: M2>>
@@ -159,7 +159,7 @@ Now we want to apply the red color to each texture pixel. For this we need the t
 
 The full shader contains now back our image source as variant property and we have left out the vertex shader, which if not specified is the default vertex shader.
 
-In the fragment shader we pick the texture fragment *texture2D(source, qt_TexCoord0)* and apply the red color to it.
+In the fragment shader, we pick the texture fragment *texture2D(source, qt_TexCoord0)* and apply the red color to it.
 
 .. figure:: assets/redlense3.png
 
@@ -194,7 +194,7 @@ Wave Effect
 
 .. issues:: ch09
 
-In this more complex example we will create a wave effect with the fragment shader. The wave form is based on the sinus curve and it influences the texture coordinates used for the color.
+In this more complex example, we will create a wave effect with the fragment shader. The waveform is based on the sinus curve and it influences the texture coordinates used for the color.
 
 .. literalinclude:: src/effects/wave.qml
     :start-after: M1>>
@@ -204,13 +204,13 @@ The wave calculation is based on a pulse and the texture coordinate manipulation
 
     highp vec2 pulse = sin(time - frequency * qt_TexCoord0);
 
-Without the time factor we would just have a distortion but not a traveling distortion, like waves are.
+Without the time factor, we would just have a distortion but not a traveling distortion like waves are.
 
 For the color we use the color at a different texture coordinate::
 
     highp vec2 coord = qt_TexCoord0 + amplitude * vec2(pulse.x, -pulse.x);
 
-The texture coordinate is influences by our pulse x-value. The result of this is a moving wave.
+The texture coordinate is influenced by our pulse x-value. The result of this is a moving wave.
 
 .. figure:: assets/wave.png
 
@@ -222,19 +222,19 @@ Vertex Shader
 
 .. issues:: ch09
 
-The vertex shader can be used to manipulated the vertexes provided by the shader effect. In normal cases the shader effect has 4 vertexes (top-left, top-right, bottom-left and bottom-right). Each vertex reported is from type vec4. To visualize the vertex shader we will program a genie effect. This effect is often used to let a rectangular window area vanish into one point.
+The vertex shader can be used to manipulate the vertexes provided by the shader effect. In normal cases, the shader effect has 4 vertexes (top-left, top-right, bottom-left and bottom-right). Each vertex reported is from type vec4. To visualize the vertex shader we will program a genie effect. This effect is often used to let a rectangular window area vanish into one point.
 
 .. figure:: assets/genieeffect.png
 
 .. rubric:: Setting up the scene
 
-First we will setup our scene again.
+First, we will set up our scene again.
 
 .. literalinclude:: src/effects/genie0.qml
     :start-after: M1>>
     :end-before: <<M1
 
-This provides as a scene with a dark background and a shader effect using an image as the source texture. The original image is not visible on the image produced by our genie effect. Additional we added a dark rectangle on the same geometry as the shader effect so we can better detect where we need to click to revert the effect.
+This provides a scene with a dark background and a shader effect using an image as the source texture. The original image is not visible on the image produced by our genie effect. Additional we added a dark rectangle on the same geometry as the shader effect so we can better detect where we need to click to revert the effect.
 
 .. figure:: assets/geniescene.png
 
@@ -242,25 +242,25 @@ The effect is triggered by clicking on the image, this is defined by the mouse a
 
 .. rubric:: Minimize and normalize
 
-After we have setup the scene, we define a property of type real called *minimize*, the property will contain the current value of our minimization. The value will vary from 0.0 to 1.0 and is controlled by a sequential animation.
+After we have set up the scene, we define a property of type real called *minimize*, the property will contain the current value of our minimization. The value will vary from 0.0 to 1.0 and is controlled by a sequential animation.
 
 .. literalinclude:: src/effects/genie1.qml
     :start-after: M1>>
     :end-before: <<M1
 
-The animation is triggered by the togling of the *minimized* property. Now that we have setup all our surroundings we finally can look at our vertex shader.
+The animation is triggered by the toggling of the *minimized* property. Now that we have set up all our surroundings we finally can look at our vertex shader.
 
 .. literalinclude:: src/effects/genie1.qml
     :start-after: M2>>
     :end-before: <<M2
 
-The vertex shader is called for each vertex so four times, in our case. The default qt defined parameters are provided, like *qt_Matrix*, *qt_Vertex*, *qt_MultiTexCoord0*, *qt_TexCoord0*. We have discussed the variable already earlier. Additional we link the *minimize*, *width* and *height* variables from our shader effect into our vertex shader code. In the main function we store the current texture coordinate in our *qt_TexCoord0* to make it available to the fragment shader. Now we copy the current position and modify the x and y position of the vertex::
+The vertex shader is called for each vertex so four times, in our case. The default qt defined parameters are provided, like *qt_Matrix*, *qt_Vertex*, *qt_MultiTexCoord0*, *qt_TexCoord0*. We have discussed the variable already earlier. Additional we link the *minimize*, *width* and *height* variables from our shader effect into our vertex shader code. In the main function, we store the current texture coordinate in our *qt_TexCoord0* to make it available to the fragment shader. Now we copy the current position and modify the x and y position of the vertex::
 
     highp vec4 pos = qt_Vertex;
     pos.y = mix(qt_Vertex.y, height, minimize);
     pos.x = mix(qt_Vertex.x, width, minimize);
 
-The *mix(...)* function provides a linear interpolation between the first 2 parameters on the point (0.0-1.0) provided by the 3rd parameter. So in our case we interpolate for y between the current y position and the hight based on the current minimize value, similar for x. Bear in mind the minimize value is animated by our sequential animation and travels from 0.0 to 1.0 (or vice versa).
+The *mix(...)* function provides a linear interpolation between the first 2 parameters on the point (0.0-1.0) provided by the 3rd parameter. So in our case, we interpolate for y between the current y position and the hight based on the current minimized value, similar for x. Bear in mind the minimized value is animated by our sequential animation and travels from 0.0 to 1.0 (or vice versa).
 
 .. figure:: assets/genieminimize.png
 
@@ -271,12 +271,12 @@ The resulting effect is not really the genie effect but is already a great step 
 
 .. rubric:: Primitive Bending
 
-So minimized the x and y components of our vertexes. Now we would like to slightly modify the x manipulation and make it depending of the current y value. The needed changes are pretty small. The y-position is calculated as before. The interpolation of the x-position depends now on the vertexes y-position::
+So minimized the x and y components of our vertexes. Now we would like to slightly modify the x manipulation and make it depending on the current y value. The needed changes are pretty small. The y-position is calculated as before. The interpolation of the x-position depends now on the vertexes y-position::
 
     highp float t = pos.y / height;
     pos.x = mix(qt_Vertex.x, width, t * minimize);
 
-This results into an x-position tending towards the width when the y-position is larger. In other words the upper 2 vertexes are not affect ed at all as they have an y-position of 0 and the lower two vertexes x-positions both bend towards the width, so they bend towards the same x-position.
+This results in an x-position tending towards the width when the y-position is larger. In other words, the upper 2 vertexes are not affected at all as they have a y-position of 0 and the lower two vertexes x-positions both bend towards the width, so they bend towards the same x-position.
 
 .. figure:: assets/geniebending.png
 
@@ -287,7 +287,7 @@ This results into an x-position tending towards the width when the y-position is
 .. rubric:: Better Bending
 
 As the bending is not really satisfying currently we will add several parts to improve the situation.
-First we enhance our animation to support an own bending property. This is necessary as the bending should happen immediately and the y-minimization should be delayed shortly. Both animation have in the sum the same duration (300+700+1000 and 700+1300).
+First, we enhance our animation to support an own bending property. This is necessary as the bending should happen immediately and the y-minimization should be delayed shortly. Both animations have in the sum the same duration (300+700+1000 and 700+1300).
 
 .. literalinclude:: src/effects/genie3.qml
     :start-after: M1>>
@@ -299,7 +299,7 @@ Additional to make the bending a smooth curve the y-effect on the x-position is 
     t = (3.0 - 2.0 * t) * t * t;
     pos.x = mix(qt_Vertex.x, width, t * bend);
 
-The curve starts smooth at the 0.0 value, grows then and stops smoothly towards the 1.0 value. Here is a plot of the function in the specified range. For us only the range from 0..1 is from interest.
+The curve starts smooth at the 0.0 value, grows then and stops smoothly towards the 1.0 value. Here is a plot of the function in the specified range. For us, only the range from 0..1 is from interest.
 
 .. figure:: assets/curve.png
 
@@ -315,7 +315,7 @@ You can see also the influence of the curve being used, as the bending smoothes 
 
 .. rubric:: Choosing Sides
 
-As a final enhancement we want to be able to switch sides. The side is towards which point the genie effect vanishes. Till now it vanishes always towards the width. By adding a *side* property we are able to modify the point between 0 and width.
+As a final enhancement, we want to be able to switch sides. The side is towards which point the genie effect vanishes. Till now it vanishes always towards the width. By adding a *side* property we are able to modify the point between 0 and width.
 
 .. code-block:: js
 
@@ -336,7 +336,7 @@ As a final enhancement we want to be able to switch sides. The side is towards w
 
 .. rubric:: Packaging
 
-The last thing to-do is package our effect nicely. For this we extract our genie effect code into an own component called *GenieEffect*. It has the shader effect as the root element. We removed the mouse area as this should not be inside the component as the triggering of the effect can be toggled by the *minimized* property.
+The last thing to-do is packaging our effect nicely. For this, we extract our genie effect code into an own component called *GenieEffect*. It has the shader effect as the root element. We removed the mouse area as this should not be inside the component as the triggering of the effect can be toggled by the *minimized* property.
 
 .. literalinclude:: src/effects/GenieEffect.qml
     :start-after: M1>>
@@ -357,19 +357,19 @@ Curtain Effect
 
 .. issues:: ch09
 
-In the last example for custom shader effects I would like to bring you the curtain effect. This effect was published first in May 2011 as part of `Qt labs for shader effects <http://labs.qt.nokia.com/2011/05/03/qml-shadereffectitem-on-qgraphicsview/>`_.
+In the last example for custom shader effects, I would like to bring you the curtain effect. This effect was published first in May 2011 as part of `Qt labs for shader effects <http://labs.qt.nokia.com/2011/05/03/qml-shadereffectitem-on-qgraphicsview/>`_.
 
 .. figure:: assets/curtain.png
 
 At that time I really loved these effects and the curtain effect was my favorite out of them. I just love how the curtain opens and hide the background object.
 
-I took the code and adapted it towards Qt 5, which was straightforward. Also O did some simplifications to be able to use it better for a showcase. So if you are interested in the full example, please visit the labs blog.
+I took the code and adapted it towards Qt 5, which was straightforward. Also, I did some simplifications to be able to use it better for a showcase. So if you are interested in the full example, please visit the lab's blog.
 
 Just a little bot for the background, the curtain is actually an image called *fabric.jpg* and it is the source for a shader effect. The effect uses the vertex shader to swing the curtain and uses the fragment shader to provide some shades. Here is a simple diagram to make you hopefully better understand the code.
 
 .. figure:: assets/curtain_diagram.png
 
-The waved shades of the curtain are computed through a sin curve with 7 up/downs (7*PI=21.99...) on the width of the curtain. The other important part is the swing. The *topWidth* of the curtain is animated when the curtain is opened or closed. The *bottomWidth* follows the *topWidth* with a *SpringAnimation*. By this we create the effect of the swinging bottom part of the curtain. The calculated *swing* provides the strength of this swing interpolated over the y-component of the vertexes.
+The waved shades of the curtain are computed through a sin curve with 7 up/downs (7*PI=21.99...) on the width of the curtain. The other important part is the swing. The *topWidth* of the curtain is animated when the curtain is opened or closed. The *bottomWidth* follows the *topWidth* with a *SpringAnimation*. By this, we create the effect of the swinging bottom part of the curtain. The calculated *swing* provides the strength of this swing interpolated over the y-component of the vertexes.
 
 The curtain effect is located in the ``CurtainEffect.qml`` component where the fabric image act as the texture source. There is nothing new on the use of shaders here, only a different way to manipulate the *gl_Position* in the vertex shader and the *gl_FragColor* in the fragment shader.
 
@@ -391,9 +391,9 @@ Qt GraphicsEffect Library
 
 .. issues:: ch09
 
-The graphics effect library is a collection of shader effects. Ready made by the Qt developers. It's a great tool-set to be used in your application but also a great source to learn how to build shaders.
+The graphics effect library is a collection of shader effects. Ready-made by the Qt developers. It's a great tool-set to be used in your application but also a great source to learn how to build shaders.
 
-The graphics effects library comes with a so called manual testbed which is a great tool to interactively discover the different effects.
+The graphics effects library comes with a so-called manual testbed which is a great tool to interactively discover the different effects.
 
 The testbed is located under ``$QTDIR/qtgraphicaleffects/tests/manual/testbed``.
 
@@ -414,7 +414,7 @@ Here is a example using the *FastBlur* effect from the *Blur* category:
     :start-after: M1>>
     :end-before: <<M1
 
-The image to the left is the original image. Clicking the image on the right will toggle blurred property and animated the blur radius from 0 to 32 during 1 second. The image on the left show the blurred image.
+The image to the left is the original image. Clicking the image on the right will toggle blurred property and animated the blur radius from 0 to 32 during 1 second. The image on the left shows the blurred image.
 
 .. figure:: assets/fastblur.png
 

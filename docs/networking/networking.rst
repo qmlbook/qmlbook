@@ -13,16 +13,16 @@ Networking
     The source code for this chapter can be found in the `assets folder <../../assets>`_.
 
 
-Qt 5 comes with a rich set of networking classes on the C++ side. There are for example high level classes on the http protocol layer in a request-reply fashion such as ``QNetworkRequest``, ``QNetworkReply`` and ``QNetworkAccessManager``. But also lower levels classes on the TCP/IP or UDP protocol layer such as ``QTcpSocket``, ``QTcpServer`` and ``QUdpSocket``. Additional classes exists to manage proxies, network cache and also the systems network configuration.
+Qt 5 comes with a rich set of networking classes on the C++ side. There are for example high-level classes on the HTTP protocol layer in a request-reply fashion such as ``QNetworkRequest``, ``QNetworkReply`` and ``QNetworkAccessManager``. But also lower levels classes on the TCP/IP or UDP protocol layer such as ``QTcpSocket``, ``QTcpServer`` and ``QUdpSocket``. Additional classes exist to manage proxies, network cache and also the systems network configuration.
 
-This chapter will not be about C++ networking, this chapter is about Qt Quick and networking. So how can I connect my QML/JS user interface directly with a network service or how can I serve my user interface via a network service. There are good books and references out there to cover network programming with Qt/C++. Then it is just a manner to read the chapter about C++ integration to come up with an integration layer to feed your data into the Qt Quick world.
+This chapter will not be about C++ networking, this chapter is about Qt Quick and networking. So how can I connect my QML/JS user interface directly with a network service or how can I serve my user interface via a network service? There are good books and references out there to cover network programming with Qt/C++. Then it is just a manner to read the chapter about C++ integration to come up with an integration layer to feed your data into the Qt Quick world.
 
 Serving UI via HTTP
 ===================
 
 .. issues:: ch11
 
-To load a simple user interface via HTTP we need to have a web-server, which serves the UI documents. We start of with our own simple web-server using a python one-liner. But first we need to have our demo user interface. For this we create a small ``main.qml`` file in our project folder and create a red rectangle inside.
+To load a simple user interface via HTTP we need to have a web-server, which serves the UI documents. We start off with our own simple web-server using a python one-liner. But first, we need to have our demo user interface. For this, we create a small ``main.qml`` file in our project folder and create a red rectangle inside.
 
 .. literalinclude:: src/http_v1/main.qml
     :start-after: M1>>
@@ -41,7 +41,7 @@ Now our file should be reachable via ``http://localhost:8080/main.qml``. You can
 
     $ curl http://localhost:8080/main.qml
 
-Or just point your browser to the location. Your browser does not understand QML and will not be able to render the document through. We need to create now such a browser for QML documents. To render the document we need to point our ``qmlscene`` to the location. Unfortunately the ``qmlscene`` is limited to local files only. We could overcome this limitation by writing our own ``qmlscene`` replacement or simple dynamically load it using QML. We choose the dynamic loading as it works just fine. For this we use a loader element to retrieve for us the remote document.
+Or just point your browser to the location. Your browser does not understand QML and will not be able to render the document through. We need to create now such a browser for QML documents. To render the document we need to point our ``qmlscene`` to the location. Unfortunately the ``qmlscene`` is limited to local files only. We could overcome this limitation by writing our own ``qmlscene`` replacement or simple dynamically load it using QML. We choose the dynamic loading as it works just fine. For this, we use a loader element to retrieve for us the remote document.
 
 .. literalinclude:: src/http_v1/remote.qml
     :start-after: M1>>
@@ -55,7 +55,7 @@ Resize to root tells the qml scene to resize its window to the size of the root 
 
 .. note::
 
-    If you do not want to run a local server you can also use the gist service from GitHub. Gist is a clipboard like online service like PasteBin and others. It is available under https://gist.github.com . I created for this example a small gist under the url https://gist.github.com/jryannel/7983492 . This will reveal a green rectangle. As the gist url will provide the web-site as HTML code we need to attach a ``/raw`` to the url to retrieve the raw file and not the HTML code.
+    If you do not want to run a local server you can also use the gist service from GitHub. The gist is a clipboard like online services like Pastebin and others. It is available under https://gist.github.com. I created for this example a small gist under the URL https://gist.github.com/jryannel/7983492. This will reveal a green rectangle. As the gist URL will provide the website as HTML code we need to attach a ``/raw`` to the URL to retrieve the raw file and not the HTML code.
 
     .. literalinclude:: src/http_v1/remote2.qml
         :start-after: M1>>
@@ -100,7 +100,7 @@ And launch our web-server again::
     # python -m SimpleHTTPServer 8080
 
 
-And our remote loader loads the main QML via http again::
+And our remote loader loads the main QML via HTTP again::
 
     $ qmlscene --resize-to-root remote.qml
 
@@ -108,7 +108,7 @@ What we see is an error::
 
     http://localhost:8080/main2.qml:11:5: Button is not a type
 
-So QML can not resolve the button component when it is loaded remotely. If the code would be locally ``qmlscene src/main.qml`` this would be no issue. Locally Qt can parse the directory and detect which components are available but remotely there is no "list-dir" function for http. We can force QML to load the element using the import statement inside ``main.qml``::
+So QML cannot resolve the button component when it is loaded remotely. If the code would be local ``qmlscene src/main.qml`` this would be no issue. Locally Qt can parse the directory and detect which components are available but remotely there is no "list-dir" function for HTTP. We can force QML to load the element using the import statement inside ``main.qml``::
 
     import "http://localhost:8080" as Remote
 
@@ -148,11 +148,11 @@ Templating
 
 .. issues:: ch11
 
-When working with HTML projects they often use template driven development. A small HTML stub is expanded on the server side with code generated by the server using a template mechanism. For example for a photo list the list header would be coded in HTML and the dynamic image list would be dynamically generated using a template mechanism. In general this can also be done using QML but there are some issues with it.
+When working with HTML projects they often use template driven development. A small HTML stub is expanded on the server side with code generated by the server using a template mechanism. For example, for a photo list, the list header would be coded in HTML and the dynamic image list would be dynamically generated using a template mechanism. In general, this can also be done using QML but there are some issues with it.
 
-First it is not necessary. The reason HTML developers are doing this is to overcome limitations on the HTML backend. There is no component model yet in HTML so dynamic aspects have to be covered using these mechanism or using programmatically javascript on the client side. Many JS frameworks are out there (jQuery, dojo, backbone, angular, ...) to solve this issue and put more logic into the client-side browser to connect with a network service. The client would then just use a web-service API (e.g. serving JSON or XML data) to communicate with the server. This seems also the better approach for QML.
+First, it is not necessary. The reason HTML developers are doing this is to overcome limitations on the HTML backend. There is no component model yet in HTML so dynamic aspects have to be covered using these mechanisms or using programmatically javascript on the client side. Many JS frameworks are out there (jQuery, dojo, backbone, angular, ...) to solve this issue and put more logic into the client-side browser to connect with a network service. The client would then just use a web-service API (e.g. serving JSON or XML data) to communicate with the server. This seems also the better approach for QML.
 
-The second issue is the component cache from QML. When QML accesses a component it caches the render-tree and just loads the cached version for rendering. A modified version on disk or remote would not be detected without restarting the client. To overcome this issue we could use a trick. We could use URL fragments to load the url (e.g. http://localhost:8080/main.qml#1234), where '#1234' is the fragment. The HTTP server serves always the same document but QML would store this document using the full URL, including the fragment. Every time we would access this URL the fragment would need to change and the QML cache would not get a positive hit. A fragment could be for example the current time in milli seconds or a random number.
+The second issue is the component cache from QML. When QML accesses a component it caches the render-tree and just loads the cached version for rendering. A modified version on disk or remote would not be detected without restarting the client. To overcome this issue we could use a trick. We could use URL fragments to load the URL (e.g. http://localhost:8080/main.qml#1234), where '#1234' is the fragment. The HTTP server serves always the same document but QML would store this document using the full URL, including the fragment. Every time we would access this URL the fragment would need to change and the QML cache would not get a positive hit. A fragment could be for example the current time in milliseconds or a random number.
 
 ::
 
@@ -167,9 +167,9 @@ HTTP Requests
 
 .. issues:: ch11
 
-A http request is in Qt typically done using ``QNetworkRequest`` and ``QNetworkReply`` from the c++ site and then the response would be pushed using the Qt/C++ integration into the QML space. So we try to push the envelope here a little bit to use the current tools Qt Quick gives us to communicate with a network endpoint. For this we use a helper object to make http request, response cycle. It comes in the form of the java script ``XMLHttpRequest`` object.
+An HTTP request is in Qt typically done using ``QNetworkRequest`` and ``QNetworkReply`` from the c++ site and then the response would be pushed using the Qt/C++ integration into the QML space. So we try to push the envelope here a little bit to use the current tools Qt Quick gives us to communicate with a network endpoint. For this, we use a helper object to make an HTTP request, response cycle. It comes in the form of the javascript ``XMLHttpRequest`` object.
 
-The ``XMLHttpRequest`` object allows the user to register a response handle function and a url. A request can be sent using one of the http verbs (get, post, put, delete, ...) to make the request. When the response arrive the handle function is called. The handle function is called several times. Every-time the request state has changed (for example headers have arrived or request is done).
+The ``XMLHttpRequest`` object allows the user to register a response handler function and a URL. A request can be sent using one of the HTTP verbs (get, post, put, delete, ...) to make the request. When the response arrives the handler function is called. The handler function is called several times. Every-time the request state has changed (for example headers have arrived or request is done).
 
 Here a short example::
 
@@ -186,7 +186,7 @@ Here a short example::
         xhr.send();
     }
 
-For a response you can get the XML format or just the raw text. It is possible to iterate over the resulting XML but more commonly used is the raw text nowadays for a JSON formatted response. The JSON document will be used to convert text to a JS object using ``JSON.parse(text)``.
+For a response, you can get the XML format or just the raw text. It is possible to iterate over the resulting XML but more commonly used is the raw text nowadays for a JSON formatted response. The JSON document will be used to convert text to a JS object using ``JSON.parse(text)``.
 
 ::
 
@@ -200,12 +200,12 @@ In the response handler, we access the raw response text and convert it into a j
 
 .. note::
 
-    It seems the ``toString()`` conversion first makes the code more stable. Without the explicit conversion I had several times parser errors. Not sure what the cause it.
+    It seems the ``toString()`` conversion first makes the code more stable. Without the explicit conversion, I had several times parser errors. Not sure what the cause it.
 
 Flickr Calls
 ------------
 
-Let us have a look on a more real world example. A typical example is to use the Flickr service to retrieve a public feed of the new uploaded pictures. For this we can use the ``http://api.flickr.com/services/feeds/photos_public.gne`` url. Unfortunately it returns by default an XML stream, which could be easily parsed by the ``XmlListModel`` in qml. For the sake of the example we would like to concentrate on JSON data. To become a clean JSON response we need to attach some parameters to the request: ``http://api.flickr.com/services/feeds/photos_public.gne?format=json&nojsoncallback=1``. This will return a JSON response without the JSON callback.
+Let us have a look on a more real-world example. A typical example is to use the Flickr service to retrieve a public feed of the newly uploaded pictures. For this, we can use the ``http://api.flickr.com/services/feeds/photos_public.gne`` URL. Unfortunately, it returns by default an XML stream, which could be easily parsed by the ``XmlListModel`` in qml. For the sake of the example, we would like to concentrate on JSON data. To become a clean JSON response we need to attach some parameters to the request: ``http://api.flickr.com/services/feeds/photos_public.gne?format=json&nojsoncallback=1``. This will return a JSON response without the JSON callback.
 
 .. note::
 
@@ -251,7 +251,7 @@ The returned JSON document has a defined structure. An object which has a title 
         print(obj.items[i].media.m) // url of thumbnail
     }
 
-As a valid JS array we can use the ``obj.items`` array also as a model for a list view. We will try to accomplish this now. First we need to retrieve the response and convert it into a valid JS object. And then we can just set the ``response.items`` property as a model to a list view.
+As a valid JS array, we can use the ``obj.items`` array also as a model for a list view. We will try to accomplish this now. First, we need to retrieve the response and convert it into a valid JS object. And then we can just set the ``response.items`` property as a model to a list view.
 
 
 ::
@@ -271,14 +271,14 @@ As a valid JS array we can use the ``obj.items`` array also as a model for a lis
         xhr.send();
     }
 
-Here is the full source code, where we create the request, when the component is loaded. The request response is then used as model for our simple list view.
+Here is the full source code, where we create the request when the component is loaded. The request response is then used as the model for our simple list view.
 
 
 .. literalinclude:: src/httprequest/httprequest.qml
 
-When the document is fully loaded ( ``Component.onCompleted`` ) we request the latest feed content from Flickr. On arrival we parse the JSON response and set the ``items`` array as the model for our view. The list view has a delegate, which displays the thumbnail icon and the title text in a row.
+When the document is fully loaded ( ``Component.onCompleted`` ) we request the latest feed content from Flickr. On arrival, we parse the JSON response and set the ``items`` array as the model for our view. The list view has a delegate, which displays the thumbnail icon and the title text in a row.
 
-An other option would be to have a placeholder ``ListModel`` and append each item onto the list model. To support larger models it is required to support pagination (e.g page 1 of 10) and lazy content retrieval.
+The other option would be to have a placeholder ``ListModel`` and append each item onto the list model. To support larger models it is required to support pagination (e.g page 1 of 10) and lazy content retrieval.
 
 
 Local files
@@ -290,13 +290,13 @@ Is it also possible to load local (XML/JSON) files using the XMLHttpRequest. For
 
 ::
 
-	xhr.open("GET", "colors.json");
+    xhr.open("GET", "colors.json");
 
 We use this to read a color table and display it as a grid. It is not possible to modify the file from the Qt Quick side. To store data back to the source we would need a small REST based HTTP server or a native Qt Quick extension for file access.
 
 .. literalinclude:: src/localfiles/localfiles.qml
 
-Instead of using the ``XMLHttpRequest`` is is also possible to use the XmlListModel to access local files.
+Instead of using the ``XMLHttpRequest`` it is also possible to use the XmlListModel to access local files.
 
 ::
 
@@ -351,13 +351,13 @@ To read data from our web-server, we will provide a GET method for all colors.
     def get_colors():
         return jsonify( { "colors" :  colors })
 
-This will return the colors under the '/colors' endpoint. To test this we can use curl to create a http request.
+This will return the colors under the '/colors' endpoint. To test this we can use curl to create an HTTP request.
 
 ::
 
     curl -i -GET http://localhost:5000/colors
 
-Which will return us the list of colors as JSON data.
+Which will return us the list of colors as JSON data?
 
 Read Entry
 ----------
@@ -417,7 +417,7 @@ To update an individual entry we use the PUT HTTP method. The endpoint is the sa
                 color['value'] = request.json.get('value', color['value'])
                 return jsonify( color )
 
-In the curl request we only provide the values to be updated as JSON data and the a named endpoint to identify the color to be updated.
+In the curl request, we only provide the values to be updated as JSON data and then a named endpoint to identify the color to be updated.
 
 .. code-block:: sh
 
@@ -439,13 +439,13 @@ Deleting an entry is done using the DELETE HTTP verb. It also uses the same endp
                 success = True
         return jsonify( { 'result' : success } )
 
-This request looks similar like the GET request for an individual color.
+This request looks similar to the GET request for an individual color.
 
 .. code-block:: sh
 
     curl -i -X DELETE http://localhost:5000/colors/red
 
-Now we can read all colors, read a specific color, create a new color, update a color and delete a color. Also we know the HTTP endpoints to our API.
+Now we can read all colors, read a specific color, create a new color, update a color and delete a color. Also, we know the HTTP endpoints to our API.
 
 .. list-table::
     :widths: 40 20 40
@@ -477,13 +477,13 @@ Client REST
 
 To demonstrate a REST client we write a small color grid. The color grid displays the colors retrieved from the web-service via HTTP requests. Our user interface provides the following commands:
 
-* Get color list
+* Get a color list
 * Create color
-* Read last color
+* Read the last color
 * Update last color
-* Delete last color
+* Delete the last color
 
-We bundle our API into an own JS file called ``colorservice.js`` and import it into our UI as ``Service``. Inside the service module we create a helper function to make the HTTP requests for us:
+We bundle our API into an own JS file called ``colorservice.js`` and import it into our UI as ``Service``. Inside the service module, we create a helper function to make the HTTP requests for us:
 
 ::
 
@@ -507,7 +507,7 @@ We bundle our API into an own JS file called ``colorservice.js`` and import it i
         xhr.send(data)
     }
 
-It takes four arguments. The ``verb``, which defines the HTTP verb to be used (GET, POST, PUT, DELETE). The second parameter is the endpoint to be used as postfix to the BASE address (e.g. 'http://localhost:5000/colors'). The third parameter is the optional obj, to be send as JSON data to the service. The last parameter defines a callback to be called, when the response returns. The callback receives a response object with the response data. Before we send the request, we indicate that we send and accept JSON data by modifying the request header.
+It takes four arguments. The ``verb``, which defines the HTTP verb to be used (GET, POST, PUT, DELETE). The second parameter is the endpoint to be used as a postfix to the BASE address (e.g. 'http://localhost:5000/colors'). The third parameter is the optional obj, to be sent as JSON data to the service. The last parameter defines a callback to be called when the response returns. The callback receives a response object with the response data. Before we send the request, we indicate that we send and accept JSON data by modifying the request header.
 
 Using this request helper function we can implement the simple commands we defined earlier (create, read, update, delete):
 
@@ -539,7 +539,7 @@ Using this request helper function we can implement the simple commands we defin
         request('DELETE', name, null, cb)
     }
 
-This code resides in the service implementation. In the UI we use the service to implement our commands. We have a ``ListModel`` with the id ``gridModel`` as data provider for the ``GridView``. The commands are indicated using a ``Button`` ui element.
+This code resides in the service implementation. In the UI we use the service to implement our commands. We have a ``ListModel`` with the id ``gridModel`` as a data provider for the ``GridView``. The commands are indicated using a ``Button`` UI element.
 
 Reading the color list from the server.
 
@@ -650,18 +650,18 @@ Delete a color by the color name.
         }
     }
 
-This concludes the CRUD (create, read, update, delete) operations using a REST API. There are also other possibilities to generate a Web-Service API. One could be module based and each module would have an one endpoint. And the API could be defined using JSON RPC (http://www.jsonrpc.org/). Sure also XML based API are possible and but the JSON approach has great advantages as the parsing is build into the QML/JS as part of JavaScript.
+This concludes the CRUD (create, read, update, delete) operations using a REST API. There are also other possibilities to generate a Web-Service API. One could be module based and each module would have one endpoint. And the API could be defined using JSON RPC (http://www.jsonrpc.org/). Sure also XML based API is possible and but the JSON approach has great advantages as the parsing is built into the QML/JS as part of JavaScript.
 
 Authentication using OAuth
 ==========================
 
 .. issues:: ch11
 
-OAuth is an open protocol to allow secure authorization in a simple and standard method from web, mobile and desktop applications. OAuth is used to authenticate a client against common web-services such as Google, Facebook and Twitter.
+OAuth is an open protocol to allow secure authorization in a simple and standard method from web, mobile, and desktop applications. OAuth is used to authenticate a client against common web-services such as Google, Facebook, and Twitter.
 
 .. note::
 
-	For a custom web-service you could also use the standard HTTP authentication for example by using the ``XMLHttpRequest`` username and password in the get method (e.g. ``xhr.open(verb, url, true, username, password)``)
+    For a custom web-service you could also use the standard HTTP authentication for example by using the ``XMLHttpRequest`` username and password in the get method (e.g. ``xhr.open(verb, url, true, username, password)``)
 
 
 OAuth is currently not part of a QML/JS API. So you would need to write some C++ code and export the authentication to QML/JS. Another issue would be the secure storage of the access token.
@@ -678,7 +678,7 @@ Engin IO
 
 .. issues:: ch11
 
-Engin.IO is a web-service run by DIGIA. It enables to access from inside Qt/QML application to the NoSQL storage from Engin.IO. It is a cloud based storage object store with an easy access Qt/QML API and an administration console. If you want to store some data in the cloud from a QML application, this would be an easy entry path with an excellent QML/JS support.
+Engin.IO is a web-service run by DIGIA. It enables to access from inside Qt/QML application to the NoSQL storage from Engin.IO. It is a cloud-based storage object store with an easy access Qt/QML API and an administration console. If you want to store some data in the cloud from a QML application, this would be an easy entry path with an excellent QML/JS support.
 
 Please refer to the `EnginIO <http://engin.io>`_ documentation for further help.
 
@@ -687,9 +687,9 @@ Web Sockets
 
 .. issues:: ch11
 
-The WebSockets module provides an impementation of the WebSockets protocol for WebSockets clients and servers. It mirrors the Qt CPP module. It allows to send string and binary messages using a full duplex communication channel. A websocket is normally established by making a HTTP connection to the server and the server then "upgrades" the connection to a WebSocket connection.
+The WebSockets module provides an implementation of the WebSockets protocol for WebSockets clients and servers. It mirrors the Qt CPP module. It allows sending a string and binary messages using a full duplex communication channel. A WebSocket is normally established by making an HTTP connection to the server and the server then "upgrades" the connection to a WebSocket connection.
 
-In Qt/QML you can also simple use the `WebSocket` and `WebSocketServer` objects to creates direct websocket connection. The websocket protocol uses the "ws" url schema or "wss" for a secure connection.
+In Qt/QML you can also simply use the `WebSocket` and `WebSocketServer` objects to creates direct WebSocket connection. The WebSocket protocol uses the "ws" URL schema or "wss" for a secure connection.
 
 You can use the web socket qml module by importing it first.
 
@@ -713,7 +713,7 @@ You should see the ping message we send ``socket.sendTextMessage("ping")`` as re
 WS Server
 ---------
 
-You can easily create your own WS server using the C++ part of the Qt WebSocket or use a different WS implementation, which I find very interesting. It is interesting because it allows to connect the amazing rendering quality of QML with the great expanding web application servers. In this example we will use a Node JS based web socket server using the `ws <https://npmjs.org/package/ws>`_ module. For this you first need to install `node js <http://nodejs.org/>`_. Afterwards create a ``ws_server`` folder and install the ws package using the node package manager (npm).
+You can easily create your own WS server using the C++ part of the Qt WebSocket or use a different WS implementation, which I find very interesting. It is interesting because it allows connecting the amazing rendering quality of QML with the great expanding web application servers. In this example, we will use a Node JS based web socket server using the `ws <https://npmjs.org/package/ws>`_ module. For this, you first need to install `node js <http://nodejs.org/>`_. Then, create a ``ws_server`` folder and install the ws package using the node package manager (npm).
 
 The code shall create a simple echo server in NodeJS to echo our messages back to our QML client.
 
@@ -724,9 +724,9 @@ The code shall create a simple echo server in NodeJS to echo our messages back t
     $ cd ws_server
     $ npm install ws
 
-The npm tool downloads and installs the ws package and dependencies into you local folder.
+The npm tool downloads and installs the ws package and dependencies into your local folder.
 
-A ``server.js`` file will be our server implementation. The server code will create a web socket server on port 3000 and listens to an incoming connection. On an incoming connection it will send out a greeting and waits for client messages. Each message a client sends on a socket will be send back to the client.
+A ``server.js`` file will be our server implementation. The server code will create a web socket server on port 3000 and listens to an incoming connection. On an incoming connection, it will send out a greeting and waits for client messages. Each message a client sends on a socket will be sent back to the client.
 
 .. literalinclude:: src/ws/ws_server/server.js
 
@@ -735,7 +735,7 @@ You need to get used to the notation of JavaScript and the function callbacks.
 WS Client
 ---------
 
-On the client side we need a list view to display the messages and a TextInput for the user to enter a new chat message.
+On the client side, we need a list view to display the messages and a TextInput for the user to enter a new chat message.
 
 We will use a label with white color in the example.
 
@@ -749,7 +749,7 @@ The chat input is just a simple text input wrapped with a colored border.
 
 .. literalinclude:: src/ws/ws_client/ChatInput.qml
 
-When the web socket receives a message it appends the message to the chat view. Same applies for a status change. Also when the user enters a chat message a copy is appended to the chat view on the client side and the message is send to the server.
+When the web socket receives a message it appends the message to the chat view. Same applies for a status change. Also when the user enters a chat message a copy is appended to the chat view on the client side and the message is sent to the server.
 
 .. literalinclude:: src/ws/ws_client/ws_client.qml
 
@@ -777,5 +777,5 @@ When entering text and pressing enter you should see something like this.
 Summary
 =======
 
-This concludes our chapter about QML networking. Please bear in mind Qt has on the native side a much richer networking API as on the QML side currently. But the idea of the chapter is to push the boundaries of QML networking and how to integrate with cloud based services.
+This concludes our chapter about QML networking. Please bear in mind Qt has on the native side a much richer networking API as on the QML side currently. But the idea of the chapter is to push the boundaries of QML networking and how to integrate with cloud-based services.
 

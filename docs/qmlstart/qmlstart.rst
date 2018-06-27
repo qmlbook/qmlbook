@@ -13,7 +13,7 @@ Quick Starter
     The source code for this chapter can be found in the `assets folder <../../assets>`_.
 
 
-This chapter provides an overview of QML, the declarative user interface language used in Qt 5. We will discuss the QML syntax, which is a tree of elements, followed by an overview of the most important basic elements. Later we will briefly look at how to create our own elements, called components and how to transform elements using property manipulations. Towards the end we will look how to arrange elements together in a layout and finally have a look at elements where the user can provide input.
+This chapter provides an overview of QML, the declarative user interface language used in Qt 5. We will discuss the QML syntax, which is a tree of elements, followed by an overview of the most important basic elements. Later we will briefly look at how to create our own elements, called components and how to transform elements using property manipulations. Towards the end, we will look at how to arrange elements together in a layout and finally have a look at elements where the user can provide input.
 
 QML Syntax
 ==========
@@ -22,9 +22,9 @@ QML Syntax
 
 .. index:: qmlscene, properties, scripting, binding, syntax
 
-QML is a declarative language used to describe the user interface of your application. It breaks down the user interface into smaller elements, which can be combined to components. QML describes the look and the behavior of these user interface elements. This user interface description can be enriched with JavaScript code to provide simple but also more complex logic. In this perspective it follows the HTML-JavaScript pattern but QML is designed from the ground up to describe user interfaces not text-documents.
+QML is a declarative language used to describe the user interface of your application. It breaks down the user interface into smaller elements, which can be combined into components. QML describes the look and the behavior of these user interface elements. This user interface description can be enriched with JavaScript code to provide simple but also more complex logic. In this perspective, it follows the HTML-JavaScript pattern but QML is designed from the ground up to describe user interfaces, not text-documents.
 
-In its simplest way QML is a hierarchy of elements. Child elements inherit the coordinate system from the parent. An ``x,y`` coordinate is always relative to the parent.
+In its simplest way, QML is a hierarchy of elements. Child elements inherit the coordinate system from the parent. An ``x,y`` coordinate is always relative to the parent.
 
 .. figure:: assets/scene.png
 
@@ -34,11 +34,11 @@ Let's start with a simple example of a QML file to explain the different syntax.
     :start-after: M1>>
     :end-before: <<M1
 
-* The ``import`` statement imports a module in a specific version. In general you always want to import *QtQuick 2.0* as your initial set of elements
+* The ``import`` statement imports a module in a specific version. In general, you always want to import *QtQuick 2.0* as your initial set of elements
 * Comments can be made using ``//`` for single line comments or ``/* */`` for multi-line comments. Just like in C/C++ and JavaScript
 * Every QML file needs to have exactly one root element, like HTML
 * An element is declared by its type followed by ``{ }``
-* Elements can have properties, they are in the form ``name : value``
+* Elements can have properties, they are in the form `` name: value``
 * Arbitrary elements inside a QML document can be accessed by using their ``id`` (an unquoted identifier)
 * Elements can be nested, meaning a parent element can have child elements. The parent element can be accessed using the ``parent`` keyword
 
@@ -54,7 +54,7 @@ Let's start with a simple example of a QML file to explain the different syntax.
 
     Where you need to replace the *$QTDIR* to the path to your Qt installation. The *qmlscene* executable initializes the Qt Quick runtime and interprets the provided QML file.
 
-    In Qt Creator you can open the corresponding project file and run the document ``RectangleExample.qml``.
+    In Qt Creator, you can open the corresponding project file and run the document ``RectangleExample.qml``.
 
 Properties
 ----------
@@ -69,34 +69,34 @@ Elements are declared by using their element name but are defined by using their
 
 Let's go through the different features of properties:
 
-(1) ``id`` is a very special property-like value, it is used to reference elements inside a QML file (called "document" in QML). The ``id`` is not a string type but rather an identifier and part of the QML syntax. An ``id`` needs to be unique inside a document and it can't be re-set to a different value, nor may it be queried. (It behaves more like a pointer in the C++ world.)
+(1) ``id`` is a very special property-like value, it is used to reference elements inside a QML file (called "document" in QML). The ``id`` is not a string type but rather an identifier and part of the QML syntax. An ``id`` needs to be unique inside a document and it can't be reset to a different value, nor may it be queried. (It behaves more like a pointer in the C++ world.)
 
 (2) A property can be set to a value, depending on its type. If no value is given for a property, an initial value will be chosen. You need to consult the documentation of the particular element for more information about the initial value of a property.
 
-(3) A property can depend on one or many other properties. This is called *binding*. A bound property is updated, when its dependent properties change. It works like a contract, in this case the ``height`` should always be two times the ``width``.
+(3) A property can depend on one or many other properties. This is called *binding*. A bound property is updated when its dependent properties change. It works like a contract, in this case, the ``height`` should always be two times the ``width``.
 
 (4) Adding own properties to an element is done using the ``property`` qualifier followed by the type, the name and the optional initial value (``property <type> <name> : <value>``). If no initial value is given a system initial value is chosen.
 
     .. note:: You can also declare one property to be the default property if no property name is given by prepending the property declaration with the ``default`` keyword. This is used for example when you add child elements, the child elements are added automatically to the default property ``children`` of type list if they are visible elements.
 
-(5) Another important way of declaring properties is using the ``alias`` keyword (``property alias <name> : <reference>``). The ``alias`` keyword allows us to forward a property of an object or an object itself from within the type to an outer scope. We will use this technique later when defining components to export the inner properties or element ids to the root level. A property alias does not need a type, it uses the type of the referenced property or object.
+(5) Another important way of declaring properties is using the ``alias`` keyword (``property alias <name>: <reference>``). The ``alias`` keyword allows us to forward a property of an object or an object itself from within the type to an outer scope. We will use this technique later when defining components to export the inner properties or element ids to the root level. A property alias does not need a type, it uses the type of the referenced property or object.
 
-(6) The ``text`` property depends on the custom property ``times`` of type int. The ``int`` based value is automatically converted to a ``string`` type. The expression itself is another example of binding and results into the text being updated every time the ``times`` property changes.
+(6) The ``text`` property depends on the custom property ``times`` of type int. The ``int`` based value is automatically converted to a ``string`` type. The expression itself is another example of binding and results in the text being updated every time the ``times`` property changes.
 
 (7) Some properties are grouped properties. This feature is used when a property is more structured and related properties should be grouped together. Another way of writing grouped properties is ``font { family: "Ubuntu"; pixelSize: 24 }``.
 
 (8) Some properties are attached to the element itself. This is done for global relevant elements which appear only once in the application (e.g. keyboard input). The writing is ``<Element>.<property>: <value>``.
 
-(9) For every property you can provide a signal handler. This handler is called after the property changes. For example here we want to be notified whenever the height changes and use the built-in console to log a message to the system.
+(9) For every property, you can provide a signal handler. This handler is called after the property changes. For example, here we want to be notified whenever the height changes and use the built-in console to log a message to the system.
 
-.. warning:: An element id should only be used to reference elements inside your document (e.g. the current file). QML provides a mechanism called dynamic-scoping where later loaded documents overwrite the element id's from earlier loaded documents. This makes it possible to reference element id's from earlier loaded documents, if they are not yet overwritten. It's like creating global variables. Unfortunately this frequently leads to really bad code in practice, where the program depends on the order of execution. Unfortunately this can't be turned off. Please only use this with care or even better don't use this mechanism at all. It's better to export the element you want to provide to the outside world using properties on the root element of your document.
+.. warning:: An element id should only be used to reference elements inside your document (e.g. the current file). QML provides a mechanism called dynamic-scoping where later loaded documents overwrite the element id's from earlier loaded documents. This makes it possible to reference element id's from earlier loaded documents if they are not yet overwritten. It's like creating global variables. Unfortunately, this frequently leads to really bad code in practice, where the program depends on the order of execution. Unfortunately, this can't be turned off. Please only use this with care or even better don't use this mechanism at all. It's better to export the element you want to provide to the outside world using properties on the root element of your document.
 
 Scripting
 ---------
 
 .. issues:: ch04
 
-QML and JavaScript (also known as ECMAScript) are best friends. In the *JavaScript* chapter we will go into more detail on this symbiosis. Currently we just want to make you aware about this relationship.
+QML and JavaScript (also known as ECMAScript) are best friends. In the *JavaScript* chapter we will go into more detail on this symbiosis. Currently, we just want to make you aware of this relationship.
 
 .. literalinclude:: src/concepts/ScriptingExample.qml
     :start-after: M1>>
@@ -111,7 +111,7 @@ QML and JavaScript (also known as ECMAScript) are best friends. In the *JavaScri
 .. note::
 
     The difference between the QML ``:`` (binding) and the JavaScript ``=`` (assignment) is, that the binding is a contract and keeps true over the lifetime of the binding, whereas the JavaScript assignment (``=``) is a one time value assignment.
-    The lifetime of a binding ends, when a new binding is set to the property or even when a JavaScript value is assigned is to the property. For example a key handler setting the text property to an empty string would destroy our increment display::
+    The lifetime of a binding ends, when a new binding is set to the property or even when a JavaScript value is assigned is to the property. For example, a key handler setting the text property to an empty string would destroy our increment display::
 
         Keys.onEscapePressed: {
             label.text = ''
@@ -137,7 +137,7 @@ Item Element
 
 .. issues:: ch04
 
-``Item`` is the base element for all visual elements as such all other visual elements inherit from ``Item``. It doesn't paint anything by itself but defines all properties which are common across all visual elements:
+``Item`` is the base element for all visual elements as such all other visual elements inherits from ``Item``. It doesn't paint anything by itself but defines all properties which are common across all visual elements:
 
 .. list-table::
     :widths: 20,80
@@ -146,7 +146,7 @@ Item Element
     *   - Group
         - Properties
     *   - Geometry
-        - ``x`` and ``y`` to define the top-left position, ``width`` and ``height`` for the expand of the element and also the ``z`` stacking order to lift elements up or down from their natural ordering
+        - ``x`` and ``y`` to define the top-left position, ``width`` and ``height`` for the expansion of the element and also the ``z`` stacking order to lift elements up or down from their natural ordering
     *   - Layout handling
         - ``anchors`` (left, right, top, bottom, vertical and horizontal center) to position elements relative to other elements with their ``margins``
     *   - Key handling
@@ -158,7 +158,7 @@ Item Element
     *   - State definition
         - ``states`` list property with the supported list of states and the current ``state`` property as also the ``transitions`` list property to animate state changes.
 
-To better understand the different properties we will try to introduce them throughout this chapter in context of the element presented. Please remember these fundamental properties are available on every visual element and work the same across these elements.
+To better understand the different properties we will try to introduce them throughout this chapter in the context of the element presented. Please remember these fundamental properties are available on every visual element and work the same across these elements.
 
 .. note::
 
@@ -198,7 +198,7 @@ A gradient is defined by a series of gradient stops. Each stop has a position an
 
 .. note::
 
-    It is not possible to create an angled gradient. For this it's better to use predefined images. One possibility would be to just rotate the rectangle with the gradient, but be aware the geometry of an rotated rectangle will not change and thus will lead to confusion as the geometry of the element is not the same as the visible area. From the authors perspective it's really better to use designed gradient images in that case.
+    It is not possible to create an angled gradient. For this, it's better to use predefined images. One possibility would be to just rotate the rectangle with the gradient, but be aware the geometry of a rotated rectangle will not change and thus will lead to confusion as the geometry of the element is not the same as the visible area. From the authors perspective, it's really better to use designed gradient images in that case.
 
 Text Element
 ------------
@@ -215,7 +215,7 @@ To display text, you can use the ``Text`` element. Its most notable property is 
 
 .. figure:: assets/text.png
 
-Text can be aligned to each side and the center using the ``horizontalAlignment`` and ``verticalAlignment`` properties. To further enhance the text rendering you can use the ``style`` and ``styleColor`` property , which allows you render the text in outline, raised and sunken mode. For longer text you often want to define a *break* position like *A very ... long text*, this can be achieved using the ``elide`` property. The ``elide`` property allows you to set the elide position to the left, right or middle of your text. In case you don't want the '...' of the elide mode to appear but still want to see the full text you can also wrap the text using the ``wrapMode`` property (works only when width is explicitly set)::
+Text can be aligned to each side and the center using the ``horizontalAlignment`` and ``verticalAlignment`` properties. To further enhance the text rendering you can use the ``style`` and ``styleColor`` property, which allows you render the text in outline, raised and sunken mode. For longer text, you often want to define a *break* position like *A very ... long text*, this can be achieved using the ``elide`` property. The ``elide`` property allows you to set the elide position to the left, right or middle of your text. In case you don't want the '...' of the elide mode to appear but still want to see the full text you can also wrap the text using the ``wrapMode`` property (works only when the width is explicitly set)::
 
     Text {
         width: 40; height: 120
@@ -239,14 +239,14 @@ A ``Text`` element only displays the given text. It does not render any backgrou
 
 .. note::
 
-    Often when you want to layout ``Text`` elements you need to differentiate between aligning the text inside the ``Text`` element boundary box or to align the element boundary box itself. In the former you want to use the ``horizontalAlignment`` and ``verticalAlignment`` properties and in the later case you want to manipulate the element geometry or use anchors.
+    Often when you want to layout ``Text`` elements you need to differentiate between aligning the text inside the ``Text`` element boundary box or to align the element boundary box itself. In the former, you want to use the ``horizontalAlignment`` and ``verticalAlignment`` properties and in the latter case, you want to manipulate the element geometry or use anchors.
 
 Image Element
 -------------
 
 .. issues:: ch04
 
-An ``Image`` element is able to display images in various formats (e.g. PNG, JPG, GIF, BMP, WEBP). *For the full list of supported image formats, please consult the Qt documentation*. Besides the obvious ``source`` property to provide the image URL it contains a ``fillMode`` which controls the resizing behavior.
+An ``Image`` element is able to display images in various formats (e.g. PNG, JPG, GIF, BMP, WEBP). *For the full list of supported image formats, please consult the Qt documentation*. Besides the obvious ``source`` property to provide the image URL, it contains a ``fillMode`` which controls the resizing behavior.
 
 .. literalinclude:: src/concepts/ImageExample.qml
     :start-after: M1>>
@@ -260,7 +260,7 @@ An ``Image`` element is able to display images in various formats (e.g. PNG, JPG
 
 .. note::
 
-    ``Image`` elements using ``PreserveAspectCrop`` should also enable the clipping to avoid image data being rendered outside the ``Image`` boundaries. By default clipping is disabled (``clip : false``). You  need to enable clipping (``clip : true``) to constrain the painting to the elements bounding rectangle. This can be used on any visual element.
+    ``Image`` elements using ``PreserveAspectCrop`` should also enable the clipping to avoid image data being rendered outside the ``Image`` boundaries. By default clipping is disabled (`` clip: false``). You need to enable clipping (`` clip: true``) to constrain the painting to the elements bounding rectangle. This can be used on any visual element.
 
 .. tip::
 
@@ -294,9 +294,9 @@ Components
 
 .. index:: components
 
-A component is a reusable element and QML provides different ways to create components. Currently we will look only at the simplest form - a file based component. A file based component is created by placing a QML element in a file and give the file an element name (e.g. ``Button.qml``). You can use the component like every other element from the QtQuick module, in our case you would use this in your code as ``Button { ... }``.
+A component is a reusable element and QML provides different ways to create components. Currently, we will look only at the simplest form - a file-based component. A file-based component is created by placing a QML element in a file and give the file an element name (e.g. ``Button.qml``). You can use the component like every other element from the QtQuick module, in our case you would use this in your code as ``Button { ... }``.
 
-For example, let's create a rectangle containing a text componenet and a mouse area. This resembles a simple button and doesn't need to be more complicated for our purposes.
+For example, let's create a rectangle containing a text component and a mouse area. This resembles a simple button and doesn't need to be more complicated for our purposes.
 
 
 .. literalinclude:: src/elements/InlinedComponentExample.qml
@@ -312,7 +312,7 @@ The UI will look similar to this. On the left the UI in the initial state, on th
         - .. figure:: assets/button_clicked.png
 
 
-Our task is now to extract the button UI in a reusable component. For this we shortly think about a possible API for our button. You can do this by imagining how someone else should use your button. Here's what I came up with:
+Our task is now to extract the button UI in a reusable component. For this, we shortly think about a possible API for our button. You can do this by imagining how someone else should use your button. Here's what I came up with:
 
 .. code-block:: js
 
@@ -322,9 +322,9 @@ Our task is now to extract the button UI in a reusable component. For this we sh
         onClicked: { // do something }
     }
 
-I would like to set the text using a ``text`` property and to implement my own click handler. Also I would expect the button to have a sensible initial size, which I can overwrite (e.g. with ``width: 240`` for example).
+I would like to set the text using a ``text`` property and to implement my own click handler. Also, I would expect the button to have a sensible initial size, which I can overwrite (e.g. with ``width: 240`` for example).
 
-To achieve this we create a ``Button.qml`` file and copy our button UI inside. Additionally we need to export the properties a user might want to change on the root level.
+To achieve this we create a ``Button.qml`` file and copy our button UI inside. Additionally, we need to export the properties a user might want to change on the root level.
 
 .. literalinclude:: src/elements/Button.qml
     :start-after: M1>>
@@ -342,7 +342,7 @@ Now you can use as many buttons as you like in your UI by just using ``Button { 
 
 .. note::
 
-    Personally you could even go a step further and use an item as a root element. This prevents users to change the color of our designed button, and provides us more control about the exported API. The target should be to export a minimal API. Practically this means we would need to replace the root ``Rectangle`` with an ``Item`` and make the rectangle a nested element in the root item.
+    Personally, you could even go a step further and use an item as a root element. This prevents users to change the color of our designed button and provides us with more control about the exported API. The target should be to export a minimal API. Practically this means we would need to replace the root ``Rectangle`` with an ``Item`` and make the rectangle a nested element in the root item.
 
     |
 
@@ -372,11 +372,11 @@ Simple Transformations
 
 .. index:: Transformation, Translation, Rotation, Scaling, ClickableImage Helper, Stacking order
 
-A transformation manipulates the geometry of an object. QML Items can in general be translated, rotated and scaled. There is a simple form of these operations and a more advanced way.
+A transformation manipulates the geometry of an object. QML Items can, in general, be translated, rotated and scaled. There is a simple form of these operations and a more advanced way.
 
 Let's start with the simple transformations. Here is our scene as our starting point.
 
-A simple translation is done via changing the ``x,y`` position. A rotation is done using the ``rotation`` property. The value is provided in degrees (0 .. 360). A scaling is done using the ``scale`` property and a value <1 means the element is scaled down and ``>1`` means the element is scaled up. The rotation and scaling does not change your geometry. The items ``x,y`` and ``width/height`` haven't changed. Just the painting instructions are transformed.
+A simple translation is done via changing the ``x,y`` position. A rotation is done using the ``rotation`` property. The value is provided in degrees (0 .. 360). A scaling is done using the ``scale`` property and a value <1 means the element is scaled down and ``>1`` means the element is scaled up. The rotation and scaling do not change your geometry. The items ``x,y`` and ``width/height`` haven't changed. Just the painting instructions are transformed.
 
 Before we show off the example I would like to introduce a little helper: The ``ClickableImage`` element. The ``ClickableImage`` is just an image with a mouse area. This brings up a useful rule of thumb - if you have copied a chunk of code three times, extract it into a component.
 
@@ -396,12 +396,12 @@ We use our clickable image to present three objects (box, circle, triangle). Eac
 
 .. figure:: assets/objects_transformed.png
 
-The circle increments the x-position on each click and the box will rotate on each click. The triangle will rotate and scale the image down on each click, to demonstrate a combined transformation. For the scaling and rotation operation we set ``antialiasing: true`` to enable anti-aliasing, which is switched off (same as the clipping property ``clip``) for performance reasons.  In your own work, when you see some rasterized edges in your graphics, then you should probably switch smooth on.
+The circle increments the x-position on each click and the box will rotate on each click. The triangle will rotate and scale the image down on each click, to demonstrate a combined transformation. For the scaling and rotation operation we set ``antialiasing: true`` to enable anti-aliasing, which is switched off (same as the clipping property ``clip``) for performance reasons.  In your own work, when you see some rasterized edges in your graphics, then you should probably switch smoothly on.
 
 
 .. note::
 
-    To achieve better visual quality when scaling images it is recommended to scale images down instead of up. Scaling an image up with a larger scaling factor will result into scaling artifacts (blurred image). When scaling an image you should consider using ``antialiasing : true`` to enable the usage of a higher quality filter.
+    To achieve better visual quality when scaling images it is recommended to scale images down instead of up. Scaling an image up with a larger scaling factor will result in scaling artifacts (blurred image). When scaling an image you should consider using `` antialiasing: true`` to enable the usage of a higher quality filter.
 
 
 The background ``MouseArea`` covers the whole background and resets the object values.
@@ -429,7 +429,7 @@ There are a number of QML elements used to position items. These are called posi
 
 .. note::
 
-    Before we go into details, let me introduce some helper elements. The red, blue, green, lighter and darker squares. Each of these components contains a 48x48 pixels colorized rectangle. As reference here is the source code for the ``RedSquare``:
+    Before we go into details, let me introduce some helper elements. The red, blue, green, lighter and darker squares. Each of these components contains a 48x48 pixels colorized rectangle. As a reference here is the source code for the ``RedSquare``:
 
     .. literalinclude:: src/positioners/RedSquare.qml
         :start-after: M1>>
@@ -446,7 +446,7 @@ The ``Column`` element arranges child items into a column by stacking them on to
     :start-after: M1>>
     :end-before: <<M1
 
-The ``Row`` element places its child items next to each other, either from the left to the right, or from the right to the left, depending on the ``layoutDirection`` property. Again, ``spacing`` is used to separate child items.
+The ``Row`` element places its child items next to each other, either from the left to the right or from the right to the left, depending on the ``layoutDirection`` property. Again, ``spacing`` is used to separate child items.
 
 .. figure:: assets/row.png
 
@@ -454,7 +454,7 @@ The ``Row`` element places its child items next to each other, either from the l
     :start-after: M1>>
     :end-before: <<M1
 
-The ``Grid`` element arranges its children in a grid, by setting the ``rows`` and ``columns`` properties, the number or rows or columns can be constrained. By not setting either of them, the other is calculated from the number of child items. For instance, setting rows to 3 and adding 6 child items will result in 2 columns. The properties ``flow`` and ``layoutDirection`` are used to control the order in which the items are added to the grid, while ``spacing`` controls the amount of space separating the child items.
+The ``Grid`` element arranges its children in a grid, by setting the ``rows`` and ``columns`` properties, the number of rows or columns can be constrained. By not setting either of them, the other is calculated from the number of child items. For instance, setting rows to 3 and adding 6 child items will result in 2 columns. The properties ``flow`` and ``layoutDirection`` are used to control the order in which the items are added to the grid, while ``spacing`` controls the amount of space separating the child items.
 
 .. figure:: assets/grid.png
 
@@ -470,7 +470,7 @@ The final positioner is ``Flow``. It adds its child items in a flow. The directi
     :start-after: M1>>
     :end-before: <<M1
 
-An element often used with positioners is the ``Repeater``. It works like a for-loop and iterates over a model. In the simplest case a model is just a value providing the amount of loops.
+An element often used with positioners is the ``Repeater``. It works like a for-loop and iterates over a model. In the simplest case, a model is just a value providing the number of loops.
 
 .. figure:: assets/repeater.png
 
@@ -478,7 +478,7 @@ An element often used with positioners is the ``Repeater``. It works like a for-
     :start-after: M1>>
     :end-before: <<M1
 
-In this repeater example, we use some new magic. We define our own color property, which we use as an array of colors. The repeater creates a series of rectangles (16, as defined by the model). For each loop he creates the rectangle as defined by the child of the repeater. In the rectangle we chose the color by using JS math functions ``Math.floor(Math.random()*3)``. This gives us a random number in the range from 0..2, which we use to select the color from our color array. As noted earlier, JavaScript is a core part of Qt Quick, as such the standard libraries are available for us.
+In this repeater example, we use some new magic. We define our own color property, which we use as an array of colors. The repeater creates a series of rectangles (16, as defined by the model). For each loop, he creates the rectangle as defined by the child of the repeater. In the rectangle we chose the color by using JS math functions ``Math.floor(Math.random()*3)``. This gives us a random number in the range from 0..2, which we use to select the color from our color array. As noted earlier, JavaScript is a core part of Qt Quick, as such the standard libraries are available for us.
 
 A repeater injects the ``index`` property into the repeater. It contains the current loop-index. (0,1,..15). We can use this to make our own decisions based on the index, or in our case to visualize the current index with the ``Text`` element.
 
@@ -495,11 +495,11 @@ Layout Items
 
 .. todo:: do we need to remove all uses of anchors earlier?
 
-QML provides a flexible way to layout items using anchors. The concept of anchoring is part of the ``Item`` fundamental properties and available to all visual QML elements. An anchors acts like a contract and is stronger than competing geometry changes. Anchors are expressions of relativeness, you always need a related element to anchor with.
+QML provides a flexible way to layout items using anchors. The concept of anchoring is part of the ``Item`` fundamental properties and available to all visual QML elements. Anchors act like a contract and are stronger than competing geometry changes. Anchors are expressions of relativeness, you always need a related element to anchor with.
 
 .. figure:: assets/anchors.png
 
-An element has 6 major anchor lines (top, bottom, left, right, horizontalCenter, verticalCenter). Additional there is the baseline anchor for text in Text elements. Each anchor line comes with an offset. In the case of top, bottom, left and right they are called margins. For horizontalCenter, verticalCenter and baseline they are called offsets.
+An element has 6 major anchor lines (top, bottom, left, right, horizontalCenter, verticalCenter). Additional there is the baseline anchor for text in Text elements. Each anchor line comes with an offset. In the case of the top, bottom left and right they are called margins. For horizontalCenter, verticalCenter and baseline they are called offsets.
 
 .. figure:: assets/anchorgrid.png
 
@@ -516,13 +516,13 @@ An element has 6 major anchor lines (top, bottom, left, right, horizontalCenter,
         :start-after: M2>>
         :end-before: <<M2
 
-#. An element left side is aligned to the parents right side
+#. An element left side is aligned to the parent's right side
 
     .. literalinclude:: src/anchors/AnchorsExample.qml
         :start-after: M3>>
         :end-before: <<M3
 
-#. Center aligned elements. ``Blue1`` is horizontal centered  on the parent. ``Blue2`` is also horizontal centered but on ``Blue1`` and it's top is aligned to the ``Blue1`` bottom line.
+#. Center-aligned elements. ``Blue1`` is horizontally centered on the parent. ``Blue2`` is also horizontal centered but on ``Blue1`` and it's top is aligned to the ``Blue1`` bottom line.
 
     .. literalinclude:: src/anchors/AnchorsExample.qml
         :start-after: M4>>
@@ -536,13 +536,13 @@ An element has 6 major anchor lines (top, bottom, left, right, horizontalCenter,
         :end-before: <<M5
 
 
-#. An element is centered with an left-offset on a parent element using horizontal and vertical center lines
+#. An element is centered with a left-offset on a parent element using horizontal and vertical center lines
 
     .. literalinclude:: src/anchors/AnchorsExample.qml
         :start-after: M6>>
         :end-before: <<M6
 
-.. note:: Our squares have been enhanced to enable dragging. Try the example and drag around some squares. You will see that (1) can't be dragged as it's anchored on all sides, sure you can drag the parent of (1) as it's not anchored at all. (2) can be vertically dragged as only the left side is anchored. Similar applies to (3). (4) can only be dragged vertically as both squares are horizontal centered. (5) is centered on the parent and as such can't be dragged, similar applies to (7). Dragging an element means changing their ``x,y`` position. As anchoring is stronger than geometry changes such as ``x,y``, dragging is restricted by the anchored lines. We will see this effect later when we discuss animations.
+.. note:: Our squares have been enhanced to enable dragging. Try the example and drag around some squares. You will see that (1) can't be dragged as it's anchored on all sides, sure you can drag the parent of (1) as it's not anchored at all. (2) can be vertically dragged as only the left side is anchored. Similar applies to (3). (4) can only be dragged vertically as both squares are horizontally centered. (5) is centered on the parent and as such can't be dragged, similar applies to (7). Dragging an element means changing their ``x,y`` position. As anchoring is stronger than geometry changes such as ``x,y``, dragging is restricted by the anchored lines. We will see this effect later when we discuss animations.
 
 Input Elements
 ==============
@@ -551,7 +551,7 @@ Input Elements
 
 .. index:: TextInput, TextEdit, FocusScope, focus, Keys, KeyNavigation
 
-We have already used the ``MouseArea`` as a mouse input element. Next, we'll  focus on keyboard input. We start off with the text editing elements: ``TextInput`` and ``TextEdit``.
+We have already used the ``MouseArea`` as a mouse input element. Next, we'll focus on keyboard input. We start off with the text editing elements: ``TextInput`` and ``TextEdit``.
 
 TextInput
 ---------
@@ -575,7 +575,7 @@ The user can click inside a ``TextInput`` to change the focus. To support switch
 
 The ``KeyNavigation`` attached property supports a preset of navigation keys where an element id is bound to switch focus on the given key press.
 
-A text input element comes with no visual presentation besides a blinking cursor and the entered text. For the user to be able to recognize the element as an input element it needs some visual decoration, for example a simple rectangle. When placing the ``TextInput`` inside an element you need make sure you export the major properties you want others be able to access.
+A text input element comes with no visual presentation beside a blinking cursor and the entered text. For the user to be able to recognize the element as an input element it needs some visual decoration, for example, a simple rectangle. When placing the ``TextInput`` inside an element you need make sure you export the major properties you want others to be able to access.
 
 We move this piece of code into our own component called ``TLineEditV1`` for reuse.
 
@@ -606,14 +606,14 @@ We rewrite our ``KeyNavigation`` example with the new ``TLineEditV1`` component.
 
 .. figure:: assets/textinput3.png
 
-And try the tab key for navigation. You will experience the focus does not change to ``input2``. The simple use of ``focus:true`` is not sufficient. The problem arises, that the focus was transferred to the ``input2`` element the top-level item inside the TlineEditV1 (our Rectangle) received focus and did not forward the focus to the TextInput. To prevent this QML offers the FocusScope.
+And try the tab key for navigation. You will experience the focus does not change to ``input2``. The simple use of ``focus: true`` is not sufficient. The problem arises, that the focus was transferred to the ``input2`` element the top-level item inside the TlineEditV1 (our Rectangle) received focus and did not forward the focus to the TextInput. To prevent this QML offers the FocusScope.
 
 FocusScope
 ----------
 
 .. issues:: ch04
 
-A focus scope declares that the last child element with ``focus:true`` receives the focus if the focus scope receives the focus. So it's forward the focus to the last focus requesting child element. We will create a 2nd version of our TLineEdit component called TLineEditV2 using the focus scope as root element.
+A focus scope declares that the last child element with ``focus: true`` receives the focus if the focus scope receives the focus. So it's forward the focus to the last focus requesting child element. We will create a 2nd version of our TLineEdit component called TLineEditV2 using the focus scope as the root element.
 
 .. literalinclude:: src/input/TLineEditV2.qml
     :start-after: M1>>
@@ -643,7 +643,7 @@ TextEdit
 
 .. issues:: ch04
 
-The ``TextEdit`` is very similar to ``TextInput`` and support a multi-line text edit field. It doesn't have the text constraint properties as this depends on querying the painted size of the text (``paintedHeight``, ``paintedWidth``). We also create our own component called ``TTextEdit`` to provide a edit background and use the focus scope for better focus forwarding.
+The ``TextEdit`` is very similar to ``TextInput`` and support a multi-line text edit field. It doesn't have the text constraint properties as this depends on querying the painted size of the text (``paintedHeight``, ``paintedWidth``). We also create our own component called ``TTextEdit`` to provide an editing background and use the focus scope for better focus forwarding.
 
 .. literalinclude:: src/input/TTextEdit.qml
     :start-after: M1>>
@@ -662,7 +662,7 @@ Keys Element
 
 .. issues:: ch04
 
-The attached property ``Keys`` allows executing code based on certain key presses. For example to move a square around and scale we can hook into the up, down, left and right keys to translate the element and the plus, minus key to scale the element.
+The attached property ``Keys`` allows executing code based on certain key presses. For example, to move a square around and scale we can hook into the up, down, left and right keys to translate the element and the plus, minus key to scale the element.
 
 .. literalinclude:: src/input/KeysExample.qml
     :start-after: M1>>

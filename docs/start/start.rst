@@ -20,9 +20,9 @@ Installing Qt 5 SDK
 
 .. issues:: ch02
 
-The Qt SDK include the tools needed to build desktop or embedded applications. The latest version can be grabbed from the `Qt-Company <http://qt.io>`_ homepage. There are offline and online installer. The author personally prefers the online installer package as it allows you to install and update several Qt releases. This is would be the recommended way to start. The SDK itself has a maintenance tool which will allow you to update the SDK to the latest version.
+The Qt SDK includes the tools needed to build desktop or embedded applications. The latest version can be grabbed from the `Qt-Company <http://qt.io>`_ homepage. There is an offline and online installer. The author personally prefers the online installer package as it allows you to install and update several Qt releases. This is would be the recommended way to start. The SDK itself has a maintenance tool which will allow you to update the SDK to the latest version.
 
-The Qt SDK is easy to install and comes with its own IDE for rapid development called *Qt Creator*. The IDE is a highly productive environment for Qt coding and recommended to all readers. Many developers use Qt from the command line and you are free to use a code editor of your choice.
+The Qt SDK is easy to install and comes with its own IDE for a rapid development called *Qt Creator*. The IDE is a highly productive environment for Qt coding and recommended to all readers. Many developers use Qt from the command line and you are free to use a code editor of your choice.
 
 When installing the SDK, you should select the default option and ensure that Qt 5.x is enabled. Then you are ready to go.
 
@@ -31,7 +31,7 @@ Hello World
 
 .. issues:: ch02
 
-To test your installation, we will create a small *hello world* application. Please open Qt Creator and create a Qt Quick UI Project ( :menuselection:`File --> New File or Project --> Qt Quick Project --> Qt Quick UI` ) and name the project ``HelloWorld``.
+To test your installation, we will create a small *hello world* application. Please, open Qt Creator and create a Qt Quick UI Project ( :menuselection:`File --> New File or Project --> Qt Quick Project --> Qt Quick UI` ) and name the project ``HelloWorld``.
 
 .. note::
 
@@ -39,7 +39,7 @@ To test your installation, we will create a small *hello world* application. Ple
 
 .. hint::
 
-    A typical Qt Quick application is made out of a runtime called the QmlEngine which loads the initial QML code. The developer can register C++ types with the runtime to interface with the native code. These C++ types can also be bundled into a plugin and then dynamically loaded using an import statement. The ``qmlscene`` and ``qml`` tool are pre-made runtimes, which can be used directly. For the beginning we will not cover the native side of development and focus only on the QML aspects of Qt 5.
+    A typical Qt Quick application is made out of a runtime called the QmlEngine which loads the initial QML code. The developer can register C++ types with the runtime to interface with the native code. These C++ types can also be bundled into a plugin and then dynamically loaded using an import statement. The ``qmlscene`` and ``qml`` tool are pre-made runtimes, which can be used directly. For the beginning, we will not cover the native side of development and focus only on the QML aspects of Qt 5.
 
 Qt Creator will create several files for you. The ``HelloWorld.qmlproject`` file is the project file where the relevant project configuration is stored. This file is managed by Qt Creator so don't edit.
 
@@ -131,16 +131,16 @@ Application Types
 
 .. issues:: ch02
 
-This section is a run through of the different possible application types someone could write with Qt 5. It's not limited to the presented selection but it should give the reader a better idea about what can be done with Qt 5 in general.
+This section is a run through of the different possible application types someone could write with Qt 5. It's not limited to the presented selection but it should give the reader a better idea of what can be done with Qt 5 in general.
 
 Console Application
 -------------------
 
-A console application does not provide any graphical user interface and will normally be called as part of a system service or from the command line. Qt 5 comes with a series of ready-made components which help you to create console cross platform applications very efficiently. For example the networking file APIs. Also string handling and, since Qt 5.1, efficient command line parser. As Qt is a high-level API on top of C++, you get programming speed paired with execution speed. Don't think of Qt as being *just* a UI toolkit -- it has so much more to offer.
+A console application does not provide any graphical user interface and will normally be called as part of a system service or from the command line. Qt 5 comes with a series of ready-made components which help you to create console cross-platform applications very efficiently. For example the networking file APIs. Also, string handling and, since Qt 5.1, efficient command line parser. As Qt is a high-level API on top of C++, you get programming speed paired with execution speed. Don't think of Qt as being *just* a UI toolkit -- it has so much more to offer.
 
 .. rubric:: String Handling
 
-In the first example we demonstrate how someone could very simply add 2 constant strings. This is not a very useful application but it gives you an idea of what a native C++ application, without an event loop, could look like.
+In the first example, we demonstrate how someone could very simply add 2 constant strings. This is not a very useful application but it gives you an idea of what a native C++ application, without an event loop, could look like.
 
 
 .. code-block:: cpp
@@ -165,7 +165,7 @@ In the first example we demonstrate how someone could very simply add 2 constant
 
 .. rubric:: Container Classes
 
-This example adds a list and list iteration to the application. Qt comes with a large collections of container classes which are easy to use and use the same API paradigms as the rest of Qt classes.
+This example adds a list and list iteration to the application. Qt comes with a large collection of container classes which are easy to use and use the same API paradigms as the rest of Qt classes.
 
 .. code-block:: cpp
 
@@ -184,7 +184,7 @@ This example adds a list and list iteration to the application. Qt comes with a 
     }
     cout << "!" << endl;
 
-Here we show some advanced list function, which allow you to join a list of strings into one string. This is very handy when you need to proceed line based text input. The inverse (string to string-list) is also possible using ``QString::split()`` function.
+Here we show some advanced list function, which allows you to join a list of strings into one string. This is very handy when you need to proceed line based text input. The inverse (string to string-list) is also possible using ``QString::split()`` function.
 
 .. code-block:: cpp
 
@@ -201,7 +201,7 @@ Here we show some advanced list function, which allow you to join a list of stri
 
 .. rubric:: File IO
 
-In the next snippet we read a CSV file from the local directory and loop over the rows to extract the cells from each row. Doing this we get the table data from the CSV file in ca. 20 lines of code. File reading gives us just a byte stream, to be able to convert it into a valid Unicode text we need to use the text stream and pass in the file as a lower-level stream. For writing CSV files you would just need to open the file in the write mode and pipe the lines into the text stream.
+In the next snippet, we read a CSV file from the local directory and loop over the rows to extract the cells from each row. Doing this we get the table data from the CSV file in ca. 20 lines of code. File reading gives us just a byte stream, to be able to convert it into a valid Unicode text we need to use the text stream and pass in the file as a lower-level stream. For writing CSV files you would just need to open the file in the write mode and pipe the lines into the text stream.
 
 .. code-block:: cpp
 
@@ -240,7 +240,7 @@ Widget Application
 Console based applications are very handy but sometimes you need to have a UI to show. In addition, UI-based applications will likely need a back-end to read/write files, communicate over the network, or keep data in a container.
 
 
-In this first snippet for widget-based applications we do as little as needed to create a window and show it. A widget without a parent in the Qt world is a window. We use the scoped pointer to ensure the widget is deleted when the scoped pointer goes out of scope. The application object encapsulates the Qt runtime and with the ``exec()`` call we start the event loop. From there on the application reacts only on events triggered by mouse or keyboard or other event providers like networking or file IO. The application will only exit when the event loop is exited.  This is done by calling ``quit()`` on the application or by closing the window.
+In this first snippet for widget-based applications, we do as little as needed to create a window and show it. A widget without a parent in the Qt world is a window. We use the scoped pointer to ensure the widget is deleted when the scoped pointer goes out of scope. The application object encapsulates the Qt runtime and with the ``exec()`` call we start the event loop. From there on the application reacts only to events triggered by mouse or keyboard or other event providers like networking or file IO. The application will only exit when the event loop is exited.  This is done by calling ``quit()`` on the application or by closing the window.
 
 When you run the code you will see a window with the size of 240 x 120 pixel. That's all.
 
@@ -259,7 +259,7 @@ When you run the code you will see a window with the size of 240 x 120 pixel. Th
 
 .. rubric:: Custom Widgets
 
-When you work on user interfaces, you will need to create custom made widgets. Typically a widget is a window area filled with painting calls. Additional the widget has internal knowledge of how to handle keyboard or mouse input and how to react to external triggers. To do this in Qt we need to derive from `QWidget` and overwrite several functions for painting and event handling.
+When you work on user interfaces, you will need to create custom-made widgets. Typically a widget is a window area filled with painting calls. Additional the widget has internal knowledge of how to handle keyboard or mouse input and how to react to external triggers. To do this in Qt we need to derive from `QWidget` and overwrite several functions for painting and event handling.
 
 .. code-block:: cpp
 
@@ -283,7 +283,7 @@ When you work on user interfaces, you will need to create custom made widgets. T
     #endif // CUSTOMWIDGET_H
 
 
-In the implementation, we draw a small border on our widget and a small rectangle on the last mouse position. This is very typical for a low-level custom widget. Mouse or keyboard events change the internal state of the widget and trigger a painting update. We don't want to go into to much detail into this code, but it is good to know that you have the ability. Qt comes with a large set of ready-made desktop widgets, so that the probability is high that you don't have to do this.
+In the implementation, we draw a small border on our widget and a small rectangle on the last mouse position. This is very typical for a low-level custom widget. Mouse or keyboard events change the internal state of the widget and trigger a painting update. We don't want to go into to much detail into this code, but it is good to know that you have the ability. Qt comes with a large set of ready-made desktop widgets so that the probability is high that you don't have to do this.
 
 .. code-block:: cpp
 
@@ -325,9 +325,9 @@ In the implementation, we draw a small border on our widget and a small rectangl
 
 .. rubric:: Desktop Widgets
 
-The Qt developers have done all of this for you already and provide a set of desktop widgets, which will look native on different operating systems. Your job is then to arrange these different widgets in a widget container into larger panels. A widget in Qt can also be a container for other widgets. This is accomplished by the parent-child relationship. This mean we need to make our ready-made widgets like buttons, check boxes, radio button but also lists and grids a child of another widget. One way to accomplish this is displayed below.
+The Qt developers have done all of this for you already and provide a set of desktop widgets, which will look native on different operating systems. Your job is then to arrange these different widgets in a widget container into larger panels. A widget in Qt can also be a container for other widgets. This is accomplished by the parent-child relationship. This means we need to make our ready-made widgets like buttons, checkboxes, radio button but also lists and grids a child of another widget. One way to accomplish this is displayed below.
 
-Here is the header file for a so called widget container.
+Here is the header file for a so-called widget container.
 
 .. code-block:: cpp
 
@@ -345,7 +345,7 @@ Here is the header file for a so called widget container.
         QPushButton *m_button;
     };
 
-In the implementation, we use layouts to better arrange our widgets. Layout managers re-layout the widgets according to some size policies when the container widget is re-sized. In this example we have a list, a line edit, and a button arranged vertically to allow to edit a list of cities. We use Qt's ``signal`` and ``slots`` to connect sender and receiver objects.
+In the implementation, we use layouts to better arrange our widgets. Layout managers re-layout the widgets according to some size policies when the container widget is re-sized. In this example, we have a list, a line edit, and a button arranged vertically to allow to edit a list of cities. We use Qt's ``signal`` and ``slots`` to connect sender and receiver objects.
 
 .. code-block:: cpp
 
@@ -406,7 +406,7 @@ Here is a short example. First the header file with the declaration of the view 
 
     };
 
-In the implementation the scene gets attached to the view first. The view is a widget and get arranged in our container widget. At the end we add a small rectangle to the scene, which then is rendered on the view.
+In the implementation, the scene gets attached to the view first. The view is a widget and gets arranged in our container widget. In the end, we add a small rectangle to the scene, which then is rendered on the view.
 
 .. code-block:: cpp
 
@@ -431,7 +431,7 @@ In the implementation the scene gets attached to the view first. The view is a w
 Adapting Data
 -------------
 
-Up to now we have mostly covered basic data types and how to use widgets and graphic views. Often in your application you will need larger amount of structured data, which also has to be persistently stored. The data also needs to be displayed. For this Qt uses models. A simple model is the string list model, which gets filled with strings and then attached to a list view.
+Up to now, we have mostly covered basic data types and how to use widgets and graphics views. Often in your application, you will need a larger amount of structured data, which also has to be persistently stored. The data also needs to be displayed. For this Qt uses models. A simple model is the string list model, which gets filled with strings and then attached to a list view.
 
 .. code-block:: cpp
 
@@ -443,7 +443,7 @@ Up to now we have mostly covered basic data types and how to use widgets and gra
     cities << "Munich" << "Paris" << "London";
     m_model->setStringList(cities);
 
-Another popular way to store or retrieve data is SQL. Qt comes with SQLite embedded and also has support for other database engines (MySQL, PostgresSQL, ...). First you need to create your database using a schema, like this:
+Another popular way to store or retrieve data is SQL. Qt comes with SQLite embedded and also has support for other database engines (MySQL, PostgresSQL, ...). First, you need to create your database using a schema, like this:
 
 .. code-block:: sql
 
@@ -452,13 +452,13 @@ Another popular way to store or retrieve data is SQL. Qt comes with SQLite embed
     INSERT INTO city value ("Paris", "France");
     INSERT INTO city value ("London", "United Kingdom");
 
-To use sql we need to add the sql module to our .pro file
+To use SQL we need to add the SQL module to our .pro file
 
 .. code-block:: cpp
 
     QT += sql
 
-And then we can open our database using C++. First we need to retrieve a new database object for the specified database engine. With this database object we open the database. For SQLite it's enough to specify the path to the database file. Qt provides some high-level database model, one of them is the table model, which uses a table identifier and an option where clause to select the data. The resulting model can be attached to a list view as the other model before.
+And then we can open our database using C++. First, we need to retrieve a new database object for the specified database engine. With this database object, we open the database. For SQLite, it's enough to specify the path to the database file. Qt provides some high-level database model, one of them is the table model, which uses a table identifier and an option where clause to select the data. The resulting model can be attached to a list view as the other model before.
 
 .. code-block:: cpp
 
@@ -476,7 +476,7 @@ And then we can open our database using C++. First we need to retrieve a new dat
     view->setModel(m_model);
     m_model->select();
 
-For higher level of model operations Qt provides a sort file proxy model, which allows you in the basic form to sort and filter another model.
+For a higher level of model operations, Qt provides a sort file proxy model, which allows you in the basic form to sort and filter another model.
 
 .. code-block:: cpp
 
@@ -493,7 +493,7 @@ Filtering is done based on the column to be filters and a string as filter argum
     proxy->setFilterCaseSensitive(Qt::CaseInsensitive);
     proxy->setFilterFixedString(QString)
 
-The filter proxy model is much more powerful than demonstrated here. For now it is enough to remember its exists.
+The filter proxy model is much more powerful than demonstrated here. For now, it is enough to remember it exists.
 
 
 .. note::
@@ -505,7 +505,7 @@ The filter proxy model is much more powerful than demonstrated here. For now it 
 Qt Quick Application
 --------------------
 
-There is an inherent conflict in modern software development. The user interface is moving much faster than our back-end services. In a traditional technology you develop the so called front-end at the same pace as the back-end. This results in conflicts when customers want to change the user interface during a project, or develop the idea of an user interface during the project. Agile projects, require agile methods.
+There is an inherent conflict in modern software development. The user interface is moving much faster than our back-end services. In a traditional technology, you develop the so-called front-end at the same pace as the back-end. This results in conflicts when customers want to change the user interface during a project, or develop the idea of a user interface during the project. Agile projects, require agile methods.
 
 Qt Quick provides a declarative environment where your user interface (the front-end) is declared like HTML and your back-end is in native C++ code. This allows you to get the best of both worlds.
 
@@ -524,7 +524,7 @@ This is a simple Qt Quick UI below
         }
     }
 
-The declaration language is called QML and it needs a runtime to execute in. Qt provides a standard runtime called ``qmlscene`` but it's also not so difficult to write a custom runtime. For this we need a quick view and set the main QML document as source. The only thing left is to show the user interface.
+The declaration language is called QML and it needs a runtime to execute it. Qt provides a standard runtime called ``qmlscene`` but it's also not so difficult to write a custom runtime. For this, we need a quick view and set the main QML document as a source. The only thing left is to show the user interface.
 
 .. code-block:: cpp
 
@@ -535,7 +535,7 @@ The declaration language is called QML and it needs a runtime to execute in. Qt 
 
 Coming back to our earlier examples. In one example we used a C++ city model. It would be great if we could use this model inside our declarative QML code.
 
-To enable this, we first code our front-end to see how we would want to use a city model. In this case the front-end expects a object named ``cityModel`` which we can use inside a list view.
+To enable this, we first code our front-end to see how we would want to use a city model. In this case, the front-end expects an object named ``cityModel`` which we can use inside a list view.
 
 .. code-block:: qml
 

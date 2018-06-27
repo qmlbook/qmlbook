@@ -13,7 +13,7 @@ JavaScript
     The source code for this chapter can be found in the `assets folder <../../assets>`_.
 
 
-JavaScript is the lingua-franca on web client development. It also starts to get traction on web server development mainly by node js. As such it is a well suited addition as an imperative language onto the side of declarative QML language. QML itself as a declarative language is used to express the user interface hierachy but is limited to express operational code. Sometimes you need a way to express operations, here JavaScript comes into play.
+JavaScript is the lingua-franca on web client development. It also starts to get traction on web server development mainly by node js. As such it is a well-suited addition as an imperative language onto the side of declarative QML language. QML itself as a declarative language is used to express the user interface hierarchy but is limited to express operational code. Sometimes you need a way to express operations, here JavaScript comes into play.
 
 .. note::
 
@@ -21,7 +21,7 @@ JavaScript is the lingua-franca on web client development. It also starts to get
 
   This book pushes the boundaries, which is not always the right mix for a product development and not for everyone. It is important to follow your team skills and your personal taste. In doubt follow the recommendation.
 
-Here a short example how JS looks like, mixtured in QML::
+Here a short example of how JS used in QML looks like::
 
   Button {
     width: 200
@@ -63,7 +63,7 @@ So JavaScript can come in many places inside QML as a standalone JS function, as
     }
   }
 
-Within QML you declare the user interface, with JavaScript you make it functional. So how much JavaScript should you write? It depends on your style and how familar you are with JS development. JS is a loosely typed language, which makes it difficult to spot type defects. Also functions expect all argument variations, which can be a very nasty bug to spot. The way to spot defects is rigorous unit testing or acceptance testing. So if you develop real logic (not some glue lines of code) in JS you should really start using the test-first approach. In general mixed teams (Qt/C++ and QML/JS) are very successfull when they minimize the amount of JS in the frontend as the domain logic and do the heavy lifting in Qt C++ in the backend. The backend should then be rigorous unit tested so that the frontend developers can trust the code and focus on all these little user interface requirements.
+Within QML you declare the user interface, with JavaScript you make it functional. So how much JavaScript should you write? It depends on your style and how familiar you are with JS development. JS is a loosely typed language, which makes it difficult to spot type defects. Also, functions expect all argument variations, which can be a very nasty bug to spot. The way to spot defects is rigorous unit testing or acceptance testing. So if you develop real logic (not some glue lines of code) in JS you should really start using the test-first approach. In generally mixed teams (Qt/C++ and QML/JS) are very successful when they minimize the amount of JS in the frontend as the domain logic and do the heavy lifting in Qt C++ in the backend. The backend should then be rigorous unit tested so that the frontend developers can trust the code and focus on all these little user interface requirements.
 
 .. note::
 
@@ -72,16 +72,16 @@ Within QML you declare the user interface, with JavaScript you make it functiona
 Browser/HTML vs QtQuick/QML
 ===========================
 
-The browser is the runtime to render HTML and execute the Javascript associated with the HTML. Nowadays modern web applications contain much more JavaScript then HTML. The Javascript inside the browser is a standard ECMAScript environment with some browser additions. A typical JS environment inside the browser knows the ``window`` object to access the browser window. There are also the basic DOM selectors which are used by jQuery to provide the CSS selectors. Additional there is a ``setTimeout`` function to call a function after a certain time. Besides these the environment is a standard JavaScript environment similar to QML/JS.
+The browser is the runtime to render HTML and execute the Javascript associated with the HTML. Nowadays modern web applications contain much more JavaScript than HTML. The Javascript inside the browser is a standard ECMAScript environment with some browser additions. A typical JS environment inside the browser knows the ``window`` object to access the browser window. There are also the basic DOM selectors which are used by jQuery to provide the CSS selectors. Additional there is a ``setTimeout`` function to call a function after a certain time. Besides these, the environment is a standard JavaScript environment similar to QML/JS.
 
-What is also different is where JS can appear inside HTML and QML. In HTML you can only add JS on event handlers (e.g. page loaded, mouse pressed). For example your JS initializes normally on page load, which is comparable to ``Component.onCompleted`` in QML. For example you can not use JS for property bindings (at least not directly, AngularJS enhances the DOM tree to allow these, but this is far away from standard HTML).
+What is also different is where JS can appear inside HTML and QML. In HTML you can only add JS on event handlers (e.g. page loaded, mouse pressed). For example, your JS initializes normally on page load, which is comparable to ``Component.onCompleted`` in QML. For example, you cannot use JS for property bindings (at least not directly, AngularJS enhances the DOM tree to allow these, but this is far away from standard HTML).
 
 So in QML JS is much more a first-class citizen and much deeper integrated into the QML render tree. Which makes the syntax much more readable. Besides this people which have developed HTML/JS applications will feel at home inside QML/JS.
 
 The Language
 ============
 
-This chapter will not give you a general introducton to JavaScript. There are other books out there for for a general introduction to JavaScript, please visit this great side on `Mozilla Developer Network <https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript>`_.
+This chapter will not give you a general introduction to JavaScript. There are other books out there for a general introduction to JavaScript, please visit this great side on `Mozilla Developer Network <https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript>`_.
 
 On the surface JavaScript is a very common language and does not differ a lot from other languages::
 
@@ -113,9 +113,9 @@ The statements ``if ... else``, ``break``, ``continue`` also work as expected. T
     return unknown;
   }
 
-JS knows several values which can be false, e.g. ``false``, ``0``, ``""``, ``undefined``, ``null``). For example a function returns by default ``undefined``. To test for false use the ``===`` identity operator. The ``==`` equality operator will do type conversion to test for equality. If possible use the faster and better ``===`` strict equality operator which will test for identity (see `Comparison operators <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Comparison_Operators>`_.
+JS knows several values which can be false, e.g. ``false``, ``0``, ``""``, ``undefined``, ``null``). For example, a function returns by default ``undefined``. To test for false use the ``===`` identity operator. The ``==`` equality operator will do type conversion to test for equality. If possible use the faster and better ``===`` strict equality operator which will test for identity (see `Comparison operators <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Comparison_Operators>`_.
 
-Under the hood javascript has its own ways of doing things. For example arrays::
+Under the hood, javascript has its own ways of doing things. For example arrays::
 
   function doIt() {
     var a = [] // empty arrays
@@ -130,7 +130,7 @@ Under the hood javascript has its own ways of doing things. For example arrays::
     a[98] // contains the value undefined
   }
 
-Also for people coming from C++ or Java which are used to a OO language JS just works different. JS is not purely an OO language it is a so called prototype based language. Each object has a prototype object. An object is created based on his prototype object. Please read more about this in the book `Javascript the Good Parts by Douglas Crockford <http://javascript.crockford.com>`_ or watch the video below.
+Also for people coming from C++ or Java which are used to an OO language JS just works differently. JS is not purely an OO language it is a so-called prototype based language. Each object has a prototype object. An object is created based on his prototype object. Please read more about this in the book `Javascript the Good Parts by Douglas Crockford <http://javascript.crockford.com>`_ or watch the video below.
 
 .. youtube:: hQVTIJBZook
 
@@ -164,7 +164,7 @@ While working with JS there are some objects and methods which are more frequent
 
 You can find them also at: `JavaScript reference <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference>`_
 
-Here some small and limited examples how to use JS with QML. They should give you an idea how you can use JS inside QML
+Here some small and limited examples of how to use JS with QML. They should give you an idea how you can use JS inside QML
 
 .. rubric:: Print all keys from QML Item
 
@@ -242,12 +242,12 @@ Here some small and limited examples how to use JS with QML. They should give yo
 Creating a JS Console
 =====================
 
-As a little example we will create a JS console. We need an input field where the user can enter his JS expressions and ideally there should be a list of output results. As this should more look like a desktop application we use the QtQuick Controls module.
+As a little example, we will create a JS console. We need an input field where the user can enter his JS expressions and ideally there should be a list of output results. As this should more look like a desktop application we use the QtQuick Controls module.
 
 
 .. note::
 
-  A JS console inside your next project can be really beneficial for testing. Enhanced with a Quake-Terminal effect it is also good to impress customers. To use it wisely you need to control the scope the JS console evaluates in, e.g. the current visible screen, the main data model, a singleton core object or all together.
+  A JS console inside your next project can be really beneficial for testing. Enhanced with a Quake-Terminal effect it is also good to impress customers. To use it wisely you need to control the scope the JS console evaluates in, e.g. the currently visible screen, the main data model, a singleton core object or all together.
 
 
 .. figure:: assets/jsconsole.png
@@ -255,7 +255,7 @@ As a little example we will create a JS console. We need an input field where th
 
 We use Qt Creator to create a Qt Quick UI project using QtQuick controls. We call the project `JSConsole`. After the wizard has finished we have already a basic structure for the application with an application window and a menu to exit the application.
 
-For the input we use a TextField and a Button to send the input for evaluation. The result of the expression evaluation is displayed using a ListView with a ListModel as the model and two labels to display the expression and the evaluated result.
+For the input, we use a TextField and a Button to send the input for evaluation. The result of the expression evaluation is displayed using a ListView with a ListModel as the model and two labels to display the expression and the evaluated result.
 
 ::
 
@@ -355,7 +355,7 @@ The evaluation function ``jsCall`` does the evaluation not by itself this has be
     }
   }
 
-For safety we do not use the ``eval`` function from JS as this would allow the user to modify the local scope. We use the Function constructor to create a JS function on runtime and pass in our scope as this variable. As the function is created every time it does not act as a closure and stores its own scope, we need to use ``this.a = 10`` to store the value inside the this scope of the function. The this scope is set by the script to the scope variable.
+For safety, we do not use the ``eval`` function from JS as this would allow the user to modify the local scope. We use the Function constructor to create a JS function on runtime and pass in our scope as this variable. As the function is created every time it does not act as a closure and stores its own scope, we need to use ``this.a = 10`` to store the value inside this scope of the function. This scope is set by the script to the scope variable.
 
 ::
 
@@ -383,4 +383,4 @@ For safety we do not use the ``eval`` function from JS as this would allow the u
       return data;
   }
 
-The data return from the call function is a JS object with a result, expression and error property: ``data: { expression: {}, result: {}, error: {} }``. We can use this JS object directly inside the ListModel and access it then from the delegate, e.g. ``model.expression`` gives us the input expression. For the simplicity of the example we ignore the error result.
+The data return from the call function is a JS object with a result, expression and error property: ``data: { expression: {}, result: {}, error: {} }``. We can use this JS object directly inside the ListModel and access it then from the delegate, e.g. ``model.expression`` gives us the input expression. For the simplicity of the example, we ignore the error result.
