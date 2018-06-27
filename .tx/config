@@ -1,0 +1,105 @@
+[main]
+host = https://www.transifex.com
+
+[qmlbookorg.canvas]
+file_filter = locales/<lang>/LC_MESSAGES/canvas.po
+source_file = _build/locale/canvas.pot
+source_lang = en_US
+type = PO
+
+[qmlbookorg.extensions]
+file_filter = locales/<lang>/LC_MESSAGES/extensions.po
+source_file = _build/locale/extensions.pot
+source_lang = en_US
+type = PO
+
+[qmlbookorg.start]
+file_filter = locales/<lang>/LC_MESSAGES/start.po
+source_file = _build/locale/start.pot
+source_lang = en_US
+type = PO
+
+[qmlbookorg.shaders]
+file_filter = locales/<lang>/LC_MESSAGES/shaders.po
+source_file = _build/locale/shaders.pot
+source_lang = en_US
+type = PO
+
+[qmlbookorg.storage]
+file_filter = locales/<lang>/LC_MESSAGES/storage.po
+source_file = _build/locale/storage.pot
+source_lang = en_US
+type = PO
+
+[qmlbookorg.meetqt]
+file_filter = locales/<lang>/LC_MESSAGES/meetqt.po
+source_file = _build/locale/meetqt.pot
+source_lang = en_US
+type = PO
+
+[qmlbookorg.fluid]
+file_filter = locales/<lang>/LC_MESSAGES/fluid.po
+source_file = _build/locale/fluid.pot
+source_lang = en_US
+type = PO
+
+[qmlbookorg.javascript]
+file_filter = locales/<lang>/LC_MESSAGES/javascript.po
+source_file = _build/locale/javascript.pot
+source_lang = en_US
+type = PO
+
+[qmlbookorg.qtcpp]
+file_filter = locales/<lang>/LC_MESSAGES/qtcpp.po
+source_file = _build/locale/qtcpp.pot
+source_lang = en_US
+type = PO
+
+[qmlbookorg.qtcreator]
+file_filter = locales/<lang>/LC_MESSAGES/qtcreator.po
+source_file = _build/locale/qtcreator.pot
+source_lang = en_US
+type = PO
+
+[qmlbookorg.multimedia]
+file_filter = locales/<lang>/LC_MESSAGES/multimedia.po
+source_file = _build/locale/multimedia.pot
+source_lang = en_US
+type = PO
+
+[qmlbookorg.dynamicqml]
+file_filter = locales/<lang>/LC_MESSAGES/dynamicqml.po
+source_file = _build/locale/dynamicqml.pot
+source_lang = en_US
+type = PO
+
+[qmlbookorg.index]
+file_filter = locales/<lang>/LC_MESSAGES/index.po
+source_file = _build/locale/index.pot
+source_lang = en_US
+type = PO
+
+[qmlbookorg.modelview]
+file_filter = locales/<lang>/LC_MESSAGES/modelview.po
+source_file = _build/locale/modelview.pot
+source_lang = en_US
+type = PO
+
+[qmlbookorg.qmlstart]
+file_filter = locales/<lang>/LC_MESSAGES/qmlstart.po
+source_file = _build/locale/qmlstart.pot
+source_lang = en_US
+type = PO
+
+[qmlbookorg.networking]
+file_filter = locales/<lang>/LC_MESSAGES/networking.po
+source_file = _build/locale/networking.pot
+source_lang = en_US
+type = PO
+
+[qmlbookorg.particles]
+file_filter = locales/<lang>/LC_MESSAGES/particles.po
+source_file = _build/locale/particles.pot
+source_lang = en_US
+type = PO
+
