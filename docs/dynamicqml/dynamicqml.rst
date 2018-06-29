@@ -56,7 +56,7 @@ In order to make the loaded item come alive, it is ``speed`` property must be bo
     :start-after: M1>>
     :end-before: <<M1
 
-The ``onLoaded`` signal lets the loading QML act when the item has been loaded. In a similar fashion, the QML being loaded can rely on the ``Component.onCompleted`` signal. This is signal actually available for all components, regardless of how they are loaded. For instance, the root component of an entire application can use it to kick-start itself when the entire user interface has been loaded.
+The ``onLoaded`` signal lets the loading QML act when the item has been loaded. In a similar fashion, the QML being loaded can rely on the ``Component.onCompleted`` signal. This signal is actually available for all components, regardless of how they are loaded. For instance, the root component of an entire application can use it to kick-start itself when the entire user interface has been loaded.
 
 Connecting Indirectly
 ---------------------
