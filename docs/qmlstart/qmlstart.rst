@@ -264,7 +264,7 @@ An ``Image`` element is able to display images in various formats (e.g. PNG, JPG
 
 .. tip::
 
-    Using C++ you are able to create your own image provider using :qt5:`QQmlImageProvider <qqmlimageprovider>`. This allows you to create images on the fly and threaded image loading.
+    Using C++ you are able to create your own image provider using :qt5:`QQuickImageProvider <qquickimageprovider>`. This allows you to create images on the fly and threaded image loading.
 
 MouseArea Element
 -----------------
