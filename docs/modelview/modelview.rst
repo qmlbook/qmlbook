@@ -110,7 +110,7 @@ The ``ListView`` is similar to the ``Repeater`` element. It uses a ``model``, in
 .. figure:: assets/automatic/listview-basic.png
     :scale: 50%
 
-If the model contains more data than can fit onto the screen, the ``ListView`` only shows part of the list. However, as a consequence of the default behavior of Qt Quick, the list view does not limit the screen area within which the delegates are shown. This means that delegates may be visible outside the list view and that the dynamic creation and destruction of delegates outside the list view is visible to the user. To prevent this, clipping must be activated on the ``ListView`` element by setting the ``clip`` property to ``true``. The illustration below shows the result of this, compared to when the ``clip`` property is left as ``false``.
+If the model contains more data than can fit onto the screen, the ``ListView`` only shows part of the list. However, as a consequence of the default behavior of Qt Quick, the list view does not limit the screen area within which the delegates are shown. This means that delegates may be visible outside the list view and that the dynamic creation and destruction of delegates outside the list view is visible to the user. To prevent this, clipping must be activated on the ``ListView`` element by setting the ``clip`` property to ``true``. The illustration below shows the result of this (left view), compared to when the ``clip`` property is ``false`` (right view).
 
 .. figure:: assets/automatic/listview-clip.png
     :scale: 50%
