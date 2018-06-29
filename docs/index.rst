@@ -84,5 +84,13 @@ Source Code Examples
 
 The chapter queue is the chapters we are working on. They might be almost ready or in an infant state. Give it a try if you like.
 
+.. toctree::
+    :numbered:
+    :maxdepth: 2
+    
+    testing/testing.rst
+    deployment/deployment.rst
+    qtpython/qtpython.rst
+    draganddrop/draganddrop.rst
 
 
