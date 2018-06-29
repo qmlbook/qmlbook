@@ -470,7 +470,7 @@ The final positioner is ``Flow``. It adds its child items in a flow. The directi
     :start-after: M1>>
     :end-before: <<M1
 
-An element often used with positioners is the ``Repeater``. It works like a for-loop and iterates over a model. In the simplest case, a model is just a value providing the number of loops.
+An element often used with positioners is the ``Repeater``. It works like a for-loop and iterates over a model. In the simplest case a model is just a value providing the number of loops.
 
 .. figure:: assets/repeater.png
 
