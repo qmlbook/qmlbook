@@ -78,13 +78,11 @@ Rectangle {
             varying highp vec2 qt_TexCoord0;
             void main() {
                 qt_TexCoord0 = qt_MultiTexCoord0;
-                // M1>>
                 highp vec4 pos = qt_Vertex;
                 pos.y = mix(qt_Vertex.y, height, minimize);
                 highp float t = pos.y / height;
                 pos.x = mix(qt_Vertex.x, width, t * minimize);
                 gl_Position = qt_Matrix * pos;
-                // <<M1
             }"
         MouseArea {
             anchors.fill: parent
