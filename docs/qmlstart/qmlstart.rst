@@ -69,7 +69,7 @@ Elements are declared by using their element name but are defined by using their
 
 Let's go through the different features of properties:
 
-(1) ``id`` is a very special property-like value, it is used to reference elements inside a QML file (called "document" in QML). The ``id`` is not a string type but rather an identifier and part of the QML syntax. An ``id`` needs to be unique inside a document and it can't be reset to a different value, nor may it be queried. (It behaves more like a pointer in the C++ world.)
+(1) ``id`` is a very special property-like value, it is used to reference elements inside a QML file (called "document" in QML). The ``id`` is not a string type but rather an identifier and part of the QML syntax. An ``id`` needs to be unique inside a document and it can't be reset to a different value, nor may it be queried. (It behaves much like a reference in the C++ world.)
 
 (2) A property can be set to a value, depending on its type. If no value is given for a property, an initial value will be chosen. You need to consult the documentation of the particular element for more information about the initial value of a property.
 
