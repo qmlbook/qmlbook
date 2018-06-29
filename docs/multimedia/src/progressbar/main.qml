@@ -70,7 +70,7 @@ Item {
 
             onClicked: {
                 if (player.seekable) {
-                    player.position = player.duration * mouse.x/width;
+                    player.seek(player.duration * mouse.x/width);
                 }
             }
         }
