@@ -35,7 +35,7 @@ Image {
     source: "assets/background.png"
 
     property int padding: 40
-    property int duration: 400
+    property int duration: 4000
     property bool running: false
 
     Image {
