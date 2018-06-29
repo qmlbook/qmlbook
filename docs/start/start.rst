@@ -476,7 +476,7 @@ And then we can open our database using C++. First, we need to retrieve a new da
     view->setModel(m_model);
     m_model->select();
 
-For a higher level of model operations, Qt provides a sort file proxy model, which allows you in the basic form to sort and filter another model.
+For a higher level of model operations Qt provides a sort file proxy model which allows you sort, filter, and transform models.
 
 .. code-block:: cpp
 
