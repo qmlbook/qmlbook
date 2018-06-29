@@ -199,7 +199,7 @@ Managing Dynamically Created Elements
 
 .. issues:: ch13
 
-Dynamically created objects can be treated as any other object in a QML scene. However, there are some pitfalls that need to be handled. The most important is the concept of the creation contexts.
+Dynamically created objects can be treated as any other object in a QML scene. However, there are some pitfalls that we need to be aware of. The most important is the concept of the creation contexts.
 
 The creation context of a dynamically created object is the context within it is being created. This is not necessarily the same context as the parent exists in. When the creation context is destroyed, so is the bindings concerning the object. This means that it is important to implement the creation of dynamic objects in a place in the code which will be instantiated during the entire lifetime of the objects.
 
