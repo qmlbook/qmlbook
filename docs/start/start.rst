@@ -531,7 +531,7 @@ The declaration language is called QML and it needs a runtime to execute it. Qt 
     QQuickView* view = new QQuickView();
     QUrl source = QUrl::fromLocalFile("main.qml");
     view->setSource(source);
-    view.show();
+    view->show();
 
 Coming back to our earlier examples. In one example we used a C++ city model. It would be great if we could use this model inside our declarative QML code.
 
