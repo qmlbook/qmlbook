@@ -249,7 +249,7 @@ Having a model representing all dynamically created items, it is easy to create 
     :start-after: M3>>
     :end-before: <<M3
 
-The XML document string can be used with a ``XmlListModel`` by setting the ``xml`` property of the model. In the code below, the model is shown along the ``deserialize`` function. The ``deserialize`` function kickstarts the deserialization by setting the ``dsIndex`` to refer to the first item of the model and then invoking the creation of that item. The callback, ``dsItemAdded`` then sets that ``x`` and ``y`` properties of the newly created object. It then updates the index and creates the next object, if any.
+The XML document string can be used with an ``XmlListModel`` by setting the ``xml`` property of the model. In the code below, the model is shown along the ``deserialize`` function. The ``deserialize`` function kickstarts the deserialization by setting the ``dsIndex`` to refer to the first item of the model and then invoking the creation of that item. The callback, ``dsItemAdded`` then sets that ``x`` and ``y`` properties of the newly created object. It then updates the index and creates the next object, if any.
 
 .. literalinclude:: src/dynamic-scene/main.qml
     :language: js
