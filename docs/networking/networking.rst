@@ -673,15 +673,6 @@ Here are some links which we find useful:
 * https://github.com/pipacs/o2
 * http://www.johanpaul.com/blog/2011/05/oauth2-explained-with-qt-quick/
 
-Engin IO
-========
-
-.. issues:: ch11
-
-Engin.IO is a web-service run by DIGIA. It enables to access from inside Qt/QML application to the NoSQL storage from Engin.IO. It is a cloud-based storage object store with an easy access Qt/QML API and an administration console. If you want to store some data in the cloud from a QML application, this would be an easy entry path with an excellent QML/JS support.
-
-Please refer to the `EnginIO <http://engin.io>`_ documentation for further help.
-
 Web Sockets
 ===========
 
