@@ -93,7 +93,7 @@ To determine which ``MouseArea`` to target, two states are defined. Notice that 
 
 When trying out the example, it is worth noticing that when multiple signal handlers are used, all are invoked. The execution order of these is, however, undefined.
 
-When creating a ``Connections`` element without setting the ``target`` property, the property defaults to ``parent``. This means that it explicitly has to be set to ``null`` to avoid catching signals from the ``parent`` until the ``target`` is set. This behavior does make it possible to create custom signal handler components based on a ``Connections`` element. This way, the code reacting to the signals can be encapsulated and re-used.
+When creating a ``Connections`` element without setting the ``target`` property, the property defaults to ``parent``. This means that it has to be explicitly set to ``null`` to avoid catching signals from the ``parent`` until the ``target`` is set. This behavior does make it possible to create custom signal handler components based on a ``Connections`` element. This way, the code reacting to the signals can be encapsulated and re-used.
 
 In the example below, the ``Flasher`` component can be put inside any ``MouseArea``. When clicked, it triggers an animation, causing the parent to flash. In the same ``MouseArea`` the actual task being triggered can also be carried out. This separates the standardized user feedback, i.e. the flashing, from the actual action.
 
