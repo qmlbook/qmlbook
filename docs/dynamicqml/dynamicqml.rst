@@ -56,7 +56,7 @@ In order to make the loaded item come alive, it is ``speed`` property must be bo
     :start-after: M1>>
     :end-before: <<M1
 
-The ``onLoaded`` signal lets the loading QML act when the item has been loaded. In a similar fashion, the QML being loaded can rely on the ``Component.onCompleted`` signal. This is signal actually available for all components, regardless of how they are loaded. For instance, the root component of an entire application can use it to kick-start itself when the entire user interface has been loaded.
+The ``onLoaded`` signal lets the loading QML act when the item has been loaded. In a similar fashion, the QML being loaded can rely on the ``Component.onCompleted`` signal. This signal is actually available for all components, regardless of how they are loaded. For instance, the root component of an entire application can use it to kick-start itself when the entire user interface has been loaded.
 
 Connecting Indirectly
 ---------------------
@@ -93,7 +93,7 @@ To determine which ``MouseArea`` to target, two states are defined. Notice that 
 
 When trying out the example, it is worth noticing that when multiple signal handlers are used, all are invoked. The execution order of these is, however, undefined.
 
-When creating a ``Connections`` element without setting the ``target`` property, the property defaults to ``parent``. This means that it explicitly has to be set to ``null`` to avoid catching signals from the ``parent`` until the ``target`` is set. This behavior does make it possible to create custom signal handler components based on a ``Connections`` element. This way, the code reacting to the signals can be encapsulated and re-used.
+When creating a ``Connections`` element without setting the ``target`` property, the property defaults to ``parent``. This means that it has to be explicitly set to ``null`` to avoid catching signals from the ``parent`` until the ``target`` is set. This behavior does make it possible to create custom signal handler components based on a ``Connections`` element. This way, the code reacting to the signals can be encapsulated and re-used.
 
 In the example below, the ``Flasher`` component can be put inside any ``MouseArea``. When clicked, it triggers an animation, causing the parent to flash. In the same ``MouseArea`` the actual task being triggered can also be carried out. This separates the standardized user feedback, i.e. the flashing, from the actual action.
 
@@ -199,9 +199,9 @@ Managing Dynamically Created Elements
 
 .. issues:: ch13
 
-Dynamically created objects can be treated as any other object in a QML scene. However, there are some pitfalls that need to be handled. The most important is the concept of the creation contexts.
+Dynamically created objects can be treated as any other object in a QML scene. However, there are some pitfalls that we need to be aware of. The most important is the concept of the creation contexts.
 
-The creation context of a dynamically created object is the context within it is being created. This is not necessarily the same context as the parent exists in. When the creation context is destroyed, so is the bindings concerning the object. This means that it is important to implement the creation of dynamic objects in a place in the code which will be instantiated during the entire lifetime of the objects.
+The creation context of a dynamically created object is the context within it is being created. This is not necessarily the same context as the parent exists in. When the creation context is destroyed, so are the bindings concerning the object. This means that it is important to implement the creation of dynamic objects in a place in the code which will be instantiated during the entire lifetime of the objects.
 
 Dynamically created objects can also be dynamically destroyed. When doing this, there is a rule of thumb: never attempt to destroy an object that you have not created. This also includes elements that you have created, but not using a dynamic mechanism such as ``Component.createObject`` or ``createQmlObject``.
 
@@ -249,7 +249,7 @@ Having a model representing all dynamically created items, it is easy to create 
     :start-after: M3>>
     :end-before: <<M3
 
-The XML document string can be used with a ``XmlListModel`` by setting the ``xml`` property of the model. In the code below, the model is shown along the ``deserialize`` function. The ``deserialize`` function kickstarts the deserialization by setting the ``dsIndex`` to refer to the first item of the model and then invoking the creation of that item. The callback, ``dsItemAdded`` then sets that ``x`` and ``y`` properties of the newly created object. It then updates the index and creates the next object, if any.
+The XML document string can be used with an ``XmlListModel`` by setting the ``xml`` property of the model. In the code below, the model is shown along the ``deserialize`` function. The ``deserialize`` function kickstarts the deserialization by setting the ``dsIndex`` to refer to the first item of the model and then invoking the creation of that item. The callback, ``dsItemAdded`` then sets that ``x`` and ``y`` properties of the newly created object. It then updates the index and creates the next object, if any.
 
 .. literalinclude:: src/dynamic-scene/main.qml
     :language: js

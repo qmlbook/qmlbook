@@ -247,14 +247,14 @@ Porting from HTML5 Canvas
 
 .. issues:: ch07
 
-* https://developer.mozilla.org/en/Canvas_tutorial/Transformations
+* https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Transformations
 * http://en.wikipedia.org/wiki/Spirograph
 
 It is fairly easy to port an HTML5 canvas graphics over to use the QML canvas. From the thousands of examples, we picked one and tried it yourself.
 
 **Spiro Graph**
 
-We use a `spirograph <http://en.wikipedia.org/wiki/Spirograph>`_ example from the Mozilla project as our foundation. The original HTML5 was posted as part of the `canvas tutorial <https://developer.mozilla.org/en/Canvas_tutorial/Transformations>`_.
+We use a `spirograph <http://en.wikipedia.org/wiki/Spirograph>`_ example from the Mozilla project as our foundation. The original HTML5 was posted as part of the `canvas tutorial <https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Transformations`_.
 
 There were a few lines we needed to change:
 

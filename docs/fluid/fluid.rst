@@ -113,29 +113,29 @@ The three objects are all at the same y-position (``y=200``). They need to trave
     :end-before: <<M1
 
 
-.. rubric:: 1st object
+.. rubric:: First object
 
-The 1st object travels using the ``Animation on <property>`` strategy. The animation starts immediately. When an object is clicked their y-position is reset to the start position, this applies to all objects. On the 1st object, the reset does not have any effect as long as the animation is running. It's even disturbing as the y-position is set for a fraction of a second to a new value before the animation starts. *Such competing property changes should be avoided*.
+The first object travels using the ``Animation on <property>`` strategy. The animation starts immediately. When an object is clicked their y-position is reset to the start position, this applies to all objects. On the first object, the reset does not have any effect as long as the animation is running. It's even disturbing as the y-position is set for a fraction of a second to a new value before the animation starts. *Such competing property changes should be avoided*.
 
 .. literalinclude:: src/animation/AnimationTypesExample.qml
     :start-after: M2>>
     :end-before: <<M2
 
-.. rubric:: 2nd object
+.. rubric:: Second object
 
-The 2nd object travels using a ``behavior on`` animation. This behavior tells the property, every time the property value changes, it changes through this animation. The behavior can be disabled by ``enabled : false`` on the ``Behavior`` element. The object will start traveling when you click it (y-position is then set to 40). Another click has no influence as the position is already set. You could try to use a random value (e.g. ``40+(Math.random()*(205-40)``) for the y-position. You will see that the object will always animate to the new position and adapt its speed to match the 4 seconds to the destination defined by the duration of the animation.
+The second object travels using a ``behavior on`` animation. This behavior tells the property, every time the property value changes, it changes through this animation. The behavior can be disabled by ``enabled : false`` on the ``Behavior`` element. The object will start traveling when you click it (y-position is then set to 40). Another click has no influence as the position is already set. You could try to use a random value (e.g. ``40+(Math.random()*(205-40)``) for the y-position. You will see that the object will always animate to the new position and adapt its speed to match the 4 seconds to the destination defined by the duration of the animation.
 
 .. literalinclude:: src/animation/AnimationTypesExample.qml
     :start-after: M3>>
     :end-before: <<M3
 
-.. rubric:: 3rd object
+.. rubric:: Third object
 
-The 3rd object uses a ``standalone animation``. The animation is defined as its own element and could be everywhere in the document. The click will start the animation using the animations function ``start()``. Each animation has a start(), stop(), resume(), restart() function. The animation itself contains much more information than the other animation types earlier. We need to define the target and properties to declare the target element to be animated and which properties we want to animate. We need to define a ``to`` value and in this case, we define also a ``from`` value to allow a restart of the animation.
+The third object uses a ``standalone animation``. The animation is defined as its own element and could be everywhere in the document. The click will start the animation using the animations function ``start()``. Each animation has a start(), stop(), resume(), restart() function. The animation itself contains much more information than the other animation types earlier. We need to define the target and properties to declare the target element to be animated and which properties we want to animate. We need to define a ``to`` value and in this case, we define also a ``from`` value to allow a restart of the animation.
 
 .. figure:: assets/animationtypes.png
 
-A click on the background will reset all objects to their initial position. The 1st object can't be restarted except by re-starting the program which triggers the re-loading of the element.
+A click on the background will reset all objects to their initial position. The first object cannot be restarted except by re-starting the program which triggers the re-loading of the element.
 
 .. note::
 

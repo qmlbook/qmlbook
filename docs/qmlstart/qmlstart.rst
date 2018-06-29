@@ -69,7 +69,7 @@ Elements are declared by using their element name but are defined by using their
 
 Let's go through the different features of properties:
 
-(1) ``id`` is a very special property-like value, it is used to reference elements inside a QML file (called "document" in QML). The ``id`` is not a string type but rather an identifier and part of the QML syntax. An ``id`` needs to be unique inside a document and it can't be reset to a different value, nor may it be queried. (It behaves more like a pointer in the C++ world.)
+(1) ``id`` is a very special property-like value, it is used to reference elements inside a QML file (called "document" in QML). The ``id`` is not a string type but rather an identifier and part of the QML syntax. An ``id`` needs to be unique inside a document and it can't be reset to a different value, nor may it be queried. (It behaves much like a reference in the C++ world.)
 
 (2) A property can be set to a value, depending on its type. If no value is given for a property, an initial value will be chosen. You need to consult the documentation of the particular element for more information about the initial value of a property.
 
@@ -264,7 +264,7 @@ An ``Image`` element is able to display images in various formats (e.g. PNG, JPG
 
 .. tip::
 
-    Using C++ you are able to create your own image provider using :qt5:`QQmlImageProvider <qqmlimageprovider>`. This allows you to create images on the fly and threaded image loading.
+    Using C++ you are able to create your own image provider using :qt5:`QQuickImageProvider <qquickimageprovider>`. This allows you to create images on the fly and threaded image loading.
 
 MouseArea Element
 -----------------
@@ -342,7 +342,7 @@ Now you can use as many buttons as you like in your UI by just using ``Button { 
 
 .. note::
 
-    Personally, you could even go a step further and use an item as a root element. This prevents users to change the color of our designed button and provides us with more control about the exported API. The target should be to export a minimal API. Practically this means we would need to replace the root ``Rectangle`` with an ``Item`` and make the rectangle a nested element in the root item.
+    If you want to, you could even go a step further and use an item as a root element. This prevents users to change the color of our designed button and provides us with more control about the exported API. The target should be to export a minimal API. Practically this means we would need to replace the root ``Rectangle`` with an ``Item`` and make the rectangle a nested element in the root item.
 
     |
 
@@ -396,7 +396,7 @@ We use our clickable image to present three objects (box, circle, triangle). Eac
 
 .. figure:: assets/objects_transformed.png
 
-The circle increments the x-position on each click and the box will rotate on each click. The triangle will rotate and scale the image down on each click, to demonstrate a combined transformation. For the scaling and rotation operation we set ``antialiasing: true`` to enable anti-aliasing, which is switched off (same as the clipping property ``clip``) for performance reasons.  In your own work, when you see some rasterized edges in your graphics, then you should probably switch smoothly on.
+The circle increments the x-position on each click and the box will rotate on each click. The triangle will rotate and scale the image up on each click, to demonstrate a combined transformation. For the scaling and rotation operation we set ``antialiasing: true`` to enable anti-aliasing, which is switched off (same as the clipping property ``clip``) for performance reasons.  In your own work, when you see some rasterized edges in your graphics, then you should probably switch smoothly on.
 
 
 .. note::
@@ -470,7 +470,7 @@ The final positioner is ``Flow``. It adds its child items in a flow. The directi
     :start-after: M1>>
     :end-before: <<M1
 
-An element often used with positioners is the ``Repeater``. It works like a for-loop and iterates over a model. In the simplest case, a model is just a value providing the number of loops.
+An element often used with positioners is the ``Repeater``. It works like a for-loop and iterates over a model. In the simplest case a model is just a value providing the number of loops.
 
 .. figure:: assets/repeater.png
 
