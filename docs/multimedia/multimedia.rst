@@ -34,7 +34,7 @@ In the example shown below, the ``MediaPlayer`` is given a file with video conte
     :start-after: M1>>
     :end-before: <<M1
 
-Basic operations such as altering the volume when playing media are controlled through the ``volume`` property of the ``MediaPlayer`` element. There are other useful properties as well. For instance, the ``duration`` and ``position`` properties can be used to build a progress bar. If the ``seekable`` property is ``true``, it is even possible to update the ``position`` when the progress bar is tapped. The example below shows how this is added to the basic playback example above.
+Basic operations such as altering the volume when playing media are controlled through the ``volume`` property of the ``MediaPlayer`` element. There are other useful properties as well. For instance, the ``duration`` and ``position`` properties can be used to build a progress bar. If the ``seekable`` property is ``true``, it is even possible to update the ``position`` when the progress bar is tapped. However, the ``position`` property is read-only, instead we must use the ``seek`` method. The example below shows how this is added to the basic playback example above.
 
 .. literalinclude:: src/progressbar/main.qml
     :start-after: M1>>
