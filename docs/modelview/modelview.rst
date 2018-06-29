@@ -297,7 +297,7 @@ Before looking at the highlight range control properties in depth, we must look 
 
 .. todo:: do we cover the line, quad, and cubic through an illustration, or do we need a paragraph on them?
 
-When the path has been defined, it is possible to further tune it using ``PathPercent`` and ``PathAttribute`` elements. These are placed in between path elements and provides a more fine-grained control over the path and the delegates on it. The ``PathPercent`` controls how large a portion of the path that has been covered between each element. This, in turn, controls the distribution of delegates along the path, as they are distributed proportionally to the percentage progressed.
+When the path has been defined, it is possible to further tune it using ``PathPercent`` and ``PathAttribute`` elements. These are placed in between path elements and provide more fine-grained control over the path and the delegates on it. The ``PathPercent`` controls how large a portion of the path that has been covered between each element. This, in turn, controls the distribution of delegates along the path, as they are distributed proportionally to the percentage progressed.
 
 This is where the ``preferredHighlightBegin`` and ``preferredHighlightEnd`` properties of the ``PathView`` enters the picture. They both expect real values in the range between zero and one. The end is also expected to be more or equal to the beginning. Setting both these properties too, for instance, 0.5, the current item will be displayed at the location fifty percent along the path.
 
