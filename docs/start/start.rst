@@ -259,7 +259,7 @@ When you run the code you will see a window with the size of 240 x 120 pixel. Th
 
 .. rubric:: Custom Widgets
 
-When you work on user interfaces, you will need to create custom-made widgets. Typically a widget is a window area filled with painting calls. Additional the widget has internal knowledge of how to handle keyboard or mouse input and how to react to external triggers. To do this in Qt we need to derive from `QWidget` and overwrite several functions for painting and event handling.
+When you work on user interfaces, you will need to create custom-made widgets. Typically a widget is a window area filled with painting calls. Additionally the widget has internal knowledge of how to handle keyboard or mouse input and how to react to external triggers. To do this in Qt we need to derive from `QWidget` and overwrite several functions for painting and event handling.
 
 .. code-block:: cpp
 
