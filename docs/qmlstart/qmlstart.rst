@@ -319,7 +319,7 @@ Our task is now to extract the button UI in a reusable component. For this, we s
     // minimal API for a button
     Button {
         text: "Click Me"
-        onClicked: { // do something }
+        onClicked: { /* do something */ }
     }
 
 I would like to set the text using a ``text`` property and to implement my own click handler. Also, I would expect the button to have a sensible initial size, which I can overwrite (e.g. with ``width: 240`` for example).
