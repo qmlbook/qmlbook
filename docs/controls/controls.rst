@@ -12,7 +12,7 @@ Qt Quick Controls 2.0
 
     The source code for this chapter can be found in the `assets folder <../../assets>`_.
 
-This chapter introduces how to use the Qt Quick Controls 2.0 to create a user interface built from standard components such as buttons, labels, sliders and so on. We will look at how various styles can be used to move user interfaces between platforms before diving into custom styling.
+This chapter introduces how to use Qt Quick Controls 2.0 to create a user interface built from standard components such as buttons, labels, sliders and so on. We will look at how various styles can be used to move user interfaces between platforms before diving into custom styling.
     
 Introduction to Controls
 ========================
