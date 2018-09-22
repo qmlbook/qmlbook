@@ -244,12 +244,19 @@ The minimal set of Qt 5 modules to start QML programming.
 .. digraph:: essentials
     :align: center
 
-    QtGui -> QtCore
-    QtNetwork -> QtCore
-    QtMultimedia -> QtGui
-    QtQml -> QtCore
-    QtQuick -> QtQml
-    QtSql -> QtCore
+    "Qt Gui" -> "Qt Core"
+    "Qt Network" -> "Qt Core"
+    "Qt Multimedia" -> "Qt Gui"
+    "Qt Multimedia Widgets" -> "Qt Widgets"
+    "Qt Qml" -> "Qt Core"
+    "Qt Quick" -> "Qt Qml"
+    "Qt Quick Controls 2" -> "Qt Quick"
+    "Qt Quick Dialogs" -> "Qt Quick"
+    "Qt Quick Layout" -> "Qt Quick"
+    "Qt Quick Test" -> "Qt Quick"
+    "Qt Sql" -> "Qt Core"
+    "Qt Test" -> "Qt Core"
+    "Qt Widgets" -> "Qt Core"
 
 
 .. rubric:: Qt Add-On Modules
@@ -282,7 +289,7 @@ Qt Project
 
 From the `Qt Project wiki <http://wiki.qt.io/>`_:
 
-"The Qt Project is a meritocratic consensus-based community interested in Qt. Anyone who shares that interest can join the community, participate in its decision-making processes, and contribute to Qt’s development."
+    "The Qt Project is a meritocratic consensus-based community interested in Qt. Anyone who shares that interest can join the community, participate in its decision-making processes, and contribute to Qt’s development."
 
 The Qt Project is an organization which develops the open-source part of the Qt further. It forms the base for other users to contribute. The biggest contributor is The Qt Company, which holds also the commercial rights to Qt.
 
