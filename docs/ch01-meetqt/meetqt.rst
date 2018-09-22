@@ -257,20 +257,43 @@ The minimal set of Qt 5 modules to start QML programming.
     "Qt Sql" -> "Qt Core"
     "Qt Test" -> "Qt Core"
     "Qt Widgets" -> "Qt Core"
+<<<<<<< HEAD:docs/ch01-meetqt/meetqt.rst
 
+=======
+>>>>>>> Updated available modules according to 5.12:docs/meetqt/meetqt.rst
 
 .. rubric:: Qt Add-On Modules
 
 Besides the essential modules, Qt offers additional modules that target specific purposes. Many add-on modules are either feature-complete and exist for backwards compatibility, or are only applicable to certain platforms. Here is a list of some of the available add-on modules, but make sure you familiarize yourself with them all in the `Qt documentation add-ons list <https://doc-snapshots.qt.io/qt5-5.12/qtmodules.html#qt-add-ons>`_.
 
-* Qt 3D - A set of APIs to make 3D graphics programming easy and declarative.
-* Qt Android Extras - Provides platform-specific APIs for Android.
-* Qt Bluetooth - C++ and QML APIs for platforms using Bluetooth wireless technology.
-* Qt Contacts - C++ and QML APIs for accessing address books / contact databases.
-* Qt Gamepad - Enables Qt applications to support the use of gamepad hardware.
-* Qt Location - Provides location positioning, mapping, navigation, and place search via QML and C++ interfaces. NMEA backend for positioning.
-* Qt Sensors - Access to sensors via QML and C++ interfaces.
-* Qt Wayland Compositor - Linux only. Provides a framework to develop a Wayland compositor.
+.. list-table::
+    :widths: 20 80
+    :header-rows: 1
+
+    *   - Module
+        - Description
+    *   - Qt 3D 
+        - A set of APIs to make 3D graphics programming easy and declarative.
+    *   - Qt Bluetooth 
+        - C++ and QML APIs for platforms using Bluetooth wireless technology.
+    *   - Qt Canvas 3D
+        - Enables OpenGL-like 3D drawing calls from Qt Quick applications using JavaScript.
+    *   - Qt Graphical Effects
+        - Graphical effects for use with Qt Quick 2.
+    *   - Qt Location
+        - Displays map, navigation, and place content in a QML application.
+    *   - Qt Network Authorization
+        - Provides support for OAuth-based authorization to online services.
+    *   - Qt Positioning
+        - Provides access to position, satellite and area monitoring classes.
+    *   - Qt Purchasing
+        - Enables in-app purchase of products in Qt applications. (Only for Android, iOS and MacOS).
+    *   - Qt Sensors 
+        - Provides access to sensors and motion gesture recognition.
+    *   - Qt Wayland Compositor
+        - Provides a framework to develop a Wayland compositor. (Only for Linux).
+    *   - Qt Virtual Keyboard
+        - A framework for implementing different input methods as well as a QML virtual keyboard. Supports localized keyboard layouts and custom visual themes.
 
 .. note::
 
