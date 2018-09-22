@@ -212,25 +212,31 @@ The minimal set of Qt 5 modules to start QML programming.
     *   - Module
         - Description
     *   - Qt Core
-        - Core non-graphical classes used by other modules
+        - Core non-graphical classes used by other modules.
     *   - Qt GUI
         - Base classes for graphical user interface (GUI) components. Includes OpenGL.
     *   - Qt Multimedia
         - Classes for audio, video, radio and camera functionality.
+    *   - Qt Multimedia Widgets
+        - Widget-based classes for implementing multimedia functionality.
     *   - Qt Network
         - Classes to make network programming easier and more portable.
     *   - Qt QML
         - Classes for QML and JavaScript languages.
     *   - Qt Quick
-        -  declarative framework for building highly dynamic applications with custom user interfaces.
+        - A declarative framework for building highly dynamic applications with custom user interfaces.
+    *   - Qt Quick Controls 2
+        - Provides lightweight QML types for creating performant user interfaces for desktop, embedded, and mobile devices. These types employ a simple styling architecture and are very efficient.
+    *   - Qt Quick Dialogs
+        - Types for creating and interacting with system dialogs from a Qt Quick application.
+    *   - Qt Quick Layouts
+        - Layouts are items that are used to arrange Qt Quick 2 based items in the user interface.
+    *   - Qt Quick Test
+        - A unit test framework for QML applications, where the test cases are written as JavaScript functions.
     *   - Qt SQL
         - Classes for database integration using SQL.
     *   - Qt Test
         - Classes for unit testing Qt applications and libraries.
-    *   - Qt WebKit
-        - Classes for a WebKit2 based implementation and a new QML API. See also Qt WebKit Widgets in the add-on modules.
-    *   - Qt WebKit Widgets
-        - WebKit1 and QWidget-based classes from Qt 4.
     *   - Qt Widgets
         - Classes to extend Qt GUI with C++ widgets.
 
@@ -238,31 +244,53 @@ The minimal set of Qt 5 modules to start QML programming.
 .. digraph:: essentials
     :align: center
 
-    QtGui -> QtCore
-    QtNetwork ->QtCore
-    QtMultimedia ->QtGui
-    QtQml -> QtCore
-    QtQuick -> QtQml
-    QtSql -> QtCore
+    "Qt Gui" -> "Qt Core"
+    "Qt Network" -> "Qt Core"
+    "Qt Multimedia" -> "Qt Gui"
+    "Qt Multimedia Widgets" -> "Qt Widgets"
+    "Qt Qml" -> "Qt Core"
+    "Qt Quick" -> "Qt Qml"
+    "Qt Quick Controls 2" -> "Qt Quick"
+    "Qt Quick Dialogs" -> "Qt Quick"
+    "Qt Quick Layout" -> "Qt Quick"
+    "Qt Quick Test" -> "Qt Quick"
+    "Qt Sql" -> "Qt Core"
+    "Qt Test" -> "Qt Core"
+    "Qt Widgets" -> "Qt Core"
 
 
 .. rubric:: Qt Addon Modules
 
-Besides the essential modules, Qt offers additional modules for software developers, which are not part of the release. Here is a short list of add-on modules available.
+Besides the essential modules, Qt offers additional modules for software developers, which are not part of the release. Here is a short list of some of the add-on modules available.
 
-* Qt 3D - A set of APIs to make 3D graphics programming easy and declarative.
-* Qt Bluetooth - C++ and QML APIs for platforms using Bluetooth wireless technology.
-* Qt Contacts - C++ and QML APIs for accessing address books / contact databases
-* Qt Location - Provides location positioning, mapping, navigation, and place search via QML and C++ interfaces. NMEA backend for positioning
-* Qt Organizer - C++ and QML APIs for accessing organizer events (todos, events, etc.)
-* Qt Publish and Subscribe
-* Qt Sensors - Access to sensors via QML and C++ interfaces.
-* Qt Service Framework -  Enables applications to read, navigate and subscribe to change notifications.
-* Qt System Info - Discover system-related information and capabilities.
-* Qt Versit - Support for vCard and iCalendar formats
-* Qt Wayland - Linux only. Includes Qt Compositor API (server), and Wayland platform plugin (clients)
-* Qt Feedback - Tactile and audio feedback to user actions.
-* Qt JSON DB - A no-SQL object store for Qt.
+.. list-table::
+    :widths: 20 80
+    :header-rows: 1
+
+    *   - Module
+        - Description
+    *   - Qt 3D 
+        - A set of APIs to make 3D graphics programming easy and declarative.
+    *   - Qt Bluetooth 
+        - C++ and QML APIs for platforms using Bluetooth wireless technology.
+    *   - Qt Canvas 3D
+        - Enables OpenGL-like 3D drawing calls from Qt Quick applications using JavaScript.
+    *   - Qt Graphical Effects
+        - Graphical effects for use with Qt Quick 2.
+    *   - Qt Location
+        - Displays map, navigation, and place content in a QML application.
+    *   - Qt Network Authorization
+        - Provides support for OAuth-based authorization to online services.
+    *   - Qt Positioning
+        - Provides access to position, satellite and area monitoring classes.
+    *   - Qt Purchasing
+        - Enables in-app purchase of products in Qt applications. (Only for Android, iOS and MacOS).
+    *   - Qt Sensors 
+        - Provides access to sensor hardware and motion gesture recognition.
+    *   - Qt Wayland Compositor
+        - Provides a framework to develop a Wayland compositor. (Only for Linux).
+    *   - Qt Virtual Keyboard
+        - A framework for implementing different input methods as well as a QML virtual keyboard. Supports localized keyboard layouts and custom visual themes.
 
 .. note::
 
@@ -283,7 +311,7 @@ Qt Project
 
 From the `Qt Project wiki <http://wiki.qt.io/>`_:
 
-"The Qt Project is a meritocratic consensus-based community interested in Qt. Anyone who shares that interest can join the community, participate in its decision-making processes, and contribute to Qt’s development."
+    "The Qt Project is a meritocratic consensus-based community interested in Qt. Anyone who shares that interest can join the community, participate in its decision-making processes, and contribute to Qt’s development."
 
 The Qt Project is an organization which develops the open-source part of the Qt further. It forms the base for other users to contribute. The biggest contributor is The Qt Company, which holds also the commercial rights to Qt.
 
