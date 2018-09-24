@@ -120,6 +120,10 @@ The fragment shader receives our texture coordinate from the vertex shader and a
 
 During the next examples, we will be playing around with some simple shader mechanics. First, we concentrate on the fragment shader and then we will come back to the vertex shader.
 
+.. note::
+
+    In the example above, the shader code is written inline in a string inside the QML code. This is supported for OpenGL, but for other platforms a pre-compiled bytecode version of the shader is expected. To import such a shader, simply replace the shader code with a filename refering the the pre-compiled bytecode.
+
 Fragment Shaders
 ----------------
 
