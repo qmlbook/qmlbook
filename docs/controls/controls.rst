@@ -1,6 +1,6 @@
-=====================
-Qt Quick Controls 2.0
-=====================
+===================
+Qt Quick Controls 2
+===================
 
 .. sectionauthor:: `e8johan <https://github.com/e8johan>`_
 
