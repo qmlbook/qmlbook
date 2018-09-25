@@ -63,6 +63,14 @@ Notice that the ``Qt.labs`` modules are experimental, meaning that their APIs ca
 An Image Viewer
 ===============
 
+.. figure:: assets/viewer-window.png
+
+    The image viewer main window.
+
+.. figure:: assets/viewer-about.png
+
+    The about dialog.
+
 - Example program - a simple image viewer
 - Implemenation for desktop
     - main window
