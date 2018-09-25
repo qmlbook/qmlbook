@@ -4,11 +4,14 @@ import QtQuick.Dialogs 1.2
 import QtQuick.Layouts 1.0
 
 ApplicationWindow {
+    
+    // ...
+    
     visible: true
     width: 640
     height: 480
     title: qsTr("Image Viewer")
-
+    
     menuBar: MenuBar {
         Menu {
             title: qsTr("&File")
@@ -59,8 +62,7 @@ ApplicationWindow {
         title: "Select an image file"
         folder: shortcuts.documents
         nameFilters: [
-            "Portable Network Graphics (*.png)",
-            "Joint Photographic Experts Group (*.jpeg *.jpg)"
+            "Image files (*.png *.jpeg *.jpg)",
         ]
         onAccepted: {
             image.source = fileOpenDialog.fileUrl
@@ -78,4 +80,7 @@ ApplicationWindow {
 
         standardButtons: StandardButton.Ok
     }
+
+    // ...
+
 }
