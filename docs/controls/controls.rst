@@ -78,7 +78,7 @@ The desktop version is based around a classic application window with a menu bar
 
 We use the Qt Creator project template for an empty Qt Quick application as a starting point. However, we replace the default ``Window`` element from the template with a ``ApplicationWindow`` from the ``QtQuick.Controls`` module. The code below shows ``main.qml`` where the window itself is created and setup with a default size and title.
 
-.. literalinclude:: src/imageviewer/main.qml
+.. literalinclude:: src/imageviewer-desktop/main.qml
     :lines: 1-6, 10-13, 83-
     
 The ``ApplicationWindow`` consists of four main areas as shown below. The menu bar, tool bar and status bar are usually populated by instances of ``MenuBar``, ``ToolBar`` and ``StatusBar`` controls respectively, while the contents area is where the children of the window goes. Notice that the image viewer application does not feature a status bar, that is why it is missing from the code show here, as well as from the figure above.
@@ -93,7 +93,7 @@ As we are targetting desktop, we enforce the use of the *Fusion* style. This can
     
 We then start building the user interface in ``main.qml`` by adding an ``Image`` element as the contents. This element will hold the images when the user opens them, so for now it is just a place holder. The ``background`` property is used to provide an element to the window to place behind the contents. This will be shown when there is no image loaded, and as borders around the image if the aspect ratio down not let it fill the contents area of the window.
 
-.. literalinclude:: src/imageviewer/main.qml
+.. literalinclude:: src/imageviewer-desktop/main.qml
     :lines: 6-9, 48-58, 83-
     
 We then continue by adding the ``ToolBar``. This is done using the ``toolBar`` property of the window. Inside the tool bar we add a ``RowLayout`` from the ``QtQuick.Layouts`` module. Inside the layout we place a ``ToolButton`` and a *spacer* element. A spacer element is an element used to fill space in the layout, ensuring that the toolbar fills the width of the window.
@@ -102,7 +102,7 @@ The ``ToolButton`` has a couple of interesting properties. The ``text`` is strai
 
 In the ``onClicked`` signal handler of the ``ToolButton`` is the final piece of code. It calls the ``open`` method on the ``fileOpenDialog`` element.
 
-.. literalinclude:: src/imageviewer/main.qml
+.. literalinclude:: src/imageviewer-desktop/main.qml
     :lines: 6-9, 34-46, 83-
 
 The ``fileOpenDialog`` element is a ``FileDialog`` control from the ``QtQuick.Dialogs`` module. The file dialog can be used to open or save files, as well as picking directories.
@@ -111,14 +111,14 @@ In the code we start by assigning a ``title``. Then we set the starting folder u
 
 Finally, we reach the ``onAccepted`` signal handler where the ``Image`` element that holds the window contents is set to show the the selected file. There is an ``onRejected`` signal as well, but we do not need to handle it in the image viewer application.
     
-.. literalinclude:: src/imageviewer/main.qml
+.. literalinclude:: src/imageviewer-desktop/main.qml
     :lines: 6-9, 60-70, 83-
 
 We then continue with the ``MenuBar``. To create a menu, one puts ``Menu`` elements inside the menu bar, and then populate each ``Menu`` with ``MenuItem`` elements.
 
 In the code below, we create two menus, *File* and *Help*. Under *File*, we place *Open* using the same icon and action as the tool button in the tool bar. Under *Help* you find *About* which triggers a call to the ``open`` method of the ``aboutDialog`` element.
     
-.. literalinclude:: src/imageviewer/main.qml
+.. literalinclude:: src/imageviewer-desktop/main.qml
     :lines: 6-9, 15-32, 83-
 
 The ``aboutDialog`` element is based on the ``Dialog`` control, which is the base for custom dialogs. The dialog we are about to create is shown in the figure below.
@@ -129,7 +129,7 @@ The ``aboutDialog`` element is based on the ``Dialog`` control, which is the bas
 
 The code for the ``aboutDialog`` can be split into three parts. First, we setup the dialog window with a title. Then we provide some contents for the dialog -- in this case, a ``Label`` control. Finally, we opt to use a standard *Ok* button to close the dialog.
     
-.. literalinclude:: src/imageviewer/main.qml
+.. literalinclude:: src/imageviewer-desktop/main.qml
     :lines: 6-9, 72-
 
     
