@@ -132,6 +132,28 @@ The code for the ``aboutDialog`` can be split into three parts. First, we setup 
 .. literalinclude:: src/imageviewer-desktop/main.qml
     :lines: 6-9, 72-
 
+Moving to Mobile
+----------------
+
+There are a number of differences in how a user interface is expected to look an behave on a mobile device compared to a desktop application. The biggest difference for our application is how the actions are accessed. Instead of a menu bar and a tool bar, we will use a drawer from which the user can pick the actions. The drawer can swiped in from the side, but we also offer a hamburger button in the header. The resulting application with the drawer open can be seen below.
+
+.. figure:: assets/viewer-mobile-drawer.png
+
+    The image viewer with a drawer menu.
+
+.. literalinclude:: src/imageviewer-mobile/main.qml
+    :lines: 7-12, 18-52, 114-
+
+.. figure:: assets/viewer-mobile.png
+
+    The image viewer with the mobile header.
+    
+.. literalinclude:: src/imageviewer-mobile/main.qml
+    :lines: 7-10, 54, 56-77, 114-
+
+.. literalinclude:: src/imageviewer-mobile/main.qml
+    :lines: 5-10, 54-55, 114-
+
     
 
 - More desktop
