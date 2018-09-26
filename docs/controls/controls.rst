@@ -148,6 +148,9 @@ Common Patterns
 - Nested screens with stack view
 - Side-by-side screens with page view
 
+The Imagine Style
+=================
+
 Controls in Depth
 =================
 
