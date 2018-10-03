@@ -111,3 +111,6 @@ information.
 * `controls/src/imageviewer-mobile/images/baseline-menu-24px.svg`
     - License: Apache-2.0
     - Source: https://material.io/tools/icons/?icon=menu&style=baseline
+* `controls/src/imageviewer-all/images/baseline-menu-24px.svg`
+    - License: Apache-2.0
+    - Source: https://material.io/tools/icons/?icon=menu&style=baseline
