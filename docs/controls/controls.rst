@@ -154,14 +154,36 @@ There are a number of differences in how a user interface is expected to look an
 .. literalinclude:: src/imageviewer-mobile/main.qml
     :lines: 5-10, 54-55, 114-
 
+A Shared Codebase
+-----------------
+
+.. literalinclude:: src/imageviewer-all/ImageViewerWindow.qml
+    :lines: 1-5, 9-31, 40-46, 55, 59
     
+.. literalinclude:: src/imageviewer-all/main.qml
+    :lines: 1-5, 9-45, 49
 
-- More desktop
-    - Qt.labs.platform for a native file dialog
-- Implementation for mobile
-    - what concepts translate 1:1, what has to be changed
-- How to work with file selectors for a single code base
+.. literalinclude:: src/imageviewer-all/+material/main.qml
+    :lines: 1-6, 10-19, 23-26, 41-53, 55-61, 84, 88
 
+.. literalinclude:: src/imageviewer-all/+material/qtquickcontrols2.conf
+    :language: ini
+
+Native Dialogs
+--------------
+
+.. literalinclude:: src/imageviewer-native/main.qml
+    :lines: 1-10, 61-71, 84-
+
+.. literalinclude:: src/imageviewer-native/imageviewer-native.pro
+    :lines: 1
+    
+.. literalinclude:: src/imageviewer-native/main.cpp
+    :language: cpp
+    :lines: 1, 4-8, 11-14, 22
+
+
+    
 Common Patterns
 ===============
 
