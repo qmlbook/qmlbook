@@ -2,9 +2,9 @@
     <qresource prefix="/">
         <file>main.qml</file>
         <file>ImageViewerWindow.qml</file>
-        <file>+material/main.qml</file>
+        <file>+android/main.qml</file>
         <file>images/baseline-menu-24px.svg</file>
         <file>qtquickcontrols2.conf</file>
-        <file>+material/qtquickcontrols2.conf</file>
+        <file>+android/qtquickcontrols2.conf</file>
     </qresource>
 </RCC>
