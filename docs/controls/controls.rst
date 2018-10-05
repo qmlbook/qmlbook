@@ -131,6 +131,8 @@ The code for the ``aboutDialog`` can be split into three parts. First, we setup 
     
 .. literalinclude:: src/imageviewer-desktop/main.qml
     :lines: 6-9, 72-
+    
+The end result of all this is an, albeit simple, desktop application for viewing images.
 
 Moving to Mobile
 ----------------
@@ -140,49 +142,117 @@ There are a number of differences in how a user interface is expected to look an
 .. figure:: assets/viewer-mobile-drawer.png
 
     The image viewer with a drawer menu.
+    
+First of all, we need to change the style that is set in ``main.cpp`` from *Fusion* to *Material*::
 
+    QQuickStyle::setStyle("Material");
+
+Then we start adapting the user interface. We start by replacing the menu with a drawer. In the code below, the ``Drawer`` component is added as a child to the ``ApplicationWindow``. Inside the drawer, we put a ``ListView`` containing ``ItemDelegate`` instances. It also contains a ``ScrollIndicator`` used to show what part of a long list that is shown. As our list only consists of two items, this is not visible in this example.
+
+The drawer ``ListView`` is populated from a ``ListModel`` where each ``ListItem`` corresponds to a menu item. Each time an item is clicked, in the ``onClicked`` method, the ``triggered`` method of the corresponding ``ListItem`` is called. This way, we can use a single delegate to trigger different actions.
+    
 .. literalinclude:: src/imageviewer-mobile/main.qml
     :lines: 7-12, 18-52, 114-
 
+The next change is the ``header`` in the ``ApplicationWindow``. Instead of a desktop style toolbar, we add a button to open the drawer and the title of our application. 
+    
 .. figure:: assets/viewer-mobile.png
 
     The image viewer with the mobile header.
     
+The ``ToolBar`` contains a ``RowLayout`` with a set of elements.
+    
+The ``ToolButton`` control opens the drawer. The corresponding close call can be found in the ``ListView`` delegate. When an item has been selected the drawer is closed. The icon used for the ``ToolButton`` comes from the `Material Design Icons page <https://material.io/tools/icons/?style=baseline>`_.
+
+The ``Item`` element inside the ``RowLayout`` in the ``ToolBar`` is used to center the ``titleLabel``. By ensuring that its ``width`` is the same as the width of the ``ToolButton``, the text will be centered.
+    
 .. literalinclude:: src/imageviewer-mobile/main.qml
     :lines: 7-10, 54, 56-77, 114-
 
+Finally we make the background of the toolbar pretty --- or at least orange. To do this, we alter the ``Material.background`` attached property. This comes from the ``QtQuick.Controls.Material 2.1`` module and only affects the Material style.
+    
 .. literalinclude:: src/imageviewer-mobile/main.qml
     :lines: 5-10, 54-55, 114-
+    
+With these few changes we have converted our desktop image viewer to a mobile friendly version.
 
 A Shared Codebase
 -----------------
 
+In the past two sections we have looked at an image viewer developed for desktop use and then adapted it to mobile.
+
+Looking at the code base, much of the code is still shared. The parts that are shared are mostly associated with the document of the application, i.e. the image. The changes has affected individual interaction patterns of desktop and mobile respectively. Naturally, we would want to unify these code bases. QML supports this through the use of *file selectors*.
+
+A file selector lets us replace individual files based on which selectors are active. The Qt documentation maintains a list of selectors in the documentation for the ``QFileSelector`` class (`link <https://doc.qt.io/qt-5/qfileselector.html>`_). In our case we will make the desktop version the default and replace selected files when the *android* selector is encountered. During the development you can set the environment variable ``QT_FILE_SELECTORS`` to ``android`` to simulate this.
+
+.. note::
+
+    The file selector works by replacing files with an alternative when a *selector* is present.
+    
+    By creating a directory named ``+selector``, where ``selector`` represents the name of a selector, in parallel to the files that you want to replace, you can then place files with the same name as the file you want to replace inside the directory. When the selector is present, the file in the directory will be picked instead of the original file.
+    
+    The selectors are based on the platform, e.g. android, ios, osx, linux, qnx, and so on. They can also include the name of the Linux distribution used (if identified), e.g. debian, ubuntu, fedora. Finally, they also include the locale, e.g. en_US, sv_SE, etc.
+    
+    It is also possible to add your own, custom, selectors.
+
+The first step to do this change is to isolate the shared code. We do this by creating the ``ImageViewerWindow`` class which will be used as the ``ApplicationWindow`` for both our programs. This will consist of the dialogs, the ``Image`` element and the background. In order to make the open methods of the dialogs available to the platform specific code, we need to expose them through the functions ``openFileDialog`` and ``openAboutDialog``.
+
 .. literalinclude:: src/imageviewer-all/ImageViewerWindow.qml
     :lines: 1-5, 9-31, 40-46, 55, 59
+    
+Next, we create a new ``main.qml`` for our default style *Fusion*, i.e. the desktop version of the user interface.
+
+Here, we base the user interface around the ``ImageViewerWindow`` instead of the ``ApplicationWindow``. Then we add the platform specific parts to it, e.g. the ``MenuBar`` and ``ToolBar``. The only changes to these is that the calls to open the respective dialogs are made to the new functions instead of directly to the dialog controls.
     
 .. literalinclude:: src/imageviewer-all/main.qml
     :lines: 1-5, 9-45, 49
 
-.. literalinclude:: src/imageviewer-all/+material/main.qml
-    :lines: 1-6, 10-19, 23-26, 41-53, 55-61, 84, 88
+Next, we have to create a mobile specific ``main.qml``. This will be based around the *Material* theme. Here, we keep the ``Drawer`` and the mobile specific toolbar. Again, the only change is how the dialogs are opened.
 
-.. literalinclude:: src/imageviewer-all/+material/qtquickcontrols2.conf
+.. literalinclude:: src/imageviewer-all/+android/main.qml
+    :lines: 1-6, 10-19, 23-26, 41-53, 55-61, 84, 88
+    
+The two ``main.qml`` files are placed in the file system as shown below. This lets the file selector that the QML engine automatically creates pick the right file. By default, the *Fusion* ``main.qml`` is loaded, unless the ``android`` selector is present. Then the *Material* ``main.qml`` is loaded instead.
+
+.. digraph:: selector_files
+
+    "Project Root" -> "main.qml\n(Fusion)"
+    "Project Root" -> "+android"
+    "+android" -> "main.qml\n(Material)"
+    
+Until now the style has been set in in ``main.cpp``. We could continue doing this and use ``#ifdef`` expressions to set different styles for different platform. Instead we will use the file selector mechanism again and set the style using a configuration file. Below, you can see the file for the *Material* style, but the *Fusion* file is equally simple.
+
+.. literalinclude:: src/imageviewer-all/+android/qtquickcontrols2.conf
     :language: ini
+
+These changes has given us a joined codebase where all the document code is shared and only the differences in user interaction patterns differ. There are different ways to do this, e.g. keeping the document in a specific component that is included in the platform specific interfaces, or as in this example, by creating a common base that is extended by each platform. The best approach is best determined when you know how your specific code base looks and can decide how to separate the common from the unique.
 
 Native Dialogs
 --------------
 
+When using the image viewer you will notice that it uses a non-standard file selector dialog. This makes it look out of place.
+
+The ``Qt.labs.platform`` module can help us solve this. It provides QML bindings to native dialogs such as the file selector, font selector and colour selector. It also provides APIs to create system tray icons, as well as system global menus that sits on top of the screen (e.g. as in OS X). The cost of this is a dependency on the ``QtWidgets`` module.
+
+In order to integrate a native file dialog into the image viewer, we need to import the ``Qt.labs.platform`` module. As this module has name clashes with the ``QtQuick.Dialogs`` module we import it as ``Native``. We can then create a ``Native.FileDialog``.
+
+In the actual file dialog element, we have to change how the ``folder`` property is set, and ensure that the ``onAccepted`` handler uses the ``file`` property instead of the ``fileUrl`` property. Apart from these details, the usage is identical to the ``FileDialog`` from ``QtQuick.Dialogs``.
+
 .. literalinclude:: src/imageviewer-native/main.qml
     :lines: 1-10, 61-71, 84-
 
+In addition to the QML changes, we also need to alter the project file of the image viewer to include the ``widgets`` module.
+
 .. literalinclude:: src/imageviewer-native/imageviewer-native.pro
     :lines: 1
+
+And we need to update ``main.qml`` to instantiate a ``QApplication`` object instead of a ``QGuiApplication`` object. This is because the ``QGuiApplication`` class contains the minimal environment needed for a graphical application, while ``QApplication`` extends ``QGuiApplication`` with features needed to support ``QtWidgets``.
     
 .. literalinclude:: src/imageviewer-native/main.cpp
     :language: cpp
     :lines: 1, 4-8, 11-14, 22
-
-
+    
+With these changes, the image viewer will now use native dialogs on most platforms. The platforms supported are iOS, Linux (with a GTK+ platform theme), macOS, Windows and WinRT. For Android, it will use a default Qt dialog provided by the ``QtWidgets`` module.
     
 Common Patterns
 ===============
