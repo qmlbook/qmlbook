@@ -314,23 +314,57 @@ Now we've seen how to reach the *About* and *Profile* pages, but we also want to
 Side by Side Screens
 --------------------
 
-For this example we create a user interface consisting of three pages that the user can shift through. The pages are shown in the diagram below. Depending on the nature of the pages, the last page can either wrap around to the first one or not.
+For this example we create a user interface consisting of three pages that the user can shift through. The pages are shown in the diagram below. This could be the interface of a health tracking app, tracking the current state, the user's statistics and the overall statistics.
 
 .. digraph:: side_by_side_screens
 
-    "Summary" -> "Your Statistics"
+    "Current" -> "Your Statistics"
     "Your Statistics" -> "Community Statistics"
+    
+The illustration below shows how the *Current* page looks in the application. The title and text come from the page, while the ``PageIndicator`` (the three dots at the bottom) come from ``main.qml``. The page indicator shows the user which page that is currently active, helping when navigating.
+
+.. figure:: assets/interface-side-by-side-current.png
+
+    The *Current* page in the side-by-side app.
+
+Diving into ``main.qml``, it consists of an ``ApplicationWindow`` with a ``SwipeView``. The latter is what provides the mechanics for the interface that we are building.
+    
+.. literalinclude:: src/interface-side-by-side/main.qml
+    :lines: 1-4, 8-14, 26-29, 38-
+
+Inside the ``SwipeView`` each of the child pages are instantiated in the order they are to appear. They are ``Current``, ``UserStats`` and ``TotalStats``.
+    
+.. literalinclude:: src/interface-side-by-side/main.qml
+    :lines: 4-7, 14-25, 29, 38-
+    
+Finally the ``count`` and ``currentIndex`` properties of the ``SwipeView`` are bound to the ``PageIndicator`` element. This completes the structure around the pages.
+
+.. literalinclude:: src/interface-side-by-side/main.qml
+    :lines: 4-7, 14-15, 26-37, 41
+    
+Each page consists of a ``Page`` with a ``header`` consisting of a ``Label`` and some contents. For the *Current* and *User Stats* pages the contents is a simple ``Label``, but for the *Community Stats* page, a back button is included.
+
+.. literalinclude:: src/interface-side-by-side/TotalStats.qml
+    :lines: 1-12, 26
+
+.. figure:: assets/interface-side-by-side-current.png
+
+    The *Back* button in the side-by-side app.
+    
+The back button explicitly sets the ``currentIndex`` of the ``SwipeView``, returning the user directly to the *Current* page. During each transition between pages the ``SwipeView`` provides a transition, so even when explicitly changing the ``currentIndex`` the user is given a sense of direction.
+
+.. literalinclude:: src/interface-side-by-side/TotalStats.qml
+    :lines: 4, 10-    
 
 Document Windows
 ----------------
 
+TBD
+
 Dialogs
 -------
 
-- Document Windows (one window per document instance)
-- Dialogs (and layouts)
-- Nested screens with stack view
-- Side-by-side screens with page view
+TBD
 
 The Imagine Style
 =================

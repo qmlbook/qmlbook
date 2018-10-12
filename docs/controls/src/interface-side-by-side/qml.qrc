@@ -1,0 +1,10 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>Current.qml</file>
+        <file>UserStats.qml</file>
+        <file>main.qml</file>
+        <file>qtquickcontrols2.conf</file>
+        <file>TotalStats.qml</file>
+    </qresource>
+</RCC>
