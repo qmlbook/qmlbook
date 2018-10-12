@@ -257,6 +257,76 @@ With these changes, the image viewer will now use native dialogs on most platfor
 Common Patterns
 ===============
 
+There a number of common user interface patterns that can be implemented using Qt Quick Controls 2. In this section, we try to demonstrate how some of the more common ones can be built.
+
+Nested Screens
+--------------
+
+For this example we will create a tree of pages that can be reached from the previous level of screens. The structure is pictured below.
+
+.. digraph:: nested_screens
+
+    "Home" -> "Profile"
+    "Profile" -> "Edit Profile"
+    "Home" -> "About"
+
+The key component in this type of user interface is the ``StackView``. It allows us to place pages on a stack which then can be poped when the user wants to go back. In the example here, we will show how this can be implemented.
+
+The initial home screen of the application is shown in the figure below.
+
+.. figure:: assets/interface-stack-home.png
+
+    The home screen page.
+
+The application start in ``main.qml`` where we have an ``ApplicationWindow`` containing a ``ToolBar``, a ``Drawer``, a ``StackView`` and a home page element, ``Home``. We will look into each of the components below.
+
+.. literalinclude:: src/interface-stack/main.qml
+    :lines: 1-4, 10-16, 36-41, 66-72, 84
+
+The home page, ``Home.qml`` consists of a ``Page``, which is an control element that support headers and footers. In this example we simply center a ``Label`` with the text *Home Screen* on the page.
+
+.. literalinclude:: src/interface-stack/Home.qml
+
+Returning back to the ``main.qml``, we now look at the drawer part. This is where the navigation to the pages begin. The active parts of the user interface is the ``ÌtemDelegate`` items. In the ``onClicked`` handler, the next page is pushed onto the ``stackView``.
+
+As shown in the code below, it possible to push either a ``Component`` or a reference to a specific QML file. Either way results in that a new instance is created and is pushed onto the stack.
+
+.. literalinclude:: src/interface-stack/main.qml
+    :lines: 4, 10-12, 38, 42-66, 73-
+
+The other half of the puzzle is the toolbar. The idea is that a back button is shown when the ``stackView`` contains more than one page, otherwise a menu button is shown. The logic for this can be seen on the ``text`` property where the ``"\u..."`` strings represents the unicode symbols that we need.
+
+In the ``onClicked`` handler, we can see that when there is more than one page on the stack, the stack is poped, i.e. the top page is removed. If the stack contains only one item, i.e. the home screen, the drawer is opened.
+
+Below the ``ToolBar``, you find a ``Label``. This element shows the title of each page in the center of the header.
+    
+.. literalinclude:: src/interface-stack/main.qml
+    :lines: 4, 10-12, 13, 17-36, 81-
+
+Now we've seen how to reach the *About* and *Profile* pages, but we also want to make it possible to reach the *Edit Profile* page from the *Profile* page. This is done via the ``Button`` on the *Profile* page. When the button is clicked, the ``EditProfile.qml`` file is pushed onto the ``StackView``.
+
+.. figure:: assets/interface-stack-profile.png
+
+    The profile page with the *Edit* button.
+
+.. literalinclude:: src/interface-stack/Profile.qml
+
+Side by Side Screens
+--------------------
+
+For this example we create a user interface consisting of three pages that the user can shift through. The pages are shown in the diagram below. Depending on the nature of the pages, the last page can either wrap around to the first one or not.
+
+.. digraph:: side_by_side_screens
+
+    "Summary" -> "Your Statistics"
+    "Your Statistics" -> "Community Statistics"
+
+Document Windows
+----------------
+
+Dialogs
+-------
+
 - Document Windows (one window per document instance)
 - Dialogs (and layouts)
 - Nested screens with stack view
