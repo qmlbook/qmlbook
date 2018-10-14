@@ -361,7 +361,52 @@ The back button explicitly sets the ``currentIndex`` of the ``SwipeView``, retur
 Document Windows
 ----------------
 
-TBD
+.. warning:: This example is broken. The following pieces are missing:
+
+    * There is no open dialog implemented
+    * There is no way to close all windows, e.g. to exit (requires a singleton)
+    * The example fails miserably on the following sequence:
+        1. File -> New
+        2. Close new window
+        3. Opt so save changes (click Yes)
+        4. The dialog fails to show and the window closes, losing all changes
+        
+``DocumentWindow.qml``. Document window with menu bar. Standard document operations: new, open, save, save as
+
+Open does not use a dialog at the moment. Instead the filename is hardcoded.
+        
+.. literalinclude:: src/interface-document-window/DocumentWindow.qml
+    :lines: 1-9, 19, 23-50, 128-
+    
+Bootstrapping from ``main.qml``, creating the initial ``DocumentWindow``
+
+.. literalinclude:: src/interface-document-window/main.qml
+
+New and Open are similar. Dynamically create a new object. Do not specify a root object for createObject, as the windows otherwise end up owned, e.g. when the first document closes, all close.
+
+.. literalinclude:: src/interface-document-window/DocumentWindow.qml
+    :lines: 5, 7-9, 52-65, 128-
+    
+Introduce dirty bit, filename and the save methods + save dialog. Compared to C++, the dialog is not blocking. We need to preserve state. Introduce tryingToClose.
+
+.. literalinclude:: src/interface-document-window/DocumentWindow.qml
+    :lines: 5, 7-9, 15-17, 7-9, 67-100, 128-
+    
+The window title is calculated from ``_fileName`` and ``isDirty``.
+    
+.. literalinclude:: src/interface-document-window/DocumentWindow.qml
+    :lines: 5, 7-10, 128-
+
+Closing is not accepted for dirty documents, but we show a dialog.
+
+If the user wants to save, we set ``_tryingToClose`` and attempt to save.
+
+If the user do not want to save, we clear ``_isDirty`` and close (leading to ``onClosing`` again)
+
+If the user clicks cancel (or otherwise rejects the dialog, e.g. closes the window), we do nothing, already having prevented the close.
+
+.. literalinclude:: src/interface-document-window/DocumentWindow.qml
+    :lines: 5, 7-9, 102-127, 131
 
 Dialogs
 -------
