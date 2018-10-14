@@ -2,6 +2,9 @@ import QtQuick 2.0
 import QtQuick.Controls 2.0
 
 ApplicationWindow {
+
+    // ...
+
     visible: true
     width: 640
     height: 480
@@ -15,6 +18,8 @@ ApplicationWindow {
         width: parent.width/2
 
         spacing: 10
+
+        // ...
 
         Repeater {
             model: 5
@@ -34,6 +39,8 @@ ApplicationWindow {
         columns: 2
 
         spacing: 10
+
+        // ...
 
         Repeater {
             model: 10
