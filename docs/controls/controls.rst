@@ -116,7 +116,9 @@ Finally, we reach the ``onAccepted`` signal handler where the ``Image`` element 
 
 We then continue with the ``MenuBar``. To create a menu, one puts ``Menu`` elements inside the menu bar, and then populate each ``Menu`` with ``MenuItem`` elements.
 
-In the code below, we create two menus, *File* and *Help*. Under *File*, we place *Open* using the same icon and action as the tool button in the tool bar. Under *Help* you find *About* which triggers a call to the ``open`` method of the ``aboutDialog`` element.
+In the code below, we create two menus, *File* and *Help*. Under *File*, we place *Open* using the same icon and action as the tool button in the tool bar. Under *Help* you find *About* which triggers a call to the ``open`` method of the ``aboutDialog`` element. 
+
+Notice that the ampersands ("&") in the ``title`` property of the ``Menu`` and the ``text`` property of the ``MenuItem`` turns the following character into a keyboard shortcut, e.g. you reach the file menu by pressing *Alt+F*, followed by *Alt+O* to trigger the open item.
     
 .. literalinclude:: src/imageviewer-desktop/main.qml
     :lines: 6-9, 15-32, 83-
