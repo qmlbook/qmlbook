@@ -408,16 +408,7 @@ If the user clicks cancel (or otherwise rejects the dialog, e.g. closes the wind
 .. literalinclude:: src/interface-document-window/DocumentWindow.qml
     :lines: 5, 7-9, 102-127, 131
 
-Dialogs
--------
-
-TBD
-
 The Imagine Style
 =================
 
-Controls in Depth
-=================
-
-- Enumerate what elements exist (in groups)
-- Enumerate what dialogs exist (in groups)
+TBD
