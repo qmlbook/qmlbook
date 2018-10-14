@@ -349,7 +349,7 @@ Each page consists of a ``Page`` with a ``header`` consisting of a ``Label`` and
 .. literalinclude:: src/interface-side-by-side/TotalStats.qml
     :lines: 1-12, 26
 
-.. figure:: assets/interface-side-by-side-current.png
+.. figure:: assets/interface-side-by-side-community.png
 
     The *Back* button in the side-by-side app.
     
