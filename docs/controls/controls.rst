@@ -206,14 +206,14 @@ A file selector lets us replace individual files based on which selectors are ac
 The first step to do this change is to isolate the shared code. We do this by creating the ``ImageViewerWindow`` element which will be used instead of the ``ApplicationWindow`` for both our variants. This will consist of the dialogs, the ``Image`` element and the background. In order to make the open methods of the dialogs available to the platform specific code, we need to expose them through the functions ``openFileDialog`` and ``openAboutDialog``.
 
 .. literalinclude:: src/imageviewer-all/ImageViewerWindow.qml
-    :lines: 1-5, 9-30, 39-45, 54, 58
+    :lines: 1-5, 9-30, 35-41, 50, 54
     
 Next, we create a new ``main.qml`` for our default style *Fusion*, i.e. the desktop version of the user interface.
 
 Here, we base the user interface around the ``ImageViewerWindow`` instead of the ``ApplicationWindow``. Then we add the platform specific parts to it, e.g. the ``MenuBar`` and ``ToolBar``. The only changes to these is that the calls to open the respective dialogs are made to the new functions instead of directly to the dialog controls.
     
 .. literalinclude:: src/imageviewer-all/main.qml
-    :lines: 1-4, 8-44, 44
+    :lines: 1-4, 8-41, 45
 
 Next, we have to create a mobile specific ``main.qml``. This will be based around the *Material* theme. Here, we keep the ``Drawer`` and the mobile specific toolbar. Again, the only change is how the dialogs are opened.
 

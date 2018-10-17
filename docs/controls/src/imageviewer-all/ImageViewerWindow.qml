@@ -30,12 +30,8 @@ ApplicationWindow {
 
         title: "Select an image file"
         folder: shortcuts.documents
-        nameFilters: [
-            "Image files (*.png *.jpeg *.jpg)",
-        ]
-        onAccepted: {
-            image.source = fileOpenDialog.fileUrl
-        }
+        nameFilters: [ "Image files (*.png *.jpeg *.jpg)" ]
+        onAccepted: image.source = fileOpenDialog.fileUrl;
     }
 
     Dialog {
@@ -44,13 +40,13 @@ ApplicationWindow {
         // ...
 
         title: qsTr("About")
+        standardButtons: StandardButton.Ok
+
         Label {
             anchors.fill: parent
             text: qsTr("QML Image Viewer\nA part of the QmlBook\nhttp://qmlbook.org")
             horizontalAlignment: Text.AlignHCenter
         }
-
-        standardButtons: StandardButton.Ok
     }
 
     // ...
