@@ -45,8 +45,8 @@ The Qt Quick Controls 2 is available from the ``QtQuick.Controls`` import module
         - Description
     *   - ``QtQuick.Controls``
         - The basic controls.
-    *   - ``QtQuick.Layouts``
-        - Layout elements for supporting resizable user interfaces.
+    *   - ``QtQuick.Templates``
+        - Provides the non-visual part of the controls.
     *   - ``QtQuick.Dialogs``
         - Provides standard dialogs for showing messages, picking files, picking colours, and picking fonts, as well as the base for custom dialogs.
     *   - ``QtQuick.Controls.Universal``
@@ -59,6 +59,10 @@ The Qt Quick Controls 2 is available from the ``QtQuick.Controls`` import module
         - Support for platform native dialogs for common tasks such as picking files, colours, etc, as well as system tray icons and standard paths.
 
 Notice that the ``Qt.labs`` modules are experimental, meaning that their APIs can have breaking changes between Qt versions.
+
+.. note::
+
+    The ``QtQuick.Dialogs`` module is a Qt Quick Controls 1 module, but it is also the only way to do dialogs without depending on the ``QtWidgets`` module. See below for more details.
 
 An Image Viewer
 ===============
@@ -106,6 +110,10 @@ In the ``onClicked`` signal handler of the ``ToolButton`` is the final piece of 
     :lines: 5-8, 33-42, 79-
 
 The ``fileOpenDialog`` element is a ``FileDialog`` control from the ``QtQuick.Dialogs`` module. The file dialog can be used to open or save files, as well as picking directories.
+
+.. note::
+
+    The ``QtQuick.Dialogs`` module is a Qt Quick Controls 1 module, but it is also the only way to do dialogs without depending on the ``QtWidgets`` module. See how to implement native dialogs using ``Qt.labs.platform`` further down.
 
 In the code we start by assigning a ``title``. Then we set the starting folder using the ``shortcut`` property. The ``shortcut`` property holds links to common folders such as the user's home, documents, and such. After that we set a name filter that controls what files the user can see and pick using the dialog.
 
