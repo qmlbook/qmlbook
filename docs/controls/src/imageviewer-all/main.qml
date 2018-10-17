@@ -34,7 +34,7 @@ ImageViewerWindow {
             anchors.fill: parent
             ToolButton {
                 text: qsTr("Open")
-                icon.name: "document-open" // https://specifications.freedesktop.org/icon-naming-spec/icon-naming-spec-latest.html
+                icon.name: "document-open"
                 onClicked: window.openFileDialog()
             }
         }
