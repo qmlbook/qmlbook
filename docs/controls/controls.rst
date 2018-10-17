@@ -416,14 +416,14 @@ If the user do not want to save, we clear ``_isDirty`` and close (leading to ``o
 If the user clicks cancel (or otherwise rejects the dialog, e.g. closes the window), we do nothing, already having prevented the close.
 
 .. literalinclude:: src/interface-document-window/DocumentWindow.qml
-    :lines: 5, 7-9, 102-127, 131
+    :lines: 5, 7-9, 113-138, 142
 
 The Imagine Style
 =================
 
 One of the goals with Qt Quick Controls 2 is to separate the logic of a control from its appearance. For most of the styles, the implementation of the appearance consists of a mix of QML code and graphical assets. However, using the *Imagine* style, it is possible to customize the appearance of a Qt Quick Controls 2 based application using only graphical assets.
 
-The imagine style is based on `9-patch images <https://developer.android.com/guide/topics/graphics/drawables#nine-patch>`_. This allows the images to carry information on how they are stretched and what parts are to be considered as a part of the element and what is outside, e.g. a shadow. The style declares a large number of assets that can be used to control the appearance of each element.
+The imagine style is based on `9-patch images <https://developer.android.com/guide/topics/graphics/drawables#nine-patch>`_. This allows the images to carry information on how they are stretched and what parts are to be considered as a part of the element and what is outside, e.g. a shadow. For each control, the style supports several elements, and for each element a large number of states are available. By providing assets for certain combinations of these elements and states, you can control the appearance of each control in detail.
 
 The details of 9-patch images, and how each control can be styled is covered in great detail in the `Imagine style documentation <https://doc.qt.io/qt-5/qtquickcontrols2-imagine.html>`_. Here, we will create a custom style to an imaginary device interface to demonstrate how the style is used.
 
