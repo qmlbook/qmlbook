@@ -247,7 +247,7 @@ In order to integrate a native file dialog into the image viewer, we need to imp
 In the actual file dialog element, we have to change how the ``folder`` property is set, and ensure that the ``onAccepted`` handler uses the ``file`` property instead of the ``fileUrl`` property. Apart from these details, the usage is identical to the ``FileDialog`` from ``QtQuick.Dialogs``.
 
 .. literalinclude:: src/imageviewer-native/main.qml
-    :lines: 1-8, 56-66, 79-
+    :lines: 1-8, 55-65, 78-
 
 In addition to the QML changes, we also need to alter the project file of the image viewer to include the ``widgets`` module.
 
