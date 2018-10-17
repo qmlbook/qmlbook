@@ -20,7 +20,7 @@ Page {
         Button {
             anchors.horizontalCenter: parent.horizontalCenter
             text: qsTr("Back")
-            onClicked: swipeView.currentIndex = 0
+            onClicked: swipeView.setCurrentIndex(0);
         }
     }
 }
