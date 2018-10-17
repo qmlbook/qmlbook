@@ -1,8 +1,6 @@
 import QtQuick 2.0
 import QtQuick.Controls 2.4
-import QtQuick.Dialogs 1.2
-import QtQuick.Layouts 1.0
-import Qt.labs.platform 1.0 as Native
+import Qt.labs.platform 1.0
 
 ApplicationWindow {
     
@@ -33,15 +31,12 @@ ApplicationWindow {
     }
 
     header: ToolBar {
-        RowLayout {
+        Flow {
             anchors.fill: parent
             ToolButton {
                 text: qsTr("Open")
                 icon.name: "document-open" // https://specifications.freedesktop.org/icon-naming-spec/icon-naming-spec-latest.html
                 onClicked: fileOpenDialog.open()
-            }
-            Item {
-                Layout.fillWidth: true
             }
         }
     }
@@ -58,7 +53,7 @@ ApplicationWindow {
         asynchronous: true
     }
 
-    Native.FileDialog {
+    FileDialog {
         id: fileOpenDialog
         title: "Select an image file"
         folder: StandardPaths.writableLocation(StandardPaths.DocumentsLocation)

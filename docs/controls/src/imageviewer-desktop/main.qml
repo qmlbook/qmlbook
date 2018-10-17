@@ -1,7 +1,6 @@
 import QtQuick 2.0
 import QtQuick.Controls 2.4
 import QtQuick.Dialogs 1.2
-import QtQuick.Layouts 1.0
 
 ApplicationWindow {
     
@@ -32,15 +31,12 @@ ApplicationWindow {
     }
 
     header: ToolBar {
-        RowLayout {
+        Flow {
             anchors.fill: parent
             ToolButton {
                 text: qsTr("Open")
-                icon.name: "document-open" // https://specifications.freedesktop.org/icon-naming-spec/icon-naming-spec-latest.html
+                icon.name: "document-open"
                 onClicked: fileOpenDialog.open()
-            }
-            Item {
-                Layout.fillWidth: true
             }
         }
     }

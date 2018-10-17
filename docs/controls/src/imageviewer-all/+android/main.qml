@@ -1,6 +1,5 @@
 import QtQuick 2.0
 import QtQuick.Controls 2.4
-import QtQuick.Layouts 1.0
 import QtQuick.Controls.Material 2.1
 
 ImageViewerWindow {
@@ -61,25 +60,19 @@ ImageViewerWindow {
 
         Material.background: Material.Orange
 
-        RowLayout {
-            anchors.fill: parent
-            ToolButton {
-                id: menuButton
-                icon.source: "images/baseline-menu-24px.svg"
-                onClicked: drawer.open()
-            }
-            Label {
-                id: titleLabel
-                text: "Image Viewer"
-                font.pixelSize: 20
-                elide: Label.ElideRight
-                horizontalAlignment: Qt.AlignHCenter
-                verticalAlignment: Qt.AlignVCenter
-                Layout.fillWidth: true
-            }
-            Item {
-                width: menuButton.width
-            }
+        ToolButton {
+            id: menuButton
+            anchors.left: parent.left
+            anchors.verticalCenter: parent.verticalCenter
+            icon.source: "images/baseline-menu-24px.svg"
+            onClicked: drawer.open()
+        }
+        Label {
+            id: titleLabel
+            anchors.centerIn: parent
+            text: "Image Viewer"
+            font.pixelSize: 20
+            elide: Label.ElideRight
         }
     }
 
