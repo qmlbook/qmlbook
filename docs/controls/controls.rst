@@ -371,52 +371,97 @@ The back button explicitly calls the ``setCurrentIndex`` of the ``SwipeView`` to
 Document Windows
 ----------------
 
-.. warning:: This example is broken. The following pieces are missing:
+This example shows how to implement a desktop oriented, document centric user interface. The idea is to have one window per document. When opening a new document, a new window is opened. To the user, each window is a self contained world with a single document.
 
-    * There is no open dialog implemented
-    * There is no way to close all windows, e.g. to exit (requires a singleton)
-    * The example fails miserably on the following sequence:
-        1. File -> New
-        2. Close new window
-        3. Opt so save changes (click Yes)
-        4. The dialog fails to show and the window closes, losing all changes
-        
-``DocumentWindow.qml``. Document window with menu bar. Standard document operations: new, open, save, save as
+.. figure:: assets/interface-document-window.png
 
-Open does not use a dialog at the moment. Instead the filename is hardcoded.
+    Two document windows and the close warning dialog.
+
+The code starts from an ``ApplicationWindow`` with a *File* menu with the standard operations: *New*, *Open*, *Save* and *Save As*. We put this in the file ``DocumentWindow.qml``. 
+
+We import the ``Qt.labs.platform`` for native dialogs and have made the subsequent changes to the project file and ``main.cpp`` as described in the section on native dialogs above.
         
 .. literalinclude:: src/interface-document-window/DocumentWindow.qml
-    :lines: 1-9, 19, 23-50, 128-
-    
-Bootstrapping from ``main.qml``, creating the initial ``DocumentWindow``
+    :lines: 1-9, 19, 23-47, 139-
+
+To bootstrap the program, we create the first ``DocumentWindow`` instance from the ``main.qml``, which is the entrypoint of the application.
 
 .. literalinclude:: src/interface-document-window/main.qml
 
-New and Open are similar. Dynamically create a new object. Do not specify a root object for createObject, as the windows otherwise end up owned, e.g. when the first document closes, all close.
+In the example at the beginning of this chapter, each ``MenuItem`` results in a call to a corresponding function when triggered. Let's start with the *New* item, which ends up in the ``newDocument`` function. 
+
+The function, in turn, relies on the ``_createNewDocument`` function, which dynamically creates a new element instance from the ``DocumentWindow.qml`` file, i.e. a new ``DocumentWindow`` instance. The reason for breaking out this part of the new function is that we use it when opening documents as well.
+
+Notice that we do not provide a parent element when creating the new instance using ``createObject``. This way, we create new top level elements. If we would have provided the current document as parent to the next, the destruction of the parent window would lead to the destruction of the child windows.
 
 .. literalinclude:: src/interface-document-window/DocumentWindow.qml
-    :lines: 5, 7-9, 52-65, 128-
-    
-Introduce dirty bit, filename and the save methods + save dialog. Compared to C++, the dialog is not blocking. We need to preserve state. Introduce tryingToClose.
+    :lines: 5, 7-9, 49-60, 139-
+
+Looking at the *Open* item results in a call to ``openDocument`` function. The function simply opens the ``openDialog`` which let's the user pick a file to open. As we don't have a document format, file extension or anything like that, the dialog has most properties set to their default value. In a real world application, this would be better configured.
+
+In the ``onAccepted`` handler a new document window is instantiated using the ``_createNewDocument`` method, but then a file name is set before the window is shown. In this case, no real loading takes place.
+
+.. note::
+
+    We imported the ``Qt.labs.platform`` module as ``NativeDialogs``. This is because it provides a ``MenuItem`` that clashes with the ``MenuItem`` provided by the ``QtQuick.Controls`` module.
 
 .. literalinclude:: src/interface-document-window/DocumentWindow.qml
-    :lines: 5, 7-9, 15-17, 7-9, 67-100, 128-
-    
-The window title is calculated from ``_fileName`` and ``isDirty``.
-    
+    :lines: 5, 7-9, 62-66, 89-98, 139-
+
+The file name belogs to a pair of properties describing the document: ``_fileName`` and ``_isDirty``. The ``_fileName`` holds the file name of the document name and ``_isDirty`` is set when the document has unsaved changes. This is used by the save and save as logic, which is shown below.
+
+When trying to save a document without a name, the ``saveAsDocument`` is invoked. This results in a round-trip over the ``saveAsDialog``, which sets a file name and then tries to save again in the ``onAccepted`` handler.
+
+Notice that the ``saveAsDocument`` and ``saveDocument`` functions correspond to the *Save As* and *Save* menu items.
+
+After having saved the document, in the ``saveDocument`` function, the ``_tryingToClose`` property is checked. This flag is set if the save is the result of the user wanting to save a document when the window is being closed. As a consequence, the window is closed after the save operation has been performed. Again, no actual saving takes place in this example.
+
 .. literalinclude:: src/interface-document-window/DocumentWindow.qml
-    :lines: 5, 7-10, 128-
+    :lines: 5, 7-9, 15-17, 7-9, 67-88, 100-111, 139-
 
-Closing is not accepted for dirty documents, but we show a dialog.
+This leads us to the closing of windows. When a window is being closed, the ``onClosing`` handler is invoked. Here, the code can choose not to accept the request to close. If the document has unsaved changes, we open the ``closeWarningDialog`` and reject the request to close.
 
-If the user wants to save, we set ``_tryingToClose`` and attempt to save.
+The ``closeWarningDialog`` asks the user if the changes should be changed, but the user also has the option to cancel the close operation. The cancelling, handeled in ``onRejected``, is the easiest case, as we rejected the closing when the dialog was opened.
 
-If the user do not want to save, we clear ``_isDirty`` and close (leading to ``onClosing`` again)
+When the user does not want to save the changes, i.e. in ``onNoClicked``, the ``_isDirty`` flag is set to ``false`` and the window is closed again. This time around, the ``onClosing`` will accept the closing as the ``_isDirty`` is false.
 
-If the user clicks cancel (or otherwise rejects the dialog, e.g. closes the window), we do nothing, already having prevented the close.
+Finally, when the user wants to save the changes, we set the ``_tryingToClose`` flag to true before calling save. This leads us to the save - save as logic.
 
 .. literalinclude:: src/interface-document-window/DocumentWindow.qml
     :lines: 5, 7-9, 113-138, 142
+
+The entire flow for the close and save - save as logic is shown below. The system is entered at the *close* state, while *closed* and *not closed* states are outcomes.
+
+This looks complicated compared to implementing this using ``QtWidgets`` and C++. This is because the dialogs are not blocking to QML. This means that we cannot wait for the outcome of a dialog in a ``switch`` statement. Instead we need to remember the state and continue the operation in the respective ``onYesClicked``, ``onNoClicked``, ``onAccepted``, and ``onRejected`` handlers.
+
+.. digraph:: close_logic
+
+    entry -> close
+    close -> onClose [label="Request to close"]
+    onClose -> closeWarningDialog [label="_isDirty == true"]
+    onClose -> closed [label="_isDirty == false\nWindow is closed"]
+    closeWarningDialog -> "Not closed" [label="onRejected\nWindow is not closed"]
+    closeWarningDialog -> saveDocument [label="onYesClicked\nSet _tryingToClose to true"]
+    closeWarningDialog -> close [label="onNoClicked\nSet _isDirty to false"]
+    saveDocument -> closed [label="_fileName is set\n&&\n_tryingToClose == true"]
+    saveDocument -> saveAsDialog [label="_fileName is empty"]
+    saveAsDialog -> "Not closed" [label="onRejected\nWindow is not closed"]
+    saveAsDialog -> saveDocument [label="onAccepted\n_fileName is set"]
+    close [shape=oval]
+    onClose [shape=oval]
+    closeWarningDialog [shape=oval]
+    saveDocument [shape=oval]
+    saveAsDialog [shape=oval]
+    "Not closed" [shape=rect]
+    closed [shape=rect]
+    entry [shape=point]
+
+The final piece of the puzzle is the window title. It is composed form the ``_fileName`` and ``_isDirty``.
+    
+.. literalinclude:: src/interface-document-window/DocumentWindow.qml
+    :lines: 5, 7-10, 139-
+
+This example is far from complete. For instance, the document is never loaded or saved. Another missing piece is handling the case of closing all the windows in one go, i.e. exiting the application. For this function, a singleton maintaining a list of all current ``DocumentWindow`` instances is needed. However, this would only be another way to trigger the closing of a window, so the logic flow shown here is still valid.
 
 The Imagine Style
 =================
