@@ -1,6 +1,6 @@
 import QtQuick 2.0
 import QtQuick.Controls 2.4
-import QtQuick.Dialogs 1.1
+import Qt.labs.platform 1.0 as NativeDialogs
 
 ApplicationWindow {
     id: root
@@ -31,10 +31,7 @@ ApplicationWindow {
             MenuItem {
                 text: qsTr("&Open")
                 icon.name: "document-open"
-                onTriggered: {
-                    // ...
-                    root.openDocument("foobar")
-                }
+                onTriggered: openDocument()
             }
             MenuItem {
                 text: qsTr("&Save")
@@ -49,19 +46,22 @@ ApplicationWindow {
         }
     }
 
-    function newDocument()
+    function _createNewDocument()
     {
         var component = Qt.createComponent("DocumentWindow.qml");
         var window = component.createObject();
+        return window;
+    }
+
+    function newDocument()
+    {
+        var window = _createNewDocument();
         window.show();
     }
 
     function openDocument(fileName)
     {
-        var component = Qt.createComponent("DocumentWindow.qml");
-        var window = component.createObject();
-        window._fileName = fileName;
-        window.show();
+        openDialog.open();
     }
 
     function saveAsDocument()
@@ -86,13 +86,24 @@ ApplicationWindow {
         }
     }
 
-    FileDialog {
+    NativeDialogs.FileDialog {
+        id: openDialog
+        title: "Open"
+        folder: NativeDialogs.StandardPaths.writableLocation(NativeDialogs.StandardPaths.DocumentsLocation)
+        onAccepted: {
+            var window = root._createNewDocument();
+            window._fileName = openDialog.file;
+            window.show();
+        }
+    }
+
+    NativeDialogs.FileDialog {
         id: saveAsDialog
         title: "Save As"
-        folder: shortcuts.documents
+        folder: NativeDialogs.StandardPaths.writableLocation(NativeDialogs.StandardPaths.DocumentsLocation)
         onAccepted: {
-            root._fileName = saveAsDialog.fileUrl
-            save();
+            root._fileName = saveAsDialog.file
+            saveDocument();
         }
         onRejected: {
             root._tryingToClose = false;
@@ -106,17 +117,17 @@ ApplicationWindow {
         }
     }
 
-    MessageDialog {
+    NativeDialogs.MessageDialog {
         id: closeWarningDialog
         title: "Closing document"
         text: "You have unsaved changed. Do you want to save your changes?"
-        standardButtons: StandardButton.Yes | StandardButton.No | StandardButton.Cancel
-        onYes: {
+        buttons: NativeDialogs.MessageDialog.Yes | NativeDialogs.MessageDialog.No | NativeDialogs.MessageDialog.Cancel
+        onYesClicked: {
             // Attempt to save the document
             root._tryingToClose = true;
             root.saveDocument();
         }
-        onNo: {
+        onNoClicked: {
             // Close the window
             root._isDirty = false;
             root.close()
