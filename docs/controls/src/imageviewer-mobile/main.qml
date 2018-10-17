@@ -76,7 +76,6 @@ ApplicationWindow {
         id: image
         anchors.fill: parent
         fillMode: Image.PreserveAspectFit
-        smooth: true
         asynchronous: true
     }
 
