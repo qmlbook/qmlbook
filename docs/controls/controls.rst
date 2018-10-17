@@ -240,7 +240,7 @@ Native Dialogs
 
 When using the image viewer you will notice that it uses a non-standard file selector dialog. This makes it look out of place.
 
-The ``Qt.labs.platform`` module can help us solve this. It provides QML bindings to native dialogs such as the file selector, font selector and colour selector. It also provides APIs to create system tray icons, as well as system global menus that sits on top of the screen (e.g. as in OS X). The cost of this is a dependency on the ``QtWidgets`` module.
+The ``Qt.labs.platform`` module can help us solve this. It provides QML bindings to native dialogs such as the file selector, font selector and colour selector. It also provides APIs to create system tray icons, as well as system global menus that sits on top of the screen (e.g. as in OS X). The cost of this is a dependency on the ``QtWidgets`` module, as the widget based dialog is used as a fallback where the native support is missing.
 
 In order to integrate a native file dialog into the image viewer, we need to import the ``Qt.labs.platform`` module. As this module has name clashes with the module it replaces, ``QtQuick.Dialogs``, it is important to remove the old import statement.
 
@@ -291,7 +291,7 @@ The application start in ``main.qml`` where we have an ``ApplicationWindow`` con
 .. literalinclude:: src/interface-stack/main.qml
     :lines: 1-4, 10-16, 36-41, 66-72, 84
 
-The home page, ``Home.qml`` consists of a ``Page``, which is an control element that support headers and footers. In this example we simply center a ``Label`` with the text *Home Screen* on the page.
+The home page, ``Home.qml`` consists of a ``Page``, which is an control element that support headers and footers. In this example we simply center a ``Label`` with the text *Home Screen* on the page. This works because the contents of a ``StackView`` automatically fills the stack view, so the page has the right size for this to work.
 
 .. literalinclude:: src/interface-stack/Home.qml
 
@@ -329,13 +329,13 @@ For this example we create a user interface consisting of three pages that the u
     "Current" -> "Your Statistics"
     "Your Statistics" -> "Community Statistics"
     
-The illustration below shows how the *Current* page looks in the application. The title and text come from the page, while the ``PageIndicator`` (the three dots at the bottom) come from ``main.qml``. The page indicator shows the user which page that is currently active, helping when navigating.
+The illustration below shows how the *Current* page looks in the application. The main part of the screen is managed by a ``SwipeView``, which is what enables the side by side screens interaction pattern. The title and text shown in the figure come from the page inside the ``SwipeView``, while the ``PageIndicator`` (the three dots at the bottom) come from ``main.qml`` and sit under the ``SwipeView``. The page indicator shows the user which page that is currently active, helping when navigating.
 
 .. figure:: assets/interface-side-by-side-current.png
 
     The *Current* page in the side-by-side app.
 
-Diving into ``main.qml``, it consists of an ``ApplicationWindow`` with a ``SwipeView``. The latter is what provides the mechanics for the interface that we are building.
+Diving into ``main.qml``, it consists of an ``ApplicationWindow`` with the ``SwipeView``.
     
 .. literalinclude:: src/interface-side-by-side/main.qml
     :lines: 1-4, 8-14, 26-29, 38-
@@ -359,7 +359,11 @@ Each page consists of a ``Page`` with a ``header`` consisting of a ``Label`` and
 
     The *Back* button in the side-by-side app.
     
-The back button explicitly sets the ``currentIndex`` of the ``SwipeView``, returning the user directly to the *Current* page. During each transition between pages the ``SwipeView`` provides a transition, so even when explicitly changing the ``currentIndex`` the user is given a sense of direction.
+The back button explicitly calls the ``setCurrentIndex`` of the ``SwipeView`` to set the index to zero, returning the user directly to the *Current* page. During each transition between pages the ``SwipeView`` provides a transition, so even when explicitly changing the index the user is given a sense of direction.
+
+.. note::
+
+    When navigating in a ``SwipeView`` programatically it is important not to set the ``currentIndex`` by assignment in Javascript. This is because doing so will break any QML bindings it overrides. Instead use the methods ``setCurrentIndex``, ``incrementCurrentIndex``, and ``decrementCurrentIndex``. This preserves the QML bindings.
 
 .. literalinclude:: src/interface-side-by-side/TotalStats.qml
     :lines: 4, 10-    
