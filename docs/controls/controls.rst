@@ -33,8 +33,6 @@ Fusion    .. image:: assets/style-fusion.png
 Imagine   .. image:: assets/style-imagine.png
 ========= =====================================
 
-.. todo:: Pick a better UI to grab the example screenshot from.
-
 The Qt Quick Controls 2 is available from the ``QtQuick.Controls`` import module. In this module you will find the basic controls such as buttons, labels, checkboxes, sliders and so on. In addition to these controls, the following modules are also of interest:
 
 .. list-table::
