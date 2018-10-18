@@ -29,6 +29,10 @@ Caveats: https://wiki.qt.io/Qt_for_Python/Considerations
 
 Natural way to use it is Logic in python, UI in QML
 
+.. note::
+
+    Through-out this chapter we will use Python 3.6.
+
 Installing
 ==========
 
@@ -68,22 +72,35 @@ demo of python environment hosting a QML UI, sharing state through a class
 Running QML from Python
 -----------------------
 
+.. literalinclude:: src/basic/basic.py
+    :language: python
 
-Exposing a Python Class to QML
-------------------------------
+.. literalinclude:: src/basic/main.qml
+
+
+Exposing a Python object to QML
+-------------------------------
+
+- invokable methods
+- slots
+- signals
+
+.. literalinclude:: src/object/object.py
+    :language: python
+
+.. literalinclude:: src/object/main.qml
 
 - properties
-- methods
-- signals
-- slots
+
+Exposing a Python class to QML
+------------------------------
+
+- Instantiation from python
 
 Modelling in Python
 -------------------
 
-- abstract item model
+- abstract item list model
 
 Summary
 =======
-
-
-TBD? demo of extending python with Qt/C++ (do we want this?)
