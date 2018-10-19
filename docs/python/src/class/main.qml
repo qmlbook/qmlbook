@@ -2,6 +2,8 @@ import QtQuick 2.0
 import QtQuick.Window 2.0
 import QtQuick.Controls 2.0
 
+import Generators 1.0
+
 Window 
 {
     id: root
@@ -22,12 +24,16 @@ Window
         }
     }
     
-    // Signal argument names are not propagated from Python to QML, so we need to re-emit the signal
-    signal reNextNumber(int number)
-    Component.onCompleted: numberGenerator.nextNumber.connect(reNextNumber)
+    NumberGenerator {
+        id: numberGenerator
+        
+        // Signal argument names are not propagated from Python to QML, so we need to re-emit the signal
+        signal reNextNumber(int number)
+        Component.onCompleted: numberGenerator.nextNumber.connect(reNextNumber)
+    }
     
     Connections {
-        target: root
+        target: numberGenerator
         onReNextNumber: numberLabel.text = number
     }
 }
