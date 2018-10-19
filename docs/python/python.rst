@@ -84,6 +84,7 @@ Exposing a Python object to QML
 - invokable methods
 - slots
 - signals
+    - signal argument names trick
 
 .. literalinclude:: src/object/object.py
     :language: python
@@ -91,11 +92,28 @@ Exposing a Python object to QML
 .. literalinclude:: src/object/main.qml
 
 - properties
+    - signal argument name solved by property name
+    - readonly property
+    - readwrite property
+    - camel case slot, calling python method (to not break QML bindings)
+    - two ways to define a signal
+    - ordering
+
+.. literalinclude:: src/property/property.py
+    :language: python
+    
+.. literalinclude:: src/object/main.qml
 
 Exposing a Python class to QML
 ------------------------------
 
 - Instantiation from python
+
+.. literalinclude:: src/class/class.py
+    :language: python
+
+.. literalinclude:: src/class/main.qml
+
 
 Modelling in Python
 -------------------
