@@ -119,6 +119,13 @@ Modelling in Python
 -------------------
 
 - abstract item list model
+    - using psutil - https://pypi.org/project/psutil/
+    - no QVariant, use None
+
+.. literalinclude:: src/class/class.py
+    :language: python
+
+.. literalinclude:: src/class/main.qml
 
 Summary
 =======
