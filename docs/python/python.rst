@@ -67,7 +67,7 @@ After the installation, we can test it by running a *Hello World* example from t
     Python 3.6.6 (default, Jun 27 2018, 14:44:17) 
     [GCC 8.1.0] on linux
     Type "help", "copyright", "credits" or "license" for more information.
-    >>> from PySide2 import QtCore, QtWidgets, QtGui
+    >>> from PySide2 import QtWidgets
     >>> import sys
     >>> app = QtWidgets.QApplication(sys.argv)
     >>> widget = QtWidgets.QLabel("Hello World!")
