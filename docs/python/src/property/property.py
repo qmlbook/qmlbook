@@ -10,12 +10,12 @@ from PySide2.QtCore import QObject, Signal, Slot, Property
 class NumberGenerator(QObject):
     def __init__(self):
         QObject.__init__(self)
-        self._number = 42
-        self._max_number = 99
+        self.__number = 42
+        self.__max_number = 99
     
     @Slot()
     def updateNumber(self):
-        self._set_number(random.randint(0, self._max_number))
+        self.__set_number(random.randint(0, self.__max_number))
 
     # maxNumber
 
@@ -31,15 +31,15 @@ class NumberGenerator(QObject):
         if val < 0:
             val = 0
         
-        if self._max_number != val:
-            self._max_number = val
+        if self.__max_number != val:
+            self.__max_number = val
             self.maxNumberChanged.emit()
             
-        if self._number > self._max_number:
-            self._set_number(self._max_number)
+        if self.__number > self.__max_number:
+            self.__set_number(self.__max_number)
     
     def get_max_number(self):
-        return self._max_number
+        return self.__max_number
 
     maxNumber = Property(int, get_max_number, set_max_number, notify=maxNumberChanged)
     
@@ -48,12 +48,12 @@ class NumberGenerator(QObject):
     numberChanged = Signal(int)
     
     def __set_number(self, val):
-        if self._number != val:
-            self._number = val;
-            self.numberChanged.emit(self._number)
+        if self.__number != val:
+            self.__number = val;
+            self.numberChanged.emit(self.__number)
     
     def get_number(self):
-        return self._number
+        return self.__number
     
     number = Property(int, get_number, notify=numberChanged)
 

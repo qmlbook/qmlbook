@@ -28,6 +28,8 @@ As the Qt for Python project provides an entirely new language binding for Qt, i
 - Qt for Python wiki: `<https://wiki.qt.io/Qt_for_Python>`_
 - Caveats: `<https://wiki.qt.io/Qt_for_Python/Considerations>`_
 
+The Qt for Python bindings are generated using the Shiboken tool. At times, it might be of interest to read about it as well to understand what is going on. The prefered point for finding information about Shiboken is the `reference documentation <https://doc.qt.io/qtforpython/shiboken2/index.html>`_. If you want to mix your own C++ code with Python and QML, Shiboken is the tool that you need.
+
 .. note::
 
     Through-out this chapter we will use Python 3.6.
@@ -117,54 +119,135 @@ Executing the example results in a window with the title *Hello Python World*.
 
     The example assumes that it is executed from the directory containing the ``main.qml`` source file. You can termine the location of the Python file being executed using the ``__file__`` variable. This can be used to locate the QML files relative to the Python file as shown in this `blog post <http://blog.qt.io/blog/2018/05/14/qml-qt-python/>`_.
 
-Exposing a Python object to QML
--------------------------------
+Exposing Python Objects to QML
+------------------------------
 
-- invokable methods
-- slots
-- signals
-    - signal argument names trick
+The easiest way to share information between Python and QML is to expose a Python object to QML. This is done by registering a *context property* through the ``QQmlApplicationEngine``. Before we can do that, we need to define a class so that we have an object to expose.
+
+Qt classes comes with a number of features that we want to be able to use. These are: signals, slots and properties. In this first example, we will restrict ourselves to a pair of a basic signal and slot. The rest will be covered in the examples further on.
+
+Signals and Slots
++++++++++++++++++
+
+We start with the class ``NumberGenerator``. It has a constructor, a method called ``giveNumber`` and a signal called ``nextNumber``. The idea is that when you call ``giveNumber``, the signal ``nextNumber`` is emitted with a new random number. You can see the code for the class below, but first we will look at the details.
+
+First of all we make sure to call ``QObject.__init__`` from our constructor. This is very important, as the example will not work without it.
+
+Then we declare a signal by creating an instance of the ``Signal`` class from the ``PySide2.QtCore`` module. In this case, the signal carries an integer value, hence the ``int``.
+
+Finally, we *decorate* the ``giveNumber`` method with the ``@Slot()`` decorator, thus turning it into a slot. There is not concept of *invokables* in Qt for Python, so all callable methods must be slots.
+
+In the ``giveNumber`` method we emit the ``nextNumber`` signal using the ``emit`` method. This is a bit different than the syntax for doing so from QML or C++ as the signal is represented by an object instead of being a callable function.
 
 .. literalinclude:: src/object/object.py
     :language: python
+    :lines: 2-3, 8-18
+
+Next up is to combine the class we just created with the boilerplate code for combining QML and Python from earlier. This gives us the following entry-point code.
+
+The interesting lines are the one where we first instatiate a ``NumberGenerator``. This object is then exposed to QML using the ``setContextProperty`` method of the ``rootContext`` of the QML engine. This exposes the object to QML as a global variable under the name ``numberGenerator``.
+
+.. literalinclude:: src/object/object.py
+    :language: python
+    :lines: 21-
+    
+Continuing to the QML code, we can see that we've created a Qt Quick Controls 2 user interface consisting of a ``Button`` and a ``Label``. In the button's ``onClicked`` handler, the ``numberGenerator.giveNumber()`` function is called. This is the slot of the object instantiated on the Python side.
+
+To receive a signal from an object that has been instantiated outside of QML we need to use a ``Connections`` element. This allows us to attach a signal hanlder to an existing target.
+
+.. note::
+
+    At the moment of writing, the name of a signal argument cannot be propagated from Python to QML. To work around this, the Python signal, ``numberGenerator.nextNumber``, is connected to a QML defined signal, ``reNextNumber``, that has the name ``number`` for the signal argument. This allows us to capture the value of the signal argument in the signal handler in the ``Connections`` element.
+    
+    This is a workaround for issue `PYSIDE-634 <https://bugreports.qt.io/browse/PYSIDE-634>`_.
 
 .. literalinclude:: src/object/main.qml
 
-- properties
-    - signal argument name solved by property name
-    - readonly property
-    - readwrite property
-    - camel case slot, calling python method (to not break QML bindings)
-    - two ways to define a signal
-    - ordering
+Properties
+++++++++++
+    
+Instead of relying soley on signals and slots, the common way to expose state to QML is through properties. A property is a combination of a setter, getter and notification signal. The setter is optional, as we can also have read-only properties.
+
+To try this out we will update the ``NumberGenerator`` from the last example to a property based version. It will have two properties: ``number``, a read-only property holding the last random number, and ``maxNumber``, a read-write property holding the maximum value that can be returned. It will also have a slot, ``updateNumber`` that updates the random number.
+
+Before we dive into the details of properties, we create a basic Python class for this. It consists of the relevant getters and setters, but not Qt signalling. As a matter of fact, the only Qt part here is the inheritance from ``QObject``. Even the names of the methods are Python style, i.e. using underscores instead of camelCase.
+
+Take notice of the underscores ("``__``") at the beginning of the ``__set_number`` method. This implies that it is a private method. So even when the ``number`` property is read-only, we provide a setter. We just don't make it public. This allows us to take actions when changing the value (e.g. emitting the notification signal).
 
 .. literalinclude:: src/property/property.py
     :language: python
+    :lines: 10-15, 30-35, 37-43, 50-52, 54-56
+
+In order to define properties, we need to import the concepts of ``Signal``, ``Slot``, and ``Property`` from ``PySide2.QtCore``. In the full example, there are more imports, but these are the ones relevant to the properties.
     
-.. literalinclude:: src/object/main.qml
+.. literalinclude:: src/property/property.py
+    :language: python
+    :lines: 8
+    
+Now we are ready to define the first property, ``number``. We start off by declaring the signal ``numberChanged``, which we then invoke in the ``__set_number`` method so that the signal is emitted when the value is changed.
+
+After that, all that is left is to instantiate the ``Property`` object. The ``Property`` contructor takes three arguments in this case: the type (``int``), the getter (``get_number``) and the notification signal which is passed as a named argument (``notify=numberChanged``). Notice that the getter has a Python name, i.e. using underscore rather than camelCase, as it is used to read the value from Python. For QML, the property name, ``number``, is used.
+
+.. literalinclude:: src/property/property.py
+    :language: python
+    :lines: 10, 74-75, 45-58
+
+This leads us to the next property, ``maxNumber``. This is a read-write property, so we need to provide a setter, as well as everything that we did for the ``number`` property. 
+
+First up we declare the ``maxNumberChanged`` signal. This time, using the ``@Signal`` decorator instead of instantiating a ``Signal`` object. We also provide a setter slot, ``setMaxNumber`` with a Qt name (camelCase) that simply calls the Python method ``set_max_number`` alongside a getter with a Python name. Again, the setter emits the change signal when the value is updated.
+
+Finally we put the pieces together into a read-write property by instantiating a ``Property`` object taking the type, getter, setter and notification signal as arguments.
+    
+.. literalinclude:: src/property/property.py
+    :language: python
+    :lines: 10, 74-75, 19-44
+
+Now we have properties for the current random number, ``number``, and the maximum random number, ``maxNumber``. All that is left is a slot to produce a new random number. It is called ``updateNumber`` and simply sets a new random number.
+    
+.. literalinclude:: src/property/property.py
+    :language: python
+    :lines: 10, 74-76, 16-18
+
+Finally, the number generator is exposed to QML through a root context property.
+    
+.. literalinclude:: src/property/property.py
+    :language: python
+    :lines: 61-73
+    
+In QML, we can bind to the ``number`` as well as the ``maxNumber`` properties of the ``numberGenerator`` object. In the ``onClicked`` handler of the ``Button`` we call the ``updateNumber`` method to generate a new random number and in the ``onValueChanged`` handler of the ``Slider`` we set the ``maxNumber`` property using the ``setMaxNumber`` method. This is because altering the property directly through Javascript would destroy the bindings to the property. By using the setter method explicitly, this is avoided.
+    
+.. literalinclude:: src/property/main.qml
 
 Exposing a Python class to QML
 ------------------------------
 
-- Instantiation from python
+Up until now, we've instantiated an object Python and used the ``setContextProperty`` method of the ``rootContext`` to make it available to QML. Being able to instantiate the object from QML allows better control over object life-cycles from QML. To enable this, we need to expose the *class*, instead of the *object*, to QML.
+
+The class that is being exposed to QML is not affected by where it is intantiated. No change is needed to the class definition. However, instead of calling ``setContextProperty``, the ``qmlRegisterType`` function is used. This function comes from the ``PySide2.QtQml`` module and takes five arguments:
+
+- A reference to the class, ``NumberGenerator`` in the example below.
+- A module name, ``'Generators'``.
+- A module version consisting of a major and minor number, ``1`` and ``0`` meaning ``1.0``.
+- The QML name of the class, ``'NumberGenerator'``
 
 .. literalinclude:: src/class/class.py
     :language: python
 
+In QML, we need to import the module, e.g. ``Generators 1.0`` and then instantiate the class as ``NumberGenerator { ... }``. The instance now works like any other QML element.
+
 .. literalinclude:: src/class/main.qml
 
-
-Modelling in Python
+A Model from Python
 -------------------
 
 - abstract item list model
     - using psutil - https://pypi.org/project/psutil/
     - no QVariant, use None
 
-.. literalinclude:: src/class/class.py
+.. literalinclude:: src/model/model.py
     :language: python
 
-.. literalinclude:: src/class/main.qml
+.. literalinclude:: src/model/main.qml
 
 Summary
 =======
