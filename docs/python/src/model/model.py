@@ -30,10 +30,10 @@ class CpuLoadModel(QAbstractListModel):
         return self.__cpu_count
     
     def data(self, index, role):
-        if role == Qt.DisplayRole and \
-            index.row() >= 0 and \
-            index.row() < len(self.__cpu_load) and \
-            index.column() == 0:
+        if (role == Qt.DisplayRole and
+            index.row() >= 0 and
+            index.row() < len(self.__cpu_load) and
+            index.column() == 0):
             return self.__cpu_load[index.row()]
         else:
             return None
