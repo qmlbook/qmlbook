@@ -39,18 +39,18 @@ Qt for Python is available through PyPA using ``pip`` under the name ``pyside2``
 
 .. code-block:: bash
 
-    $ mkdir python-for-qt
-    $ cd python-for-qt
+    $ mkdir qt-for-python
+    $ cd qt-for-python
     $ python3 -m venv .
     $ . bin/activate
-    (python-for-qt) $ python --version
+    (qt-for-python) $ python --version
     Python 3.6.6
 
 When the environment is setup, we continue to install ``pyside2`` using ``pip``:
     
 .. code-block:: bash
 
-    (python-for-qt) $ pip install pyside2
+    (qt-for-python) $ pip install pyside2
     Collecting pyside2
     Downloading [ ... ] (166.4MB)
 
@@ -63,7 +63,7 @@ After the installation, we can test it by running a *Hello World* example from t
     
 .. code-block:: bash
 
-    (python-for-qt) $ python
+    (qt-for-python) $ python
     Python 3.6.6 (default, Jun 27 2018, 14:44:17) 
     [GCC 8.1.0] on linux
     Type "help", "copyright", "credits" or "license" for more information.
