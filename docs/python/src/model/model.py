@@ -11,30 +11,30 @@ class CpuLoadModel(QAbstractListModel):
     def __init__(self):
         QAbstractListModel.__init__(self)
         
-        self._cpu_count = psutil.cpu_count()
-        self._cpu_load = [0] * self._cpu_count
+        self.__cpu_count = psutil.cpu_count()
+        self.__cpu_load = [0] * self.__cpu_count
         
-        self._updateTimer = QTimer(self)
-        self._updateTimer.setInterval(1000)
-        self._updateTimer.timeout.connect(self._update)
-        self._updateTimer.start()
+        self.__update_timer = QTimer(self)
+        self.__update_timer.setInterval(1000)
+        self.__update_timer.timeout.connect(self.__update)
+        self.__update_timer.start()
         
         # The first call returns invalid data
         psutil.cpu_percent(percpu=True)
             
-    def _update(self):
-        self._cpu_load = psutil.cpu_percent(percpu=True)
-        self.dataChanged.emit(self.index(0,0), self.index(self._cpu_count-1, 0))
+    def __update(self):
+        self.__cpu_load = psutil.cpu_percent(percpu=True)
+        self.dataChanged.emit(self.index(0,0), self.index(self.__cpu_count-1, 0))
         
     def rowCount(self, parent):
-        return self._cpu_count
+        return self.__cpu_count
     
     def data(self, index, role):
         if role == Qt.DisplayRole and \
             index.row() >= 0 and \
-            index.row() < len(self._cpu_load) and \
+            index.row() < len(self.__cpu_load) and \
             index.column() == 0:
-            return self._cpu_load[index.row()]
+            return self.__cpu_load[index.row()]
         else:
             return None
 
