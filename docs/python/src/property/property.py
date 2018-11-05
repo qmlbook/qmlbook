@@ -47,7 +47,7 @@ class NumberGenerator(QObject):
     
     numberChanged = Signal(int)
     
-    def _set_number(self, val):
+    def __set_number(self, val):
         if self._number != val:
             self._number = val;
             self.numberChanged.emit(self._number)
@@ -71,3 +71,6 @@ if __name__ == '__main__':
         sys.exit(-1)    
     
     sys.exit(app.exec_())
+
+    # ...
+    
