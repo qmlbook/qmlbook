@@ -13,7 +13,7 @@ Qt for Python
     The source code for this chapter can be found in the `assets folder <../../assets>`_.
 
 
-This chapter ... TBD    
+This chapter described the Qt for Python module. How to install it and how to leverage QML together with Python.
 
 Introduction
 ============
@@ -240,14 +240,42 @@ In QML, we need to import the module, e.g. ``Generators 1.0`` and then instantia
 A Model from Python
 -------------------
 
-- abstract item list model
-    - using psutil - https://pypi.org/project/psutil/
-    - no QVariant, use None
+One of the more interesting types of objects or classes to expose from Python to QML are item models. These are used with various views or the ``Repeater`` element to dynamically build a user interface from the model contents.
+
+In this section we will take an existing python utility for monitoring CPU load (and more), ``psutil``, and expose it to QML via a custom made item model called ``CpuLoadModel``. You can see the program in action below:
+
+.. figure:: assets/cpu-load-model.png
+
+    Showing the CPU load of eight cores through a custom item model using *psutil*.
+
+.. note::
+
+    The psutil library can be found at https://pypi.org/project/psutil/ . 
+    
+    *"psutil (process and system utilities) is a cross-platform library for retrieving information on running processes and system utilization (CPU, memory, disks, network, sensors) in Python."*
+    
+    You can install psutil using ``pip install psutil``.
+
+We will use the ``psutil.cpu_percent`` function (`documentation <https://psutil.readthedocs.io/en/latest/#psutil.cpu_percent>`_) to sample the CPU load per core every second. To drive the sampling we use a ``QTimer``. All of this is exposed through the ``CpuLoadModel`` which is a ``QAbstractListModel``.
+
+Item models are interesting. They allow you to represent a two dimensional data set, or even nested data sets, if using the ``QAbstractItemModel``. The ``QAbstractListModel`` that we use allow us to represent a list of items, so a one dimensional set of data. It is possible to implement a nested set of lists, creating a tree, but we only create one level.
+
+To implement a ``QAbstractListModel`` it is necessary to implement the methods ``rowCount`` and ``data``. The ``rowCount`` returns the number of CPU cores which we get using the ``psutil.cpu_count`` method. The ``data`` method returns data for different *roles*. We only support the ``Qt.DisplayRole``, which corresponds to what you get when you refer to ``display`` inside the deletage item from QML.
+
+Looking at the code for the model, you can see that the actual data is stored in the ``__cpu_load`` list. If a valid request is made to ``data``, i.e. the row, column and role is correct, we return the right element from the ``__cpu_load`` list. Otherwise we return ``None`` which corresponds to an uninitialized ``QVariant`` on the Qt side.
+
+Every time the update timer (``__update_timer``) times out, the ``__update`` method is triggered. Here, the ``__cpu_load`` list is updated, but we also emit the ``dataChanged`` signal, indicating that all data was changed. We do not do a ``modelReset`` as that also implies that the number of items might have changed.
+
+Finally, the ``CpuLoadModel`` is exposed to QML are a registered type in the ``PsUtils`` module.
 
 .. literalinclude:: src/model/model.py
     :language: python
+    
+On the QML side we use a ``ListView`` to show the CPU load. The model is bound to the ``model`` property. For each item in the model a ``delegate`` item will be instantiated. In this case that means a ``Rectangle`` with a green bar (another ``Rectangle``) and a ``Text`` element displaying the current load.
 
 .. literalinclude:: src/model/main.qml
 
 Summary
 =======
+
+In this chapter we have looked at the Qt for Python module. After a brief look at installation, we focused on how Qt concepts are used from Python. This included slots, signals and properties. We also looked at a basic list model and how to expose both Python objects and classes from Python to QML.
