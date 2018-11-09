@@ -464,7 +464,7 @@ When you do not want to use C++ you can also define models in pure QML. You have
         delegate: Text { 'Char['+ index +']: ' + model.char }
     }
 
-The QML views know how to handle these different models. For models coming from the C++ world, the view expects a specific protocol to be followed. This protocol is defined in an API (``QAbstractItemModel``) together with documentation for the dynamic behavior. The API was developed for the desktop widget world and is flexible enough to act as a base for trees, or multi-column tables as well as lists. In QML, we almost only use the list version of the API (``QAbstractListModel``). The API contains some mandatory functions to be implemented and some are optional. The optional parts mostly handle the dynamic use case of adding or removing of data.
+The QML views know how to handle these different models. For models coming from the C++ world, the view expects a specific protocol to be followed. This protocol is defined in an API (``QAbstractItemModel``) together with documentation for the dynamic behavior. The API was developed for the desktop widget world and is flexible enough to act as a base for trees, or multi-column tables as well as lists. In QML, we use either the list variant of the API (``QAbstractListModel``) or, for the ``TableView`` element, the table variant of the API (``QAbstractTableModel``). The API contains some mandatory functions to be implemented and some are optional. The optional parts mostly handle the dynamic use case of adding or removing of data.
 
 A simple model
 --------------
@@ -528,6 +528,8 @@ We use this in this example to display a simple list of color entries.
 The ``ListDelegate`` is a custom type to display some text. The ``ListHighlight`` is just a rectangle. The code was extracted to keep the example compact.
 
 The view can now display a list of strings using the C++ model and the display property of the model. It is still very simple, but already usable in QML. Normally the data is provided from outside the model and the model would act as an interface to the view.
+
+.. note:: To expose a table of data instead of a list, the ``QAbstractTableModel`` is used. The only difference compared to implementing a ``QAbstractListModel`` is that you must also provide the ``columnCount`` method.
 
 More Complex Data
 -----------------
