@@ -99,7 +99,7 @@ Repeaters work well for limited and static sets of data, but in the real world, 
 .. figure:: assets/automatic/gridview-basic.png
     :scale: 50%
 
-The two elements are similar in their usage. Thus, we will begin with the ``ListView`` and then describe the ``GridView`` with the former as the starting point of the comparison.
+The two elements are similar in their usage. Thus, we will begin with the ``ListView`` and then describe the ``GridView`` with the former as the starting point of the comparison. Notice that the ``GridView`` places a list of items into a two dimenstional grid. If you want to show a table of data you need to use the ``TableView`` which is described in the `Table Models`_ section.
 
 The ``ListView`` is similar to the ``Repeater`` element. It uses a ``model``, instantiates a ``delegate`` and between the delegates, there can be ``spacing``. The listing below shows how a simple setup can look.
 
@@ -326,6 +326,52 @@ When transforming images or other complex elements on in ``PathView``, a perform
 
 When using the ``PathView`` and changing the ``currentIndex`` programatically you might want to control the direction that the path moves in. You can do this using the ``movementDirection`` property. It can be set to ``PathView.Shortest``, which is the default value. This means that the movement can be either direction, depending on which way is the closest way to move to the target value. The direction can instead be restricted by setting ``movementDirection`` to ``PathView.Negative`` or ``PathView.Positive``.
 
+Table Models
+------------
+
+All views discussed until now present an array of items one way or another. Even the ``GridView`` expects the model to provide a one dimensional list of items. For two dimensional tables of data you need to use the ``TableView`` element.
+
+Conceptually, the ``TableView`` works just as all other views. It combines a ``model`` with a ``delegate`` to form a grid. If given a list type model it displays a single column, making it very similar to the ``ListView`` element. However, for table style models, it becomes more powerful. 
+
+In the example below, we setup a simple ``TableView`` with a custom model exposed from C++. At the moment, it is not possible to create table style models directly from QML, but in the 'Qt and C++' chapter the concept is explained. The running example is shown in the figure below.
+
+.. figure:: assets/tableview.png
+
+Before we can use the ``TableView`` element, we must make sure that the ``2.12`` version of ``QtQuick`` is imported. After that, we can set it up. In this example below, we set the ``rowSpacing`` and ``columnSpacing`` to control the horizontal and vertical gaps between delegates. The rest of the properties are setup as for any other type of view.
+
+.. literalinclude:: src/tableview/main.qml
+    :start-after: M1>>
+    :end-before: <<M1
+
+.. literalinclude:: src/tableview/main.qml
+    :start-after: M2>>
+    :end-before: <<M2
+    
+The delegate itself can carry an implicit size through the ``implicitWidth`` and ``implicitHeight``. This is what we do in the example below. The actual data contents, i.e. ``display``, depends on what the model exposes.
+
+.. literalinclude:: src/tableview/main.qml
+    :start-after: M3>>
+    :end-before: <<M3
+
+It is possible to provide delegates with different sizes depending on the model contents, e.g.::
+
+    GreenBox {
+        implicitHeight: (1+row)*10
+        // ...
+    }
+
+Notice that both the width and the height must be greater than one.
+
+When providing an implicit size from the delegate, the highest delegate of each row and the widest delegate of each column controls the size. This can create interesting behaviour if the width of items depend on the row, or if the height depends on the column. This is because not all delegates are instantiated at all times, so the width of a column might change as the user scrolls through the table.
+
+To avoid the issues with specifying column widths and row heights using implicit delegate sizes, you can provide functions that calculates these sizes. This is done using the ``columnWidthProvider`` and ``rowHeightProvider`` . These functions return the size of the width and row respectively as shown below::
+
+    TableView {
+        columnWidthProvider: function (column) { return 10*(column+1); }
+        // ...
+    }
+
+If you need to dynamically change the column widths or row heights you must notify the view of this by calling the ``forceLayout`` method. This will make the view re-calculate the size and position of all cells.
 
 A Model from XML
 ----------------
@@ -414,7 +460,6 @@ Having more delegates sacrifices memory for a smoother experience and slightly m
 
 To remedy the two later issues, it is recommended to use ``Loader`` elements. These can be used to instantiate additional elements when they are needed. For instance, an expanding delegate may use a ``Loader`` to postpone the instantiation of its detailed view until it is needed. For the same reason, it is good to keep the amount of JavaScript to a minimum in each delegate. It is better to let them call complex pieced of JavaScript that resides outside each delegate. This reduces the time spent compiling JavaScript each time a delegate is created.
 
-
 Summary
 =======
 
@@ -424,6 +469,8 @@ In this chapter, we have looked at models, views, and delegates. For each data e
 
 A model can be a single integer, where the ``index`` variable is provided to the delegate. If a JavaScript array is used as a model, the ``modelData`` variable represents the data of the current index of the array, while ``index`` holds the index. For more complex cases, where multiple values need to be provided by each data item, a ``ListModel`` populated with ``ListElement`` items is a better solution.
 
-For static models, a ``Repeater`` can be used as the view. It is easy to combine it with a positioner such as ``Row``, ``Column``, ``Grid`` or ``Flow`` to build user interface parts. For dynamic or large data models, a view such as ``ListView`` or ``GridView`` is more appropriate. These create delegate instances on the fly as they are needed, reducing the number of elements live in the scene at once.
+For static models, a ``Repeater`` can be used as the view. It is easy to combine it with a positioner such as ``Row``, ``Column``, ``Grid`` or ``Flow`` to build user interface parts. For dynamic or large data models, a view such as ``ListView``, ``GridView``, or ``TableView`` is more appropriate. These create delegate instances on the fly as they are needed, reducing the number of elements live in the scene at once.
+
+The difference between ``GridView`` and ``TableView`` is that the table view expects a table type model with multiple columns of data while the grid view shows a list type model in a grid.
 
 The delegates used in the views can be static items with properties bound to data from the model, or they can be dynamic, with states depending on if they are in focus or not. Using the ``onAdd`` and ``onRemove`` signals of the view, they can even be animated as they appear and disappear.
