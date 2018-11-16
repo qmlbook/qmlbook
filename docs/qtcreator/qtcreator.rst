@@ -10,6 +10,8 @@ Qt Creator is the default integrated development environment for Qt. It's writte
 
 .. figure:: assets/qtcreator-screenshots.png
 
+Qt Creator is actively developed, with several new releases each year. Therefore, you should always refer to the `Qt Creator documentation <https://doc.qt.io/qtcreator/index.html>`_ online for up to date documentation on the version of Qt Creator you are using.
+
 .. note::
 
     The source code of this chapter can be found in the `assets folder <../../assets>`_.
@@ -19,11 +21,16 @@ The User Interface
 
 .. issues:: ch03
 
+<<<<<<< Updated upstream
 When starting Qt Creator you are greeted by the *Welcome* screen. There you will find the most important hints on how to continue inside Qt Creator and your recently used projects. You will also see the sessions list, which might be empty for you. A session is a collection of projects stored for your reference. This comes really handy when you have several customers with larger projects.
+=======
+When starting Qt Creator, you are greeted by the *Welcome* screen. Here, you can quickly create and open projects, browse the included tutorial and example projects, read news from the online community and Qt blogs, and more. There is also the sessions list, which might be empty for you. A session is a collection of projects stored for your reference. This is really handy when you have several customers with larger projects.
+>>>>>>> Stashed changes
 
 On the left side, you will see the mode-selector. The mode selectors contain typical steps from your workflow.
 
 * Welcome mode: For your orientation.
+<<<<<<< Updated upstream
 * Edit mode: Focus on the code
 * Design mode: Focus on the UI design
 * Debug mode: Retrieve information about a running application
@@ -32,6 +39,15 @@ On the left side, you will see the mode-selector. The mode selectors contain typ
 * Help mode: Easy access to the Qt documentation
 
 Below the mode-selectors, you will find the actual project-configuration selector and the run/debug
+=======
+* Edit mode: Focus on the code.
+* Design mode: Focus on the UI design.
+* Debug mode: Retrieve information about a running application.
+* Projects mode: Modify your project's run and build configuration.
+* Help mode: Easily access the Qt documentation.
+
+Below the mode selectors, you find the kit selector, and buttons to run, debug, and build the current project.
+>>>>>>> Stashed changes
 
 .. figure:: assets/creator-welcome.png
     :scale: 50%
@@ -41,14 +57,20 @@ Most of the time you will be in the edit mode with the code-editor in the centra
 
 In the bottom are the output panes for issues, application messages, compile messages, and other messages.
 
-Registering your Qt Kit
-=======================
+Registering your Kit
+====================
 
 .. issues:: ch03
 
+<<<<<<< Updated upstream
 The Qt Kit is probably the most difficult aspect when it comes to working with Qt Creator initially. A Qt Kit is a set of a Qt version, compiler and device and some other settings. It is used to uniquely identify the combination of tools for your project build. A typical kit for the desktop would contain a GCC compiler and a Qt version (e.g. Qt 5.1.1) and a device ("Desktop"). After you have created a project you need to assign a kit to a project before qt creator can build the project. Before you are able to create a kit first you need to have a compiler installed and have a Qt version registered. A Qt version is registered by specifying the path to the ``qmake`` executable. Qt Creator then queries ``qmake`` for information required to identify the Qt version.
 
 Adding a kit and registering a Qt version is done in the :menuselection:`Settings --> Build & Run` entry. There you can also see which compilers are registered.
+=======
+When you install Qt, kits are automatically created. Kits are used to uniquely identify the combination of tools for your project build. In other words, a kit is the combination of a Qt version, compiler, device, and some other settings. When you open a project for the first time, you select the kit Qt Creator should use initially to build your project. You can then add further kits to use with the project. To create a kit, you need to have a compiler installed and a version of Qt registered with Qt Creator. You register a Qt version by specifying the path to its ``qmake`` executable. Qt Creator then queries ``qmake`` for the information it requires to correctly identify the Qt version.
+
+From :menuselection:`Tools > Options > Kits` you can add kits and register Qt versions. You can also see which compilers are registered.
+>>>>>>> Stashed changes
 
 .. note::
 
@@ -61,6 +83,7 @@ Managing Projects
 
 .. issues:: ch03
 
+<<<<<<< Updated upstream
 Qt Creator manages your source code in projects. You can create a new project by using :menuselection:`File --> New File or Project`. When you create a project you have many choices of application templates. Qt Creator is capable of creating desktop, mobile applications. An application which uses Widgets or Qt Quick or Qt Quick and controls or even bare-bone projects. Also, a project for HTML5 and Python are supported. For a beginner, it is difficult to choose, so we pick three project types for you.
 
 * **Applications / Qt Quick 2.0 UI**: This will create a QML/JS only project for you, without any C++ code. Take this if you want to sketch a new user interface or plan to create a modern UI application where the native parts are delivered by plug-ins.
@@ -70,6 +93,13 @@ Qt Creator manages your source code in projects. You can create a new project by
 .. note::
 
     During the first parts of the book, we will mainly use the Qt Quick 2.0 UI project type. Later to describe some c++ aspects we will use the Empty-Qt-Project type or something similar. For extending Qt Quick with our own native plug-ins we will use the *Qt Quick 2.0 Extension Plug-in* wizard type.
+=======
+Qt Creator manages your source code in projects. You can create a new project by selecting :menuselection:`File > New File or Project`. When you create a project, you can choose between a range of application templates, including desktop and mobile applications. These templates help you by creating a basic set of files, so you can focus on creating your application rather than writing boilerplate code. When you've chosen a template, Qt Creator opens a wizard for the template type, from a new QML project to a C++ class, or an autotest project for your unit tests. For a beginner, it may be difficult to choose the right project type. Check out the `Qt Creator documentation <https://doc.qt.io/qtcreator/index.html>`_ for an in-depth description of each project type.
+
+.. note::
+
+    The beginning of this book uses the Qt Quick UI Prototype project type. Later, an empty project is used to describe some C++ aspects. For extending Qt Quick with a native plug-in, the *Qt Quick 2 Extension Plugin* project type is used.
+>>>>>>> Stashed changes
 
 
 
@@ -78,7 +108,11 @@ Using the Editor
 
 .. issues:: ch03
 
+<<<<<<< Updated upstream
 When you open a project or you just created a new project Qt Creator will switch to the edit mode. You should see on the left of your project files and in the center area the code editor. Selecting files on the left will open them in the editor. The editor provides syntax highlighting, code-completion, and quick-fixes. Also, it supports several commands for code refactoring. When working with the editor you will have the feeling that everything reacts immediately. This is thanks to the developers of Qt Creator which made the tool feel really snappy.
+=======
+Upon creating a new project or opening an existing one, Qt Creator switches to edit mode. You should see an overview of your project files in the left pane, and the code editor in the center area. Double click any of the files on the left to open them in the editor. The editor provides syntax highlighting, code-completion, and quick-fixes. It also supports several commands for code refactoring.
+>>>>>>> Stashed changes
 
 .. figure:: assets/creator-editor.png
     :scale: 50%
@@ -94,7 +128,11 @@ The locator is a central component inside Qt Creator. It allows developers to na
 .. figure:: assets/locator.png
     :scale: 50%
 
+<<<<<<< Updated upstream
 A pop-up is coming from the bottom left and shows a list of options. If you just search a file inside your project just hit the first letter from the file name. The locator also accepts wild-cards, so ``*main.qml`` will also work. Otherwise, you can also prefix your search to search for the specific content type.
+=======
+The locator pops up with a list of options in the bottom left. If you want to find a file in your current project, enter the first letter of the file name. The locator updates in real-time as you type, to reflect the search results. The locator accepts wild-cards, so search queries such as ``*main.qml`` also work. In addition, you can prefix your search to find specific content types. Before you enter text into the locator's input field, it shows a list of the various prefixes you can apply to your search.
+>>>>>>> Stashed changes
 
 .. figure:: assets/creator-locator.png
     :scale: 50%
@@ -117,7 +155,11 @@ Shortcuts
 
 .. issues:: ch03
 
+<<<<<<< Updated upstream
 Shortcuts are the difference between a nice-to-use editor and a professional editor. As a professional you spend hundreds of hours in front of your application. Each shortcut which makes your work-flow faster counts. Luckily the developers of Qt Creator think the same and have added literally hundreds of shortcuts to the application.
+=======
+Shortcuts are the difference between a nice-to-use editor and a professional editor. As a professional, you spend hundreds of hours in front of your application. Luckily, the developers of Qt Creator think the same, and have added literally hundreds of shortcuts to the application. Familiarizing yourself with the available shortcuts can help you optimize your work-flow.
+>>>>>>> Stashed changes
 
 To get started we have collection some basic shortcuts (in Windows notation):
 
@@ -134,7 +176,11 @@ List of `Qt Creator shortcuts <http://doc.qt.io/qtcreator/creator-keyboard-short
 
 .. note::
 
+<<<<<<< Updated upstream
     You can edit the shortcuts from inside creator using the settings dialog.
+=======
+    You can customize the shortcuts from within Qt Creator using the options dialog.
+>>>>>>> Stashed changes
 
     .. figure:: assets/creator-edit-shortcuts.png
         :scale: 50%
