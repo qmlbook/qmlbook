@@ -117,6 +117,10 @@ The viewfinder part of the camera is simply a ``Camera`` element used as ``sourc
 .. literalinclude:: src/camera/main.qml
     :start-after: M1>>
     :end-before: <<M1
+    
+.. note::
+
+    For more control over the camera behaviour, for instance to control exposure or focus settings, use the ``exposure`` and ``focus`` properties of the ``Camera`` object. These expose a whole range of settings made available through the `CameraExposure <http://doc.qt.io/qt-5/qml-qtmultimedia-cameraexposure.html>`_ and `CameraFocus <http://doc.qt.io/qt-5/qml-qtmultimedia-camerafocus.html>`_ elements.
 
 The list of photos is a ``ListView`` oriented horizontally shows images from a ``ListModel`` called ``imagePaths``. In the background, a semi-transparent black ``Rectangle`` is used.
 
@@ -148,8 +152,6 @@ Advanced Techniques
 -------------------
 
 .. issues:: ch10
-
-.. todo:: The Camera API of Qt 5 is really lacking in documentation right now. I would love to cover more advanced camera controls such as exposure and focusing, but there are no ranges or values, nor clear guides to how to use the APIs in the reference docs right now.
 
 Implementing a Playlist
 =======================
