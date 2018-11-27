@@ -173,8 +173,32 @@ The ``createObject`` function takes two arguments. The first is a ``parent`` obj
 
 .. note:: A dynamically created component instance is not different to an in-line ``Component`` element. The in-line ``Component`` element also provides functions to instantiate objects dynamically.
 
+Incubating Components
++++++++++++++++++++++
+
+When components are created using ``createObject`` the creation of the object component is blocking. This means that the instantiation of a complex element may block the main thread, causing a visible glitch. Alternatively, complex components may have to be broken down and loaded in stages using ``Loader`` elements.
+
+To resolve this problem, a component can be instantiated using the ``incubateObject`` method. This might work just as ``createObject`` and return an instance immediately, or it may call back when the component is ready. Depending on your exact setup, this may or may not be a good way to solve instantiation related animation glitches.
+
+To use an incubator, simply use it as ``createComponent``. However, the returned object is an incubator and not the object instance itself. When the incubator's status is ``Component.Ready``, the object is available through the ``object`` property of the incubator. All this is shown in the example below::
+
+    function finishCreationg() {
+        if (component.status === Component.Ready) {
+            var incubator = component.incubateObject(root, {"x": 100, "y": 100});
+            if (incubator.status === Component.Ready) {
+                var image = incubator.object; // Created at once
+            } else {
+                incubator.onStatusChanged = function(status) {
+                    if (status === Component.Ready) {
+                        var image = incubator.object; // Created async
+                    }
+                };
+            }
+        }
+    }
+
 Dynamically Instantiating Items from Text
--------------------------------------------
+-----------------------------------------
 
 .. issues:: ch13
 
