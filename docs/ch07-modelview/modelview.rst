@@ -324,6 +324,8 @@ Another detail specific to ``PathView`` worth noticing is the usage of the attac
 
 When transforming images or other complex elements on in ``PathView``, a performance optimization trick that is common to use is to bind the ``smooth`` property of the ``Image`` element to the attached property ``PathView.view.moving``. This means that the images are less pretty while moving but smoothly transformed when stationary. There is no point spending processing power on smooth scaling when the view is in motion, as the user will not be able to see this anyway.
 
+When using the ``PathView`` and changing the ``currentIndex`` programatically you might want to control the direction that the path moves in. You can do this using the ``movementDirection`` property. It can be set to ``PathView.Shortest``, which is the default value. This means that the movement can be either direction, depending on which way is the closest way to move to the target value. The direction can instead be restricted by setting ``movementDirection`` to ``PathView.Negative`` or ``PathView.Positive``.
+
 
 A Model from XML
 ----------------
