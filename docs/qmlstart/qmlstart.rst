@@ -608,7 +608,7 @@ We rewrite our ``KeyNavigation`` example with the new ``TLineEditV1`` component.
 
 .. figure:: assets/textinput3.png
 
-And try the tab key for navigation. You will experience the focus does not change to ``input2``. The simple use of ``focus: true`` is not sufficient. The problem arises, that the focus was transferred to the ``input2`` element the top-level item inside the TlineEditV1 (our Rectangle) received focus and did not forward the focus to the TextInput. To prevent this QML offers the FocusScope.
+And try the tab key for navigation. You will experience the focus does not change to ``input2``. The simple use of ``focus: true`` is not sufficient. The problem arises, that the focus was transferred to the ``input2`` element the top-level item inside the ``TlineEditV1`` (our ``Rectangle``) received focus and did not forward the focus to the ``TextInput``. To prevent this QML offers the ``FocusScope``.
 
 FocusScope
 ----------
