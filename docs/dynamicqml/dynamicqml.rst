@@ -129,6 +129,8 @@ The ``Binding`` element lets you specify a ``target`` element, a ``property`` to
 
 As the ``target`` element of a ``Binding`` not always is set, and perhaps not always has a given property, the ``when`` property of the ``Binding`` element can be used to limit the time when the binding is active. For instance, it can be limited to specific modes in the user interface.
 
+The ``Binding`` element also comes with a ``delayed`` property. When this property is set to ``true`` the binding is not propagated to the ``target`` until the event queue has been emptied. In high load situations this can serve as an optimization as intermediate values are not pushed to the ``target``.
+
 Creating and Destroying Objects
 ===============================
 
