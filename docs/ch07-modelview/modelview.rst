@@ -373,6 +373,35 @@ The example below demonstrates the section concept by showing a list of spacemen
     :start-after: M1>>
     :end-before: <<M1
 
+The ObjectModel
+---------------
+
+In some cases you might want to use a list view for a large set of different items. You can solve this using dynamic QML and ``Loader``, but another options is to use an ``ObjectModel`` from the ``QtQml.Models`` module. The object model is different from other models as it lets you put the actual visual elements side the model. That way, the view does not need any ``delegate``.
+
+.. figure:: assets/automatic/delegates-objectmodel.png
+
+In the example below we put three ``Rectangle`` elements into the ``ObjectModel``. However, one rectangle has a ``Text`` element child while the last one has rounded corners. This would have resulted in a table-style model using something like a ``ListModel``. It would also have resulted in empty ``Text`` elements in the model.
+
+.. literalinclude:: src/delegates/objectmodel.qml
+    :start-after: M1>>
+    :end-before: <<M1
+
+Another aspect of the ``ObjectModel`` is that is can be dynamically populated using the ``get``, ``insert``, ``move``, ``remove``, and ``clear`` methods. This way, the contents of the model can be dynamically generated from various sources and still easily shown in a single view.
+
+Models with Actions
+-------------------
+
+Since 5.11, the ``ListElement`` type supports the binding of Javascript functions to properties. This means that you can put functions into a model. This is very useful when building menus with actions and similar constructs.
+
+The example below demonstrates this by having a model of cities that greet you in different ways. The ``actionModel`` is a model of four cities, but the ``hello`` property is bound to functions. Each function takes an argument ``value``, but you can have any number arguments.
+
+In the delegate ``actionDelegate``, the ``MouseArea`` calls the function ``hello`` as an ordinary function and this results a call to the corresponding ``hello`` property in the model.
+
+.. literalinclude:: src/delegates/model-action.qml
+    :start-after: M1>>
+    :end-before: <<M1
+
+
 Tuning Performance
 ------------------
 
