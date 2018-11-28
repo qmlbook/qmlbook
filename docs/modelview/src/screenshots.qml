@@ -49,6 +49,8 @@ Item {
         ListElement { source: "delegates/ss-basic.qml"; name: "delegates-basic.png"; margin: 10; }
         ListElement { source: "delegates/expanding.qml"; name: "delegates-expanding-small.png"; margin: 0; }
         ListElement { source: "delegates/ss-expanding-large.qml"; name: "delegates-expanding-large.png"; margin: 0; }
+        ListElement { source: "delegates/objectmodel.qml"; name: "delegates-objectmodel.png"; margin: 0; }
+        
         ListElement { source: "pathview/coverview.qml"; name: "pathview-coverview.png"; margin: 0; }
         ListElement { source: "xmllistmodel/ss-images.qml"; name: "xmllistmodel-images.png"; margin: 0; }
    }
