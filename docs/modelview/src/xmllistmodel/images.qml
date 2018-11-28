@@ -60,11 +60,11 @@ Background {
     XmlListModel {
         id: imageModel
 
-        source: "http://feeds.nationalgeographic.com/ng/photography/photo-of-the-day/"
+        source: "https://www.nasa.gov/rss/dyn/image_of_the_day.rss"
         query: "/rss/channel/item"
 
         XmlRole { name: "title"; query: "title/string()" }
-        XmlRole { name: "imageSource"; query: "substring-before(substring-after(description/string(), 'img src=\"'), '\"')" }
+        XmlRole { name: "imageSource"; query: "enclosure/string(@url)" }
     }
 
     ListView {
