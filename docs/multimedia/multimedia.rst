@@ -153,26 +153,20 @@ Advanced Techniques
 
 .. issues:: ch10
 
-Implementing a Playlist
-=======================
+Using a Playlist
+================
 
 .. issues:: ch10
 
-The Qt 5 multimedia API does not provide support for playlists. Luckily, it is easy to build one. The idea is to be able to set it up with a model of items and a ``MediaPlayer`` element, as shown below. The ``Playlist`` element is responsible for setting the ``source`` of the ``MediaPlayer``, while the play state is controlled via the player.
+Since Qt 5.6 the QML multimedia API supports playlists. Simply assign a ``Playlist`` instance to the ``playlist`` property of your ``MediaPlayer``. The ``Playlist`` element will then take care of setting the ``source`` of the ``MediaPlayer``, while the play state is controlled via the player.
 
 .. literalinclude:: src/playlist/main.qml
     :start-after: M1>>
     :end-before: <<M1
 
-The first half of the ``Playlist`` element, shown below, takes care of setting the ``source`` element given an index in the ``setIndex`` function. It also implements the ``next`` and ``previous`` functions to navigate the list.
+To make the player start playing, simply set the playlist ``currentIndex`` and tell the ``MediaPlayer`` to start playing.
 
-.. literalinclude:: src/playlist/Playlist.qml
-    :start-after: M1>>
-    :end-before: <<M1
-
-The trick to making the playlist continue to the next element at the end of each element is to monitor the ``status`` property of the ``MediaPlayer``. As soon as the ``MediaPlayer.EndOfMedia`` state is reached, the index is increased and playback resumed, or, if the end of the list is reached, the playback is stopped.
-
-.. literalinclude:: src/playlist/Playlist.qml
+.. literalinclude:: src/playlist/main.qml
     :start-after: M2>>
     :end-before: <<M2
 
