@@ -53,8 +53,10 @@ Rectangle {
         source: player
     }
 
+    // M2>>
     Component.onCompleted: {
         player.playlist.currentIndex = 0;
         player.play();
     }
+    // <<M2
 }
