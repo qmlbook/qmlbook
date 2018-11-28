@@ -337,13 +337,12 @@ As XML is a ubiquitous data format, QML provides the ``XmlListModel`` element th
 The example below demonstrates fetching images from an RSS flow. The ``source`` property refers to a remote location over HTTP, and the data is automatically downloaded.
 
 .. figure:: assets/automatic/xmllistmodel-images.png
-    :scale: 50%
 
 When the data has been downloaded, it is processed into model items and roles. The ``query`` property is an XPath representing the base query for creating model items. In this example, the path is ``/rss/channel/item``, so for every item tag, inside a channel tag, inside an RSS tag, a model item is created.
 
 For every model item, a number of roles are extracted. These are represented by ``XmlRole`` elements. Each role is given a name, which the delegate can access through an attached property. The actual value of each such property is determined through the XPath query for each role. For instance, the ``title`` property corresponds to the ``title/string()`` query, returning the contents between the ``<title>`` and ``</title>`` tags.
 
-The ``imageSource`` property is more interesting as it not only extracts a string from the XML but also processes it. In the stream provided, every item contains an image, represented by an ``<img src=`` tag. Using the ``substring-after`` and ``substring-before`` XPath functions, the location of the image is extracted and returned. Thus the ``imageSource`` property can be used directly as the ``source`` for an ``Image`` element.
+The ``imageSource`` property extracts the value of an attribute of a tag instead of the contents of the tag. In this case, the ``url`` attribute of the ``enclosure`` tag is extracted as a string. The ``@`` is used to indicate that an attribute is requested. The ``imageSource`` property can then be used directly as the ``source`` for an ``Image`` element, which loads the image from the given URL.
 
 .. literalinclude:: src/xmllistmodel/images.qml
     :start-after: M1>>
