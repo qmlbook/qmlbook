@@ -52,7 +52,7 @@ You build the application using qmake and make. QMake reads a project file and g
 
 We will not cover this topic in-depth. Just remember: Qt uses project files for projects, and qmake generates the platform-specific makefiles from these project files.
 
-The "Hello, World!" code example we just saw, writes the text and exits the application. For a command line tool, this is good enough. However, for applications with a graphical user interface, you need an event loop that waits for user input, and then somehow schedules re-drawing operations. The following example uses a button to trigger the writing::
+The "Hello, World!" code example we just saw, writes the text and exits the application. For a command line tool, this is good enough. However, for applications with a graphical user interface, you need an event loop that waits for user input, and then somehow schedules re-drawing operations. The following example uses a button to trigger the writing:
 
 .. literalinclude:: src/uiapp/main.cpp
     :language: cpp

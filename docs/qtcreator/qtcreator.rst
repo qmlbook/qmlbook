@@ -62,7 +62,7 @@ Managing Projects
 
 .. issues:: ch03
 
-Qt Creator manages your source code in projects. You can create a new project by selecting :menuselection:`File > New File or Project`. When you create a project, you can choose between a range of application templates, including desktop and mobile applications. These templates help you by creating a basic set of files, so you can focus on creating your application rather than writing boilerplate code. When you've chosen a template, Qt Creator opens a wizard for the template type, from a new QML project to a C++ class, or an autotest project for your unit tests. For a beginner, it may be difficult to choose the right project type. Check out the `Qt Creator documentation <https://doc.qt.io/qtcreator/index.html>`_ for an in-depth description of each project type.
+Qt Creator manages your source code in projects. You can create a new project by selecting :menuselection:`File > New File or Project`. When you create a project, you can choose between a range of application templates, including desktop and mobile applications. These templates help you by creating a basic set of files, so you can focus on creating your application rather than writing boilerplate code. When you've chosen a template, Qt Creator opens a wizard for the template type, from a new QML project to a C++ class, or an autotest project for your unit tests. For a beginner, it may be difficult to choose the right project type. Check out the `Qt Creator documentation`_ for an in-depth description of each project type.
 
 .. note::
 
@@ -107,7 +107,7 @@ Qt Creator comes with C++ and QML debugging support.
 
 .. note::
 
-    Hmm, I just realized I have not used debugging a lot. I hope this is a good sign. Need to ask someone to help me out here. In the meantime have a look at the `Qt Creator documentation <http://http://doc.qt.io/qtcreator/index.html>`_.
+    Hmm, I just realized I have not used debugging a lot. I hope this is a good sign. Need to ask someone to help me out here. In the meantime have a look at the `Qt Creator documentation`_.
 
 Shortcuts
 =========
