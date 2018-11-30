@@ -5,6 +5,8 @@ ch*/assets/automatic/*
 *.tgz
 *.epub
 *.qhc
+*.qmlc
+*.jsc
 
 venv
 *.qch
