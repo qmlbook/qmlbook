@@ -531,6 +531,8 @@ The view can now display a list of strings using the C++ model and the display p
 
 .. note:: To expose a table of data instead of a list, the ``QAbstractTableModel`` is used. The only difference compared to implementing a ``QAbstractListModel`` is that you must also provide the ``columnCount`` method.
 
+.. note:: To expose a table of data instead of a list, the ``QAbstractTableModel`` is used. The only difference compared to implementing a ``QAbstractListModel`` is that you must also provide the ``columnCount`` method.
+
 More Complex Data
 -----------------
 
