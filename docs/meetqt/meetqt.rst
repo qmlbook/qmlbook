@@ -199,7 +199,7 @@ Qt 5 consists of a large number of modules. In general, a module is a library fo
 Qt Modules
 ---------------------
 
-The Qt Essentials modules are mandatory for any Qt-enabled platform. They offer the foundation to develop modern Qt 5 Applications using Qt Quick 2. The full list of modules is available in the `Qt documentation <https://doc.qt.io/qt-5/qtmodules.html>`_.
+The Qt Essentials modules are mandatory for any Qt-enabled platform. They offer the foundation to develop modern Qt 5 Applications using Qt Quick 2. The full list of modules is available in the `Qt documentation module list <https://doc.qt.io/qt-5/qtmodules.html>`_.
 
 .. rubric:: Core-Essential Modules
 
@@ -244,17 +244,17 @@ The minimal set of Qt 5 modules to start QML programming.
 .. digraph:: essentials
     :align: center
 
-    QtGui > QtCore
-    QtNetwork > QtCore
-    QtMultimedia > QtGui
-    QtQml > QtCore
-    QtQuick > QtQml
-    QtSql > QtCore
+    QtGui -> QtCore
+    QtNetwork -> QtCore
+    QtMultimedia -> QtGui
+    QtQml -> QtCore
+    QtQuick -> QtQml
+    QtSql -> QtCore
 
 
 .. rubric:: Qt Add-On Modules
 
-Besides the essential modules, Qt offers additional modules that target specific purposes. Many add-on modules are either feature-complete and exist for backwards compatibility, or are only applicable to certain platforms. Here is a list of some of the available add-on modules, but make sure you familiarize yourself with them all in the `Qt documentation <https://doc-snapshots.qt.io/qt5-5.12/qtmodules.html#qt-add-ons>`_.
+Besides the essential modules, Qt offers additional modules that target specific purposes. Many add-on modules are either feature-complete and exist for backwards compatibility, or are only applicable to certain platforms. Here is a list of some of the available add-on modules, but make sure you familiarize yourself with them all in the `Qt documentation add-ons list <https://doc-snapshots.qt.io/qt5-5.12/qtmodules.html#qt-add-ons>`_.
 
 * Qt 3D - A set of APIs to make 3D graphics programming easy and declarative.
 * Qt Android Extras - Provides platform-specific APIs for Android.
