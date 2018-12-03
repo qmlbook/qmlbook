@@ -180,6 +180,10 @@ There are many more features that can be accessed by the ``QObject`` base class 
 
     ``QObject``, and the ``Q_OBJECT`` macro has a lightweight sibling: ``Q_GADGET``. The ``Q_GADGET`` macro can be inserted in the private section of non-``QObject``-derived classes to expose properties and invokable methods. Beware that a ``Q_GADGET`` object cannot have signals, so the properties cannot provide a change notification signal. Still, this can be useful to provide a QML-like interface to data structures exposed from C++ to QML without invoking the cost of a fully fledged ``QObject``.
 
+.. note::
+
+    ``QObject``, and the ``Q_OBJECT`` macro has a lightweight sibling: ``Q_GADGET``. The ``Q_GADGET`` macro can be inserted in the private section of non-``QObject``-derived classes to expose properties and invokable methods. Beware that a ``Q_GADGET`` object cannot have signals, so the properties cannot provide a change notification signal. Still, this can be useful to provide a QML-like interface to data structures exposed from C++ to QML without invoking the cost of a fully fledged ``QObject``.
+
 
 Build Systems
 =============

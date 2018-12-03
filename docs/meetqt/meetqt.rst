@@ -260,7 +260,7 @@ The minimal set of Qt 5 modules to start QML programming.
 
 .. rubric:: Qt Add-On Modules
 
-Besides the essential modules, Qt offers additional modules that target specific purposes. Many add-on modules are either feature-complete and exist for backwards compatibility, or are only applicable to certain platforms. Here is a list of some of the available add-on modules, but make sure you familiarize yourself with them all in the `Qt documentation add-ons list <https://doc-snapshots.qt.io/qt5-5.12/qtmodules.html#qt-add-ons>`_.
+Besides the essential modules, Qt offers additional modules that target specific purposes. Many add-on modules are either feature-complete and exist for backwards compatibility, or are only applicable to certain platforms. Here is a list of some of the available add-on modules, but make sure you familiarize yourself with them all in the `Qt documentation add-ons list <https://doc-snapshots.qt.io/qt5-5.12/qtmodules.html#qt-add-ons>`_ and in the list below.
 
 .. list-table::
     :widths: 20 80
