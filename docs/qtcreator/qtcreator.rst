@@ -46,7 +46,7 @@ Registering your Qt Kit
 
 .. issues:: ch03
 
-The Qt Kit is probably the most difficult aspect when it comes to working with Qt Creator initially. A Qt Kit is a set of a Qt version, compiler and device and some other settings. It is used to uniquely identify the combination of tools for your project build. A typical kit for the desktop would contain a GCC compiler and a Qt version (e.g. Qt 5.1.1) and a device ("Desktop"). After you have created a project you need to assign a kit to a project before qt creator can build the project. Before you are able to create a kit first you need to have a compiler installed and have a Qt version registered. A Qt version is registered by specifying the path to the ``qmake`` executable. Qt Creator then queries ``qmake`` for information required to identify the Qt version.
+The Qt Kit is probably the most difficult aspect when it comes to working with Qt Creator initially. A Qt Kit is a set of a Qt version, compiler and device and some other settings. It is used to uniquely identify the combination of tools for your project build. A typical kit for the desktop would contain a GCC compiler and a Qt version (e.g. Qt 5.12.0) and a device ("Desktop"). After you have created a project you need to assign a kit to a project before qt creator can build the project. Before you are able to create a kit first you need to have a compiler installed and have a Qt version registered. A Qt version is registered by specifying the path to the ``qmake`` executable. Qt Creator then queries ``qmake`` for information required to identify the Qt version.
 
 Adding a kit and registering a Qt version is done in the :menuselection:`Settings --> Build & Run` entry. There you can also see which compilers are registered.
 
