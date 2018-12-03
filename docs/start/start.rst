@@ -75,7 +75,7 @@ Qt 5 seems to be working and we are ready to continue.
 
 .. topic:: Build from Scratch
 
-    If you'd like to build Qt 5 from the command line, you'll first need to grab a copy of the code repository and build it.
+    If you'd like to build Qt 5 from the command line, you can find detailed instructions for doing so on the `Qt project wiki <https://wiki.qt.io/Building_Qt_5_from_Git>`_. Here follows a quick summary. Start by grabbing a copy of the code repository, initialize it, and build it.
 
     .. code-block:: sh
 
