@@ -31,15 +31,15 @@ Hello World
 
 .. issues:: ch02
 
-To test your installation, we will create a small *hello world* application. Please, open Qt Creator and create a Qt Quick UI Project ( :menuselection:`File --> New File or Project --> Qt Quick Project --> Qt Quick UI` ) and name the project ``HelloWorld``.
+To test your installation, we will create a small *hello world* application. Please, open Qt Creator and create a Qt Quick UI Project ( :menuselection:`File --> New File or Project --> Other Project --> Qt Quick UI prototype` ) and name the project ``HelloWorld``.
 
 .. note::
 
-    The Qt Creator IDE allows you to create various types of applications. If not otherwise stated, we always use a :guilabeL:`Qt Quick UI` project.
+    The Qt Creator IDE allows you to create various types of applications. If not otherwise stated, we always use a :guilabel:`Qt Quick UI prototype` project.
 
 .. hint::
 
-    A typical Qt Quick application is made out of a runtime called the QmlEngine which loads the initial QML code. The developer can register C++ types with the runtime to interface with the native code. These C++ types can also be bundled into a plugin and then dynamically loaded using an import statement. The ``qmlscene`` and ``qml`` tool are pre-made runtimes, which can be used directly. For the beginning, we will not cover the native side of development and focus only on the QML aspects of Qt 5.
+    A typical Qt Quick application is made out of a runtime called the QmlEngine which loads the initial QML code. The developer can register C++ types with the runtime to interface with the native code. These C++ types can also be bundled into a plugin and then dynamically loaded using an import statement. The ``qmlscene`` and ``qml`` tool are pre-made runtimes, which can be used directly. For the beginning, we will not cover the native side of development and focus only on the QML aspects of Qt 5. This is why we start from a *prototype* project.
 
 Qt Creator will create several files for you. The ``HelloWorld.qmlproject`` file is the project file where the relevant project configuration is stored. This file is managed by Qt Creator so don't edit.
 
@@ -49,21 +49,14 @@ Another file, ``HelloWorld.qml``, is our application code. Open it and try to gu
 
     // HelloWorld.qml
 
-    import QtQuick 2.5
+    import QtQuick 2.12
+    import QtQuick.Window 2.12
 
-    Rectangle {
-        width: 360
-        height: 360
-        Text {
-            anchors.centerIn: parent
-            text: "Hello World"
-        }
-        MouseArea {
-            anchors.fill: parent
-            onClicked: {
-                Qt.quit();
-            }
-        }
+    Window {
+        visible: true
+        width: 640
+        height: 480
+        title: qsTr("Hello World")
     }
 
 The ``HelloWord.qml`` is written in the QML language. We will discuss the QML language in more depth in the next chapter. QML describes the user interface as a tree of hierarchical elements. In this case, a rectangle of 360 x 360 pixels with a centered text reading "Hello World". To capture user clicks a mouse area spans the whole rectangle and when the user clicks it, the application quits.
@@ -73,7 +66,6 @@ To run the application on your own, please press the |creatorrun| :guilabel:`Run
 Qt Creator will start the ``qmlscene`` and passes the QML document as the first argument. The ``qmlscene`` will parse the document and launch the user interface. Now you should see something like this:
 
 .. figure:: assets/example.png
-    :scale: 50%
 
 Qt 5 seems to be working and we are ready to continue.
 
