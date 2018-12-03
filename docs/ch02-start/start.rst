@@ -50,10 +50,7 @@ Another file, ``HelloWorld.qml``, is our application code. Open it and try to un
     // HelloWorld.qml
 
     import QtQuick 2.12
-<<<<<<< HEAD:docs/ch02-start/start.rst
-=======
     import QtQuick.Window 2.12
->>>>>>> Updated to Qt Creator 4.8 behaviour:docs/start/start.rst
 
     Window {
         visible: true
