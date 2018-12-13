@@ -12,6 +12,7 @@ before_install:
     - sudo apt-get install -y --no-install-recommends graphviz
 script:
     - make html
+    - touch _build/html/.nojekyll
 deploy:
     provider: pages
     skip-cleanup: true
