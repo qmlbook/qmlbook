@@ -9,10 +9,10 @@ before_install:
     - sudo apt-get install -y --no-install-recommends texlive-latex-recommended 
     - sudo apt-get install -y --no-install-recommends texlive-latex-extra
     - sudo apt-get install -y --no-install-recommends texlive-fonts-recommended
+    - sudo apt-get install -y --no-install-recommends graphviz
 script:
     - pip install -r requirements.txt
     - make html
-    - make latexpdf
 deploy:
     provider: pages
     skip-cleanup: true
