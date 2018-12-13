@@ -13,3 +13,12 @@ script:
     - pip install -r requirements.txt
     - make html
     - make latexpdf
+deploy:
+    provider: pages
+    skip-cleanup: true
+    github-token: $GITHUB_TOKEN
+    keep-history: true
+    local-dir: _build/html
+    verbose: true
+    on:
+        branch: travis
