@@ -1,13 +1,9 @@
 _build/
-*.pyc
 ch*/assets/automatic/*
 *.pdf
-*.tgz
-*.epub
-*.qhc
+*.pyc
 *.qmlc
 *.jsc
 
 venv
-*.qch
 *.qmlproject.user
