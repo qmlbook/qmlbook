@@ -32,22 +32,22 @@ We are heavily working on this book and that means several things:
     :numbered:
     :maxdepth: 2
 
-    meetqt/meetqt.rst
-    start/start.rst
-    qtcreator/qtcreator.rst
-    qmlstart/qmlstart.rst
-    fluid/fluid.rst
-    modelview/modelview.rst
-    canvas/canvas.rst
-    particles/particles.rst
-    shaders/shaders.rst
-    multimedia/multimedia.rst
-    networking/networking.rst
-    storage/storage.rst
-    dynamicqml/dynamicqml.rst
-    javascript/javascript.rst
-    qtcpp/qtcpp.rst
-    extensions/extensions.rst
+    ch01-meetqt/meetqt.rst
+    ch02-start/start.rst
+    ch03-qtcreator/qtcreator.rst
+    ch04-qmlstart/qmlstart.rst
+    ch05-fluid/fluid.rst
+    ch06-modelview/modelview.rst
+    ch07-canvas/canvas.rst
+    ch08-particles/particles.rst
+    ch09-shaders/shaders.rst
+    ch10-multimedia/multimedia.rst
+    ch11-networking/networking.rst
+    ch12-storage/storage.rst
+    ch13-dynamicqml/dynamicqml.rst
+    ch14-javascript/javascript.rst
+    ch15-qtcpp/qtcpp.rst
+    ch16-extensions/extensions.rst
 
 
 .. rubric:: Assets
@@ -65,7 +65,6 @@ Source Code Examples
 --------------------
 
 .. include:: examples-list.txt
-
 
 .. rubric:: Chapter Queue
 

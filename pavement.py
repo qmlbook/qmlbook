@@ -7,16 +7,6 @@ from livereload import Server, shell
 def build_all():
     pass
 
-
-@task
-@needs('build_all')
-def build_deploy():
-    with pushd('docs'):
-        with pushd('assets'):
-            excludelist = [ './index.rst', './examples-list.txt' ]
-            for f in filter(lambda x: x not in excludelist, path('.').files('*')):
-                path(f).copy('../../_build/html/assets')
-
 @task
 @needs('build_assets')
 def build_html():
@@ -27,14 +17,14 @@ def build_html():
 def build_pdf():
     pass # needs to be fixed
 #    sh('make latexpdf')
-#    path('_build/latex/qt5_cadaques.pdf').copy('docs/assets')
+#    path('_build/latex/qt5_cadaques.pdf').copy('_build/html/assets')
 
 
 @task
 def build_epub():
     pass # needs to be fixed
 #    sh('make epub')
-#    path('_build/epub/qt5_cadaques.epub').copy('docs/assets')
+#    path('_build/epub/qt5_cadaques.epub').copy('_build/html/assets')
 
 
 @task
@@ -42,7 +32,7 @@ def build_qt():
     pass # needs to be fixed
 #    sh('export QTHELP=True; make qthelp')
 #    sh('qcollectiongenerator _build/qthelp/Qt5CadaquesBook.qhcp')
-#    path('_build/qthelp/Qt5CadaquesBook.qch').copy('docs/assets')
+#    path('_build/qthelp/Qt5CadaquesBook.qch').copy('_build/html/assets')
 
 
 @task
@@ -81,41 +71,31 @@ def live():
 
 @task
 def assets_init():
+    # copy template index.rst into assets
     with pushd('docs'):
         path('assets').makedirs()
     path('assets/index.rst').copy('docs/assets')
+
+    # create _build path assets for generated contents
+    path('_build').makedirs()
+    with pushd('_build'):
+        path('html').makedirs()
+        with pushd('html'):
+            path('assets').makedirs()
 
 
 @task
 @needs('assets_init')
 def build_assets():
     with pushd('docs'):
-        
-        chapters = [ 'meetqt',
-                     'start',
-                     'qtcreator',
-                     'qmlstart',
-                     'fluid',
-                     'modelview',
-                     'canvas',
-                     'particles',
-                     'shaders',
-                     'multimedia',
-                     'networking',
-                     'storage',
-                     'dynamicqml',
-                     'javascript',
-                     'qtcpp',
-                     'extensions' ]
-        
         examples = []
-        for c, n in enumerate(chapters, 1):
-            name = '%s-%s-assets.tgz' % ( ("00" + str(c))[-2:], n)
-            ch = path('.').dirs(n)[0]
+        for ch in path('.').dirs('ch??-*'):
+            name = '%s-assets.tgz' % ch
             if ch.joinpath('src').isdir():
-                examples.append((c, name))
-                sh('tar czf assets/{0} --exclude=".*" {1}/src/'.format(name, n))
+                examples.append((int(ch[4:6]), name))
+                sh('tar czf ../_build/html/assets/{0} --exclude=".*" {1}/src/'.format(name, ch))
                 
+        # files to include from the indexes as all chapters does not have examples
         f = open('examples-list.txt', 'w')
         g = open('assets/examples-list.txt', 'w')
         for c, n in examples:
