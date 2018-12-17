@@ -9,30 +9,43 @@ def build_all():
 
 
 @task
+@needs('build_all')
+def build_deploy():
+    with pushd('docs'):
+        with pushd('assets'):
+            excludelist = [ './index.rst', './examples-list.txt' ]
+            for f in filter(lambda x: x not in excludelist, path('.').files('*')):
+                path(f).copy('../../_build/html/assets')
+
+@task
+@needs('build_assets')
 def build_html():
     sh('make html')
 
 
 @task
 def build_pdf():
-    sh('make latexpdf')
-    path('_build/latex/qt5_cadaques.pdf').copy('assets')
+    pass # needs to be fixed
+#    sh('make latexpdf')
+#    path('_build/latex/qt5_cadaques.pdf').copy('docs/assets')
 
 
 @task
 def build_epub():
-    sh('make epub')
-    path('_build/epub/qt5_cadaques.epub').copy('assets')
+    pass # needs to be fixed
+#    sh('make epub')
+#    path('_build/epub/qt5_cadaques.epub').copy('docs/assets')
 
 
 @task
 def build_qt():
     sh('export QTHELP=True; make qthelp')
     sh('qcollectiongenerator _build/qthelp/Qt5CadaquesBook.qhcp')
-    path('_build/qthelp/Qt5CadaquesBook.qch').copy('assets')
+    path('_build/qthelp/Qt5CadaquesBook.qch').copy('docs/assets')
 
 
 @task
+@needs('build_qt')
 def show_qt():
     sh('assistant -collectionFile _build/qthelp/Qt5CadaquesBook.qch')
 
@@ -40,7 +53,8 @@ def show_qt():
 @task
 def clean():
     sh('make clean')
-    path('assets').rmtree()
+    with pushd('docs'):
+        path('assets').rmtree()
 
 
 @task
@@ -64,25 +78,51 @@ def live():
     server.serve(root='_build/html', open_url_delay=True)
 
 
-ROOT = path('.').abspath()
-ASSETS = path('assets').abspath()
-
-
 @task
 def assets_init():
-    path('assets').makedirs()
+    with pushd('docs'):
+        path('assets').makedirs()
+    path('assets/index.rst').copy('docs/assets')
 
 
 @task
 @needs('assets_init')
 def build_assets():
-    with pushd('en'):
-        for ch in path('.').dirs('ch??'):
-            name = '%s-assets.tgz' % ch
+    with pushd('docs'):
+        
+        chapters = [ 'meetqt',
+                     'start',
+                     'qtcreator',
+                     'qmlstart',
+                     'fluid',
+                     'modelview',
+                     'canvas',
+                     'particles',
+                     'shaders',
+                     'multimedia',
+                     'networking',
+                     'storage',
+                     'dynamicqml',
+                     'javascript',
+                     'qtcpp',
+                     'extensions' ]
+        
+        examples = []
+        for c, n in enumerate(chapters, 1):
+            name = '%s-%s-assets.tgz' % ( ("00" + str(c))[-2:], n)
+            ch = path('.').dirs(n)[0]
             if ch.joinpath('src').isdir():
-                sh('tar czvf ../assets/{0} --exclude=".*" {1}/src/'.format(name, ch))
-
-
+                examples.append((c, name))
+                sh('tar czvf assets/{0} --exclude=".*" {1}/src/'.format(name, n))
+                
+        f = open('examples-list.txt', 'w')
+        g = open('assets/examples-list.txt', 'w')
+        for c, n in examples:
+            f.write("* `Chapter %s examples (%s) <%s>`_\n" % (c, n, "assets/" + n))
+            g.write("* `Chapter %s examples (%s) <%s>`_\n" % (c, n, n))
+        f.close()
+        g.close()
+        
 @task
 @needs('build_all')
 def publish():
@@ -94,4 +134,3 @@ def publish():
         sh('git add .')
         sh('git commit -m "update"')
         sh('git push')
-
