@@ -10,7 +10,7 @@ Networking
 
     Last Build: |today|
 
-    The source code for this chapter can be found in the `assets folder <../../assets>`_.
+    The source code for this chapter can be found in the `assets folder <../assets>`_.
 
 
 Qt 5 comes with a rich set of networking classes on the C++ side. There are for example high-level classes on the HTTP protocol layer in a request-reply fashion such as ``QNetworkRequest``, ``QNetworkReply`` and ``QNetworkAccessManager``. But also lower levels classes on the TCP/IP or UDP protocol layer such as ``QTcpSocket``, ``QTcpServer`` and ``QUdpSocket``. Additional classes exist to manage proxies, network cache and also the systems network configuration.

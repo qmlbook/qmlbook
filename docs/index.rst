@@ -64,20 +64,7 @@ Offline Books
 Source Code Examples
 --------------------
 
-* `Chapter 01 examples (ch01-assets.tgz) <assets/ch01-assets.tgz>`_
-* `Chapter 04 examples (ch04-assets.tgz) <assets/ch04-assets.tgz>`_
-* `Chapter 05 examples (ch05-assets.tgz) <assets/ch05-assets.tgz>`_
-* `Chapter 06 examples (ch06-assets.tgz) <assets/ch06-assets.tgz>`_
-* `Chapter 07 examples (ch07-assets.tgz) <assets/ch07-assets.tgz>`_
-* `Chapter 08 examples (ch08-assets.tgz) <assets/ch08-assets.tgz>`_
-* `Chapter 09 examples (ch09-assets.tgz) <assets/ch09-assets.tgz>`_
-* `Chapter 10 examples (ch10-assets.tgz) <assets/ch10-assets.tgz>`_
-* `Chapter 11 examples (ch11-assets.tgz) <assets/ch11-assets.tgz>`_
-* `Chapter 12 examples (ch12-assets.tgz) <assets/ch12-assets.tgz>`_
-* `Chapter 13 examples (ch13-assets.tgz) <assets/ch13-assets.tgz>`_
-* `Chapter 14 examples (ch14-assets.tgz) <assets/ch14-assets.tgz>`_
-* `Chapter 15 examples (ch15-assets.tgz) <assets/ch15-assets.tgz>`_
-* `Chapter 16 examples (ch16-assets.tgz) <assets/ch16-assets.tgz>`_
+.. include:: examples-list.txt
 
 
 .. rubric:: Chapter Queue
