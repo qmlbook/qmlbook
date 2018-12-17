@@ -98,6 +98,7 @@ def build_assets():
         # files to include from the indexes as all chapters does not have examples
         f = open('examples-list.txt', 'w')
         g = open('assets/examples-list.txt', 'w')
+        examples.sort(key=lambda e: e[0])
         for c, n in examples:
             f.write("* `Chapter %s examples (%s) <%s>`_\n" % (c, n, "assets/" + n))
             g.write("* `Chapter %s examples (%s) <%s>`_\n" % (c, n, n))
