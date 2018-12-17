@@ -10,6 +10,7 @@ before_install:
     - sudo apt-get install -y --no-install-recommends texlive-latex-extra
     - sudo apt-get install -y --no-install-recommends texlive-fonts-recommended
     - sudo apt-get install -y --no-install-recommends graphviz
+    - sudo apt-get install -y --no-install-recommends qttools5-dev-tools
 script:
     - paver build_deploy
     - touch _build/html/.nojekyll
