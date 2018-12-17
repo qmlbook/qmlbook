@@ -14,7 +14,7 @@ Qt Creator is actively developed, with several new releases each year. Therefore
 
 .. note::
 
-    The source code for this chapter can be found in the `assets folder <../../assets>`_.
+    The source code of this chapter can be found in the `assets folder <../assets>`_.
 
 The User Interface
 ==================

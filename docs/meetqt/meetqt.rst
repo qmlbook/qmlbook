@@ -8,7 +8,7 @@ Meet Qt 5
 
 .. tip::
 
-    The source code for this chapter can be found in the `assets folder <../../assets>`_.
+    The source code of this chapter can be found in the `assets folder <../assets>`_.
 
 This book provides you with a walkthrough of the different aspects of application development using Qt 5.12. It focuses on the new Qt Quick technology, but also provides necessary information about writing C++ back-ends and extension for Qt Quick.
 
