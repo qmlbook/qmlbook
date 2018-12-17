@@ -114,7 +114,7 @@ def build_assets():
             ch = path('.').dirs(n)[0]
             if ch.joinpath('src').isdir():
                 examples.append((c, name))
-                sh('tar czvf assets/{0} --exclude=".*" {1}/src/'.format(name, n))
+                sh('tar czf assets/{0} --exclude=".*" {1}/src/'.format(name, n))
                 
         f = open('examples-list.txt', 'w')
         g = open('assets/examples-list.txt', 'w')
