@@ -11,7 +11,7 @@ before_install:
     - sudo apt-get install -y --no-install-recommends texlive-fonts-recommended
     - sudo apt-get install -y --no-install-recommends graphviz
 script:
-    - paver build_deploy
+    - paver build_all
     - touch _build/html/.nojekyll
 deploy:
     provider: pages
