@@ -39,9 +39,10 @@ def build_epub():
 
 @task
 def build_qt():
-    sh('export QTHELP=True; make qthelp')
-    sh('qcollectiongenerator _build/qthelp/Qt5CadaquesBook.qhcp')
-    path('_build/qthelp/Qt5CadaquesBook.qch').copy('docs/assets')
+    pass # needs to be fixed
+#    sh('export QTHELP=True; make qthelp')
+#    sh('qcollectiongenerator _build/qthelp/Qt5CadaquesBook.qhcp')
+#    path('_build/qthelp/Qt5CadaquesBook.qch').copy('docs/assets')
 
 
 @task
