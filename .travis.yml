@@ -9,6 +9,7 @@ before_install:
     - sudo apt-get install -y texlive-latex-recommended 
     - sudo apt-get install -y texlive-latex-extra
     - sudo apt-get install -y texlive-fonts-recommended
+    - sudo apt-get install -y --no-install-recommends latexmk
     - sudo apt-get install -y --no-install-recommends graphviz
 script:
     - paver build_all
