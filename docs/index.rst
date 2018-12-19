@@ -59,7 +59,6 @@ Offline Books
 
 * `Book as eBook <assets/qt5_cadaques.epub>`_
 * `Book as PDF <assets/qt5_cadaques.pdf>`_
-* `Book as QtHelp <assets/Qt5CadaquesBook.qch>`_
 
 Source Code Examples
 --------------------
