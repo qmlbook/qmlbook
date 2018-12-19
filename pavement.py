@@ -68,12 +68,8 @@ def live():
 @task
 def assets_init():
     # create _build path assets for generated contents
-    path('_build').makedirs()
-    with pushd('_build'):
-        path('intermediate').makedirs()
-        path('html').makedirs()
-        with pushd('html'):
-            path('assets').makedirs()
+    path('_build/intermediate').makedirs_p()
+    path('_build/html/assets').makedirs_p()
 
 
 @task
