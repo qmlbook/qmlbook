@@ -13,4 +13,4 @@ Offline Books
 Source Code Examples
 --------------------
 
-.. include:: examples-list.txt
+.. include:: ../../_build/intermediate/assets-assets-list.txt

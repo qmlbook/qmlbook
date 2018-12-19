@@ -44,8 +44,6 @@ def show_qt():
 @task
 def clean():
     sh('make clean')
-    with pushd('docs'):
-        path('assets').rmtree()
 
 
 @task
@@ -71,14 +69,10 @@ def live():
 
 @task
 def assets_init():
-    # copy template index.rst into assets
-    with pushd('docs'):
-        path('assets').makedirs()
-    path('assets/index.rst').copy('docs/assets')
-
     # create _build path assets for generated contents
     path('_build').makedirs()
     with pushd('_build'):
+        path('intermediate').makedirs()
         path('html').makedirs()
         with pushd('html'):
             path('assets').makedirs()
@@ -94,16 +88,18 @@ def build_assets():
             if ch.joinpath('src').isdir():
                 examples.append((int(ch[4:6]), name))
                 sh('tar czf ../_build/html/assets/{0} --exclude=".*" {1}/src/'.format(name, ch))
-                
-        # files to include from the indexes as all chapters does not have examples
-        f = open('examples-list.txt', 'w')
-        g = open('assets/examples-list.txt', 'w')
-        examples.sort(key=lambda e: e[0])
-        for c, n in examples:
-            f.write("* `Chapter %s examples (%s) <%s>`_\n" % (c, n, "assets/" + n))
-            g.write("* `Chapter %s examples (%s) <%s>`_\n" % (c, n, n))
-        f.close()
-        g.close()
+
+    with pushd('_build'):
+        with pushd('intermediate'):
+            # files to include from the indexes as all chapters does not have examples
+            f = open('assets-list.txt', 'w')
+            g = open('assets-assets-list.txt', 'w')
+            examples.sort(key=lambda e: e[0])
+            for c, n in examples:
+                f.write("* `Chapter %s examples (%s) <%s>`_\n" % (c, n[2:], "assets/" + n[2:]))
+                g.write("* `Chapter %s examples (%s) <%s>`_\n" % (c, n[2:], n[2:]))
+            f.close()
+            g.close()
         
 @task
 @needs('build_all')
