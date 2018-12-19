@@ -12,10 +12,11 @@ before_install:
     - sudo apt-get install -y --no-install-recommends latexmk
     - sudo apt-get install -y --no-install-recommends graphviz
 script:
-    - 'export RELEASE_VERSION=$(git rev-parse --abbrev-ref HEAD)'
-    - '[ "$RELEASE_VERSION" == "travis" ] && export RELEASE_VERSION="master" ' # for debug only
+    - export CORRECT_TRAVIS_BRANCH=${TRAVIS_PULL_REQUEST_BRANCH:-$TRAVIS_BRANCH}
+    - . ./travis-setup.sh
     - paver build_all
     - touch _build/html/.nojekyll
+    - ./travis-move.sh
 deploy:
     provider: pages
     skip-cleanup: true
@@ -24,6 +25,5 @@ deploy:
     local-dir: _build/html
     verbose: true
     on:
-        branch: 
-            - travis
-            - master
+        condition: $IS_DEPLOYABLE = Y
+        all_branches: true
