@@ -12,6 +12,8 @@ before_install:
     - sudo apt-get install -y --no-install-recommends latexmk
     - sudo apt-get install -y --no-install-recommends graphviz
 script:
+    - 'export RELEASE_VERSION=$(git rev-parse --abbrev-ref HEAD)'
+    - '[ "$RELEASE_VERSION" == "travis" ] && export RELEASE_VERSION="master" ' # for debug only
     - paver build_all
     - touch _build/html/.nojekyll
 deploy:
@@ -22,4 +24,6 @@ deploy:
     local-dir: _build/html
     verbose: true
     on:
-        branch: travis
+        branch: 
+            - travis
+            - master
