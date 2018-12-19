@@ -25,6 +25,11 @@ As Travis has its own view on how to handle branches, we have to get the branch 
 
 More info: https://graysonkoonce.com/getting-the-current-branch-name-during-a-pull-request-in-travis-ci/
 
+Pull-requests
+-------------
+
+The messed up branch / repo slug situation around pull requests means that we do not build pull requests due to the risk of accidentally overwriting something important. I guess a fix should go into `travis-setup.sh` if you are eager to help.
+
 
 
 Languages
@@ -44,6 +49,8 @@ The branch handling is done via `travis-setup.sh` which is _sourced_ first. It e
 * `RELEASE_VERSION`, used in the build.
 * `IS_DEPLOYABLE`, used to to determine if the output should be deployed or not (based on the branch name).
 * `MOVE_TO`, used to determine if a specific build has to be moved (again, based on the branch name).
+* `DEPLOY_BRANCH`, branch to deploy to.
+* `DEPLOY_SLUG`, repo slug to deploy to.
 
 After this, Paver is used to build a release, including all assets and outputs (pdf, ePub, html, etc). This ends up in `_build/html`.
 
@@ -51,4 +58,4 @@ Then a `.nojekyll` file is created from the script in `.travis.yml` to prevent G
 
 Finally `travis-move.sh` is run. This script relies on the `MOVE_TO` environment variable and moves the contents of `_build/html/` to `_build/html/$MOVE_TO` if `MOVE_TO` is set.
 
-After that, the `deploy.on.condition` in `travis.yml` evaluates if the build is deployable and acts accordingly.
+After that, the `deploy.on.condition` in `travis.yml` evaluates if the build is deployable and acts accordingly, relying on `DEPLOY_SLUG` and `DEPLOY_BRANCH`.
