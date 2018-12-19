@@ -6,9 +6,9 @@ before_install:
     - sudo apt-get update
     - sudo apt-get install -y --no-install-recommends texlive-base
     - sudo apt-get install -y --no-install-recommends texlive-latex-base
-    - sudo apt-get install -y --no-install-recommends texlive-latex-recommended 
-    - sudo apt-get install -y --no-install-recommends texlive-latex-extra
-    - sudo apt-get install -y --no-install-recommends texlive-fonts-recommended
+    - sudo apt-get install -y texlive-latex-recommended 
+    - sudo apt-get install -y texlive-latex-extra
+    - sudo apt-get install -y texlive-fonts-recommended
     - sudo apt-get install -y --no-install-recommends graphviz
 script:
     - paver build_all

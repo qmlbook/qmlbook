@@ -15,9 +15,8 @@ def build_html():
 
 @task
 def build_pdf():
-    pass # TODO needs to be fixed
-#    sh('make latexpdf')
-#    path('_build/latex/qt5_cadaques.pdf').copy('_build/html/assets')
+    sh('make latexpdf')
+    path('_build/latex/qt5_cadaques.pdf').copy('_build/html/assets')
 
 
 @task
