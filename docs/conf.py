@@ -60,7 +60,7 @@ copyright = u'2012-2018 Jürgen Bocklage-Ryannel and Johan Thelin. ' \
 # built documents.
 #
 # The short X.Y version.
-version = '2018-06'
+version = os.environ.get('RELEASE_VERSION', 'local build')
 # The full version, including alpha/beta/rc tags.
 release = version
 
