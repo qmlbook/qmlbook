@@ -21,7 +21,7 @@ deploy:
     provider: pages
     skip-cleanup: true
     github-token: $GITHUB_TOKEN
-    keep-history: false
+    keep-history: true
     local-dir: _build/html
     on:
         condition: $IS_DEPLOYABLE = Y
