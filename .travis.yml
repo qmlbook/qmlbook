@@ -22,7 +22,10 @@ deploy:
     skip-cleanup: true
     github-token: $GITHUB_TOKEN
     keep-history: true
+    repo: $DEPLOY_SLUG
+    target-branch: $DEPLOY_BRANCH
     local-dir: _build/html
+    verbose: true
     on:
         condition: $IS_DEPLOYABLE = Y
         all_branches: true
