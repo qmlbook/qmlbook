@@ -60,7 +60,7 @@ copyright = u'2012-2018 Jürgen Bocklage-Ryannel and Johan Thelin. ' \
 # built documents.
 #
 # The short X.Y version.
-version = '2018-06'
+version = os.environ.get('RELEASE_VERSION', 'local build')
 # The full version, including alpha/beta/rc tags.
 release = version
 
@@ -152,7 +152,7 @@ if on_qthelp:
   html_theme_options = {}
 else:
   html_theme_options = {
-    'bootswatch_theme': "lumen",
+    'bootswatch_theme': "readable",
     'navbar_links': [
     ],
     'navbar_title': "QmlBook",
