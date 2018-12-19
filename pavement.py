@@ -15,16 +15,14 @@ def build_html():
 
 @task
 def build_pdf():
-    pass # needs to be fixed
-#    sh('make latexpdf')
-#    path('_build/latex/qt5_cadaques.pdf').copy('_build/html/assets')
+    sh('make latexpdf')
+    path('_build/latex/qt5_cadaques.pdf').copy('_build/html/assets')
 
 
 @task
 def build_epub():
-    pass # needs to be fixed
-#    sh('make epub')
-#    path('_build/epub/qt5_cadaques.epub').copy('_build/html/assets')
+    sh('make epub')
+    path('_build/epub/qt5_cadaques.epub').copy('_build/html/assets')
 
 
 @task

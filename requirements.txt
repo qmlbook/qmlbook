@@ -1,4 +1,4 @@
-sphinx
+sphinx==1.7
 sphinx-bootstrap-theme
 sphinx-autobuild
 sphinx-intl
