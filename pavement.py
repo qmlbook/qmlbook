@@ -61,7 +61,7 @@ def serve():
 @needs('build_html')
 def live():
     server = Server()
-    server.watch('en', shell('paver build_html', cwd='.'))
+    server.watch('docs', shell('paver build_html', cwd='.'))
     server.serve(root='_build/html', open_url_delay=True)
 
 
@@ -94,7 +94,7 @@ def build_assets():
                 g.write("* `Chapter %s examples (%s) <%s>`_\n" % (c, n[2:], n[2:]))
             f.close()
             g.close()
-        
+
 @task
 @needs('build_all')
 def publish():
