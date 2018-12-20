@@ -32,14 +32,13 @@ def html_visit_github_node(self, node):
     aname = ''
     if node.parent.hasattr('ids') and node.parent['ids']:
         aname = node.parent['ids'][0]
-    target = self.builder.get_target_uri(self.builder.current_docname)
-    back_link = 'back-link: %s#%s' % (target, aname)
+    docname = self.builder.current_docname
+    view_url = '%s/issues?labels=%s&page=1&state=open' % (base_url, label)
+    source_url = '%s/blob/master/docs/%s.rst' % (base_url, docname)
+    edit_url = '%s/edit/master/docs/%s.rst' % (base_url, docname)
+    back_link = 'back-link: %s.html#%s' % (docname, aname)
     query = urlencode({'labels': label, 'body': back_link})
     create_url = '%s/issues/new?%s' % (base_url, query)
-    view_url = '%s/issues?labels=%s&page=1&state=open' % (base_url, label)
-    document_name = os.path.basename(node.source)
-    edit_url = '%s/edit/master/%s' % (base_url, document_name)
-    source_url = '%s/blob/master/%s' % (base_url, document_name)
     self.body.append('<p><div class="btn-group btn-group-justified" role="group">')
     self.body.append('<a class="btn btn-primary btn-xs" href="%s" target="_blank">Github</a>' % base_url)
     self.body.append('<a class="btn btn-primary btn-xs" href="%s" target="_blank"><i class="glyphicon glyphicon-file"></i> View</a>' % source_url)
