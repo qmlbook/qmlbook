@@ -1,7 +1,7 @@
 QmlBook Project
 ====================
 
-[![Join the chat at https://gitter.im/qmlbook/qmlbook](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/qmlbook/qmlbook?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Join the chat at https://gitter.im/qmlbook/qmlbook](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/qmlbook/qmlbook?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge) [![Build Status](https://travis-ci.org/qmlbook/qmlbook.svg?branch=master)](https://travis-ci.org/qmlbook/qmlbook)
 
 This is the source code for the QML book contents (http://qmlbook.org). It is licensed under the Creative Commons Attribution-Non Commercial-Share Alike 4.0 license. We hope you enjoy it and we hope it helps you to learn Qt5.
 
