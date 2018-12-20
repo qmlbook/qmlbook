@@ -30,14 +30,10 @@ To load a simple user interface via HTTP we need to have a web-server, which ser
 
 To serve this file we launch a small python script::
 
-.. code-block:: sh
-
     $ cd <PROJECT>
-    # python -m SimpleHTTPServer 8080
+    $ python -m SimpleHTTPServer 8080
 
 Now our file should be reachable via ``http://localhost:8080/main.qml``. You can test it with::
-
-.. code-block:: sh
 
     $ curl http://localhost:8080/main.qml
 
@@ -47,7 +43,9 @@ Or just point your browser to the location. Your browser does not understand QML
     :start-after: M1>>
     :end-before: <<M1
 
-Now we can ask the ``qmlscene`` to load the local ``remote.qml`` loader document. There is one glitch still. The loader will resize to the size of the loaded item. And our ``qmlscene`` needs also to adapt to that size. This can be accomplished using the ``--resize-to-root`` option to the ``qmlscene``::
+Now we can ask the ``qmlscene`` to load the local ``remote.qml`` loader document. There is one glitch still. The loader will resize to the size of the loaded item. And our ``qmlscene`` needs also to adapt to that size. This can be accomplished using the ``--resize-to-root`` option to the ``qmlscene``,
+
+.. code-block:: sh
 
     $ qmlscene --resize-to-root remote.qml
 
@@ -71,7 +69,7 @@ Networked Components
 
 Let us create a small experiment. We add to our remote side a small button as a reusable component.
 
-::
+.. code-block:: sh
 
     - src/main.qml
     - src/Button.qml
@@ -92,19 +90,23 @@ We modify our ``main.qml`` to use the button and save it as ``main2.qml``::
         }
     }
 
-And launch our web-server again::
+And launch our web-server again
 
 .. code-block:: sh
 
     $ cd src
-    # python -m SimpleHTTPServer 8080
+    $ python -m SimpleHTTPServer 8080
 
 
-And our remote loader loads the main QML via HTTP again::
+And our remote loader loads the main QML via HTTP again
+
+.. code-block:: sh
 
     $ qmlscene --resize-to-root remote.qml
 
-What we see is an error::
+What we see is an error
+
+.. code-block:: sh
 
     http://localhost:8080/main2.qml:11:5: Button is not a type
 
@@ -377,7 +379,7 @@ And we can test it with using curl again. For example to get the red color entry
 
 .. code-block:: sh
 
-    curl -i -GET http://localhost:5000/colors/red
+    $ curl -i -GET http://localhost:5000/colors/red
 
 It will return one color entry as JSON data.
 
