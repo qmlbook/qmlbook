@@ -77,5 +77,5 @@ The chapter queue is the chapters we are working on. They might be almost ready 
     deployment/deployment.rst
     qtpython/qtpython.rst
     draganddrop/draganddrop.rst
-
+    android/android.rst
 
