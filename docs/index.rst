@@ -49,6 +49,7 @@ We are heavily working on this book and that means several things:
     ch15-javascript/javascript.rst
     ch16-qtcpp/qtcpp.rst
     ch17-extensions/extensions.rst
+    ch18-python/python.rst
 
 
 .. rubric:: Assets
@@ -76,5 +77,4 @@ The chapter queue is the chapters we are working on. They might be almost ready 
     
     testing/testing.rst
     deployment/deployment.rst
-    qtpython/qtpython.rst
     draganddrop/draganddrop.rst
