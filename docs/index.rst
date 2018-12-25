@@ -37,17 +37,18 @@ We are heavily working on this book and that means several things:
     ch03-qtcreator/qtcreator.rst
     ch04-qmlstart/qmlstart.rst
     ch05-fluid/fluid.rst
-    ch06-modelview/modelview.rst
-    ch07-canvas/canvas.rst
-    ch08-particles/particles.rst
-    ch09-shaders/shaders.rst
-    ch10-multimedia/multimedia.rst
-    ch11-networking/networking.rst
-    ch12-storage/storage.rst
-    ch13-dynamicqml/dynamicqml.rst
-    ch14-javascript/javascript.rst
-    ch15-qtcpp/qtcpp.rst
-    ch16-extensions/extensions.rst
+    ch06-controls/controls.rst
+    ch07-modelview/modelview.rst
+    ch08-canvas/canvas.rst
+    ch09-particles/particles.rst
+    ch10-shaders/shaders.rst
+    ch11-multimedia/multimedia.rst
+    ch12-networking/networking.rst
+    ch13-storage/storage.rst
+    ch14-dynamicqml/dynamicqml.rst
+    ch15-javascript/javascript.rst
+    ch16-qtcpp/qtcpp.rst
+    ch17-extensions/extensions.rst
 
 
 .. rubric:: Assets
@@ -77,5 +78,3 @@ The chapter queue is the chapters we are working on. They might be almost ready 
     deployment/deployment.rst
     qtpython/qtpython.rst
     draganddrop/draganddrop.rst
-
-

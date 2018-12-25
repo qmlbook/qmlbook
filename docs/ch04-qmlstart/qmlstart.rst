@@ -130,7 +130,7 @@ Basic Elements
 
 Elements can be grouped into visual and non-visual elements. A visual element (like the ``Rectangle``) has a geometry and normally presents an area on the screen. A non-visual element (like a ``Timer``) provides general functionality, normally used to manipulate the visual elements.
 
-Currently, we will focus on the fundamental visual elements, such as ``Item``, ``Rectangle``, ``Text``, ``Image`` and ``MouseArea``.
+Currently, we will focus on the fundamental visual elements, such as ``Item``, ``Rectangle``, ``Text``, ``Image`` and ``MouseArea``. However, by using the Qt Quick Controls 2 module, it is possible to create user interfaces built from standard platform components such as buttons, labels and sliders.
 
 Item Element
 ------------
@@ -677,10 +677,3 @@ Advanced Techniques
 .. issues:: ch04
 
 .. todo:: To be written
-
-
-
-
-
-
-

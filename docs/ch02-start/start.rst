@@ -199,8 +199,8 @@ In the next snippet, we read a CSV file from the local directory and loop over t
 
 This concludes the section about console based applications with Qt.
 
-Widget Application
-------------------
+C++ Widget Application
+----------------------
 
 Console based applications are very handy, but sometimes you need to have a graphical user interface (GUI). In addition, GUI-based applications will likely need a back-end to read/write files, communicate over the network, or keep data in a container.
 
@@ -531,6 +531,16 @@ To enable the ``cityModel``, we can mostly re-use our previous model, and add a 
 .. hint::
 
     This is not completely correct, as the SQL table model contains the data in columns and a QML model expects the data as roles. So there needs to be a mapping between columns and roles. See the `QML and QSqlTableModel <http://wiki.qt.io/QML_and_QSqlTableModel>`_ wiki page.
+
+Qt Quick Controls Application
+-----------------------------
+
+tbd
+
+Qt Quick Controls Application
+-----------------------------
+
+tbd
 
 
 Summary

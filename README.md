@@ -108,3 +108,9 @@ information.
 * `multimedia/src/sound-effects/beep.wav`
     - License: CC0
     - Source:  http://www.freesound.org/people/reecord2/sounds/96063/
+* `controls/src/imageviewer-mobile/images/baseline-menu-24px.svg`
+    - License: Apache-2.0
+    - Source: https://material.io/tools/icons/?icon=menu&style=baseline
+* `controls/src/imageviewer-all/images/baseline-menu-24px.svg`
+    - License: Apache-2.0
+    - Source: https://material.io/tools/icons/?icon=menu&style=baseline
