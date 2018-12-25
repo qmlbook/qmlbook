@@ -2,7 +2,7 @@
 Storage
 =======
 
-.. github:: ch12
+.. github:: ch13
 
 .. sectionauthor:: `jryannel <https://github.com/jryannel>`_
 

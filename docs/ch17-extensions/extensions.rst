@@ -4,7 +4,7 @@ Extending QML with C++
 
 .. sectionauthor:: `jryannel <https://github.com/jryannel>`_
 
-.. github:: ch16
+.. github:: ch17
 
 .. note::
 

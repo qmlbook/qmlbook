@@ -4,7 +4,7 @@ JavaScript
 
 .. sectionauthor:: `jryannel <https://github.com/jryannel>`_
 
-.. github:: ch14
+.. github:: ch15
 
 .. note::
 

@@ -4,7 +4,7 @@ Qt Quick Controls 2
 
 .. sectionauthor:: `e8johan <https://github.com/e8johan>`_
 
-.. github:: ch105
+.. github:: ch06
 
 .. note::
 
