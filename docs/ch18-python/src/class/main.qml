@@ -4,8 +4,7 @@ import QtQuick.Controls 2.0
 
 import Generators 1.0
 
-Window 
-{
+Window {
     id: root
     
     width: 640
