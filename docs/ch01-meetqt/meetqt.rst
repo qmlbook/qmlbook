@@ -244,26 +244,52 @@ The minimal set of Qt 5 modules to start QML programming.
 .. digraph:: essentials
     :align: center
 
-    QtGui -> QtCore
-    QtNetwork -> QtCore
-    QtMultimedia -> QtGui
-    QtQml -> QtCore
-    QtQuick -> QtQml
-    QtSql -> QtCore
-
+    "Qt Gui" -> "Qt Core"
+    "Qt Network" -> "Qt Core"
+    "Qt Multimedia" -> "Qt Gui"
+    "Qt Multimedia Widgets" -> "Qt Widgets"
+    "Qt Qml" -> "Qt Core"
+    "Qt Quick" -> "Qt Qml"
+    "Qt Quick Controls 2" -> "Qt Quick"
+    "Qt Quick Dialogs" -> "Qt Quick"
+    "Qt Quick Layout" -> "Qt Quick"
+    "Qt Quick Test" -> "Qt Quick"
+    "Qt Sql" -> "Qt Core"
+    "Qt Test" -> "Qt Core"
+    "Qt Widgets" -> "Qt Core"
 
 .. rubric:: Qt Add-On Modules
 
-Besides the essential modules, Qt offers additional modules that target specific purposes. Many add-on modules are either feature-complete and exist for backwards compatibility, or are only applicable to certain platforms. Here is a list of some of the available add-on modules, but make sure you familiarize yourself with them all in the `Qt documentation add-ons list <https://doc-snapshots.qt.io/qt5-5.12/qtmodules.html#qt-add-ons>`_.
+Besides the essential modules, Qt offers additional modules that target specific purposes. Many add-on modules are either feature-complete and exist for backwards compatibility, or are only applicable to certain platforms. Here is a list of some of the available add-on modules, but make sure you familiarize yourself with them all in the `Qt documentation add-ons list <https://doc-snapshots.qt.io/qt5-5.12/qtmodules.html#qt-add-ons>`_ and in the list below.
 
-* Qt 3D - A set of APIs to make 3D graphics programming easy and declarative.
-* Qt Android Extras - Provides platform-specific APIs for Android.
-* Qt Bluetooth - C++ and QML APIs for platforms using Bluetooth wireless technology.
-* Qt Contacts - C++ and QML APIs for accessing address books / contact databases.
-* Qt Gamepad - Enables Qt applications to support the use of gamepad hardware.
-* Qt Location - Provides location positioning, mapping, navigation, and place search via QML and C++ interfaces. NMEA backend for positioning.
-* Qt Sensors - Access to sensors via QML and C++ interfaces.
-* Qt Wayland Compositor - Linux only. Provides a framework to develop a Wayland compositor.
+.. list-table::
+    :widths: 20 80
+    :header-rows: 1
+
+    *   - Module
+        - Description
+    *   - Qt 3D 
+        - A set of APIs to make 3D graphics programming easy and declarative.
+    *   - Qt Bluetooth 
+        - C++ and QML APIs for platforms using Bluetooth wireless technology.
+    *   - Qt Canvas 3D
+        - Enables OpenGL-like 3D drawing calls from Qt Quick applications using JavaScript.
+    *   - Qt Graphical Effects
+        - Graphical effects for use with Qt Quick 2.
+    *   - Qt Location
+        - Displays map, navigation, and place content in a QML application.
+    *   - Qt Network Authorization
+        - Provides support for OAuth-based authorization to online services.
+    *   - Qt Positioning
+        - Provides access to position, satellite and area monitoring classes.
+    *   - Qt Purchasing
+        - Enables in-app purchase of products in Qt applications. (Only for Android, iOS and MacOS).
+    *   - Qt Sensors 
+        - Provides access to sensors and motion gesture recognition.
+    *   - Qt Wayland Compositor
+        - Provides a framework to develop a Wayland compositor. (Only for Linux).
+    *   - Qt Virtual Keyboard
+        - A framework for implementing different input methods as well as a QML virtual keyboard. Supports localized keyboard layouts and custom visual themes.
 
 .. note::
 
@@ -282,11 +308,11 @@ Qt Project
 
 From the `Qt Project wiki <http://wiki.qt.io/>`_:
 
-"The Qt Project is a meritocratic consensus-based community interested in Qt. Anyone who shares that interest can join the community, participate in its decision-making processes, and contribute to Qt’s development."
+    "The Qt Project is a meritocratic consensus-based community interested in Qt. Anyone who shares that interest can join the community, participate in its decision-making processes, and contribute to Qt’s development."
 
-The Qt Project is an organization which develops the open-source part of the Qt further. It forms the base for other users to contribute. The biggest contributor is DIGIA, which holds also the commercial rights to Qt.
+The Qt Project is an organization which develops the open-source part of the Qt further. It forms the base for other users to contribute. The biggest contributor is The Qt Company, which holds also the commercial rights to Qt.
 
-Qt has an open-source aspect and a commercial aspect for companies. The commercial aspect is for companies which can not or will not comply with the open-source licenses. Without the commercial aspect, these companies would not be able to use Qt and it would not allow DIGIA to contribute so much code to the Qt Project.
+Qt has an open-source aspect and a commercial aspect for companies. The commercial aspect is for companies which can not or will not comply with the open-source licenses. Without the commercial aspect, these companies would not be able to use Qt and it would not allow The Qt Company to contribute so much code to the Qt Project.
 
 There are many companies worldwide, which make the living out of consultancy and product development using Qt on the various platforms. There are many open-source projects and open-source developers, which rely on Qt as their major development library. It feels good to be part of this vibrant community and to work with this awesome tools and libraries. Does it make you a better person? Maybe:-)
 

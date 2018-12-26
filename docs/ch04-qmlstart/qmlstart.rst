@@ -34,13 +34,15 @@ Let's start with a simple example of a QML file to explain the different syntax.
     :start-after: M1>>
     :end-before: <<M1
 
-* The ``import`` statement imports a module in a specific version. In general, you always want to import *QtQuick 2.0* as your initial set of elements
+* The ``import`` statement imports a module in a specific version.
 * Comments can be made using ``//`` for single line comments or ``/* */`` for multi-line comments. Just like in C/C++ and JavaScript
 * Every QML file needs to have exactly one root element, like HTML
 * An element is declared by its type followed by ``{ }``
 * Elements can have properties, they are in the form `` name: value``
 * Arbitrary elements inside a QML document can be accessed by using their ``id`` (an unquoted identifier)
 * Elements can be nested, meaning a parent element can have child elements. The parent element can be accessed using the ``parent`` keyword
+
+The ``import`` statement you import a specific version of a module. For the QML modules that comes with Qt the version is linked to the Qt version you intend to use. The lower the version number, the earlier Qt version can be used. The minor version of the ``import`` statement matches the minor version of the Qt release, so Qt 5.11 corresponds to ``QtQuick`` 2.11, Qt 5.12 to ``QtQuick`` 5.12 and so on. Prior to Qt 5.11, the QML modules shipped with Qt had their own versioning sequences, meaning that ``QtQuick`` followed the Qt versions, while ``QtQuick.Controls`` started with version 2.0 at Qt 5.7 and was at version 2.4 by Qt 5.11.
 
 .. tip::
 
@@ -286,6 +288,10 @@ To interact with these elements you often will use a ``MouseArea``. It's a recta
 .. note::
 
     This is an important aspect of Qt Quick, the input handling is separated from the visual presentation. By this it allows you to show the user an interface element, but the interaction area can be larger.
+    
+.. note::
+
+    For more complex interaction, `Qt Quick Input Handlers <https://doc-snapshots.qt.io/qt5-dev/qtquickhandlers-index.html>`_ where introduced with Qt 5.12. They are intended to be used instead of elements such as ``MouseArea`` and ``Flickable`` and offer greater control and flexibility. The idea is to handle one interaction aspect in each handler instance instead of centralizing the handling of all events from a given source in a single element, which was the case before.
 
 Components
 ==========
@@ -606,7 +612,7 @@ We rewrite our ``KeyNavigation`` example with the new ``TLineEditV1`` component.
 
 .. figure:: assets/textinput3.png
 
-And try the tab key for navigation. You will experience the focus does not change to ``input2``. The simple use of ``focus: true`` is not sufficient. The problem arises, that the focus was transferred to the ``input2`` element the top-level item inside the TlineEditV1 (our Rectangle) received focus and did not forward the focus to the TextInput. To prevent this QML offers the FocusScope.
+And try the tab key for navigation. You will experience the focus does not change to ``input2``. The simple use of ``focus: true`` is not sufficient. The problem arises, that the focus was transferred to the ``input2`` element the top-level item inside the ``TlineEditV1`` (our ``Rectangle``) received focus and did not forward the focus to the ``TextInput``. To prevent this QML offers the ``FocusScope``.
 
 FocusScope
 ----------
@@ -676,4 +682,11 @@ Advanced Techniques
 
 .. issues:: ch04
 
-.. todo:: To be written
+Performance of QML
+------------------
+
+QML and Javascript are interpreted languages. This means that they do not have to be processed by a compiler before being executed. Instead, they are being run inside an execution engine. However, as interpretation is a costly operation various techniques are used to improvide performance. 
+
+The QML engine uses just-in-time (JIT) compilation to improve performance. It also caches the intermediate output to avoid having to recompile. This works seamlessly for you as a developer. The only trace of this is that files ending with ``qmlc`` and ``jsc`` can be found next to the source files.
+
+If you want to avoid the initial start-up penalty induced by the initial parsing you can also pre-compile your QML and Javascript. This requires you to put your code into a Qt resource file and is described in detail in the `Compiling QML Ahead of Time <http://doc.qt.io/qt-5/qtquick-deployment.html#compiling-qml-ahead-of-time>`_ chapter in the Qt documentation.

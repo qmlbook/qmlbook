@@ -117,6 +117,10 @@ The viewfinder part of the camera is simply a ``Camera`` element used as ``sourc
 .. literalinclude:: src/camera/main.qml
     :start-after: M1>>
     :end-before: <<M1
+    
+.. note::
+
+    For more control over the camera behaviour, for instance to control exposure or focus settings, use the ``exposure`` and ``focus`` properties of the ``Camera`` object. These expose a whole range of settings made available through the `CameraExposure <http://doc.qt.io/qt-5/qml-qtmultimedia-cameraexposure.html>`_ and `CameraFocus <http://doc.qt.io/qt-5/qml-qtmultimedia-camerafocus.html>`_ elements.
 
 The list of photos is a ``ListView`` oriented horizontally shows images from a ``ListModel`` called ``imagePaths``. In the background, a semi-transparent black ``Rectangle`` is used.
 
@@ -149,28 +153,20 @@ Advanced Techniques
 
 .. issues:: ch10
 
-.. todo:: The Camera API of Qt 5 is really lacking in documentation right now. I would love to cover more advanced camera controls such as exposure and focusing, but there are no ranges or values, nor clear guides to how to use the APIs in the reference docs right now.
-
-Implementing a Playlist
-=======================
+Using a Playlist
+================
 
 .. issues:: ch10
 
-The Qt 5 multimedia API does not provide support for playlists. Luckily, it is easy to build one. The idea is to be able to set it up with a model of items and a ``MediaPlayer`` element, as shown below. The ``Playlist`` element is responsible for setting the ``source`` of the ``MediaPlayer``, while the play state is controlled via the player.
+Since Qt 5.6 the QML multimedia API supports playlists. Simply assign a ``Playlist`` instance to the ``playlist`` property of your ``MediaPlayer``. The ``Playlist`` element will then take care of setting the ``source`` of the ``MediaPlayer``, while the play state is controlled via the player.
 
 .. literalinclude:: src/playlist/main.qml
     :start-after: M1>>
     :end-before: <<M1
 
-The first half of the ``Playlist`` element, shown below, takes care of setting the ``source`` element given an index in the ``setIndex`` function. It also implements the ``next`` and ``previous`` functions to navigate the list.
+To make the player start playing, simply set the playlist ``currentIndex`` and tell the ``MediaPlayer`` to start playing.
 
-.. literalinclude:: src/playlist/Playlist.qml
-    :start-after: M1>>
-    :end-before: <<M1
-
-The trick to making the playlist continue to the next element at the end of each element is to monitor the ``status`` property of the ``MediaPlayer``. As soon as the ``MediaPlayer.EndOfMedia`` state is reached, the index is increased and playback resumed, or, if the end of the list is reached, the playback is stopped.
-
-.. literalinclude:: src/playlist/Playlist.qml
+.. literalinclude:: src/playlist/main.qml
     :start-after: M2>>
     :end-before: <<M2
 

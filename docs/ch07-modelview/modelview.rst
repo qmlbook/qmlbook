@@ -324,6 +324,8 @@ Another detail specific to ``PathView`` worth noticing is the usage of the attac
 
 When transforming images or other complex elements on in ``PathView``, a performance optimization trick that is common to use is to bind the ``smooth`` property of the ``Image`` element to the attached property ``PathView.view.moving``. This means that the images are less pretty while moving but smoothly transformed when stationary. There is no point spending processing power on smooth scaling when the view is in motion, as the user will not be able to see this anyway.
 
+When using the ``PathView`` and changing the ``currentIndex`` programatically you might want to control the direction that the path moves in. You can do this using the ``movementDirection`` property. It can be set to ``PathView.Shortest``, which is the default value. This means that the movement can be either direction, depending on which way is the closest way to move to the target value. The direction can instead be restricted by setting ``movementDirection`` to ``PathView.Negative`` or ``PathView.Positive``.
+
 
 A Model from XML
 ----------------
@@ -335,13 +337,12 @@ As XML is a ubiquitous data format, QML provides the ``XmlListModel`` element th
 The example below demonstrates fetching images from an RSS flow. The ``source`` property refers to a remote location over HTTP, and the data is automatically downloaded.
 
 .. figure:: assets/automatic/xmllistmodel-images.png
-    :scale: 50%
 
 When the data has been downloaded, it is processed into model items and roles. The ``query`` property is an XPath representing the base query for creating model items. In this example, the path is ``/rss/channel/item``, so for every item tag, inside a channel tag, inside an RSS tag, a model item is created.
 
 For every model item, a number of roles are extracted. These are represented by ``XmlRole`` elements. Each role is given a name, which the delegate can access through an attached property. The actual value of each such property is determined through the XPath query for each role. For instance, the ``title`` property corresponds to the ``title/string()`` query, returning the contents between the ``<title>`` and ``</title>`` tags.
 
-The ``imageSource`` property is more interesting as it not only extracts a string from the XML but also processes it. In the stream provided, every item contains an image, represented by an ``<img src=`` tag. Using the ``substring-after`` and ``substring-before`` XPath functions, the location of the image is extracted and returned. Thus the ``imageSource`` property can be used directly as the ``source`` for an ``Image`` element.
+The ``imageSource`` property extracts the value of an attribute of a tag instead of the contents of the tag. In this case, the ``url`` attribute of the ``enclosure`` tag is extracted as a string. The ``@`` is used to indicate that an attribute is requested. The ``imageSource`` property can then be used directly as the ``source`` for an ``Image`` element, which loads the image from the given URL.
 
 .. literalinclude:: src/xmllistmodel/images.qml
     :start-after: M1>>
@@ -370,6 +371,35 @@ The example below demonstrates the section concept by showing a list of spacemen
 .. literalinclude:: src/listview/sections.qml
     :start-after: M1>>
     :end-before: <<M1
+
+The ObjectModel
+---------------
+
+In some cases you might want to use a list view for a large set of different items. You can solve this using dynamic QML and ``Loader``, but another options is to use an ``ObjectModel`` from the ``QtQml.Models`` module. The object model is different from other models as it lets you put the actual visual elements side the model. That way, the view does not need any ``delegate``.
+
+.. figure:: assets/automatic/delegates-objectmodel.png
+
+In the example below we put three ``Rectangle`` elements into the ``ObjectModel``. However, one rectangle has a ``Text`` element child while the last one has rounded corners. This would have resulted in a table-style model using something like a ``ListModel``. It would also have resulted in empty ``Text`` elements in the model.
+
+.. literalinclude:: src/delegates/objectmodel.qml
+    :start-after: M1>>
+    :end-before: <<M1
+
+Another aspect of the ``ObjectModel`` is that is can be dynamically populated using the ``get``, ``insert``, ``move``, ``remove``, and ``clear`` methods. This way, the contents of the model can be dynamically generated from various sources and still easily shown in a single view.
+
+Models with Actions
+-------------------
+
+Since 5.11, the ``ListElement`` type supports the binding of Javascript functions to properties. This means that you can put functions into a model. This is very useful when building menus with actions and similar constructs.
+
+The example below demonstrates this by having a model of cities that greet you in different ways. The ``actionModel`` is a model of four cities, but the ``hello`` property is bound to functions. Each function takes an argument ``value``, but you can have any number arguments.
+
+In the delegate ``actionDelegate``, the ``MouseArea`` calls the function ``hello`` as an ordinary function and this results a call to the corresponding ``hello`` property in the model.
+
+.. literalinclude:: src/delegates/model-action.qml
+    :start-after: M1>>
+    :end-before: <<M1
+
 
 Tuning Performance
 ------------------

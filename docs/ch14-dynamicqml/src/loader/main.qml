@@ -55,6 +55,7 @@ Rectangle {
             binder.target = dialLoader.item;
         }
     }
+    
     Binding {
         id: binder
 
