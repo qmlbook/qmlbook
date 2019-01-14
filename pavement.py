@@ -81,7 +81,7 @@ def build_assets():
             name = '%s-assets.tgz' % ch
             if ch.joinpath('src').isdir():
                 examples.append((int(ch[4:6]), name))
-                sh('tar czf ../_build/html/assets/{0} --exclude=".*" {1}/src/'.format(name, ch))
+                sh('tar czf ../_build/html/assets/{0} {1}/src/'.format(name, ch))
 
     with pushd('_build'):
         with pushd('intermediate'):
