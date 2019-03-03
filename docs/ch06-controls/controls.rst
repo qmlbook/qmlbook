@@ -406,7 +406,7 @@ In the ``onAccepted`` handler a new document window is instantiated using the ``
 .. literalinclude:: src/interface-document-window/DocumentWindow.qml
     :lines: 5, 7-9, 62-66, 89-98, 139-
 
-The file name belogs to a pair of properties describing the document: ``_fileName`` and ``_isDirty``. The ``_fileName`` holds the file name of the document name and ``_isDirty`` is set when the document has unsaved changes. This is used by the save and save as logic, which is shown below.
+The file name belongs to a pair of properties describing the document: ``_fileName`` and ``_isDirty``. The ``_fileName`` holds the file name of the document name and ``_isDirty`` is set when the document has unsaved changes. This is used by the save and save as logic, which is shown below.
 
 When trying to save a document without a name, the ``saveAsDocument`` is invoked. This results in a round-trip over the ``saveAsDialog``, which sets a file name and then tries to save again in the ``onAccepted`` handler.
 
