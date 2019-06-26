@@ -42,7 +42,7 @@ Let's start with a simple example of a QML file to explain the different syntax.
 * Arbitrary elements inside a QML document can be accessed by using their ``id`` (an unquoted identifier)
 * Elements can be nested, meaning a parent element can have child elements. The parent element can be accessed using the ``parent`` keyword
 
-The ``import`` statement you import a specific version of a module. For the QML modules that comes with Qt the version is linked to the Qt version you intend to use. The lower the version number, the earlier Qt version can be used. The minor version of the ``import`` statement matches the minor version of the Qt release, so Qt 5.11 corresponds to ``QtQuick`` 2.11, Qt 5.12 to ``QtQuick`` 5.12 and so on. Prior to Qt 5.11, the QML modules shipped with Qt had their own versioning sequences, meaning that ``QtQuick`` followed the Qt versions, while ``QtQuick.Controls`` started with version 2.0 at Qt 5.7 and was at version 2.4 by Qt 5.11.
+The ``import`` statement you import a specific version of a module. For the QML modules that comes with Qt the version is linked to the Qt version you intend to use. The lower the version number, the earlier Qt version can be used. The minor version of the ``import`` statement matches the minor version of the Qt release, so Qt 5.11 corresponds to ``QtQuick`` 2.11, Qt 5.12 to ``QtQuick`` 2.12 and so on. Prior to Qt 5.11, the QML modules shipped with Qt had their own versioning sequences, meaning that ``QtQuick`` followed the Qt versions, while ``QtQuick.Controls`` started with version 2.0 at Qt 5.7 and was at version 2.4 by Qt 5.11.
 
 .. tip::
 
