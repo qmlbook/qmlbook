@@ -375,7 +375,7 @@ For safety, we do not use the ``eval`` function from JS as this would allow the 
       try {
           var fun = new Function('return (' + exp + ');');
           data.result = JSON.stringify(fun.call(scope), null, 2)
-          console.log('scope: ' + JSON.stringify(scope, null, 2) + 'result: ' + result)
+          console.log('scope: ' + JSON.stringify(scope, null, 2) + 'result: ' + data.result)
       } catch(e) {
           console.log(e.toString())
           data.error = e.toString();
