@@ -14,13 +14,16 @@ Last Build: |today|
 
 Welcome to the online book of Qt5 Cadaques! Why Qt5? Because Qt5 is awesome! Why Cadaques? Because one of the authors had a great holiday in this rocky coastline in the north-east of Spain.
 
-The entire collection of chapters covering Qt5 programming, written by Juergen Bocklage-Ryannel and Johan Thelin, is available here. All book content is licensed under the `Creative Commons Attribution Non-Commercial Share Alike 4.0  <http://creativecommons.org/licenses/by-nc/4.0>`_ license and examples are licensed under the `BSD <http://en.wikipedia.org/wiki/BSD_licenses>`_ license.
+The entire collection of chapters covering Qt5 programming, written by Jürgen Bocklage-Ryannel and Johan Thelin, is available here. All book content is licensed under the `Creative Commons Attribution Non-Commercial Share Alike 4.0  <http://creativecommons.org/licenses/by-nc/4.0>`_ license and examples are licensed under the `BSD <http://en.wikipedia.org/wiki/BSD_licenses>`_ license.
 
-We are heavily working on this book and that means several things:
+.. admonition:: Personal Note
 
-#. **It's not done**. We will be releasing new chapters from time to time and updating existing chapters on the go.
-#. **We love your support**. If you find any errors or have suggestions, please use our feedback system (the issues links). It will create a new ticket-entry in our ticket system and help us to keep track.
-#. **Be patient.** We are working in our spare time on the book and we depend on the support of our companies and family.
+    Jürgen Ryannel, the lead author has stopped working in his normal job and is bootstrapping a new company called `ApiGear <https://apigear.io>`_, which is all about API architectures.
+    While the company is slowly forming, Jürgen is available for freelancing, ideally in the area of UI creating using QML or UI Architecture coaching. You can reach him via `LinkedIn <https://www.linkedin.com/in/jryannel/>`_.
+
+    / jryannel
+    
+
 
 **Enjoy!**
 

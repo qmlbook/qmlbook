@@ -3,22 +3,22 @@
 }
 */
 .alert-info a {
-    color: white;
-    text-decoration: underline;
+  color: white;
+  text-decoration: underline;
 }
 
 .alert-info {
-    background-color: #43ac6a;
+  background-color: #2780e3;
 }
 
 code {
-    background-color: #ffffff33;
+  background-color: #ffffff33;
 }
 
 .figure {
-    text-align: center;
+  text-align: center;
 }
 
 .bs-sidenav {
-    padding: 10px;
+  padding: 10px;
 }

@@ -11,7 +11,8 @@
 # All configuration values have a default; values that are commented out
 # serve to show the default.
 
-import sys, os
+import sys
+import os
 import sphinx_bootstrap_theme
 
 on_qthelp = os.environ.get('QTHELP', None) == 'True'
@@ -33,7 +34,7 @@ extensions = [
     'youtube',
     'issues',
     'github',
-    ]
+]
 
 issues_base_url = 'https://github.com/qmlbook/qmlbook/'
 github_base_url = 'https://github.com/qmlbook/qmlbook/'
@@ -53,7 +54,7 @@ master_doc = 'index'
 # General information about the project.
 project = u'Qt5 Cadaques Book'
 copyright = u'2012-2018 Jürgen Bocklage-Ryannel and Johan Thelin. ' \
-  'This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License'
+    'This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -77,7 +78,7 @@ today_fmt = '%B %d, %Y at %H:%M CET'
 # directories to ignore when looking for source files.
 
 exclude_patterns = [
-  '_build', '_themes', 'unsorted',
+    '_build', '_themes', 'unsorted',
 ]
 
 # The reST default role (used for this markup: `text`) to use for all documents.
@@ -113,7 +114,7 @@ extlinks = {
     'qt5': ('http://doc.qt.io/qt-5//%s.html', 'Qt5Doc '),
     'qt5r': ('http://doc.qt.io/qt-5//%s', 'Qt5Doc '),
     'qtvideo': ('http://qt-project.org/videos/watch/%s', 'QtVideo '),
-    }
+}
 
 graphviz_dot_args = [
     "-Grankdir=TB",
@@ -137,27 +138,28 @@ graphviz_dot_args = [
 def setup(app):
     app.add_stylesheet("custom-styles.css")
 
+
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 if on_qthelp:
-  html_theme = 'sphinxdoc'
+    html_theme = 'sphinxdoc'
 else:
-  html_theme = 'bootstrap'
+    html_theme = 'bootstrap'
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
 # documentation.
 
 if on_qthelp:
-  html_theme_options = {}
+    html_theme_options = {}
 else:
-  html_theme_options = {
-    'bootswatch_theme': "readable",
-    'navbar_links': [
-    ],
-    'navbar_title': "QmlBook",
-    'navbar_site_name': "Chapters",
-  }
+    html_theme_options = {
+        'bootswatch_theme': "cosmo",
+        'navbar_links': [
+        ],
+        'navbar_title': "QmlBook",
+        'navbar_site_name': "Chapters",
+    }
 
 # Add any paths that contain custom themes here, relative to this directory.
 html_theme_path = sphinx_bootstrap_theme.get_html_theme_path()
@@ -202,7 +204,7 @@ html_use_smartypants = True
 html_sidebars = {
     'index': ['sidebar.html'],
     '*/index': ['sidebar.html'],
-    '*/ch??/index': ['localtoc.html']
+    'ch??-*/*': ['localtoc.html']
 }
 
 # Additional templates that should be rendered to pages, maps page names to
@@ -242,21 +244,21 @@ htmlhelp_basename = 'qt5cadaques'
 # -- Options for LaTeX output --------------------------------------------------
 
 latex_elements = {
-  # The paper size ('letterpaper' or 'a4paper').
-  'papersize': 'a4paper',
+    # The paper size ('letterpaper' or 'a4paper').
+    'papersize': 'a4paper',
 
-  # The font size ('10pt', '11pt' or '12pt').
-  'pointsize': '10pt',
+    # The font size ('10pt', '11pt' or '12pt').
+    'pointsize': '10pt',
 
-  # Additional stuff for the LaTeX preamble.
-  # 'preamble': '',
+    # Additional stuff for the LaTeX preamble.
+    # 'preamble': '',
 }
 
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title, author, documentclass [howto/manual]).
 latex_documents = [
-  ('index', 'qt5_cadaques.tex', u'Qt5 Cadaques',
-   u'JRyannel,JThelin', 'manual'),
+    ('index', 'qt5_cadaques.tex', u'Qt5 Cadaques',
+     u'JRyannel,JThelin', 'manual'),
 ]
 
 # The name of an image file (relative to this directory) to place at the top of
@@ -299,9 +301,9 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-  ('index', 'Qt5 Cadaques', u'Qt5 Cadaques',
-   u'JRyannel, JThelin', 'Qt5 Cadaques', 'A book about Qt5.',
-   'Miscellaneous'),
+    ('index', 'Qt5 Cadaques', u'Qt5 Cadaques',
+     u'JRyannel, JThelin', 'Qt5 Cadaques', 'A book about Qt5.',
+     'Miscellaneous'),
 ]
 
 # Documents to append as an appendix to all manuals.
@@ -326,8 +328,8 @@ epub_title = 'Qt5 Cadaques'
 epub_tocdup = False
 epub_tocdepth = 2
 epub_exclude_files = [
-  '_static/opensearch.xml', '_static/doctools.js',
-  '_static/jquery.js', '_static/searchtools.js', '_static/underscore.js',
-  '_static/basic.css', 'search.html', '_static/websupport.js'
+    '_static/opensearch.xml', '_static/doctools.js',
+    '_static/jquery.js', '_static/searchtools.js', '_static/underscore.js',
+    '_static/basic.css', 'search.html', '_static/websupport.js'
 ]
 epub_cover = ("_static/cover.png", "epub-cover.html")

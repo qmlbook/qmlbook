@@ -7,3 +7,4 @@ ch*/assets/automatic/*
 
 venv
 *.qmlproject.user
+node_modules/

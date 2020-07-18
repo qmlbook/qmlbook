@@ -2,7 +2,7 @@
 Meet Qt 5
 =========
 
-.. sectionauthor:: `jryannel <https://github.com/jryannel>`_
+.. sectionauthor:: `jryannel@LinkedIn <https://www.linkedin.com/in/jryannel>`_
 
 .. github:: ch01
 
