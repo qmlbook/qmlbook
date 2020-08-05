@@ -5,7 +5,7 @@ Particle Simulations
 .. sectionauthor:: `jryannel@LinkedIn <https://www.linkedin.com/in/jryannel>`_
 
 
-.. github:: ch09
+.. github:: ch10
 
 .. note::
 

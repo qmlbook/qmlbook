@@ -5,7 +5,7 @@ Shader Effects
 .. sectionauthor:: `jryannel@LinkedIn <https://www.linkedin.com/in/jryannel>`_
 
 
-.. github:: ch10
+.. github:: ch11
 
 .. note::
 

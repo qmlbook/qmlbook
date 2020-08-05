@@ -4,7 +4,7 @@ Qt for Python
 
 .. sectionauthor:: `e8johan <https://github.com/e8johan>`_
 
-.. github:: ch18
+.. github:: ch20
 
 .. note::
 

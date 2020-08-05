@@ -42,17 +42,19 @@ The entire collection of chapters covering Qt5 programming, written by Jürgen B
     ch05-fluid/fluid.rst
     ch06-controls/controls.rst
     ch07-modelview/modelview.rst
-    ch08-canvas/canvas.rst
-    ch09-particles/particles.rst
-    ch10-shaders/shaders.rst
-    ch11-multimedia/multimedia.rst
-    ch12-networking/networking.rst
-    ch13-storage/storage.rst
-    ch14-dynamicqml/dynamicqml.rst
-    ch15-javascript/javascript.rst
-    ch16-qtcpp/qtcpp.rst
-    ch17-extensions/extensions.rst
-    ch18-python/python.rst
+    ch08-felgo/felgo.rst
+    ch09-canvas/canvas.rst
+    ch10-particles/particles.rst
+    ch11-shaders/shaders.rst
+    ch12-multimedia/multimedia.rst
+    ch13-networking/networking.rst
+    ch14-storage/storage.rst
+    ch15-dynamicqml/dynamicqml.rst
+    ch16-javascript/javascript.rst
+    ch17-qtcpp/qtcpp.rst
+    ch18-extensions/extensions.rst
+    ch19-felgo-plugins/felgo-plugins.rst
+    ch20-python/python.rst
 
 
 .. rubric:: Assets

@@ -4,7 +4,7 @@ Qt and C++
 
 .. sectionauthor:: `jryannel@LinkedIn <https://www.linkedin.com/in/jryannel>`_
 
-.. github:: ch16
+.. github:: ch17
 
 .. note::
 

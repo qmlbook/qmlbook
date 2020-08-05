@@ -4,7 +4,7 @@ JavaScript
 
 .. sectionauthor:: `jryannel@LinkedIn <https://www.linkedin.com/in/jryannel>`_
 
-.. github:: ch15
+.. github:: ch16
 
 .. note::
 
