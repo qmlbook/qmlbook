@@ -61,7 +61,7 @@ void FoundationTest::testNumbers()
     int v2 = a.toInt(&ok, base);
     // verify our results
     QVERIFY(ok == true);
-    QVERIFY(v = v2);
+    QVERIFY(v == v2);
     // M2<<
 }
 
