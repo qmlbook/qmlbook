@@ -4,7 +4,7 @@ Page {
    // This will be drawn under the cutout or gesture areas
    Rectangle {
      anchors.fill: parent
-     color: “red”
+     color: "red"
    }
 
    // This is anchored to the safe area so it won’t be cut
