@@ -1,0 +1,1 @@
+HttpRequest.config({ cache: true });
