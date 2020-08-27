@@ -12,69 +12,241 @@ Felgo
 
     The source code for this chapter can be found in the `assets folder <../assets>`_.
 
-.. note::
-    Placeholder for the Felgo chapter covering:
+    
+    
+Felgo is a cross-platform application development SDK, extending the Qt framework. With Felgo, you can utilize QML to create full-featured applications for Mobile, Desktop and Embedded from a single code base. In this chapter you will learn how to create such a cross-platform application that supports different screen formats, devices and platforms.
 
-    * General introduction
-    * Messaging App Example
-    * Advanced Topics
-    * Styling and Customization
-    * Access to Native Features
-    * Application Logic and Utility
 
-  
-.. note::
 
-  Tarball, untar, provides installer. Run it
-  
-  libssl1.0.0.so
-  
-  LD_LIBRARY_PATH=./libs ./FelgoInstaller-linux_x64-online.run
-  
-  screenshots 1 + 2 - license agreement + 3
+Installing Felgo
+================
 
-.. figure:: images/install-1.png
+In order to use felgo you need to perform the steps:
+
+1. Sign-up to felgo.com. There are different purchasing options including a free tier which grants access to most features. In this text we will only use the free tier features.
+2. Depending on your OS of choice, install the requirements: `<https://felgo.com/doc/felgo-installation/#install-requirements>`_
+3. Download Felgo: `<https://felgo.com/download/>`_
+4. Run the installer and proceed to install Felgo.
+
+This installs the Felgo SDK, development tools and several demo applications. Felgo also comes with a specific version of Qt and an own QtCreator that includes useful Felgo plugins. It is possible to install the Felgo SDK in addition to other Qt installations on your system. If you have Qt installed already and only want to add Felgo to your installation take a look here: `<https://felgo.com/doc/felgo-installation/#add-felgo-to-existing-qt-installation>`_.
+
+Installing the Companion Apps
+-----------------------------
+
+Felgo comes with a companion app that makes it easier to develop mobile apps, the the Felgo Live Client for `Android <https://play.google.com/store/apps/details?id=net.vplay.apps.QMLLive&hl=en>`_ and `iOS <https://apps.apple.com/us/app/qml-live-scripting-by-felgo/id1157319191>`_.
+
+You can connect the client apps to the Felgo Live Server tool that comes with the SDK. This allows you to directly test how your app works on mobile without having to build and deploy an app. With QML Hot Reload, you can see QML and JavaScript code changes applied instantly on all your devices.
+
+
+
+
+Hello World with Felgo
+======================
+
+Now that we have everything in place we can test the setup with our very first Felgo application: the mandatory *Hello World*. To do this, fire up the Felgo SDK Qt Creator and create a new project.
+
+You will be faced by the ordinary project and file creation dialog, but with the *Felgo Apps* and *Felgo Games* categories for both projects and files. In this case, choose the *Single-Page Application* from the Felgo Apps project category.
+
+.. figure:: images/new-project-1a.png
     :scale: 50%
 
-.. figure:: images/install-2.png
-    :scale: 50%
+This will take you through the new project wizard, with some additional Felgo steps. Ensure that you pick the *Felgo Desktop* kit, especially if you have multiple versions of Qt installed. Also do not pick any additional plugins for now.
 
-.. figure:: images/install-3.png
-    :scale: 50%
+.. topic:: Felgo Plugins
 
-.. figure:: images/first-launch.png
-    :scale: 50%
+    Felgo comes with a large set of plugins focused at mobile app developers. These include integrations of various frameworks for ads, in-app purchasing as well as analytics. If you activate any of the plugins, the SDK will provide you with a link further outlining how to integrate the service selected.
+    
+    |Plugin Selection| |Plugin Integration|
+    
+.. |Plugin Selection| image:: images/new-project-4.png
+    :scale: 25%
+.. |Plugin Integration| image:: images/new-project-5b.png
+    :scale: 25%
 
+Once the project has been created, replace the contents of the ```Main.qml``` with the following Hello World code:
 
 .. literalinclude:: src/helloworld/helloworld.qml
 
+You will notice that the live reloader will show a preview of your project looking like the figure below. The Live server and client will start when you load a project into Qt Creator, so if you're quick, you will notice when you changed the source code and saved, the live view was updated. If the Live Server is not running, you can start it via the *Live Run* button. It is placed on top of the *Build and Run* button in the left sidebar. The button starts the Felgo Live Server in addition to the Desktop version of the app.
+
+.. figure:: images/live-hello-world.png
+    :scale: 50%
+    
+The code above should look familiar if you’ve worked through the earlier chapters introducting QML. There is a new import of ```Felgo 3.0``` which includes every component of the FelgoSDK.
+
+The root element is the `App <https://felgo.com/doc/felgo-app/>`_ element with a nested `NavigationStack <https://felgo.com/doc/felgo-navigationstack/>`_. This component takes care of managing all the different `Page <https://felgo.com/doc/felgo-page/>`_ instances your application is going to present.
+
+Within the Page you can find an `AppText <https://felgo.com/doc/felgo-apptext/>`_ element, which inherits from QtQuick.Text, but also manages proper font scaling. It offers a fontSize property that ensures the same physical size on all devices, avoiding the need to manually adapt the font.pixelSize setting of QtQuick.Text to the pixel density of your device.
+
+In the Live Client view, you can you can change simulated resolutions or the application theme from the menu bar. You can test different screen formats and see how the app looks on an Android, iOS or Desktop device.
+
+
+
+A Messaging App
+===============
+
+.. todo:: create complete QtCreator project for key stages in the project
+.. todo:: screenshots
+
+Now that we have familiarized ourselves with the Felgo environment and run the Hello World code, let's transform the Hello World application into a messaging app. It will provide an overview page of all conversations, as well as one page per conversation showing the individual messages.
+
+A Skeleton
+----------
+
+We start with defining the skeleton of our application. It initially shows a page with the most recent conversations. Put the following code into the ```Main.qml``` of a new project (or replace the contents of the Hello World project's ```Main.qml```)
+
 .. literalinclude:: src/messaging-snippets/skeleton.qml
+
+We can already see two new components: ```Navigation```, and ```NavigationItem```. The `Navigation <https://felgo.com/doc/felgo-navigation/>`_ presents you with a single component for platform-specific navigation patterns. On Android or Desktop it will be displayed as a side menu, while on iOS it will use a bottom tab bar by default.
+
+Now test it on Desktop: in the Live Client, make sure to select the Desktop theme and increase the window size by dragging at the window edges. Over a certain threshold the side-menu automatically gets visible. Felgo implements responsive design by default, meaning that the layout of the application adapts to the screen size and orientation.
+
+The other new component: `NavigationItem <https://felgo.com/doc/felgo-navigationitem/>`_ represents a root entry in the main navigation of your application. You can have multiple ```NavigationItem``` elements in your ```Navigation``` element. In the example code we define an icon and a title for the *Recent* page. Felgo comes with comprehensive icon font out of the box.
+
+```NavigationStack``` is a component which allows stacking pages on top of each other. At the moment we only have one ```Page``` that feels a bit empty. Let’s include some mock data by creating a new file.
+
+.. todo:: is this really a new file? it looks like inline data. Also, what is the file name?
+
+.. todo:: also, we need to explain the ListPage somewhere here.
+
 .. literalinclude:: src/messaging-snippets/model.qml
+
+The model property is a standard QML `ListModel <https://doc.qt.io/qt-5/qml-qtqml-models-listmodel.html>`_. In this case we are just passing a javascript array. You can use any Qt/QML ```ListModel```, or the `JsonListModel <https://felgo.com/doc/felgo-jsonlistmodel/>`_ from Felgo, optimized to handle JSON data in a performant way.
+
+Now let’s attach a delegate to show the model contents.
+
 .. literalinclude:: src/messaging-snippets/delegate.qml
 
+`SimpleRow <https://felgo.com/doc/felgo-simplerow/>`_ is a flexible Felgo component which represents a single entry in a list. It has many useful properties such as title, primary text and subtext. It also tries to be smart and picks out the corresponding model keys automatically. In the example, the ```text```, ```detailText```, and ```image``` are set this way. Check out the `element documentation <https://felgo.com/doc/felgo-simplerow/>`_ for a complete list of what model properties are picked up automatically by ```SimpleRow```.
+
+```SimpleRow``` is composed of different QML items that are exposed through properties. You can tweak each item if the default setup is not satisfying. In the example, we are overriding the ```radius``` property of the ```image``` item to create a rounded image.
+
+Another interesing detail in the example above is that ```imageMaxSize``` is defined as ```dp(48)```. Felgo uses density independent sizes, meaning that elements have the same size regardless of the device screen. To benefit from this you should always use ```dp()``` for setting the size of visual items such as buttons, and ```sp()``` for texts which can also scale along to the preferred base size of a user. For details about how to create apps for multiple screen sizes and densities using Felgo, see: `Supporting Multiple Screen Sizes & Screen Densities with Felgo Apps <https://felgo.com/doc/apps-supporting-multiple-screens-and-screen-densities/>`_. 
+
+Showing Conversations
+---------------------
+
+Now it is time to get interactive. When our user selects a conversation, we want to open a new page for that conversation. Let’s start by adding a new ```Component``` to the bottom of ```Main.qml``` of our app. 
+
 .. literalinclude:: src/messaging-snippets/conversation.qml
+
+As you can see from the code above, each conversation is represented by a ```ListPage``` instance. When the user clicks on a conversation we can now push a new instance of the ```conversationComponent``` page onto our ```navigationStack```. The ```title``` for each new page is the text of the selected item. This is done from the ```onSelected``` signal in our ```SimpleRow``` delegate that we showed earlier. We use the `popAllExceptFirstAndPush <https://felgo.com/doc/felgo-navigationstack/#popAllExceptFirstAndPush-method>`_ method to ensure that we only have one conversation at a time open.
+
+.. todo:: how does person relate to title?
+
 .. literalinclude:: src/messaging-snippets/delegate-create-conversation-page.qml
-.. literalinclude:: src/messaging-snippets/conversation-page.qml
+
+At this stage, you can navigate back and forth between the conversation list and details and see the title changing accordingly. We can fill up the conversation page by adding some mock messages as the model.
+
+.. todo:: where is this mock data placed?
 
 .. literalinclude:: src/messaging-snippets/mock-messages.qml
+
+Similar to the list of conversations, this model for the messages acts as source for a ```ListPage```, but for this page, we want a custom user interface to show the messages. We can do this by creating a custom ```delegate``` as shown below.
+
 .. literalinclude:: src/messaging-snippets/message-delegate.qml
+
+This delegate allows us to provide a custom look for our message list. The text is shown using the `AppText <https://felgo.com/doc/felgo-apptext/>`_ element, that ensures that the size of the text is device independent. The ```AppText``` relies on the application's `Theme <https://felgo.com/doc/felgo-theme/>`_. Each Felgo application has a theme, and inside the ```Theme``` object, the global styling styling options for the application are found. In the code above we use ```Theme.tintColor``` for the primary color and ```Theme.contentPadding``` for the system dependent padding size. By default, the ```Theme``` ensures a native look and feel across platforms. 
+
+Sending Messages
+----------------
+
+The last step is to let the user send messages. For this, let's add a `AppTextField <https://felgo.com/doc/felgo-apptextfield/>`_ to the bottom of our conversation page.
+
 .. literalinclude:: src/messaging-snippets/message-text-field.qml
 
+The ```AppTextField``` let's the user enter text, and provides the ```onAccepted``` signal when the text is ready. Each time th user provides a new text, we update the model and clear the text field.
+
+.. todo:: is it necessary to pick out the model to newModel each time? Can't we just push to the model?
+
+Storing Data
+------------
+
+At the moment, the application only uses mock data and does not connect to any backend. This means that all messages the user adds will disappear every time the application is closed. We can fix this by using a data storage API.
+
+QtQuick allows you to use an SQL database, which is a fast option even for large data, but it is rather inconvenient to use for our simple data structure. Instead, we will save our data as JSON data. Something that fits well into QML, as it is based on JavaScript.
+
+With the `Storage <https://felgo.com/doc/felgo-storage/>`_ item, Felgo provides a JSON-optimized component for this. You can access the database as a simple key-value store and there is no need for complex SQL queries. In its simplest form the API looks a bit like: ```myStorage.setValue (key, value)``` and ```value = myStorage.getValue(key)```.
+
+Felgo automatically calls JSON.stringify() when writing composed values, automatically serializing the data. You can also take direct control of the underlying database using SQL queries if needed.
+
+We use the ```Storage``` class via the ```app.settings``` property, which is the central application settings store. In the example below, you can see how we populate the model with mock data if the model is empty, or use the stored data otherwise.
+
 .. literalinclude:: src/messaging-snippets/settings.qml
+
+.. todo:: where are loadStorageMessages and storeNewMessages being called from?
+
+If you want to take the messaging application to the next level, you can also use Felgo to directly integrate your QML to Google Firebase or the Felgo Cloud backend, to provide a proper, cloud based storage option. But that is a completely different story.
+
+Advanced Topics
+===============
+
+Theming
+-------
 
 .. literalinclude:: src/messaging-snippets/theming-intro.qml
 .. literalinclude:: src/messaging-snippets/theming-colours.qml
 .. literalinclude:: src/messaging-snippets/theming-button-style.qml
 
+Model Sorting and Filtering
+---------------------------
+
+.. literalinclude:: src/messaging-snippets/sort-filter-proxy-model.qml
+
+Native App Features
+-------------------
+
+Notch Support
++++++++++++++
+
 .. literalinclude:: src/messaging-snippets/safe-area.qml
+
+Native Dialogs
+++++++++++++++
 
 .. literalinclude:: src/messaging-snippets/native-dialog.qml
 .. literalinclude:: src/messaging-snippets/camera-image-picker.qml
+
+Native APIs
++++++++++++
+
 .. literalinclude:: src/messaging-snippets/contacts.qml
 
+Networking
+----------
+
+HttpRequest
++++++++++++
+
 .. literalinclude:: src/messaging-snippets/http-request.qml
+
 .. literalinclude:: src/messaging-snippets/http-request-caching-global.qml
 .. literalinclude:: src/messaging-snippets/http-request-caching-local.qml
 
+Working with JSON data
+++++++++++++++++++++++
+
+.. todo:: not really networking related, but still
+
 .. literalinclude:: src/messaging-snippets/json-list-model.qml
-.. literalinclude:: src/messaging-snippets/sort-filter-proxy-model.qml
+
+Download Resources, Files and PDFs
+++++++++++++++++++++++++++++++++++
+
+
+Summary
+=======
+
+
+
+TODO
+====
+
+
+
+
+
+
+
+
+
