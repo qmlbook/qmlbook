@@ -1,6 +1,6 @@
 App {
   onInitTheme: {
-        Theme.appButton.backgroundColor = "red"
+    Theme.appButton.backgroundColor = "red"
     Theme.appButton.radius = dp(8)
 
     Theme.appButton.borderColor = Qt.darker("red", 1.2)
