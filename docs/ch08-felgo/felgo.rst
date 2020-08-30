@@ -106,7 +106,7 @@ The other new component: `NavigationItem <https://felgo.com/doc/felgo-navigation
 ``NavigationStack`` is a component which allows stacking pages on top of each other. At the moment we only have one ``Page`` that feels a bit empty. Let’s include some mock data by creating a new file.
 
 To display lists of items you can rely on the `AppListView <https://felgo.com/doc/felgo-applistview/>`_, or you can take a shortcut and use the `ListPage <https://felgo.com/doc/felgo-listpage/>`_.
-This last component is a ```Page``` with a single ```AppListView``` as a child, with some properties of ```AppListView``` aliased for convenience such as ```model``` and ```delegate```.
+This last component is a ``Page`` with a single ``AppListView`` as a child, with some properties of ``AppListView`` aliased for convenience such as ``model`` and ``delegate``.
 
 .. todo:: is this really a new file? it looks like inline data. Also, what is the file name?
 
