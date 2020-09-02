@@ -12,11 +12,39 @@ Felgo
 
     The source code for this chapter can be found in the `assets folder <../assets>`_.
 
-    
-    
-Felgo is a cross-platform application development SDK, extending the Qt framework. With Felgo, you can utilize QML to create full-featured applications for Mobile, Desktop and Embedded from a single code base. In this chapter you will learn how to create such a cross-platform application that supports different screen formats, devices and platforms.
+.. figure:: images/felgo-logo.png
+    :scale: 50%
 
+Felgo is a cross-platform application development solution, based on the Qt framework and greatly extending it. Felgo offers unique Qt/QML tooling, cloud services, and the Felgo SDK that adds more than 200 APIs on top of Qt:
 
+* Advanced controls and native navigation
+* Theming and style
+* Density independence
+* Responsive layout
+* File handling (local/remote)
+* Data management and model/view
+* Multimedia
+* REST networking
+* Native dialogs and features
+
+With well-designed QML APIs, Felgo allows you to create full-featured applications for Mobile, Desktop and Embedded from a single code base. Felgo is a Qt Technology Partner, and the SDK can greatly help you save time and money when developing Qt applications.
+
+.. figure:: images/felgo-showcase-themes.jpg
+
+For existing Qt/QML projects, you can also mix Felgo APIs with your existing Qt & QML code! As part of the development team or with consulting and training sessions, Felgo also supports businesses with professional Qt services.
+
+Why choose Felgo?
+================
+
+With Felgo you can save code compared to standalone Qt/QML development without getting your hands on C++. The `Felgo Qt World Summit Conference <https://github.com/FelgoSDK/Qt-World-Summit-Conference-App>`_ App has saved 90% code compared to the pure `Qt/QML implementation <https://github.com/ekke/c2gQtCon_x>`_.
+
+.. figure:: images/felgo-code-saving.png
+    :scale: 75%
+
+Code savings are not limited to the Qt world, but Felgo is a lot less verbose also compared to native development and competing cross-platform solutions.
+
+.. figure:: images/felgo-code-saving-property-cross.png
+    :scale: 75%
 
 Installing Felgo
 ================
