@@ -15,7 +15,7 @@ Felgo
 .. figure:: images/felgo-logo.png
     :scale: 50%
 
-Felgo is a cross-platform application development solution, based on the Qt framework and greatly extending it. Felgo offers unique Qt/QML tooling, cloud services, and the Felgo SDK that adds more than 200 APIs on top of Qt:
+Felgo is a cross-platform application development solution, based on the Qt framework and greatly extending it. Felgo offers unique Qt/QML tooling, cloud services, and the Felgo SDK that adds more than 200 APIs extending Qt with capabilities such as:
 
 * Advanced controls and native navigation
 * Theming and style
@@ -27,16 +27,16 @@ Felgo is a cross-platform application development solution, based on the Qt fram
 * REST networking
 * Native dialogs and features
 
-With well-designed QML APIs, Felgo allows you to create full-featured applications for Mobile, Desktop and Embedded from a single code base. Felgo is a Qt Technology Partner, and the SDK can greatly help you save time and money when developing Qt applications.
+The screenshot below showcases how a single code base can be themed to look native on both Android and iOS.
 
 .. figure:: images/felgo-showcase-themes.jpg
 
-For existing Qt/QML projects, you can also mix Felgo APIs with your existing Qt & QML code! As part of the development team or with consulting and training sessions, Felgo also supports businesses with professional Qt services.
+Felgo is a Qt Technology Partner, and the SDK, which we will use in this chapter, can greatly help you save time and money when developing Qt applications. As the Felgo SDK extends Qt, it is possible to mix Felgo APIs with existing Qt and QML code. This means that you can add Felgo to your existing applications. In addition to the Felgo SDK, Felgo also provides consulting and training.
 
 Why choose Felgo?
 ================
 
-With Felgo you can save code compared to standalone Qt/QML development without getting your hands on C++. The `Felgo Qt World Summit Conference <https://github.com/FelgoSDK/Qt-World-Summit-Conference-App>`_ App has saved 90% code compared to the pure `Qt/QML implementation <https://github.com/ekke/c2gQtCon_x>`_.
+Felgo takes the cross platform story one step further. It lets you get more done from QML and reduces the need to write complex C++ code. For instance, the `Felgo Qt World Summit Conference <https://github.com/FelgoSDK/Qt-World-Summit-Conference-App>`_ App, used at the annual Qt World Summit conference, has saved 90% code compared to the pure `Qt/QML implementation <https://github.com/ekke/c2gQtCon_x>`_.
 
 .. figure:: images/felgo-code-saving.png
     :scale: 75%
