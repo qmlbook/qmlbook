@@ -41,8 +41,6 @@ App {
             id: conversationPage
             emptyText.text: qsTr("No messages")
 
-            listView.anchors.bottomMargin: inputBox.height
-
             model: [
                 { text: "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration.", me: false },
                 { text: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.", me: true },
@@ -82,39 +80,43 @@ App {
                 }
             }
 
-            // horizontal separator line between input text and
-            Rectangle {
-                height: px(1)
-                anchors.bottom: inputBox.top
-                anchors.left: parent.left
-                anchors.right: parent.right
-                color: "#cccccc"
-            }
+// M1>>
+// Inside the conversationComponent ListPage
+listView.anchors.bottomMargin: inputBox.height
 
-            AppTextField {
-                id: inputBox
-                height: dp(48)
-                anchors.bottom: parent.bottom
-                anchors.left: parent.left
-                anchors.right: parent.right
-                anchors.leftMargin: Theme.contentPadding
-                anchors.rightMargin: Theme.contentPadding
-                font.pixelSize: sp(16)
-                placeholderText: qsTr("Type a message ...")
-                backgroundColor: "white"
-                verticalAlignment: Text.AlignVCenter
+// horizontal separator line between input text and
+Rectangle {
+    height: px(1)
+    anchors.bottom: inputBox.top
+    anchors.left: parent.left
+    anchors.right: parent.right
+    color: "#cccccc"
+}
 
-                onAccepted: {
+AppTextField {
+    id: inputBox
+    height: dp(48)
+    anchors.bottom: parent.bottom
+    anchors.left: parent.left
+    anchors.right: parent.right
+    anchors.leftMargin: Theme.contentPadding
+    anchors.rightMargin: Theme.contentPadding
+    font.pixelSize: sp(16)
+    placeholderText: qsTr("Type a message ...")
+    backgroundColor: "white"
+    verticalAlignment: Text.AlignVCenter
 
-                    // Here we update the model
-                    var newModel = conversationPage.model
-                    newModel.push({me: true, text: inputBox.text})
-                    conversationPage.model = newModel
+    onAccepted: {
+        // Here we update the model
+        var newModel = conversationPage.model
+        newModel.push({me: true, text: inputBox.text})
+        conversationPage.model = newModel
 
-                    inputBox.text = ""
-                    conversationPage.listView.positionViewAtEnd()
-                }
-            }
+        inputBox.text = ""
+        conversationPage.listView.positionViewAtEnd()
+    }
+}
+// <<M1
         }
     }
 }

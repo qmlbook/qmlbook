@@ -45,31 +45,33 @@ App {
 
             property string person
 
-            Storage {
-                id: storage
-            }
+// M1>>
+// Inside the conversationComponent ListPage
+Storage {
+    id: storage
+}
 
-            function loadStorageMessages() {
-                var messages = storage.getValue("messages_" + person)
-                if (messages === undefined) {
-                    messages = [
-                                { text: "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration.", me: false },
-                                { text: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.", me: true },
-                                { text: "All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words.", me: false },
-                                { text: "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration.", me: false },
-                                { text: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.", me: true },
-                                { text: "All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words.", me: false }
-                            ]
-                }
-                model = messages
-            }
+function loadStorageMessages() {
+    var messages = storage.getValue("messages_" + person)
+    if (messages === undefined) {
+        messages = [
+                    { text: "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration.", me: false },
+                    { text: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.", me: true },
+                    { text: "All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words.", me: false },
+                    { text: "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration.", me: false },
+                    { text: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.", me: true },
+                    { text: "All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words.", me: false }
+                ]
+    }
+    model = messages
+}
 
-            Component.onCompleted: loadStorageMessages()
+Component.onCompleted: loadStorageMessages()
 
-            function storeNewMessages() {
-                storage.setValue("messages_" + person, model)
-            }
-
+function storeNewMessages() {
+    storage.setValue("messages_" + person, model)
+}
+// <<M1
 
             delegate: Item {
                 id: bubble
