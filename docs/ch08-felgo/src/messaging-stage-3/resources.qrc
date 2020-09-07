@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/">
+        <file>assets</file>
+        <file>assets/img</file>
+        <file>assets/snd</file>
+        <file>qml</file>
+    </qresource>
+</RCC>
