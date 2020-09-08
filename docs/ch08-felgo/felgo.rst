@@ -49,7 +49,7 @@ Code savings are not limited to the Qt world, but Felgo is a lot less verbose al
 Installing Felgo
 ================
 
-In order to use felgo you need to perform the steps:
+In order to use Felgo you need to perform the following steps:
 
 1. Sign-up to felgo.com. There are different purchasing options including a free tier which grants access to most features. In this text we will only use the free tier features.
 2. Depending on your OS of choice, install the requirements: `<https://felgo.com/doc/felgo-installation/#install-requirements>`_
@@ -100,7 +100,7 @@ You will notice that the live reloader will show a preview of your project looki
 .. figure:: images/live-hello-world.png
     :scale: 50%
     
-The code above should look familiar if you’ve worked through the earlier chapters introducting QML. There is a new import of ``Felgo 3.0`` which includes every component of the FelgoSDK.
+The code above should look familiar if you’ve worked through the earlier chapters introducing QML. There is a new import of ``Felgo 3.0`` which includes every component of the FelgoSDK.
 
 The root element is the `App <https://felgo.com/doc/felgo-app/>`_ element with a nested `NavigationStack <https://felgo.com/doc/felgo-navigationstack/>`_. This component takes care of managing all the different `Page <https://felgo.com/doc/felgo-page/>`_ instances your application is going to present.
 
@@ -151,7 +151,7 @@ Now let’s attach a delegate to show the model contents. The result is shown in
     :start-after: M2>>
     :end-before: <<M2
 
-`SimpleRow <https://felgo.com/doc/felgo-simplerow/>`_ is a flexible Felgo component which represents a single entry in a list. It has many useful properties such as title, primary text and subtext. It also tries to be smart and picks out the corresponding model keys automatically. In the example, the ``text``, ``detailText``, and ``image`` are set this way. Check out the `element documentation <https://felgo.com/doc/felgo-simplerow/>`_ for a complete list of what model properties are picked up automatically by ``SimpleRow``.
+`SimpleRow <https://felgo.com/doc/felgo-simplerow/>`_ is a flexible Felgo component which represents a single entry in a list. It has many useful properties such as image, primary text and subtext. It also tries to be smart and picks out the corresponding model keys automatically. In the example, the ``text``, ``detailText``, and ``image`` are set this way. Check out the `element documentation <https://felgo.com/doc/felgo-simplerow/>`_ for a complete list of what model properties are picked up automatically by ``SimpleRow``.
 
 ``SimpleRow`` is composed of different QML items that are exposed through properties. You can tweak each item if the default setup is not satisfying. In the example, we are overriding the ``radius`` property of the ``image`` item to create a rounded image.
 
@@ -242,7 +242,7 @@ Advanced Topics
 Theming
 -------
 
-With Felgo comes with theming capabilities, making it easy to customize the look of your application. The `Theme <https://felgo.com/doc/felgo-theme/>`_ object contains a set of properties that control the appearance of the user interface. It can easily be controlled in the `App::onInitTheme <https://felgo.com/doc/felgo-app/#initTheme-signal>`_ signal.
+Felgo comes with theming capabilities, making it easy to customize the look of your application. The `Theme <https://felgo.com/doc/felgo-theme/>`_ object contains a set of properties that control the appearance of the user interface. It can easily be controlled in the `App::onInitTheme <https://felgo.com/doc/felgo-app/#initTheme-signal>`_ signal.
 
 .. literalinclude:: src/snippets/theming-intro.qml
 
@@ -257,7 +257,7 @@ You can also lock the ``Theme.platform`` to a fixed style, and thus offer the sa
 Styling Items
 +++++++++++++
 
-If you want to dig deeper you can customize the look and feel of specific components. Each component has an entry in the theme object. In the eaxmple below we customize buttons so they have a red background and a with a border that creates a fake 3D effect.
+If you want to dig deeper you can customize the look and feel of specific components. Each component has an entry in the theme object. In the example below we customize buttons so they have a red background and a with a border that creates a fake 3D effect.
 
 .. literalinclude:: src/snippets/theming-button-style.qml
 
@@ -308,6 +308,9 @@ Notch Support
 +++++++++++++
 
 Modern phones sometimes come with the camera placed in a notch inside the screen. Felgo introduces the concept of a ``safeArea``. Anything inside this item is guaranteed not to be overlapped with various notch and gesture areas on both on Android and iOS. The safe area is enabled by default, but sometimes, you might feel the need to disable it, as shown below.
+
+.. figure:: images/safeArea-page-portrait-example.png
+    :scale: 50%
 
 .. literalinclude:: src/snippets/safe-area.qml
 
