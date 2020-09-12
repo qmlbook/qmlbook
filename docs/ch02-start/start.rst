@@ -59,7 +59,7 @@ Another file, ``HelloWorld.qml``, is our application code. Open it and try to un
         title: qsTr("Hello World")
     }
 
-The ``HelloWord.qml`` program is written in the QML language. We'll discuss the QML language more in-depth in the next chapter. QML describes the user interface as a tree of hierarchical elements. In this case, a rectangle of 360 x 360 pixels, with a centered text that contains the words "Hello World". To capture user input, a mouse area spans the whole rectangle. When the user interacts with it, the application quits.
+The ``HelloWord.qml`` program is written in the QML language. We'll discuss the QML language more in-depth in the next chapter. QML describes the user interface as a tree of hierarchical elements. In this case, a rectangle of 640 x 480 pixels, with a centered text that contains the words "Hello World". To capture user input, a mouse area spans the whole rectangle. When the user interacts with it, the application quits.
 
 To run the application on your own, press the |creatorrun| :guilabel:`Run` tool on the left side, or select :menuselection:`Build > Run` from the menu.
 
