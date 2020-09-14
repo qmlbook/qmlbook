@@ -3,7 +3,13 @@
 from flask import Flask, jsonify, request
 import json
 
-colors = json.load(file('colors.json', 'r'))
+import sys
+if sys.version_info >= (3, 0):
+#Python 3 and later
+    colors = json.load(open('colors.json', 'r'))
+else:
+#Python 2
+    colors = json.load(file('colors.json', 'r'))
 
 app = Flask(__name__)
 
@@ -50,4 +56,3 @@ def delete_color(name):
     
 if __name__ == '__main__':
     app.run(debug = True)
-    
