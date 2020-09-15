@@ -34,7 +34,7 @@ The screenshot below showcases how a single code base can be themed to look nati
 Felgo is a Qt Technology Partner, and the SDK, which we will use in this chapter, can greatly help you save time and money when developing Qt applications. As the Felgo SDK extends Qt, it is possible to mix Felgo APIs with existing Qt and QML code. This means that you can add Felgo to your existing applications. In addition to the Felgo SDK, Felgo also provides consulting and training.
 
 Why choose Felgo?
-================
+=================
 
 Felgo takes the cross platform story one step further. It lets you get more done from QML and reduces the need to write complex C++ code. For instance, the `Felgo Qt World Summit Conference <https://github.com/FelgoSDK/Qt-World-Summit-Conference-App>`_ App, used at the annual Qt World Summit conference, has saved 90% code compared to the pure `Qt/QML implementation <https://github.com/ekke/c2gQtCon_x>`_.
 
@@ -269,7 +269,11 @@ While the Desktop and Android versions are going to have a raised style, the def
 Model Sorting and Filtering
 ---------------------------
 
+A common use-case in Apps is to sort the contents of a model. Here, Felgo provides a QML version of the `SoftFilterProxyModel <https://felgo.com/doc/felgo-sortfilterproxymodel/>`_. Using this element you cannot only sort and filter models from QML, you can provide both sorters and filters directly from QML.
+
 .. literalinclude:: src/snippets/sort-filter-proxy-model.qml
+
+In the example above, a `StringSorter <https://felgo.com/doc/felgo-stringsorter/>`_ is used, but Felgo comes with more sorters, as well as a range of filters.
 
 Native App Features
 -------------------
