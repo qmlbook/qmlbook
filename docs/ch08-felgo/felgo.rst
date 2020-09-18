@@ -15,7 +15,9 @@ Felgo
 .. figure:: images/felgo-logo.png
     :scale: 50%
 
-Felgo is a cross-platform application development solution, based on the Qt framework and greatly extending it. Felgo offers unique Qt/QML tooling, cloud services, and the Felgo SDK that adds more than 200 APIs extending Qt with capabilities such as:
+Felgo is a cross-platform application development solution, based on the Qt framework and greatly extending it. Felgo applications run natively on many platforms, such as Android, iOS, Desktop (all three major OSs), Web (WebAssembly) and Embedded systems.
+
+Felgo offers unique Qt/QML tooling, cloud services, and the Felgo SDK that adds more than 200 APIs extending Qt with capabilities such as:
 
 * Advanced controls and native navigation
 * Theming and style
@@ -189,7 +191,7 @@ This delegate allows us to provide a custom look for our message list, as shown 
 .. figure:: images/messaging-stage-3.png
     :scale: 50%
 
-The text is shown using the `AppText <https://felgo.com/doc/felgo-apptext/>`_ element, that ensures that the size of the text is device independent. The ``AppText`` relies on the application's `Theme <https://felgo.com/doc/felgo-theme/>`_. Each Felgo application has a theme, and inside the ``Theme`` object, the global styling styling options for the application are found. In the code above we use ``Theme.tintColor`` for the primary color and ``Theme.contentPadding`` for the system dependent padding size. By default, the ``Theme`` ensures a native look and feel across platforms. 
+The text is shown using the `AppText <https://felgo.com/doc/felgo-apptext/>`_ element, that ensures that the size of the text is device independent. The ``AppText`` relies on the application's `Theme <https://felgo.com/doc/felgo-theme/>`_. Each Felgo application has a theme, and inside the ``Theme`` object, the global styling options for the application are found. In the code above we use ``Theme.tintColor`` for the primary color and ``Theme.contentPadding`` for the system dependent padding size. By default, the ``Theme`` ensures a native look and feel across platforms.
 
 Sending Messages
 ----------------
@@ -200,7 +202,7 @@ The last step is to let the user send messages. For this, let's add a `AppTextFi
     :start-after: M1>>
     :end-before: <<M1
 
-The ``AppTextField`` let's the user enter text, and provides the ``onAccepted`` signal when the text is ready. Each time th user provides a new text, we update the model and clear the text field.
+The ``AppTextField`` let's the user enter text, and provides the ``onAccepted`` signal when the text is ready. Each time the user provides a new text, we update the model and clear the text field.
 
 .. figure:: images/messaging-stage-4.png
     :scale: 50%
@@ -378,13 +380,15 @@ In the example below, we show how to download a PDF file and then open it with t
 
 Summary
 =======
+The Felgo SDK brings a lot of benefits to Qt/QML development. It allows you to create cross-platform apps that look native on: Android, iOS, Desktop, Web (WebAssembly) and Embedded systems. Supporting all kinds of devices,  regardless of their different screen sizes and densities.
 
-In this chapter you learned what benefits the Felgo SDK brings. 
+Use the navigation components to build your main menu and implement hierarchies of pages. Compose your page content with Felgo controls, lists and models. Introduce logic for data handling, storage, networking or to access native APIs like the device camera, contacts or dialogs. For all these areas, you can save a lot of time with a big variety of carefully constructed QML components.
 
-You have learned how to create a cross-platform application that looks native on Android, iOS and Desktop, while handling different screen sizes and densities.
+Felgo provides you with all important tools for cross-platform app development with QML. Instead of worrying about pitfalls and issues that aren’t specific to your project, you can focus on the actual work for your application. The customization options of Felgo leverage the flexibility of QML and are perfect for custom UI and branded apps. You can control the look with app-wide theme settings and freely customize or mix-in your own QML if needed.
 
-You learned how to leverage the ``Navigation`` components to guide the user in a hierarchy of different pages. Felgo controls and themes simplify the design of your QML applications.
+This is just scratching the surface of what Felgo offers. You can see the `full documentation <https://felgo.com/doc/>`_, which also includes a large selection of `Felgo Plugins <https://felgo.com/plugins>`_. If you want to learn more about the Felgo SDK and application development with QML, explore free `webinars <https://felgo.com/resources/white-papers-and-webinars>`_ or join one of the scheduled `trainings <https://felgo.com/training-offers>`_.
 
-You also saw how to use platform specific features such as contacts or dialogs, to handle and store JSON data without using C++ or system dependent apis.
+If you enjoyed our messaging app, you can find more sample applications `here <https://felgo.com/apps/>`_. Feel free to take a look at their full source-code or use them as starting point to build awesome new applications.
 
-All these features will help you save time and code, and if you want to dig deeper into the rich selection of plugins.
+.. figure:: images/felgo-templates.jpg
+
