@@ -406,7 +406,7 @@ In the ``onAccepted`` handler a new document window is instantiated using the ``
 .. literalinclude:: src/interface-document-window/DocumentWindow.qml
     :lines: 5, 7-9, 62-66, 89-98, 139-
 
-The file name belogs to a pair of properties describing the document: ``_fileName`` and ``_isDirty``. The ``_fileName`` holds the file name of the document name and ``_isDirty`` is set when the document has unsaved changes. This is used by the save and save as logic, which is shown below.
+The file name belongs to a pair of properties describing the document: ``_fileName`` and ``_isDirty``. The ``_fileName`` holds the file name of the document name and ``_isDirty`` is set when the document has unsaved changes. This is used by the save and save as logic, which is shown below.
 
 When trying to save a document without a name, the ``saveAsDocument`` is invoked. This results in a round-trip over the ``saveAsDialog``, which sets a file name and then tries to save again in the ``onAccepted`` handler.
 
@@ -508,7 +508,7 @@ Which ones that are needed depends on your user interface. For instance, the hov
 
 Looking at an enlarged version of ``button-background-checked.9.png`` above you can see the 9-patch guide lines along the sides. The purple background has been added for visibility reasons. This area is actually transparent in the asset used in the example. 
 
-The pixes along the edges of the image can be either white/transparent, black, or red. These have different meanings that we will go through one by one.
+The pixels along the edges of the image can be either white/transparent, black, or red. These have different meanings that we will go through one by one.
 
 * **Black** lines along the **left** and **top** sides of the asset mark the stretchable parts of the image. This means that the rounded corners and the white marker in the example are not affected when the button is stretched.
 * **Black** lines along the **right** and **bottom** sides of the asset mark the area used for the control's contents. That means what part of the button is used for text in the example.
