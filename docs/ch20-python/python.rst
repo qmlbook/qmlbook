@@ -12,8 +12,8 @@ Qt for Python
 
     The source code for this chapter can be found in the `assets folder <../../assets>`_.
 
-
-This chapter describes the PySide2 module from the Qt for Python project. You will learn how to install it and how to leverage QML together with Python.
+.. note::
+This chapter describes the PySide2 module from the `Qt for Python <https://wiki.qt.io/Qt_for_Python>`_ project. It is worth mentioning, that there is an alternative project called `PyQt <https://riverbankcomputing.com/software/pyqt/intro>`_, with a different licensing scheme, which has the same feature set and is mostly code compatible.
 
 Introduction
 ============
@@ -27,6 +27,8 @@ As the Qt for Python project provides an entirely new language binding for Qt, i
 - Reference documentation: `<https://doc.qt.io/qtforpython/>`_
 - Qt for Python wiki: `<https://wiki.qt.io/Qt_for_Python>`_
 - Caveats: `<https://wiki.qt.io/Qt_for_Python/Considerations>`_
+
+Since it is a relatively new module, big parts of the documentation are not ported from C++ to python, therefore it is beneficial to understand C++.
 
 The Qt for Python bindings are generated using the Shiboken tool. At times, it might be of interest to read about it as well to understand what is going on. The prefered point for finding information about Shiboken is the `reference documentation <https://doc.qt.io/qtforpython/shiboken2/index.html>`_. If you want to mix your own C++ code with Python and QML, Shiboken is the tool that you need.
 
