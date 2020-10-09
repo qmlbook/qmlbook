@@ -21,12 +21,10 @@ Window {
         }
     }
     
-    // Signal argument names are not propagated from Python to QML, so we need to re-emit the signal
-    signal reNextNumber(int number)
-    Component.onCompleted: numberGenerator.nextNumber.connect(reNextNumber)
-    
     Connections {
-        target: root
-        onReNextNumber: numberLabel.text = number
+        target: numberGenerator
+        function onNextNumber(number) {
+            numberLabel.text = number   
+        }
     }
 }

@@ -137,6 +137,10 @@ First of all we make sure to call ``QObject.__init__`` from our constructor. Thi
 
 Then we declare a signal by creating an instance of the ``Signal`` class from the ``PySide2.QtCore`` module. In this case, the signal carries an integer value, hence the ``int``.
 
+.. note::
+
+    In contrast to C++ it is not possible use named signal parameters therfore you cannot use the ``onSignal`` handler within qml as usual.
+
 Finally, we *decorate* the ``giveNumber`` method with the ``@Slot()`` decorator, thus turning it into a slot. There is not concept of *invokables* in Qt for Python, so all callable methods must be slots.
 
 In the ``giveNumber`` method we emit the ``nextNumber`` signal using the ``emit`` method. This is a bit different than the syntax for doing so from QML or C++ as the signal is represented by an object instead of being a callable function.
@@ -155,13 +159,7 @@ The interesting lines are the one where we first instatiate a ``NumberGenerator`
     
 Continuing to the QML code, we can see that we've created a Qt Quick Controls 2 user interface consisting of a ``Button`` and a ``Label``. In the button's ``onClicked`` handler, the ``numberGenerator.giveNumber()`` function is called. This is the slot of the object instantiated on the Python side.
 
-To receive a signal from an object that has been instantiated outside of QML we need to use a ``Connections`` element. This allows us to attach a signal hanlder to an existing target.
-
-.. note::
-
-    At the moment of writing, the name of a signal argument cannot be propagated from Python to QML. To work around this, the Python signal, ``numberGenerator.nextNumber``, is connected to a QML defined signal, ``reNextNumber``, that has the name ``number`` for the signal argument. This allows us to capture the value of the signal argument in the signal handler in the ``Connections`` element.
-    
-    This is a workaround for issue `PYSIDE-634 <https://bugreports.qt.io/browse/PYSIDE-634>`_.
+To receive a signal from an object that has been instantiated outside of QML we need to use a ``Connections`` element. This allows us to attach a signal handler to an existing target.
 
 .. literalinclude:: src/object/main.qml
 
