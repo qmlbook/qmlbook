@@ -45,7 +45,7 @@ Felgo Hot Reload can be used on every target platform - be it desktop oo mobile.
 Felgo Live Client
 +++++++++++++++++
 
-When used locally on your computer, the Felgo Live Server talks to an instance of the Felgo Live Client. It is possible to connect more clients to each server. For instance, you can run the live client on Android and iOS devices. You can download it from `Google Play <https://play.google.com/store/apps/details?id=net.vplay.apps.QMLLive>`_ and `App Store <https://apps.apple.com/us/app/qml-live-scripting-by-felgo/id1157319191>`_ respectively.
+When used locally on your computer, the Felgo Live Server talks to an instance of the Felgo Live Client. It is possible to connect more clients to each server. For instance, you can run the live client on Android and iOS devices. You can download it from `Google Play <https://play.google.com/store/apps/details?id=net.vplay.apps.QMLLive>`_ and `Apple AppStore <https://apps.apple.com/us/app/qml-live-scripting-by-felgo/id1157319191>`_ respectively.
 
 After you install the application, make sure your device is on the same network as your PC and click on “Connect Desktop”. Your mobile device will show you the live view of your app right away. When you start changing your code you will see both the Desktop and Mobile versions updated instantaneously.
 
@@ -95,6 +95,31 @@ When you are ready for release just revert the ``main.cpp`` file back the way an
 Cloud Builds
 ------------
 
+A large task, once your application has been developed, is building it for a variety of target platforms. You might want to build different versions, for instance beta releases, production releases and even customer specific versions. You might also want to push builds to various app stores for publishing.
+
+This is a major undertaking. You need to setup and maintain a build environment for each platform. Application packages needs to be signed for deployment to the app stores. As an application grows, you will end up building a lot of major or minor builds for testing or new releases. This is where DevOps or CI/CD comes into the picture.
+
+Felgo Cloud Builds is a CI/CD solution for automatic building and deployment of Qt apps. You set up your project and build configuration once and then use this to build apps. You can target iOS, Android, Desktop, or Embedded. Each new version only takes a few minutes to build.
+
+IMAGE IMAGE IMAGE
+
+The Felgo Cloud Build is a a centralized and stable build environment for every Qt target platform. This means that you, as a developer, do not have the have the toolchains for all platforms on your machine. For example you can create iOS apps from Windows, even though you cannnot install the required tools for compiling iOS apps on your machine. This also removes potential problems that may arise from building the app with different systems and tooling environments. Every release is built with the same system configuration, Qt version and dependencies.
+
+In addition to building apps, you might also want to deploy your apps to Google Play or Apple AppStore. In the stores, you  can use the beta testing mechanisms in the stores to test new versions and then move them to production. This traditionally requires uploading the ``apk`` bundles or ``ipa`` packages on the respective store websites.
+
+Felgo Cloud Builds automates this as well. It takes your source code from your repository, builds your project for all platforms in parallel, and then uploads the packages to the stores for testing or publishing, depending on your settings.
+
+To use Felgo Cloud Builds, visit the `product page <https://felgo.com/cloud-builds>`_ to setup your project.
+
+IMAGE IMAGE IMAGE
+
+The web site has step by step guides to create and configure your project. Starting from a Git repository, signing options, and optionally the integration with the stores. If you do not have a Google Play or App Store account yet, or have not setup your application in the app store, it is recommended to first set everything up and have a look at how to configure the store listing before integrating it into the cloud build infrastructure. Your store configuration and testing channels should be ready and working before you configure Cloud Builds for automatic deployment.
+
+Once everything is setup, you can trigger a build whenever you wish, resulting in a set of application packages. If you enable store deployment for the build, the packages will automatically appear in the respective testing channels, ready for your testers and users, before you can push the build to production.
+
+.. admonition::
+
+    Felgo Cloud Builds is hosted by Felgo, but is also available on-premise. It can be used for any Qt/QML application and custom toolchains or specific Qt versions are possible as well. If you need a specific setup, for example to target a certain embedded platform, be sure to get in touch with Felgo.
 
 
     
