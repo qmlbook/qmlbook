@@ -5,5 +5,9 @@ import Felgo 3.0
    id: onesignal
 
    appId: "<ONESIGNAL-APP-ID>"
+   
+   onNotificationReceived: {
+      console.debug("Received notification with message:", message)
+   }
  }
 

@@ -73,16 +73,22 @@ First, you need to add the ``felgo-live`` module to your Qt ``CONFIG`` in your p
 
     CONFIG += felgo-live
 
-The include ``FelgoLiveClient``in your ``main.cpp``::
+The include ``FelgoLiveClient`` in your ``main.cpp``:
+
+.. code-block:: c++
 
     #include <FelgoLiveClient>
 
-And finally, instead of loading your QML root file, use the live client to configure the ``QQmlEngine`` instance by replacing::
+And finally, instead of loading your QML root file, use the live client to configure the ``QQmlEngine`` instance by replacing:
+
+.. code-block:: c++
 
     felgo.setMainQmlFileName(QStringLiteral("qml/Main.qml"));
     engine.load(QUrl(felgo.mainQmlFileName()));
 
-With::
+With:
+
+.. code-block:: c++
 
     FelgoLiveClient liveClient(&engine);
 
@@ -109,7 +115,7 @@ In addition to building apps, you might also want to deploy your apps to Google 
 
 Felgo Cloud Builds automates this as well. It takes your source code from your repository, builds your project for all platforms in parallel, and then uploads the packages to the stores for testing or publishing, depending on your settings.
 
-To use Felgo Cloud Builds, visit the `product page <https://felgo.com/cloud-builds>`_ to setup your project.
+To use Felgo Cloud Builds, visit the `cloud builds page <https://felgo.com/cloud-builds>`_ to setup your project.
 
 IMAGE IMAGE IMAGE
 
@@ -117,83 +123,231 @@ The web site has step by step guides to create and configure your project. Start
 
 Once everything is setup, you can trigger a build whenever you wish, resulting in a set of application packages. If you enable store deployment for the build, the packages will automatically appear in the respective testing channels, ready for your testers and users, before you can push the build to production.
 
-.. admonition::
+.. admonition:: Building on-premise
 
-    Felgo Cloud Builds is hosted by Felgo, but is also available on-premise. It can be used for any Qt/QML application and custom toolchains or specific Qt versions are possible as well. If you need a specific setup, for example to target a certain embedded platform, be sure to get in touch with Felgo.
+    Felgo Cloud Builds is hosted by Felgo, but is also available on-premise. It can be used for any Qt/QML application and custom toolchains or specific Qt versions are possible as well. If you need a specific setup, for example to target a certain embedded platform, get in touch with Felgo.
 
 
     
-Configuring Felgo Plugins
-=========================
+Felgo Plugins
+=============
+
+Once you've created a new app, you can look at more advanced topics. Felgo provides extensions to Qt that help you with monetization, push notifications, and analytics, i.e. the study of how the user moves through the app.
+
+IMAGE IMAGE IMAGE
+
+These functions usually required platform specific APIs. There are also third party services that provide such services through custom native framework. Supporting native SDKs for Android and iOS using Qt/QML is not an easy task. You need to provide a portable abstraction for the APIs, binding to Java/Kotlin for Andoird or Objective-C/Swift for iOS.
+
+To help with this, Felgo extends Qt with plugins integrating these services directly to QML.
+
+Configuration
+-------------
+
+The Felgo plugins extend Qt with bindings to an external services. This means that you will have register with the third party services. You will also need a Felgo license key. All monetization plugins are available for free, while other plugins requires that you purchase an `Indie or Enterprice license <https://felgo.com/pricing>`_.
+
+.. note::
+
+    As the examples in this chapter requires you to have a custom license key they are not runnable out of the box.
+    
+To get started with the Felgo plugins, start Qt Creator from the Felgo SDK and create a new project. The project wizard presents you with a step that lets you select which plugins to use. Choose the ones that you want to use. This will add the relevant code to your project along with the needed build configurations.
+
+To retrieve a valid Felgo license key for the your application, go to `https://felgo.com/developers/license <https://felgo.com/developers/license>`_ and select the plugins that you intend to use.
+
+IMAGE IMAGE IMAGE
+
+At the bottom of the page, click the *Generate License Key* button. This lets you provide an app identifier and a version code.
+
+IMAGE IMAGE IMAGE
+
+This will present you with your generated license key. This key is unique to your license and your app, so make sure to keep it secret.
+
+You can then paste the license key into your application.
 
 .. literalinclude:: src/snippets/license-key-app.qml
 
+You can also provide the license key through your project file. This integrates well with the Felgo Cloud Builds platform.
+
 .. literalinclude:: src/snippets/license-key-pro.pro
     :language: bash
+    
+Once this is in place you can start using the plugins. If you use the paid versions of Felgo, the Felgo splash screen is also removed from specifying the license key.
 
 Monetization, Ads and In-App Purchases
 ======================================
 
+A common business model in the mobile space is in-app purchases or advertising. Felgo offers APIs to enable both these use-cases powered using multiple alternative backends such as Google AdMob, Soomla, and Chartboost.
+
 Ad Monetization
 ---------------
-    
+
+In this example we will look at using AdMob. AdMob is an in-app mobile advertising platform run by Google.
+
+To get started, you need to register an AdMob account on the `AdMob Sign-up Page <https://admob.google.com/home/get-started/>`_. Then add an `AddMobBanner <https://felgo.com/doc/felgo-admobbanner/>`_ to your app as shown below.
+
 .. literalinclude:: src/snippets/ad-banner.qml
 
+Notice that you specify your ad unit id from AdMob throught the ``adUnitId`` property.
+
+This code results in a banner such as the one shown below.
+
+IMAGE IMAGE IMAGE
+
+In addition to banners, you can use interstitial ads. These are full screen interactive advertisements. From QML, it is just as simple to integrate such an ad using the `AdMobInterstitial <https://felgo.com/doc/felgo-admobinterstitial/>`_ element.
+
 .. literalinclude:: src/snippets/ad-full-screen.qml
+
+Use the ``loadInterstitial`` function to start loading the ad in the background. As soon as you want to show the ad, call the ``showInterstitialIfLoaded``. In the example above we call this on the ``interstitialReceived`` signal. It has a sister signal called ``interstitialFailedToReceive`` that is called if the interstitial cannot be loaded, for instance due to network errors.
 
 In-App Purchases
 ----------------
 
+Felgo let's you integrate in-app purchases directly into QML. The Soomla plugin lets you use a cross platform API to integrate the Soomla purchasing services into your application.
+
+The API is built around a `Store <https://felgo.com/doc/felgo-store/>`_ with Good items. These can be things such as `LifetimeGood <https://felgo.com/doc/felgo-lifetimegood/>`_, which is a purchase that lasts forever, or a `SingleUseGood <https://felgo.com/doc/felgo-singleusegood/>`_ which is a one time purchase that is used once and then has to be purchased again.
+
+To `StorePurchase <https://felgo.com/doc/felgo-storepurchase/>`_ defines how the item can be purchased. By calling the ``store.buyItem(noadsGood.itemId)`` the purchase is made. The ``noadsGood,purchased`` property can then be used to check if the purchase has been made or not.
+
 .. literalinclude:: src/snippets/in-app-purchases.qml
+
+This example shows the most basic use base. The Soomla APIs let's you do much more. For instance, the `SyncedStore <https://felgo.com/doc/felgo-syncedstore/>`_ lets you sync purchases across user devices. You can also provide virtual, an in-app currency, sell packs of items, and much more. Check out the `Soomal documentation <https://felgo.com/doc/plugin-soomla/>`_ for more information.
+
+IMAGE IMAGE IMAGE
+
+An alternative solution for in-app purchases integrated by Felgo is `Chartboost <https://felgo.com/doc/plugin-chartboost/>`_. Chartboost lets you integrate booth in-app advertisement and in-app purchases.
+
+
 
 Notifications
 =============
 
+It is common that mobile apps use notifications to indicate to the user that an important event has happened or that an announcement is available. Notification scan either be local, for instance a time has been reached, or remote, for example a friend request. With Felgo, you can integrate both types of notification on both iOS and Android.
+
+
 Local Notifications
 -------------------
 
+The `NotificationManager <https://felgo.com/doc/felgo-notificationmanager/>`_ is used to schedule local notifications. Notifications can be scheduled either relative to the current time, i.e. in 1 hour, or at a given time, e.g. 3pm on December 24.
+
+In the example below, a `Notification <https://felgo.com/doc/felgo-notification/>`_ is defined declaratively in QML. This is called a *static* notification. Then the ``NotificationManager::scheduleNotification`` is used to trigger the notification. The ``Notification::timeInterval`` is used to set a relative time, in this case 5 seconds. For setting an absolute time, use the ``timestamp`` property instead.
+
 .. literalinclude:: src/snippets/local-notifications.qml
+
+The ``notificationFired`` signal is triggered when a notification is triggered. This signal behaves differently depending on if the app is active, or if it is running in the background. When the app is active, the signal is emitted immediately without an banner or sound being played. When the app is in the background, a notification sound is played and the message is shown in a notification banner. The signal is then emitted once the user taps the message to activate the app and bring it into the foreground.
+
+In some scenarios a statically declared notification is not enought. For that use-case, it is also possible to provide a JavaScript object to the ``scheduleNotification`` method. This creates the notification dynamically, as shown below.
 
 .. literalinclude:: src/snippets/local-notifications-js-qml
 
 Remote Push Notifications
 -------------------------
 
+Remote push notifications require a backend server of some sort. Felgo integrates Google Cloud Messaging and OneSignal to provide push notifications to both Android and iOS. Using these services, you can trigger notifications manually or automatically for every user, or targetted at groups of users.
+
+In the examples below, you will use OneSignal to send push notifications to your app. Before you can start with OneSignal, you need to register for an account. This is described in detail on the `OneSignal plugin page <https://felgo.com/doc/plugin-onesignal/#onesignal-account>`_.
+
+You then create a `OneSignal <https://felgo.com/doc/felgo-onesignal/>`_ element and configure the ``appId``. Each time a notification is received, the ``onNotificationReceived`` signal is emitted. This signal behaves just as the ``notificationFired`` signal discussed above, with respect to the app being active or in the background.
+
 .. literalinclude:: src/snippets/remote-notifications.qml
+
+You can use the excellent `curl <https://curl.haxx.se/>`_ tool to send a notification to all instances of your app.
 
 .. literalinclude:: src/snippets/remote-notifications-curl.sh
     :language: bash
+    
+If you want to send the notification to a selected set of users, you need to register a tag on the client side, i.e. in your QML code::
+
+    onesignal.setTag("my_key", "my_value")
+    
+This tag can then be referenced when sending the notification.
 
 .. literalinclude:: src/snippets/remote-notifications-tag-curl.sh 
     :language: bash
 
+The tags are used to reach groups of users. To reference a specific user, use the `OneSignal::userId <https://felgo.com/doc/felgo-onesignal/#userId-prop>`_ property instead.
+
+
+
 Analytics and Crash Reporting
 =============================
-    
+
+Analytics is used to understand how your users work with your app. This will let you understand if all features are used, or if there is a problem in the user interface. Felgo provides plugins for Amplitude, Google Analutics and Flurry. In the example below, we demonstrate how to integrate Amplitude.
+
+In order to use Amplitude you need to sign up for an account. You do that at the `Amplitude website <https://amplitude.com/signup>`_ . 
+
+The code is built around the `Amplitude <https://felgo.com/doc/felgo-amplitude/>`_ element, that provides the ``logEvent`` method, as shown below.
+
 .. literalinclude:: src/snippets/amplitude.qml
+
+Each event should represent an action of the user, for instance "picture deleted", "user logged in", and so on. In addition to the events, Amplitude can log revenues using the ``logRevenue`` method. This allows you to analyze what user flows leads to revenue streams, e.g. in-app purchases.
+
+To enable further analytics, you can provide a JavaScript object with key-value pairs that you can pass to Amplitude to help analyze the results better. In the example above, we provide an age, a weight, a name and what achievements the user has reached. This way, we can correlate this information with the logs using the Amplitude tools.
+
+The properties can also be things such as free space on the device, or time since the last photo shared, or other relevant data that will make understanding the results easier.
+
+
 
 Firebase: Authentication, Databases, and Storage
 ================================================
 
+The Google Firebase plugin provides three core feature sets: authentication, a database, and generic storage. In this section we will look at the authentication and database features.
+
+Before you can get started with Firebase you have to register your applications and download the ``google-services.json`` file from the `Firebase console <https://console.firebase.google.com/u/0/?pli=1>`_. Notice that using Firebase also requires a Google account. 
+
+Using the information from Firebase console, you can setup your `FirebaseConfig <https://felgo.com/doc/felgo-firebaseconfig/>`_ item as shown below.
+
 .. literalinclude:: src/snippets/database.qml
+
+All the required information is found in the ``google-services.json`` file.
 
 Authentication
 --------------
 
+In order to use Firebase for authentication, you need to enable the *Email/Password* sign-in method in your Google project. You then use the `FirebaseAuth <https://felgo.com/doc/felgo-firebaseauth/>`_ item to interact with the backend.
+
+The example below demonstrates how to sign up a new user using the ``registerUser`` method. Once the user is registered, the ``userRegistered`` is emitted, indicating either a success or failure in the registration process.
+
 .. literalinclude:: src/snippets/firebase-authentication.qml
+
+When a user has been registered, the ``loginUser`` is used to log in the user. This results in the ``loggedIn`` signal being emitted. ``FirebaseAuth`` also provides methods to ``loginUserWithGoogle``, ``loginUserWithToken``, and ``loginUserAnonymously``.
+
+The tokens used when logging in are created by custom authentication servers as described in `the Firebase documentation <https://firebase.google.com/docs/auth/admin/create-custom-tokens>`_.
+
+When logging in a user anonymously, a local, anonymous, account is created on the current device. If the ``registerUser`` is called from an anonymously logged in session, the anonymous account is associated with the new user, making it possible to migrate the user data across devices.
 
 Firebase Database
 -----------------
 
+The firebase realtime database can be viewed as a gigantic json file that contains all data for all users. This database is tightly coupled to the Firebase authentication functionality to ensure that all data is protected and secure.
+
+The `FirebaseDatabase <https://felgo.com/doc/felgo-firebasedatabase/>`_ QML component provides the interface to the database. The API provides functions such as ``setUserValue`` for storing data. Notice that the function tells you if the value was successfully stored or not - something that is important as the database is located in the Firebase cloud.
+
 .. literalinclude:: src/snippets/firebase-setuservalue.qml
+
+To retreive a stored value, the ``getUserValue`` method is used. It is possible to provide *queryParameters* to sort and filter. This is described in detail in the `firebase query documentation <https://firebase.google.com/docs/database/admin/retrieve-data#section-queries>`_.
 
 .. literalinclude:: src/snippets/firebase-getuservalue.qml
 
+The ``setUserValue`` and ``getUserValue`` works on data for the currently logged in user. The ``setValue`` and ``getValue`` methods perform a similar task, but across all users. Use these with care.
+
 Realtime Database
------------------
++++++++++++++++++
+
+The firebase database offers an interesting function in the shape of real-time updates of data changes. 
+
+By registering a key in the ``realtimeUserValueKeys`` property, the `realtimeUserValueChanged <https://felgo.com/doc/felgo-firebasedatabase/#realtimeUserValueChanged-signal>`_ will signal real-time value changes *across devices*. This function has a user independent sibling in the shape of ``realtimeValueChanged``, that acts on global values.
+
+
 
 Cloud Storage, Augmented Reality, and More
 ==========================================
+
+The Felgo plugins provides more integration than we've covered here. As an alternative to Firebase, you can use Felgo Cloud. There is also an augumented reality plugin powered by Wikitude, the Felgo Gamification APIs for leaderboards and achievements, Felgo Multiplayer powered by Photon for real-time communication between users.
+
+In addition to these pure extensions of Qt, Felgo also offers an improved WebAssembly experience, fixing both known shortcomings of the current Qt integration, as well as extending the Qt APIs for the WebAssembly environment.
+
+IMAGE IMAGE IMAGE
+
+
 
 Summary
 =======
