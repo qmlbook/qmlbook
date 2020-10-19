@@ -24,7 +24,7 @@ Felgo Live
 
 The Hot Reload and Felgo Live Clients lets you modify your code and see the changes live. All QML, JavaScript, and assets are updated on every connected device as soon as you save your file.
 
-IMAGE IMAGE IMAGE
+.. figure:: images/hot-reload.gif
 
 One nice aspect of Hot Reload is that it is smart enough to modify only what you changed, preserving the state of your application. For instance, if you are updating a page containing a toggled switch, it will still be toggled after a reload.
 
@@ -34,11 +34,11 @@ The Felgo Live tool is a standalone tool that comes with the Felgo SDK and can b
 
 In the Felgo SDK, you launch Felgo Live from the Live Play button in the Qt Creator side bar, as shown below.
 
-IMAGE IMAGE IMAGE
+.. figure:: images/qtc-hit-live-run.png
 
 Once running, the Felgo Live Server is running together with your application. Every time you save your source files, the changes are immediately shown in the running application. You can also see logs from all connected devices. It is also possible to start the live server from command line, passing your root QML file as an argument.
 
-IMAGE IMAGE IMAGE
+.. figure:: images/server-client.png
 
 Felgo Hot Reload can be used on every target platform - be it desktop oo mobile. It even works for WebAssembly and Embedded systems. Felgo has more information on the topic at the `product page <https://felgo.com/doc/qml-hot-reload-felgo-live/>`_.
 
@@ -49,7 +49,7 @@ When used locally on your computer, the Felgo Live Server talks to an instance o
 
 After you install the application, make sure your device is on the same network as your PC and click on “Connect Desktop”. Your mobile device will show you the live view of your app right away. When you start changing your code you will see both the Desktop and Mobile versions updated instantaneously.
 
-IMAGE IMAGE IMAGE
+.. figure:: images/live-client-module-mobile-and-desktop.jpg
 
 One nice aspect of Felgo Hot Reload is that you can deploy it on multiple connected device at once. This way, you can test test many different configurations of screen sizes, DPIs and styles at the same time. You can even deploy your application on an iOS device without having access to an Apple computer.
 
@@ -107,7 +107,7 @@ This is a major undertaking. You need to setup and maintain a build environment 
 
 Felgo Cloud Builds is a CI/CD solution for automatic building and deployment of Qt apps. You set up your project and build configuration once and then use this to build apps. You can target iOS, Android, Desktop, or Embedded. Each new version only takes a few minutes to build.
 
-IMAGE IMAGE IMAGE
+.. figure:: images/CloudBuildsGraphic.jpg
 
 The Felgo Cloud Build is a a centralized and stable build environment for every Qt target platform. This means that you, as a developer, do not have the have the toolchains for all platforms on your machine. For example you can create iOS apps from Windows, even though you cannnot install the required tools for compiling iOS apps on your machine. This also removes potential problems that may arise from building the app with different systems and tooling environments. Every release is built with the same system configuration, Qt version and dependencies.
 
@@ -134,7 +134,7 @@ Felgo Plugins
 
 Once you've created a new app, you can look at more advanced topics. Felgo provides extensions to Qt that help you with monetization, push notifications, and analytics, i.e. the study of how the user moves through the app.
 
-IMAGE IMAGE IMAGE
+.. figure:: images/felgo-plugins.png
 
 These functions usually required platform specific APIs. There are also third party services that provide such services through custom native framework. Supporting native SDKs for Android and iOS using Qt/QML is not an easy task. You need to provide a portable abstraction for the APIs, binding to Java/Kotlin for Andoird or Objective-C/Swift for iOS.
 
@@ -153,11 +153,11 @@ To get started with the Felgo plugins, start Qt Creator from the Felgo SDK and c
 
 To retrieve a valid Felgo license key for the your application, go to `https://felgo.com/developers/license <https://felgo.com/developers/license>`_ and select the plugins that you intend to use.
 
-IMAGE IMAGE IMAGE
+.. figure:: images/plugin-activation-license-1.jpg
 
 At the bottom of the page, click the *Generate License Key* button. This lets you provide an app identifier and a version code.
 
-IMAGE IMAGE IMAGE
+.. figure:: images/plugin-activation-license-2.jpg
 
 This will present you with your generated license key. This key is unique to your license and your app, so make sure to keep it secret.
 
@@ -190,7 +190,8 @@ Notice that you specify your ad unit id from AdMob throught the ``adUnitId`` pro
 
 This code results in a banner such as the one shown below.
 
-IMAGE IMAGE IMAGE
+.. figure:: images/Screenshot_2020-09-22-14-56-47-722_net.vplay.apps.QMLLive.jpg
+    :scale: 30%
 
 In addition to banners, you can use interstitial ads. These are full screen interactive advertisements. From QML, it is just as simple to integrate such an ad using the `AdMobInterstitial <https://felgo.com/doc/felgo-admobinterstitial/>`_ element.
 
@@ -211,7 +212,8 @@ To `StorePurchase <https://felgo.com/doc/felgo-storepurchase/>`_ defines how the
 
 This example shows the most basic use base. The Soomla APIs let's you do much more. For instance, the `SyncedStore <https://felgo.com/doc/felgo-syncedstore/>`_ lets you sync purchases across user devices. You can also provide virtual, an in-app currency, sell packs of items, and much more. Check out the `Soomal documentation <https://felgo.com/doc/plugin-soomla/>`_ for more information.
 
-IMAGE IMAGE IMAGE
+.. figure:: images/Screenshot_2020-09-22-14-58-22-283_net.vplay.apps.QMLLive.jpg
+    :scale: 30%
 
 An alternative solution for in-app purchases integrated by Felgo is `Chartboost <https://felgo.com/doc/plugin-chartboost/>`_. Chartboost lets you integrate booth in-app advertisement and in-app purchases.
 
@@ -345,7 +347,7 @@ The Felgo plugins provides more integration than we've covered here. As an alter
 
 In addition to these pure extensions of Qt, Felgo also offers an improved WebAssembly experience, fixing both known shortcomings of the current Qt integration, as well as extending the Qt APIs for the WebAssembly environment.
 
-IMAGE IMAGE IMAGE
+.. figure:: images/felgo-webassembly-improvement-comparison-qt-2.png
 
 
 
