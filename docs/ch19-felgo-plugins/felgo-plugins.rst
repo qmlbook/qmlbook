@@ -12,12 +12,12 @@ Felgo Plugins and QML Hot Reloading
 
     The source code for this chapter can be found in the `assets folder <../assets>`_.
 
-We've already discussed how Felgo enhanches Qt and simplifies the creation of applications. In this chapter we will look a bit deeper at the tooling and the mobile plugins that Felgo provides.
+We've already discussed how Felgo enhances Qt and simplifies the creation of applications. In this chapter, we will look a bit deeper at the tooling and the mobile plugins that Felgo provides.
 
 Tooling
 =======
 
-Felgo comes with two tools that simplifies life as a Qt developer. The Felgo Live that lets you watch your code changes live, and Cloud Builds, that lets you automate the building and deployment of your apps for all platforms.
+Felgo comes with two tools that simplify life as a Qt developer. The Felgo Live that lets you watch your code changes live, and Cloud Builds, that lets you automate the building and deployment of your apps for all platforms.
 
 Felgo Live
 ----------
@@ -32,7 +32,7 @@ This shortens the roundtrip times dramatically when developing, as you no longer
 
 The Felgo Live tool is a standalone tool that comes with the Felgo SDK and can be used with any Qt/QML project. You do not have to develop your app with the Felgo SDK to enable QML Hot Reload for your project.
 
-In the Felgo SDK, you launch Felgo Live from the Live Play button in the Qt Creator side bar, as shown below.
+In the Felgo SDK, you launch Felgo Live from the Live Play button in the Qt Creator sidebar, as shown below.
 
 .. figure:: images/qtc-hit-live-run.png
 
@@ -40,7 +40,7 @@ Once running, the Felgo Live Server is running together with your application. E
 
 .. figure:: images/server-client.png
 
-Felgo Hot Reload can be used on every target platform - be it desktop oo mobile. It even works for WebAssembly and Embedded systems. Felgo has more information on the topic at the `product page <https://felgo.com/doc/qml-hot-reload-felgo-live/>`_.
+Felgo Hot Reload can be used on every target platform - be it desktop or mobile. It even works for WebAssembly and Embedded systems. Felgo has more information on the topic at the `product page <https://felgo.com/doc/qml-hot-reload-felgo-live/>`_.
 
 Felgo Live Client
 +++++++++++++++++
@@ -51,12 +51,12 @@ After you install the application, make sure your device is on the same network 
 
 .. figure:: images/live-client-module-mobile-and-desktop.jpg
 
-One nice aspect of Felgo Hot Reload is that you can deploy it on multiple connected device at once. This way, you can test test many different configurations of screen sizes, DPIs and styles at the same time. You can even deploy your application on an iOS device without having access to an Apple computer.
+One nice aspect of Felgo Hot Reload is that you can deploy it on multiple connected devices at once. This way, you can test many different configurations of screen sizes, DPIs and styles at the same time. You can even deploy your application on an iOS device without having access to an Apple computer.
 
 How does it Actually Work?
 ++++++++++++++++++++++++++
 
-Most QML applications are layeres. They have a QML and Javascript layer running in the QML engine, sitting on top of the Qt/C++ layer. The Felgo SDK adds the Felgo Live Module component and the Felgo Live Server, interacting with the module.
+Most QML applications are layered. They have a QML and Javascript layer running in the QML engine, sitting on top of the Qt/C++ layer. The Felgo SDK adds the Felgo Live Module component and the Felgo Live Server, interacting with the module.
 
 IMAGE IMAGE IMAGE
 
@@ -67,7 +67,7 @@ Custom Clients
 
 The Felgo Live Server operates by transmitting changed QML, JS and asset files to the Live Client. However, C++ code always requires compilation which is why the Live Client cannot support custom C++ out of the box. All your native C++ classes need to be built into the application. 
 
-The way to solve this with the Felgo SDK is to integrate the Felgo Live Module to your own project. This essentially turns your own app into a custom Live Client that supports QML Hot Reload. The code needed for this is trivial.
+The way to solve this with the Felgo SDK is to integrate the Felgo Live Module into your own project. This essentially turns your own app into a custom Live Client that supports QML Hot Reload. The code needed for this is trivial.
 
 First, you need to add the ``felgo-live`` module to your Qt ``CONFIG`` in your project::
 
@@ -94,38 +94,38 @@ With:
 
 The line above creates a ``FelgoLiveClient`` instance, which handles loading the QML, but also updating of the QML inside the running engine when the code changes.
 
-Now build and run the application for any Qt platform and you have a custom Felgo Live Client that you can connect to your Felgo Live Server. The application includes all your C++ code, while allowing you to use Hot Reload for the QML code.
+Now build and run the application for any Qt platform and you have a custom Felgo Live Client that you can connect to your Felgo Live Server. The application includes all your C++ code while allowing you to use Hot Reload for the QML code.
 
 When you are ready for release just revert the ``main.cpp`` file back the way and remove the Live Client Module. You can do this using a define that you use when calling ``qmake``. That way you can use an ``ifdef`` to avoid having two different versions of ``main.cpp``, but instead configure the build environment in Qt Creator to include or exclude the live client functionality.
 
 Cloud Builds
 ------------
 
-A large task, once your application has been developed, is building it for a variety of target platforms. You might want to build different versions, for instance beta releases, production releases and even customer specific versions. You might also want to push builds to various app stores for publishing.
+A large task, once your application has been developed, is building it for a variety of target platforms. You might want to build different versions such as, beta releases, production releases and even customer specific versions. You might also want to push builds to various app stores for publishing.
 
-This is a major undertaking. You need to setup and maintain a build environment for each platform. Application packages needs to be signed for deployment to the app stores. As an application grows, you will end up building a lot of major or minor builds for testing or new releases. This is where DevOps or CI/CD comes into the picture.
+This is a major undertaking. You need to set up and maintain a build environment for each platform. Application packages need to be signed for deployment to the app stores. As an application grows, you will end up building a lot of major or minor builds for testing or new releases. This is where DevOps or CI/CD comes into the picture.
 
-Felgo Cloud Builds is a CI/CD solution for automatic building and deployment of Qt apps. You set up your project and build configuration once and then use this to build apps. You can target iOS, Android, Desktop, or Embedded. Each new version only takes a few minutes to build.
+Felgo Cloud Builds is a CI/CD solution for automatic building and deploying of Qt apps. You set up your project and build configuration once and then use this to build apps. You can target iOS, Android, Desktop, or Embedded. Each new version only takes a few minutes to build.
 
 .. figure:: images/CloudBuildsGraphic.jpg
 
-The Felgo Cloud Build is a a centralized and stable build environment for every Qt target platform. This means that you, as a developer, do not have the have the toolchains for all platforms on your machine. For example you can create iOS apps from Windows, even though you cannnot install the required tools for compiling iOS apps on your machine. This also removes potential problems that may arise from building the app with different systems and tooling environments. Every release is built with the same system configuration, Qt version and dependencies.
+The Felgo Cloud Build is a centralized and stable build environment for every Qt target platform. This means that you, as a developer, do not need the toolchains for every platforms on your machine. For example, you can create iOS apps from Windows, even though you cannot install the required tools for compiling iOS apps on your machine. This also removes potential problems that may arise from building the app with different systems and tooling environments. Every release is built with the same system configuration, Qt version and dependencies.
 
-In addition to building apps, you might also want to deploy your apps to Google Play or Apple AppStore. In the stores, you  can use the beta testing mechanisms in the stores to test new versions and then move them to production. This traditionally requires uploading the ``apk`` bundles or ``ipa`` packages on the respective store websites.
+In addition to building apps, you might also want to deploy your apps to Google Play or Apple AppStore. In the stores, you can use the beta testing mechanisms in the stores to test new versions and then move them to production. This traditionally requires uploading the ``apk`` bundles or ``ipa`` packages on the respective store websites.
 
 Felgo Cloud Builds automates this as well. It takes your source code from your repository, builds your project for all platforms in parallel, and then uploads the packages to the stores for testing or publishing, depending on your settings.
 
-To use Felgo Cloud Builds, visit the `cloud builds page <https://felgo.com/cloud-builds>`_ to setup your project.
+To use Felgo Cloud Builds, visit the `cloud builds page <https://felgo.com/cloud-builds>`_ to set up your project.
 
 IMAGE IMAGE IMAGE
 
 The web site has step by step guides to create and configure your project. Starting from a Git repository, signing options, and optionally the integration with the stores. If you do not have a Google Play or App Store account yet, or have not setup your application in the app store, it is recommended to first set everything up and have a look at how to configure the store listing before integrating it into the cloud build infrastructure. Your store configuration and testing channels should be ready and working before you configure Cloud Builds for automatic deployment.
 
-Once everything is setup, you can trigger a build whenever you wish, resulting in a set of application packages. If you enable store deployment for the build, the packages will automatically appear in the respective testing channels, ready for your testers and users, before you can push the build to production.
+Once everything is set up, you can trigger a build whenever you wish, resulting in a set of application packages. If you enable store deployment for the build, the packages will automatically appear in the respective testing channels, ready for your testers and users, before you can push the build to production.
 
 .. admonition:: Building on-premise
 
-    Felgo Cloud Builds is hosted by Felgo, but is also available on-premise. It can be used for any Qt/QML application and custom toolchains or specific Qt versions are possible as well. If you need a specific setup, for example to target a certain embedded platform, get in touch with Felgo.
+    Felgo Cloud Builds is hosted by Felgo, but is also available on-premise. It can be used for any Qt/QML application and custom toolchains or specific Qt versions are possible as well. If you need a specific setup, for example, to target a certain embedded platform, get in touch with Felgo.
 
 
     
@@ -136,14 +136,14 @@ Once you've created a new app, you can look at more advanced topics. Felgo provi
 
 .. figure:: images/felgo-plugins.png
 
-These functions usually required platform specific APIs. There are also third party services that provide such services through custom native framework. Supporting native SDKs for Android and iOS using Qt/QML is not an easy task. You need to provide a portable abstraction for the APIs, binding to Java/Kotlin for Andoird or Objective-C/Swift for iOS.
+These functions usually required platform specific APIs. There are also third party services that provide such services through custom native frameworks. Supporting native SDKs for Android and iOS using Qt/QML is not an easy task. You need to provide a portable abstraction for the APIs, binding to Java/Kotlin for Andoird or Objective-C/Swift for iOS.
 
 To help with this, Felgo extends Qt with plugins integrating these services directly to QML.
 
 Configuration
 -------------
 
-The Felgo plugins extend Qt with bindings to an external services. This means that you will have register with the third party services. You will also need a Felgo license key. All monetization plugins are available for free, while other plugins requires that you purchase an `Indie or Enterprice license <https://felgo.com/pricing>`_.
+The Felgo plugins extend Qt with bindings to external services. This means that you will have register with the third party services. You will also need a Felgo license key. All monetization plugins are available for free, while other plugins require that you purchase an `Indie or Enterprise license <https://felgo.com/pricing>`_.
 
 .. note::
 
@@ -151,7 +151,7 @@ The Felgo plugins extend Qt with bindings to an external services. This means th
     
 To get started with the Felgo plugins, start Qt Creator from the Felgo SDK and create a new project. The project wizard presents you with a step that lets you select which plugins to use. Choose the ones that you want to use. This will add the relevant code to your project along with the needed build configurations.
 
-To retrieve a valid Felgo license key for the your application, go to `https://felgo.com/developers/license <https://felgo.com/developers/license>`_ and select the plugins that you intend to use.
+To retrieve a valid Felgo license key for your application, go to `https://felgo.com/developers/license <https://felgo.com/developers/license>`_ and select the plugins that you intend to use.
 
 .. figure:: images/plugin-activation-license-1.jpg
 
@@ -186,31 +186,31 @@ To get started, you need to register an AdMob account on the `AdMob Sign-up Page
 
 .. literalinclude:: src/snippets/ad-banner.qml
 
-Notice that you specify your ad unit id from AdMob throught the ``adUnitId`` property.
+Notice that you specify your ad unit id from AdMob through the ``adUnitId`` property.
 
 This code results in a banner such as the one shown below.
 
 .. figure:: images/Screenshot_2020-09-22-14-56-47-722_net.vplay.apps.QMLLive.jpg
     :scale: 30%
 
-In addition to banners, you can use interstitial ads. These are full screen interactive advertisements. From QML, it is just as simple to integrate such an ad using the `AdMobInterstitial <https://felgo.com/doc/felgo-admobinterstitial/>`_ element.
+In addition to banners, you can use interstitial ads. These are full-screen interactive advertisements. From QML, it is just as simple to integrate such an ad using the `AdMobInterstitial <https://felgo.com/doc/felgo-admobinterstitial/>`_ element.
 
 .. literalinclude:: src/snippets/ad-full-screen.qml
 
-Use the ``loadInterstitial`` function to start loading the ad in the background. As soon as you want to show the ad, call the ``showInterstitialIfLoaded``. In the example above we call this on the ``interstitialReceived`` signal. It has a sister signal called ``interstitialFailedToReceive`` that is called if the interstitial cannot be loaded, for instance due to network errors.
+Use the ``loadInterstitial`` function to start loading the ad in the background. As soon as you want to show the ad, call the ``showInterstitialIfLoaded``. In the example above we call this on the ``interstitialReceived`` signal. It has a sister signal called ``interstitialFailedToReceive`` that is called if the interstitial cannot be loaded, for instance, due to network errors.
 
 In-App Purchases
 ----------------
 
-Felgo let's you integrate in-app purchases directly into QML. The Soomla plugin lets you use a cross platform API to integrate the Soomla purchasing services into your application.
+Felgo lets you integrate in-app purchases directly into QML. The Soomla plugin lets you use a cross platform API to integrate the Soomla purchasing services into your application.
 
 The API is built around a `Store <https://felgo.com/doc/felgo-store/>`_ with Good items. These can be things such as `LifetimeGood <https://felgo.com/doc/felgo-lifetimegood/>`_, which is a purchase that lasts forever, or a `SingleUseGood <https://felgo.com/doc/felgo-singleusegood/>`_ which is a one time purchase that is used once and then has to be purchased again.
 
-To `StorePurchase <https://felgo.com/doc/felgo-storepurchase/>`_ defines how the item can be purchased. By calling the ``store.buyItem(noadsGood.itemId)`` the purchase is made. The ``noadsGood,purchased`` property can then be used to check if the purchase has been made or not.
+To `StorePurchase <https://felgo.com/doc/felgo-storepurchase/>`_ defines how the item can be purchased. By calling the ``store.buyItem(noadsGood.itemId)`` the purchase is made. The ``noadsGood.purchased`` property can then be used to check if the purchase has been made or not.
 
 .. literalinclude:: src/snippets/in-app-purchases.qml
 
-This example shows the most basic use base. The Soomla APIs let's you do much more. For instance, the `SyncedStore <https://felgo.com/doc/felgo-syncedstore/>`_ lets you sync purchases across user devices. You can also provide virtual, an in-app currency, sell packs of items, and much more. Check out the `Soomal documentation <https://felgo.com/doc/plugin-soomla/>`_ for more information.
+This example shows the most basic use base. The Soomla APIs let you do much more. For instance, the `SyncedStore <https://felgo.com/doc/felgo-syncedstore/>`_ lets you sync purchases across user devices. You can also provide virtual, an in-app currency, sell packs of items, and much more. Check out the `Soomal documentation <https://felgo.com/doc/plugin-soomla/>`_ for more information.
 
 .. figure:: images/Screenshot_2020-09-22-14-58-22-283_net.vplay.apps.QMLLive.jpg
     :scale: 30%
@@ -222,7 +222,7 @@ An alternative solution for in-app purchases integrated by Felgo is `Chartboost 
 Notifications
 =============
 
-It is common that mobile apps use notifications to indicate to the user that an important event has happened or that an announcement is available. Notification scan either be local, for instance a time has been reached, or remote, for example a friend request. With Felgo, you can integrate both types of notification on both iOS and Android.
+It is common that mobile apps use notifications to indicate to the user that an important event has happened or that an announcement is available. Notifications can either be local, for instance a timer is finished, or remote, such as a friend request. With Felgo, you can integrate both types of notification on iOS and Android.
 
 
 Local Notifications
@@ -230,13 +230,13 @@ Local Notifications
 
 The `NotificationManager <https://felgo.com/doc/felgo-notificationmanager/>`_ is used to schedule local notifications. Notifications can be scheduled either relative to the current time, i.e. in 1 hour, or at a given time, e.g. 3pm on December 24.
 
-In the example below, a `Notification <https://felgo.com/doc/felgo-notification/>`_ is defined declaratively in QML. This is called a *static* notification. Then the ``NotificationManager::scheduleNotification`` is used to trigger the notification. The ``Notification::timeInterval`` is used to set a relative time, in this case 5 seconds. For setting an absolute time, use the ``timestamp`` property instead.
+In the example below, a `Notification <https://felgo.com/doc/felgo-notification/>`_ is defined declaratively in QML. This is called a *static* notification. Then the ``NotificationManager::scheduleNotification`` is used to trigger the notification. The ``Notification::timeInterval`` is used to set a relative time, in this case, 5 seconds. For setting an absolute time, use the ``timestamp`` property instead.
 
 .. literalinclude:: src/snippets/local-notifications.qml
 
-The ``notificationFired`` signal is triggered when a notification is triggered. This signal behaves differently depending on if the app is active, or if it is running in the background. When the app is active, the signal is emitted immediately without an banner or sound being played. When the app is in the background, a notification sound is played and the message is shown in a notification banner. The signal is then emitted once the user taps the message to activate the app and bring it into the foreground.
+The ``notificationFired`` signal is triggered when a notification is triggered. This signal behaves differently depending on if the app is active, or if it is running in the background. When the app is active, the signal is emitted immediately without a banner or sound being played. When the app is in the background, a notification sound is played and the message is shown in a notification banner. The signal is then emitted once the user taps the message to activate the app and bring it into the foreground.
 
-In some scenarios a statically declared notification is not enought. For that use-case, it is also possible to provide a JavaScript object to the ``scheduleNotification`` method. This creates the notification dynamically, as shown below.
+In some scenarios, a statically declared notification is not enough. For that use-case, it is also possible to provide a JavaScript object to the ``scheduleNotification`` method. This creates the notification dynamically, as shown below.
 
 .. literalinclude:: src/snippets/local-notifications-js-qml
 
@@ -272,15 +272,15 @@ The tags are used to reach groups of users. To reference a specific user, use th
 Analytics and Crash Reporting
 =============================
 
-Analytics is used to understand how your users work with your app. This will let you understand if all features are used, or if there is a problem in the user interface. Felgo provides plugins for Amplitude, Google Analutics and Flurry. In the example below, we demonstrate how to integrate Amplitude.
+Analytics is used to understand how your users work with your app. This will let you understand if all features are used, or if there is a problem with the user interface. Felgo provides plugins for Amplitude, Google Analytics and Flurry. In the example below, we demonstrate how to integrate Amplitude.
 
 In order to use Amplitude you need to sign up for an account. You do that at the `Amplitude website <https://amplitude.com/signup>`_ . 
 
-The code is built around the `Amplitude <https://felgo.com/doc/felgo-amplitude/>`_ element, that provides the ``logEvent`` method, as shown below.
+The code is built around the `Amplitude <https://felgo.com/doc/felgo-amplitude/>`_ element, which provides the ``logEvent`` method, as shown below.
 
 .. literalinclude:: src/snippets/amplitude.qml
 
-Each event should represent an action of the user, for instance "picture deleted", "user logged in", and so on. In addition to the events, Amplitude can log revenues using the ``logRevenue`` method. This allows you to analyze what user flows leads to revenue streams, e.g. in-app purchases.
+Each event should represent an action of the user, for instance, "picture deleted", "user logged in", and so on. In addition to the events, Amplitude can log revenues using the ``logRevenue`` method. This allows you to analyze what user flows leads to revenue streams, e.g. in-app purchases.
 
 To enable further analytics, you can provide a JavaScript object with key-value pairs that you can pass to Amplitude to help analyze the results better. In the example above, we provide an age, a weight, a name and what achievements the user has reached. This way, we can correlate this information with the logs using the Amplitude tools.
 
@@ -291,11 +291,11 @@ The properties can also be things such as free space on the device, or time sinc
 Firebase: Authentication, Databases, and Storage
 ================================================
 
-The Google Firebase plugin provides three core feature sets: authentication, a database, and generic storage. In this section we will look at the authentication and database features.
+The Google Firebase plugin provides three core feature sets: authentication, a database, and generic storage. In this section, we will look at the authentication and database features.
 
 Before you can get started with Firebase you have to register your applications and download the ``google-services.json`` file from the `Firebase console <https://console.firebase.google.com/u/0/?pli=1>`_. Notice that using Firebase also requires a Google account. 
 
-Using the information from Firebase console, you can setup your `FirebaseConfig <https://felgo.com/doc/felgo-firebaseconfig/>`_ item as shown below.
+Using the information from the Firebase console, you can set up your `FirebaseConfig <https://felgo.com/doc/felgo-firebaseconfig/>`_ item as shown below.
 
 .. literalinclude:: src/snippets/database.qml
 
@@ -325,7 +325,7 @@ The `FirebaseDatabase <https://felgo.com/doc/felgo-firebasedatabase/>`_ QML comp
 
 .. literalinclude:: src/snippets/firebase-setuservalue.qml
 
-To retreive a stored value, the ``getUserValue`` method is used. It is possible to provide *queryParameters* to sort and filter. This is described in detail in the `firebase query documentation <https://firebase.google.com/docs/database/admin/retrieve-data#section-queries>`_.
+To retrieve a stored value, the ``getUserValue`` method is used. It is possible to provide *queryParameters* to sort and filter. This is described in detail in the `firebase query documentation <https://firebase.google.com/docs/database/admin/retrieve-data#section-queries>`_.
 
 .. literalinclude:: src/snippets/firebase-getuservalue.qml
 
@@ -343,7 +343,7 @@ By registering a key in the ``realtimeUserValueKeys`` property, the `realtimeUse
 Cloud Storage, Augmented Reality, and More
 ==========================================
 
-The Felgo plugins provides more integration than we've covered here. As an alternative to Firebase, you can use Felgo Cloud. There is also an augumented reality plugin powered by Wikitude, the Felgo Gamification APIs for leaderboards and achievements, Felgo Multiplayer powered by Photon for real-time communication between users.
+The Felgo plugins provide more integration than we've covered here. As an alternative to Firebase, you can use Felgo Cloud. There is also an augmented reality plugin powered by Wikitude, the Felgo Gamification APIs for leaderboards and achievements, Felgo Multiplayer powered by Photon for real-time communication between users.
 
 In addition to these pure extensions of Qt, Felgo also offers an improved WebAssembly experience, fixing both known shortcomings of the current Qt integration, as well as extending the Qt APIs for the WebAssembly environment.
 
