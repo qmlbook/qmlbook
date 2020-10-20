@@ -58,7 +58,7 @@ How does it Actually Work?
 
 Most QML applications are layered. They have a QML and Javascript layer running in the QML engine, sitting on top of the Qt/C++ layer. The Felgo SDK adds the Felgo Live Module component and the Felgo Live Server, interacting with the module.
 
-IMAGE IMAGE IMAGE
+.. figure:: images/qml-app-architecture.png
 
 The Live Server monitors your QML, JS and assets files. When they change, it sends the updated tree to the Felgo Live Module. The module takes care of comparing the current tree of QML components with the new one and updates the subtrees which have changed, preserving the state of every other property.
 
@@ -115,11 +115,11 @@ In addition to building apps, you might also want to deploy your apps to Google 
 
 Felgo Cloud Builds automates this as well. It takes your source code from your repository, builds your project for all platforms in parallel, and then uploads the packages to the stores for testing or publishing, depending on your settings.
 
-To use Felgo Cloud Builds, visit the `cloud builds page <https://felgo.com/cloud-builds>`_ to set up your project.
+To use Felgo Cloud Builds, visit the `Cloud Builds page <https://felgo.com/cloud-builds>`_ to set up your project.
 
-IMAGE IMAGE IMAGE
+.. figure:: images/felgo-cloud-builds-config.png
 
-The web site has step by step guides to create and configure your project. Starting from a Git repository, signing options, and optionally the integration with the stores. If you do not have a Google Play or App Store account yet, or have not setup your application in the app store, it is recommended to first set everything up and have a look at how to configure the store listing before integrating it into the cloud build infrastructure. Your store configuration and testing channels should be ready and working before you configure Cloud Builds for automatic deployment.
+The web site has step by step guides to create and configure your project. Starting from a Git repository, signing options, and optionally the integration with the stores. If you do not have a Google Play or App Store account yet, or have not setup your application in the app store, it is recommended to first set everything up and have a look at how to configure the store listing before integrating it into the Cloud Build infrastructure. Your store configuration and testing channels should be ready and working before you configure Cloud Builds for automatic deployment.
 
 Once everything is set up, you can trigger a build whenever you wish, resulting in a set of application packages. If you enable store deployment for the build, the packages will automatically appear in the respective testing channels, ready for your testers and users, before you can push the build to production.
 
