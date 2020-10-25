@@ -240,6 +240,16 @@ html_show_copyright = True
 # Output file base name for HTML help builder.
 htmlhelp_basename = 'qt5cadaques'
 
+# Prioritize gif over png for html to enable animated images
+# Png is used for latex output
+from sphinx.builders.html import StandaloneHTMLBuilder
+StandaloneHTMLBuilder.supported_image_types = [
+    'image/svg+xml',
+    'image/gif',
+    'image/png',
+    'image/jpeg',
+]
+
 
 # -- Options for LaTeX output --------------------------------------------------
 
