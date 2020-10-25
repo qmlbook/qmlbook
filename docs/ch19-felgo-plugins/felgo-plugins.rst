@@ -24,7 +24,7 @@ Felgo Live
 
 The Hot Reload and Felgo Live Clients lets you modify your code and see the changes live. All QML, JavaScript, and assets are updated on every connected device as soon as you save your file.
 
-.. figure:: images/hot-reload.gif
+.. figure:: images/hot-reload.*
 
 One nice aspect of Hot Reload is that it is smart enough to modify only what you changed, preserving the state of your application. For instance, if you are updating a page containing a toggled switch, it will still be toggled after a reload.
 
@@ -353,3 +353,10 @@ In addition to these pure extensions of Qt, Felgo also offers an improved WebAss
 
 Summary
 =======
+
+In this chapter we have looked as some of the ways that Felgo extends Qt. This spans the entire range: tooling, build services, and integration of features. The strength of the Felgo extensions is that they enable access to advanced features directly from QML, thus saving the effort needed to first integrate a feature to Qt/C++, and then exposing it to QML.
+
+Many of the integrated functions shown in this chapter require accounts at external services, as well as an account at Felgo. This means that you will have to modify the example snippets included with your keys, instead of running them straight out of the box. This is why we separated this contents into a separate chapter.
+
+The functions demonstrated - advertisements, in-app purchases, push notifications, analytics, user accounts, and real-time databases are all functions that many applications will integrate in one shape or form. By providing a pre-made QML integration, Felgo can save a considerable amount of development time. Combine this with the remote building capabilities of Cloud Builds, automating the building and deployment into app stores, and the Hot Reload feature, making it possible to try out changes live across a range of devices, all at once, and you can save a lot of time.
+
