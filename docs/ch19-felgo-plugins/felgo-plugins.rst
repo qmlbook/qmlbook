@@ -111,7 +111,7 @@ Felgo Cloud Builds is a CI/CD solution for automatic building and deploying of Q
 
 The Felgo Cloud Build is a centralized and stable build environment for every Qt target platform. This means that you, as a developer, do not need the toolchains for every platform on your machine. For example, you can create iOS apps from Windows, even though you cannot install the required tools for compiling iOS apps on your machine. This also removes potential problems that may arise from building the app with different systems and tooling environments. Every release is built with the same system configuration, Qt version and dependencies.
 
-In addition to building apps, you might also want to deploy your apps to Google Play or Apple AppStore. In the stores, you can use the beta testing mechanisms in the stores to test new versions and then move them to production. This traditionally requires uploading the ``apk`` bundles or ``ipa`` packages on the respective store websites.
+In addition to building apps, you might also want to deploy your apps to Google Play or Apple AppStore. You can use the beta testing mechanisms in the stores to test new versions and then move them to production. This traditionally requires uploading the ``apk`` bundles or ``ipa`` packages on the respective store websites.
 
 Felgo Cloud Builds automates this as well. It takes your source code from your repository, builds your project for all platforms in parallel, and then uploads the packages to the stores for testing or publishing, depending on your settings.
 
@@ -136,7 +136,7 @@ Once you've created a new app, you can look at more advanced topics. Felgo provi
 
 .. figure:: images/felgo-plugins.png
 
-These functions usually required platform specific APIs. There are also third party services that provide such services through custom native frameworks. Supporting native SDKs for Android and iOS using Qt/QML is not an easy task. You need to provide a portable abstraction for the APIs, binding to Java/Kotlin for Andoird or Objective-C/Swift for iOS.
+These functions usually required platform specific APIs. There are also third party services that provide such services through custom native frameworks. Supporting native SDKs for Android and iOS using Qt/QML is not an easy task. You need to provide a portable abstraction for the APIs, binding to Java/Kotlin for Android or Objective-C/Swift for iOS.
 
 To help with this, Felgo extends Qt with plugins integrating these services directly to QML.
 
@@ -147,7 +147,7 @@ The Felgo plugins extend Qt with bindings to external services. This means that 
 
 .. note::
 
-    As the examples in this chapter requires you to have a custom license key they are not runnable out of the box.
+    All the examples in this chapter require you to have a custom license key. They are not runnable out of the box.
     
 To get started with the Felgo plugins, start Qt Creator from the Felgo SDK and create a new project. The project wizard presents you with a step that lets you select which plugins to use. Choose the ones that you want to use. This will add the relevant code to your project along with the needed build configurations.
 
@@ -214,9 +214,6 @@ This example shows the most basic use case. The Soomla APIs let you do much more
 
 .. figure:: images/Screenshot_2020-09-22-14-58-22-283_net.vplay.apps.QMLLive.jpg
     :scale: 30%
-
-An alternative solution for in-app purchases integrated by Felgo is `Chartboost <https://felgo.com/doc/plugin-chartboost/>`_. Chartboost lets you integrate booth in-app advertisement and in-app purchases.
-
 
 
 Notifications
@@ -343,7 +340,7 @@ By registering a key in the ``realtimeUserValueKeys`` property, the `realtimeUse
 Cloud Storage, Augmented Reality, and More
 ==========================================
 
-The Felgo plugins provide more integration than we've covered here. As an alternative to Firebase, you can use Felgo Cloud. There is also an augmented reality plugin powered by Wikitude, the Felgo Gamification APIs for leaderboards and achievements, Felgo Multiplayer powered by Photon for real-time communication between users.
+The Felgo plugins provide more integration than we've covered here. As an alternative to Firebase, you can use Felgo Cloud. There is also an augmented reality plugin powered by Wikitude, the Felgo Gamification APIs for leaderboards and achievements and Felgo Multiplayer powered by Photon for real-time communication between users.
 
 In addition to these pure extensions of Qt, Felgo also offers an improved WebAssembly experience, fixing both known shortcomings of the current Qt integration, as well as extending the Qt APIs for the WebAssembly environment.
 
