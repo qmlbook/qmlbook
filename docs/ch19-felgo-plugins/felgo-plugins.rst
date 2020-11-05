@@ -12,21 +12,24 @@ Felgo Plugins and QML Hot Reloading
 
     The source code for this chapter can be found in the `assets folder <../assets>`_.
 
+.. figure:: images/felgo-logo.png
+    :scale: 50%
+
 We've already discussed how Felgo enhances Qt and simplifies the creation of applications. In this chapter, we will look a bit deeper at the tooling and the mobile plugins that Felgo provides.
 
 Tooling
 =======
 
-Felgo comes with two tools that simplify life as a Qt developer. The Felgo Live that lets you watch your code changes live, and Cloud Builds, that lets you automate the building and deployment of your apps for all platforms.
+Felgo comes with two main tools that simplify your life as a Qt developer. The Felgo Live that lets you apply your code changes in real-time, and Cloud Builds, that lets you automate the building and deployment of your apps for all platforms.
 
 Felgo Live
 ----------
 
-The Hot Reload and Felgo Live Clients lets you modify your code and see the changes live. All QML, JavaScript, and assets are updated on every connected device as soon as you save your file.
+The Hot Reload and Felgo Live Clients lets you modify your code and see the changes live. All QML, JavaScript, and assets are updated on every connected device as soon as you save your files.
 
 .. figure:: images/hot-reload.*
 
-One nice aspect of Hot Reload is that it is smart enough to modify only what you changed, preserving the state of your application. For instance, if you are updating a page containing a toggled switch, it will still be toggled after a reload.
+Hot Reload is smart enough to only modify what you changed, preserving the state of your application. For instance, if you are updating a page containing a toggled switch, it will still be toggled after a reload.
 
 This shortens the roundtrip times dramatically when developing, as you no longer have to go through the complete save, compile, deploy, restart cycle.
 
@@ -36,7 +39,7 @@ In the Felgo SDK, you launch Felgo Live from the Live Play button in the Qt Crea
 
 .. figure:: images/qtc-hit-live-run.png
 
-Once running, the Felgo Live Server is running together with your application. Every time you save your source files, the changes are immediately shown in the running application. You can also see logs from all connected devices. It is also possible to start the live server from command line, passing your root QML file as an argument.
+Once started, the Felgo Live Server is running together with your application. Every time you save your source files, the changes are immediately shown in the running application. You can also see logs from all connected devices. It is also possible to start the live server from command line, passing your root QML file as an argument.
 
 .. figure:: images/server-client.png
 
@@ -45,13 +48,13 @@ Felgo Hot Reload can be used on every target platform - be it desktop or mobile.
 Felgo Live Client
 +++++++++++++++++
 
-When used locally on your computer, the Felgo Live Server talks to an instance of the Felgo Live Client. It is possible to connect more clients to each server. For instance, you can run the live client on Android and iOS devices. You can download it from `Google Play <https://play.google.com/store/apps/details?id=net.vplay.apps.QMLLive>`_ and `Apple AppStore <https://apps.apple.com/us/app/qml-live-scripting-by-felgo/id1157319191>`_ respectively.
+When used locally on your computer, the Felgo Live Server talks to an instance of the Felgo Live Client. It is possible to connect more clients to each server. For instance, the Felgo Dev App integrates a Live client for Android and iOS devices. You can download it from `Google Play <https://play.google.com/store/apps/details?id=net.vplay.apps.QMLLive>`_ and `Apple AppStore <https://apps.apple.com/us/app/qml-live-scripting-by-felgo/id1157319191>`_ respectively. This application also provides a showcase of Felgo components and sample applications to give you an overview of what’s offered.
 
 After you install the application, make sure your device is on the same network as your PC and click on “Connect Desktop”. Your mobile device will show you the live view of your app right away. When you start changing your code you will see both the Desktop and Mobile versions updated instantaneously.
 
-.. figure:: images/live-client-module-mobile-and-desktop.jpg
+.. figure:: images/felgo-dev-app-mobile-desktop.png
 
-One nice aspect of Felgo Hot Reload is that you can deploy it on multiple connected devices at once. This way, you can test many different configurations of screen sizes, DPIs and styles at the same time. You can even deploy your application on an iOS device without having access to an Apple computer.
+When connecting multiple devices through live clients, you can test many different configurations of screen sizes, DPIs and styles at the same time. You can even deploy your application on an iOS device without having access to an Apple computer.
 
 How does it Actually Work?
 ++++++++++++++++++++++++++
@@ -109,9 +112,9 @@ Felgo Cloud Builds is a CI/CD solution for automatic building and deploying of Q
 
 .. figure:: images/CloudBuildsGraphic.jpg
 
-The Felgo Cloud Build is a centralized and stable build environment for every Qt target platform. This means that you, as a developer, do not need the toolchains for every platforms on your machine. For example, you can create iOS apps from Windows, even though you cannot install the required tools for compiling iOS apps on your machine. This also removes potential problems that may arise from building the app with different systems and tooling environments. Every release is built with the same system configuration, Qt version and dependencies.
+The Felgo Cloud Build is a centralized and stable build environment for every Qt target platform. This means that you, as a developer, do not need the toolchains for every platform on your machine. For example, you can create iOS apps from Windows, even though you cannot install the required tools for compiling iOS apps on your machine. This also removes potential problems that may arise from building the app with different systems and tooling environments. Every release is built with the same system configuration, Qt version and dependencies.
 
-In addition to building apps, you might also want to deploy your apps to Google Play or Apple AppStore. In the stores, you can use the beta testing mechanisms in the stores to test new versions and then move them to production. This traditionally requires uploading the ``apk`` bundles or ``ipa`` packages on the respective store websites.
+In addition to building apps, you might also want to deploy your apps to Google Play or Apple AppStore. You can use the beta testing mechanisms in the stores to test new versions and then move them to production. This traditionally requires uploading the ``apk`` bundles or ``ipa`` packages on the respective store websites.
 
 Felgo Cloud Builds automates this as well. It takes your source code from your repository, builds your project for all platforms in parallel, and then uploads the packages to the stores for testing or publishing, depending on your settings.
 
@@ -121,7 +124,7 @@ To use Felgo Cloud Builds, visit the `Cloud Builds page <https://felgo.com/cloud
 
 The web site has step by step guides to create and configure your project. Starting from a Git repository, signing options, and optionally the integration with the stores. If you do not have a Google Play or App Store account yet, or have not setup your application in the app store, it is recommended to first set everything up and have a look at how to configure the store listing before integrating it into the Cloud Build infrastructure. Your store configuration and testing channels should be ready and working before you configure Cloud Builds for automatic deployment.
 
-Once everything is set up, you can trigger a build whenever you wish, resulting in a set of application packages. If you enable store deployment for the build, the packages will automatically appear in the respective testing channels, ready for your testers and users, before you can push the build to production.
+Once everything is set up, you can trigger a build whenever you wish, resulting in a set of application packages. If you enable store deployment for the build, the packages will automatically appear in the respective channels, ready for your testers and users, before you can push the build to production.
 
 .. admonition:: Building on-premise
 
@@ -136,7 +139,7 @@ Once you've created a new app, you can look at more advanced topics. Felgo provi
 
 .. figure:: images/felgo-plugins.png
 
-These functions usually required platform specific APIs. There are also third party services that provide such services through custom native frameworks. Supporting native SDKs for Android and iOS using Qt/QML is not an easy task. You need to provide a portable abstraction for the APIs, binding to Java/Kotlin for Andoird or Objective-C/Swift for iOS.
+These functions usually required platform specific APIs. There are also third party services that provide such services through custom native frameworks. Supporting native SDKs for Android and iOS using Qt/QML is not an easy task. You need to provide a portable abstraction for the APIs, binding to Java/Kotlin for Android or Objective-C/Swift for iOS.
 
 To help with this, Felgo extends Qt with plugins integrating these services directly to QML.
 
@@ -147,7 +150,7 @@ The Felgo plugins extend Qt with bindings to external services. This means that 
 
 .. note::
 
-    As the examples in this chapter requires you to have a custom license key they are not runnable out of the box.
+    All the examples in this chapter require you to have a custom license key. They are not runnable out of the box.
     
 To get started with the Felgo plugins, start Qt Creator from the Felgo SDK and create a new project. The project wizard presents you with a step that lets you select which plugins to use. Choose the ones that you want to use. This will add the relevant code to your project along with the needed build configurations.
 
@@ -170,7 +173,7 @@ You can also provide the license key through your project file. This integrates 
 .. literalinclude:: src/snippets/license-key-pro.pro
     :language: bash
     
-Once this is in place you can start using the plugins. If you use the paid versions of Felgo, the Felgo splash screen is also removed from specifying the license key.
+Once this is in place you can start using the plugins. If you use the paid versions of Felgo, the Felgo splash screen is also removed by specifying the license key.
 
 Monetization, Ads and In-App Purchases
 ======================================
@@ -210,13 +213,10 @@ To `StorePurchase <https://felgo.com/doc/felgo-storepurchase/>`_ defines how the
 
 .. literalinclude:: src/snippets/in-app-purchases.qml
 
-This example shows the most basic use base. The Soomla APIs let you do much more. For instance, the `SyncedStore <https://felgo.com/doc/felgo-syncedstore/>`_ lets you sync purchases across user devices. You can also provide virtual, an in-app currency, sell packs of items, and much more. Check out the `Soomal documentation <https://felgo.com/doc/plugin-soomla/>`_ for more information.
+This example shows the most basic use case. The Soomla APIs let you do much more. For instance, the `SyncedStore <https://felgo.com/doc/felgo-syncedstore/>`_ lets you sync purchases across user devices. You can also provide virtual, an in-app currency, sell packs of items, and much more. Check out the `Soomal documentation <https://felgo.com/doc/plugin-soomla/>`_ for more information.
 
 .. figure:: images/Screenshot_2020-09-22-14-58-22-283_net.vplay.apps.QMLLive.jpg
     :scale: 30%
-
-An alternative solution for in-app purchases integrated by Felgo is `Chartboost <https://felgo.com/doc/plugin-chartboost/>`_. Chartboost lets you integrate booth in-app advertisement and in-app purchases.
-
 
 
 Notifications
@@ -234,7 +234,7 @@ In the example below, a `Notification <https://felgo.com/doc/felgo-notification/
 
 .. literalinclude:: src/snippets/local-notifications.qml
 
-The ``notificationFired`` signal is triggered when a notification is triggered. This signal behaves differently depending on if the app is active, or if it is running in the background. When the app is active, the signal is emitted immediately without a banner or sound being played. When the app is in the background, a notification sound is played and the message is shown in a notification banner. The signal is then emitted once the user taps the message to activate the app and bring it into the foreground.
+The ``notificationFired`` signal is triggered when a notification is fired. This signal behaves differently if the app is active, or if it is running in the background. When the app is active, the signal is emitted immediately without a banner or sound being played. When the app is in the background, a notification sound is played and the message is shown in a notification banner. The signal is then emitted once the user taps the message to activate the app and bring it into the foreground.
 
 In some scenarios, a statically declared notification is not enough. For that use-case, it is also possible to provide a JavaScript object to the ``scheduleNotification`` method. This creates the notification dynamically, as shown below.
 
@@ -272,7 +272,7 @@ The tags are used to reach groups of users. To reference a specific user, use th
 Analytics and Crash Reporting
 =============================
 
-Analytics is used to understand how your users work with your app. This will let you understand if all features are used, or if there is a problem with the user interface. Felgo provides plugins for Amplitude, Google Analytics and Flurry. In the example below, we demonstrate how to integrate Amplitude.
+Analytics is used to understand how your users work with your app. This will let you understand if all features are used, or if there is a usability problem with the user interface. Felgo provides plugins for Amplitude, Google Analytics and Flurry. In the example below, we demonstrate how to integrate Amplitude.
 
 In order to use Amplitude you need to sign up for an account. You do that at the `Amplitude website <https://amplitude.com/signup>`_ . 
 
@@ -343,9 +343,13 @@ By registering a key in the ``realtimeUserValueKeys`` property, the `realtimeUse
 Cloud Storage, Augmented Reality, and More
 ==========================================
 
-The Felgo plugins provide more integration than we've covered here. As an alternative to Firebase, you can use Felgo Cloud. There is also an augmented reality plugin powered by Wikitude, the Felgo Gamification APIs for leaderboards and achievements, Felgo Multiplayer powered by Photon for real-time communication between users.
+The Felgo plugins provide more integration than we've covered here. As an alternative to Firebase, you can use Felgo Cloud. There is also an augmented reality plugin powered by Wikitude, the Felgo Gamification APIs for leaderboards and achievements and Felgo Multiplayer powered by Photon for real-time communication between users.
 
-In addition to these pure extensions of Qt, Felgo also offers an improved WebAssembly experience, fixing both known shortcomings of the current Qt integration, as well as extending the Qt APIs for the WebAssembly environment.
+
+Felgo & WebAssembly
+===================
+
+In addition to these pure extensions of Qt, Felgo also offers an improved WebAssembly experience, fixing known shortcomings of the current Qt integration, as well as extending the Qt APIs for the WebAssembly environment.
 
 .. figure:: images/felgo-webassembly-improvement-comparison-qt-2.png
 
@@ -354,9 +358,12 @@ In addition to these pure extensions of Qt, Felgo also offers an improved WebAss
 Summary
 =======
 
-In this chapter we have looked as some of the ways that Felgo extends Qt. This spans the entire range: tooling, build services, and integration of features. The strength of the Felgo extensions is that they enable access to advanced features directly from QML, thus saving the effort needed to first integrate a feature to Qt/C++, and then exposing it to QML.
+In this chapter, we have looked at some of the ways that Felgo extends Qt. This spans the entire range: tooling, build services, and integration of features. The strength of the Felgo extensions is that they enable access to advanced features directly from QML. This saves the effort needed to first integrate a feature into Qt/C++, and then exposing it to QML.
 
-Many of the integrated functions shown in this chapter require accounts at external services, as well as an account at Felgo. This means that you will have to modify the example snippets included with your keys, instead of running them straight out of the box. This is why we separated this contents into a separate chapter.
+Many of the integrated functions shown in this chapter require accounts at external services, as well as Felgo account. This means that you will have to modify the example snippets included with your keys, instead of running them straight out of the box. This is why we separated these contents into a distinct chapter.
 
-The functions demonstrated - advertisements, in-app purchases, push notifications, analytics, user accounts, and real-time databases are all functions that many applications will integrate in one shape or form. By providing a pre-made QML integration, Felgo can save a considerable amount of development time. Combine this with the remote building capabilities of Cloud Builds, automating the building and deployment into app stores, and the Hot Reload feature, making it possible to try out changes live across a range of devices, all at once, and you can save a lot of time.
+The functions demonstrated - advertisements, in-app purchases, push notifications, analytics, user accounts, and real-time databases are all integrated by many applications in one shape or form. By providing pre-made QML integrations, Felgo can save a considerable amount of development time. This is on top of the remote building capabilities of Cloud Builds, automating the building and deployment into app stores, and the Hot Reload feature, making it possible to try out changes live across a range of devices. All of this together can lead to great time savings.
+
+.. figure:: images/felgo-chart-time-sav.png
+    :scale: 50%
 
