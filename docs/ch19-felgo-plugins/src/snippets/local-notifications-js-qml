@@ -1,0 +1,9 @@
+
+        AppButton {
+           text: "Dynamic Notification (timestamp)"
+           onClicked: {
+             // This time it's dynamically defined inline and with timestamp instead of interval
+             var unixTimestamp = Math.round((new Date()).getTime() / 1000)
+             notificationManager.schedule({ notificationId: "dynamic_notification", message: "I'm dynamically defined in the app", timestamp: unixTimestamp + 5})
+           }
+         }
