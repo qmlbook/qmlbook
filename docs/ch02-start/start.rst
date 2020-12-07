@@ -59,7 +59,7 @@ Another file, ``HelloWorld.qml``, is our application code. Open it and try to un
         title: qsTr("Hello World")
     }
 
-The ``HelloWord.qml`` program is written in the QML language. We'll discuss the QML language more in-depth in the next chapter. QML describes the user interface as a tree of hierarchical elements. In this case, a rectangle of 640 x 480 pixels, with a centered text that contains the words "Hello World". To capture user input, a mouse area spans the whole rectangle. When the user interacts with it, the application quits.
+The ``HelloWord.qml`` program is written in the QML language. We'll discuss the QML language more in-depth in the next chapter. QML describes the user interface as a tree of hierarchical elements. 
 
 To run the application on your own, press the |creatorrun| :guilabel:`Run` tool on the left side, or select :menuselection:`Build > Run` from the menu.
 
@@ -394,7 +394,7 @@ Up to now, we have mostly covered basic data types and how to use widgets and gr
 
     m_view = new QListView(this);
     m_model = new QStringListModel(this);
-    view->setModel(m_model);
+    m_view->setModel(m_model);
 
     QList<QString> cities;
     cities << "Munich" << "Paris" << "London";
@@ -425,12 +425,12 @@ And then we can open our database using C++. First, we need to retrieve a new da
         qFatal("unable to open database");
     }
 
-    m_model = QSqlTableModel(this);
+    m_model = new QSqlTableModel(this);
     m_model->setTable("city");
     m_model->setHeaderData(0, Qt::Horizontal, "City");
     m_model->setHeaderData(1, Qt::Horizontal, "Country");
 
-    view->setModel(m_model);
+    m_view->setModel(m_model);
     m_model->select();
 
 For a higher level model operations, Qt provides a sorting file proxy model that allows you sort, filter, and transform models.
@@ -439,8 +439,8 @@ For a higher level model operations, Qt provides a sorting file proxy model that
 
     QSortFilterProxyModel* proxy = new QSortFilterProxyModel(this);
     proxy->setSourceModel(m_model);
-    view->setModel(proxy);
-    view->setSortingEnabled(true);
+    m_view->setModel(proxy);
+    m_view->setSortingEnabled(true);
 
 Filtering is done based on the column that is to be filters, and a string as filter argument.
 
@@ -512,7 +512,7 @@ To enable the ``cityModel``, we can mostly re-use our previous model, and add a 
 
 .. code-block:: cpp
 
-    m_model = QSqlTableModel(this);
+    m_model = new QSqlTableModel(this);
     ... // some magic code
     QHash<int, QByteArray> roles;
     roles[Qt::UserRole+1] = "city";
