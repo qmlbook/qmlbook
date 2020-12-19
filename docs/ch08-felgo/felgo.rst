@@ -108,7 +108,7 @@ The root element is the `App <https://felgo.com/doc/felgo-app/>`_ element with a
 
 Within the Page you can find an `AppText <https://felgo.com/doc/felgo-apptext/>`_ element, which inherits from QtQuick.Text, but also manages proper font scaling. It offers a fontSize property that ensures the same physical size on all devices, avoiding the need to manually adapt the font.pixelSize setting of QtQuick.Text to the pixel density of your device.
 
-In the Live Client view, you can you can change simulated resolutions or the application theme from the menu bar. You can test different screen formats and see how the app looks on an Android, iOS or Desktop device.
+In the Live Client view, you can change simulated resolutions or the application theme from the menu bar. You can test different screen formats and see how the app looks on an Android, iOS or Desktop device.
 
 
 
