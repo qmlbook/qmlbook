@@ -98,7 +98,7 @@ We then start building the user interface in ``main.qml`` by adding an ``Image``
 .. literalinclude:: src/imageviewer-desktop/main.qml
     :lines: 5-8, 44-53, 78-
     
-We then continue by adding the ``ToolBar``. This is done using the ``toolBar`` property of the window. Inside the tool bar we add a ``Flow`` element which will let the contents fill the width of the control before overflowing to a new row. Inside the flow we place a ``ToolButton``.
+We then continue by adding the ``ToolBar``. This is done using the ``header`` property of the window. Inside the tool bar we add a ``Flow`` element which will let the contents fill the width of the control before overflowing to a new row. Inside the flow we place a ``ToolButton``.
 
 The ``ToolButton`` has a couple of interesting properties. The ``text`` is straight forward. However, the ``icon.name`` is taken from the `freedesktop.org Icon Naming Specification <https://specifications.freedesktop.org/icon-naming-spec/icon-naming-spec-latest.html>`_. In that document, a list of standard icons are listed by name. By refering to such a name, Qt will pick out the correct icon from the current desktop theme.
 
