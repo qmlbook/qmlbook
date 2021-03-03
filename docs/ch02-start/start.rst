@@ -131,13 +131,22 @@ This example adds a list, and list iteration, to the application. Qt comes with 
     QList<QString> list;
     // stream into containers
     list << s1 << s2;
-    // Java and STL like iterators
+    // Java style iterators
     QListIterator<QString> iter(list);
     while(iter.hasNext()) {
         cout << iter.next();
         if(iter.hasNext()) {
             cout << " ";
         }
+    }
+    cout << "!" << endl;
+
+    // STL style iterators
+    QList<QString>::Iterator stlIter = list.begin();
+    for(; stlIter != list.end(); ++stlIter) {
+        cout << *stlIter; 
+        if((stlIter + 1) != list.end())
+            cout << " ";
     }
     cout << "!" << endl;
 

@@ -42,7 +42,7 @@ Let's start with a simple example of a QML file to explain the different syntax.
 * Arbitrary elements inside a QML document can be accessed by using their ``id`` (an unquoted identifier)
 * Elements can be nested, meaning a parent element can have child elements. The parent element can be accessed using the ``parent`` keyword
 
-The ``import`` statement you import a specific version of a module. For the QML modules that comes with Qt the version is linked to the Qt version you intend to use. The lower the version number, the earlier Qt version can be used. The minor version of the ``import`` statement matches the minor version of the Qt release, so Qt 5.11 corresponds to ``QtQuick`` 2.11, Qt 5.12 to ``QtQuick`` 2.12 and so on. Prior to Qt 5.11, the QML modules shipped with Qt had their own versioning sequences, meaning that ``QtQuick`` followed the Qt versions, while ``QtQuick.Controls`` started with version 2.0 at Qt 5.7 and was at version 2.4 by Qt 5.11.
+Through ``import`` statement you import a specific version of a module. For the QML modules that comes with Qt the version is linked to the Qt version you intend to use. The lower the version number, the earlier Qt version can be used. The minor version of the ``import`` statement matches the minor version of the Qt release, so Qt 5.11 corresponds to ``QtQuick`` 2.11, Qt 5.12 to ``QtQuick`` 2.12 and so on. Prior to Qt 5.11, the QML modules shipped with Qt had their own versioning sequences, meaning that ``QtQuick`` followed the Qt versions, while ``QtQuick.Controls`` started with version 2.0 at Qt 5.7 and was at version 2.4 by Qt 5.11.
 
 .. tip::
 
@@ -113,7 +113,7 @@ QML and JavaScript (also known as ECMAScript) are best friends. In the *JavaScri
 .. note::
 
     The difference between the QML ``:`` (binding) and the JavaScript ``=`` (assignment) is, that the binding is a contract and keeps true over the lifetime of the binding, whereas the JavaScript assignment (``=``) is a one time value assignment.
-    The lifetime of a binding ends, when a new binding is set to the property or even when a JavaScript value is assigned is to the property. For example, a key handler setting the text property to an empty string would destroy our increment display::
+    The lifetime of a binding ends, when a new binding is set to the property or even when a JavaScript value is assigned to the property. For example, a key handler setting the text property to an empty string would destroy our increment display::
 
         Keys.onEscapePressed: {
             label.text = ''
@@ -217,7 +217,7 @@ To display text, you can use the ``Text`` element. Its most notable property is 
 
 .. figure:: assets/text.png
 
-Text can be aligned to each side and the center using the ``horizontalAlignment`` and ``verticalAlignment`` properties. To further enhance the text rendering you can use the ``style`` and ``styleColor`` property, which allows you render the text in outline, raised and sunken mode. For longer text, you often want to define a *break* position like *A very ... long text*, this can be achieved using the ``elide`` property. The ``elide`` property allows you to set the elide position to the left, right or middle of your text. In case you don't want the '...' of the elide mode to appear but still want to see the full text you can also wrap the text using the ``wrapMode`` property (works only when the width is explicitly set)::
+Text can be aligned to each side and the center using the ``horizontalAlignment`` and ``verticalAlignment`` properties. To further enhance the text rendering you can use the ``style`` and ``styleColor`` property, which allows you to render the text in outline, raised and sunken mode. For longer text, you often want to define a *break* position like *A very ... long text*, this can be achieved using the ``elide`` property. The ``elide`` property allows you to set the elide position to the left, right or middle of your text. In case you don't want the '...' of the elide mode to appear but still want to see the full text you can also wrap the text using the ``wrapMode`` property (works only when the width is explicitly set)::
 
     Text {
         width: 40; height: 120
@@ -237,7 +237,7 @@ A ``Text`` element only displays the given text. It does not render any backgrou
 
 .. note::
 
-    Be aware a ``Text`` initial width (height) is depending on the text string and on the font set. A ``Text`` element with no width set and no text will not be visible, as the initial width will be 0.
+    Be aware that ``Text`` initial width (height) is depending on the text string and on the font set. A ``Text`` element with no width set and no text will not be visible, as the initial width will be 0.
 
 .. note::
 
@@ -273,7 +273,7 @@ MouseArea Element
 
 .. issues:: ch04
 
-To interact with these elements you often will use a ``MouseArea``. It's a rectangular invisible item in where you can capture mouse events. The mouse area is often used together with a visible item to execute commands when the user interacts with the visual part.
+To interact with these elements you often will use a ``MouseArea``. It's a rectangular invisible item where in you can capture mouse events. The mouse area is often used together with a visible item to execute commands when the user interacts with the visual part.
 
 .. literalinclude:: src/concepts/MouseAreaExample.qml
     :start-after: M1>>
@@ -309,7 +309,7 @@ For example, let's create a rectangle containing a text component and a mouse ar
     :start-after: M1>>
     :end-before: <<M1
 
-The UI will look similar to this. On the left the UI in the initial state, on the right after the button has been clicked.
+The UI will look similar to this. On the left the UI is in the initial state, on the right after the button has been clicked.
 
 .. list-table::
     :widths: 50 50
@@ -484,7 +484,7 @@ An element often used with positioners is the ``Repeater``. It works like a for-
     :start-after: M1>>
     :end-before: <<M1
 
-In this repeater example, we use some new magic. We define our own color property, which we use as an array of colors. The repeater creates a series of rectangles (16, as defined by the model). For each loop, he creates the rectangle as defined by the child of the repeater. In the rectangle we chose the color by using JS math functions ``Math.floor(Math.random()*3)``. This gives us a random number in the range from 0..2, which we use to select the color from our color array. As noted earlier, JavaScript is a core part of Qt Quick, as such the standard libraries are available for us.
+In this repeater example, we use some new magic. We define our own color property, which we use as an array of colors. The repeater creates a series of rectangles (16, as defined by the model). For each loop, a rectangle is created as defined by the child of the repeater. In the rectangle we chose the color by using JS math functions ``Math.floor(Math.random()*3)``. This gives us a random number in the range from 0..2, which we use to select the color from our color array. As noted earlier, JavaScript is a core part of Qt Quick, as such the standard libraries are available for us.
 
 A repeater injects the ``index`` property into the repeater. It contains the current loop-index. (0,1,..15). We can use this to make our own decisions based on the index, or in our case to visualize the current index with the ``Text`` element.
 
@@ -505,7 +505,7 @@ QML provides a flexible way to layout items using anchors. The concept of anchor
 
 .. figure:: assets/anchors.png
 
-An element has 6 major anchor lines (top, bottom, left, right, horizontalCenter, verticalCenter). Additional there is the baseline anchor for text in Text elements. Each anchor line comes with an offset. In the case of the top, bottom left and right they are called margins. For horizontalCenter, verticalCenter and baseline they are called offsets.
+An element has 6 major anchor lines (top, bottom, left, right, horizontalCenter, verticalCenter). Additionally there is the baseline anchor for text in Text elements. Each anchor line comes with an offset. In the case of the top, bottom left and right they are called margins. For horizontalCenter, verticalCenter and baseline they are called offsets.
 
 .. figure:: assets/anchorgrid.png
 
@@ -522,7 +522,7 @@ An element has 6 major anchor lines (top, bottom, left, right, horizontalCenter,
         :start-after: M2>>
         :end-before: <<M2
 
-#. An element left side is aligned to the parent's right side
+#. An element's left side is aligned to the parent's right side
 
     .. literalinclude:: src/anchors/AnchorsExample.qml
         :start-after: M3>>
@@ -581,7 +581,7 @@ The user can click inside a ``TextInput`` to change the focus. To support switch
 
 The ``KeyNavigation`` attached property supports a preset of navigation keys where an element id is bound to switch focus on the given key press.
 
-A text input element comes with no visual presentation beside a blinking cursor and the entered text. For the user to be able to recognize the element as an input element it needs some visual decoration, for example, a simple rectangle. When placing the ``TextInput`` inside an element you need make sure you export the major properties you want others to be able to access.
+A text input element comes with no visual presentation beside a blinking cursor and the entered text. For the user to be able to recognize the element as an input element it needs some visual decoration, for example, a simple rectangle. When placing the ``TextInput`` inside an element you need to make sure you export the major properties you want others to be able to access.
 
 We move this piece of code into our own component called ``TLineEditV1`` for reuse.
 
