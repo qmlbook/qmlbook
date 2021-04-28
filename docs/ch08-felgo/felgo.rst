@@ -117,6 +117,8 @@ A Messaging App
 
 Now that we have familiarized ourselves with the Felgo environment and run the Hello World code, let's transform the Hello World application into a messaging app. It will provide an overview page of all conversations, as well as one page per conversation showing the individual messages.
 
+Each step of the Messaging App chapter is available in the `Felgo Cloud IDE <https://ide.felgo.com/-/ide/project/qmlbook/qmlbook-felgo-messaging/blob/messaging-stage-1/-/>`_ on a separate git branch & commit. Use it to view code changes of every step, make own changes, or live preview everything right in your web browser.
+
 A Skeleton
 ----------
 
@@ -159,6 +161,8 @@ Now let’s attach a delegate to show the model contents. The result is shown in
 
 Another interesing detail in the example above is that ``imageMaxSize`` is defined as ``dp(48)``. Felgo uses density independent sizes, meaning that elements have the same size regardless of the device screen. To benefit from this you should always use ``dp()`` for setting the size of visual items such as buttons, and ``sp()`` for texts which can also scale along to the preferred base size of a user. For details about how to create apps for multiple screen sizes and densities using Felgo, see: `Supporting Multiple Screen Sizes & Screen Densities with Felgo Apps <https://felgo.com/doc/apps-supporting-multiple-screens-and-screen-densities/>`_. 
 
+You can preview and edit the resulting state of this step in the `Felgo Cloud IDE <https://ide.felgo.com/-/ide/project/qmlbook/qmlbook-felgo-messaging/edit/messaging-stage-2/-/>`_.
+
 Showing Conversations
 ---------------------
 
@@ -193,6 +197,8 @@ This delegate allows us to provide a custom look for our message list, as shown 
 
 The text is shown using the `AppText <https://felgo.com/doc/felgo-apptext/>`_ element, that ensures that the size of the text is device independent. The ``AppText`` relies on the application's `Theme <https://felgo.com/doc/felgo-theme/>`_. Each Felgo application has a theme, and inside the ``Theme`` object, the global styling options for the application are found. In the code above we use ``Theme.tintColor`` for the primary color and ``Theme.contentPadding`` for the system dependent padding size. By default, the ``Theme`` ensures a native look and feel across platforms.
 
+You can preview and edit the resulting state of this step in the `Felgo Cloud IDE <https://ide.felgo.com/-/ide/project/qmlbook/qmlbook-felgo-messaging/edit/messaging-stage-3/-/>`_.
+
 Sending Messages
 ----------------
 
@@ -206,6 +212,8 @@ The ``AppTextField`` let's the user enter text, and provides the ``onAccepted`` 
 
 .. figure:: images/messaging-stage-4.png
     :scale: 50%
+
+You can preview and edit the resulting state of this step in the `Felgo Cloud IDE <https://ide.felgo.com/-/ide/project/qmlbook/qmlbook-felgo-messaging/edit/messaging-stage-4/-/>`_.
 
 Storing Data
 ------------
@@ -233,10 +241,14 @@ The screenshot below shows a stored message that has been saved between two exec
 
 If you want to take the messaging application to the next level, you can also use Felgo to directly integrate your QML to Google Firebase or the Felgo Cloud backend, to provide a proper, cloud based storage option. But that is a completely different story.
 
+You can preview and edit the resulting state of this step in the `Felgo Cloud IDE <https://ide.felgo.com/-/ide/project/qmlbook/qmlbook-felgo-messaging/edit/messaging-stage-5/-/>`_.
+
 Refactoring
 -----------
 
 Up until now, we've created the entire messaging app in a single QML file. This works for smaller apps, but we are already way beyond a hundred lines of code in our example. For the interested reader, there is a refactored version of the app available in the chapter example source code tarball where the app has been split into ``RecentsPage.qml``, ``ConversationPage.qml``, and ``Main.qml``. This way, the complexity in each file can be kept down and the various parts of the app can be kept separate from each other.
+
+You can preview and edit the resulting state of this step in the `Felgo Cloud IDE <https://ide.felgo.com/-/ide/project/qmlbook/qmlbook-felgo-messaging/edit/messaging-stage-6-refactor/-/>`_.
 
 Advanced Topics
 ===============
