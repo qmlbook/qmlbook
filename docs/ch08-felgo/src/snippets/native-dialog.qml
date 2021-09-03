@@ -13,7 +13,8 @@ App {
     Connections {
       target: nativeUtils
       onTextInputFinished: function (accepted, result) {
-      console.log("Here's the result " + result)
+        console.log("Here's the result " + result)
+      }
     }
   }
 }
