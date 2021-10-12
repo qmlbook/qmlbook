@@ -23,7 +23,7 @@ Qt uses this meta information to enable a very loosely bound callback concept us
 
 The introspection features are also used to create dynamic language bindings, making it possible to expose a C++ object instance to QML and making C++ functions callable from Javascript. Other bindings for Qt C++ exist and besides the standard Javascript binding, a popular one is the Python binding called `PyQt <http://www.riverbankcomputing.co.uk/software/pyqt/intro>`_.
 
-In addition to this central concept, Qt makes it possible to develop cross-platform applications using C++. Qt C++ provides a platform abstraction on the different operating systems, which allows the developer to concentrate on the task at hand and not the details of how you open a file on different operating systems. This means you can re-compile the same source code for Windows, OS X, and Linux and Qt takes care of the different OS ways of handling certain things. The end result is natively built applications with the look and feel of the target platform. As the mobile is the new desktop, newer Qt versions can also target a number of mobile platforms using the same source code, e.g. iOS, Android, Jolla, BlackBerry, Ubuntu Phone, Tizen.
+In addition to this central concept, Qt makes it possible to develop cross-platform applications using C++. Qt C++ provides a platform abstraction on different operating systems, which allows the developer to concentrate on the task at hand and not the details of how you open a file on different operating systems. This means you can re-compile the same source code for Windows, OS X, and Linux and Qt takes care of the different OS ways of handling certain things. The end result is natively built applications with the look and feel of the target platform. As the mobile is the new desktop, newer Qt versions can also target a number of mobile platforms using the same source code, e.g. iOS, Android, Jolla, BlackBerry, Ubuntu Phone, Tizen.
 
 When it comes to re-using, not only can source code be re-used but developer skills are also reusable. A team knowing Qt can reach out to far more platforms then a team just focusing on a single platform specific technology and as Qt is so flexible the team can create different system components using the same technology.
 
@@ -97,9 +97,9 @@ As described in the introduction, the ``QObject`` is what enables Qt's introspec
 
 A Qt object is a standard C++ object, but with more abilities. These can be divided into two groups: introspection and memory management. The first means that a Qt object is aware of its class name, its relationship to other classes, as well as its methods and properties. The memory management concept means that each Qt object can be the parent of child objects. The parent *owns* the children, and when the parent is destroyed, it is responsible for destroying its children.
 
-The best way of understanding how the ``QObject`` abilities affect a class is to take a standard C++ class and Qt enables it. The class shown below represents an ordinary such class.
+The best way of understanding how the ``QObject`` abilities affect a class is to take a standard C++ class and Qt enables it. The class shown below represents such an ordinary class.
 
-The person class is a data class with a name and gender properties. The person class uses Qt's object system to add meta information to the c++ class. It allows users of a person object to connect to the slots and get notified when the properties get changed.
+The person class is a data class with name and gender properties. The person class uses Qt's object system to add meta information to the C++ class. It allows users of a person object to connect to the slots and get notified when the properties get changed.
 
 .. code-block:: cpp
 
@@ -242,9 +242,9 @@ When you want to build a library instead of an application, you need to change t
     SOURCES += utils.cpp
 
 
-Now the project will build as a library without UI dependencies and used the ``utils.h`` header and the ``utils.cpp`` source file. The format of the library will depend on the OS you are building the project.
+Now the project will build as a library without UI dependencies and used the ``utils.h`` header and the ``utils.cpp`` source file. The format of the library will depend on the OS on which you are building the project.
 
-Often you will have more complicated setups and need to build a set of projects. For this, qmake offers the ``subdirs`` template. Assume we would have a mylib and a myapp project. Then our setup could be like this::
+Often you will have more complicated setups and need to build a set of projects. For this, qmake offers the ``subdirs`` template. Assume we have a mylib and a myapp project. Then our setup could be like this::
 
     my.pro
     mylib/mylib.pro
@@ -263,7 +263,7 @@ We know already how the mylib.pro and myapp.pro would look like. The my.pro as t
 
     myapp.depends = mylib
 
-This declares a project with two subprojects: ``mylib`` and ``myapp``, where ``myapp`` depends on ``mylib``. When you run qmake on this project file it will generate file a build file for each project in a corresponding folder. When you run the makefile for ``my.pro``, all subprojects are also built.
+This declares a project with two subprojects: ``mylib`` and ``myapp``, where ``myapp`` depends on ``mylib``. When you run qmake on this project file it will generate a build file for each project in a corresponding folder. When you run the makefile for ``my.pro``, all subprojects are also built.
 
 Sometimes you need to do one thing on one platform and another thing on other platforms based on your configuration. For this qmake introduces the concept of scopes. A scope is applied when a configuration option is set to true.
 
@@ -302,7 +302,7 @@ CMake
 
 CMake is a tool created by Kitware. Kitware is very well known for their 3D visualization software VTK and also CMake, the cross-platform makefile generator. It uses a series of ``CMakeLists.txt`` files to generate platform-specific makefiles. CMake is used by the KDE project and as such has a special relationship with the Qt community.
 
-The ``CMakeLists.txt`` is the file used to store the project configuration. For a simple hello world using QtCore the project file would look like this::
+The ``CMakeLists.txt`` is the file used to store the project configuration. For a simple hello world using QtCore the ``CMakeLists.txt`` file would look like this::
 
     // ensure cmake version is at least 3.0
     cmake_minimum_required(VERSION 3.0)
@@ -355,7 +355,7 @@ The code examples shown in this section are written using the Qt Test library. I
 QString
 -------
 
-In general, text handling in Qt is Unicode based. For this, you use the ``QString`` class. It comes with a variety of great functions which you would expect from a modern framework. For 8-bit data, you would use normally the ``QByteArray`` class and for ASCII identifiers the ``QLatin1String`` to preserve memory. For a list of strings you can use a ``QList<QString>`` or simply the ``QStringList`` class (which is derived from ``QList<QString>``).
+In general, text handling in Qt is Unicode based. For this, you use the ``QString`` class. It comes with a variety of great functions which you would expect from a modern framework. For 8-bit data, you would normally use the ``QByteArray`` class and for ASCII identifiers the ``QLatin1String`` to preserve memory. For a list of strings you can use a ``QList<QString>`` or simply the ``QStringList`` class (which is derived from ``QList<QString>``).
 
 Here are some examples of how to use the ``QString`` class. QString can be created on the stack but it stores its data on the heap. Also when assigning one string to another, the data will not be copied - only a reference to the data. So this is really cheap and lets the developer concentrate on the code and not on the memory handling. ``QString`` uses reference counters to know when the data can be safely deleted. This feature is called :qt5:`Implicit Sharing <implicit-sharing>` and it is used in many Qt classes.
 
@@ -365,7 +365,7 @@ Here are some examples of how to use the ``QString`` class. QString can be creat
     :start-after: M1>>
     :end-before:  M1<<
 
-Here we will show how to convert a number to a string and back. There are also conversion functions for float or double and other types. Just look for the function in the Qt documentation used here and you will find the others.
+Here we will show how to convert a number to a string and back. There are also conversion functions for float, double and other types. Just look for the function in the Qt documentation used here and you will find the others.
 
 .. literalinclude:: src/qtfoundation/tst_foundation.cpp
     :language: cpp
@@ -428,9 +428,9 @@ More Classes
 
 .. issues:: ch15
 
-Qt is a rich application framework. As such it has thousands of classes. It takes some time to get used to all of these classes and how to use them. Luckily Qt has a very good documentation with many useful examples includes. Most of the time you search for a class and the most common use cases are already provided as snippets. Which means you just copy and adapt these snippets. Also, Qt's examples in the Qt source code are a great help. Make sure you have them available and searchable to make your life more productive. Do not waste time. The Qt community is always helpful. When you ask, it is very helpful to ask exact questions and provide a simple example which displays your needs. This will drastically improve the response time of others. So invest a little bit of time to make the life of others who want to help you easier :-).
+Qt is a rich application framework. As such it has thousands of classes. It takes some time to get used to all of these classes and how to use them. Luckily Qt has a very good documentation with many useful examples included. Most of the time you search for a class and the most common use cases are already provided as snippets. Which means you just copy and adapt these snippets. Also, Qt's examples in the Qt source code are a great help. Make sure you have them available and searchable to make your life more productive. Do not waste time. The Qt community is always helpful. When you ask, it is very helpful to ask exact questions and provide a simple example which displays your needs. This will drastically improve the response time of others. So invest a little bit of time to make the life of others who want to help you easier :-).
 
-Here some classes whose documentation the author thinks are a must read: :qt5:`QObject <qobject>`, :qt5:`QString <qstring>`, :qt5:`QByteArray <qbytearray>`, :qt5:`QFile <qfile>`, :qt5:`QDir <qdir>`, :qt5:`QFileInfo <qfileinfo>`, :qt5:`QIODevice <qiodevice>`, :qt5:`QTextStream <qtextstream>`, :qt5:`QDataStream <qdatastream>`, :qt5:`QDebug <qdebug>`, :qt5:`QLoggingCategory <qloggingcategory>`, :qt5:`QTcpServer <qtcpserver>`, :qt5:`QTcpSocket <qtcpsocket>`, :qt5:`QNetworkRequest <qnetworkrequest>`, :qt5:`QNetworkReply <qnetworkreply>`, :qt5:`QAbstractItemModel <qabstractitemmodel>`, :qt5:`QRegExp <qregexp>`, :qt5:`QList <qlist>`, :qt5:`QHash <qhash>`, :qt5:`QThread <qthread>`, :qt5:`QProcess <qprocess>`, :qt5:`QJsonDocument <qjsondocument>`, :qt5:`QJSValue <qjsvalue>`.
+Here are some classes whose documentation the author thinks are a must read: :qt5:`QObject <qobject>`, :qt5:`QString <qstring>`, :qt5:`QByteArray <qbytearray>`, :qt5:`QFile <qfile>`, :qt5:`QDir <qdir>`, :qt5:`QFileInfo <qfileinfo>`, :qt5:`QIODevice <qiodevice>`, :qt5:`QTextStream <qtextstream>`, :qt5:`QDataStream <qdatastream>`, :qt5:`QDebug <qdebug>`, :qt5:`QLoggingCategory <qloggingcategory>`, :qt5:`QTcpServer <qtcpserver>`, :qt5:`QTcpSocket <qtcpsocket>`, :qt5:`QNetworkRequest <qnetworkrequest>`, :qt5:`QNetworkReply <qnetworkreply>`, :qt5:`QAbstractItemModel <qabstractitemmodel>`, :qt5:`QRegExp <qregexp>`, :qt5:`QList <qlist>`, :qt5:`QHash <qhash>`, :qt5:`QThread <qthread>`, :qt5:`QProcess <qprocess>`, :qt5:`QJsonDocument <qjsondocument>`, :qt5:`QJSValue <qjsvalue>`.
 
 That should be enough for the beginning.
 
@@ -440,7 +440,7 @@ Models in C++
 
 Models in QML serve the purpose of providing data to ``ListViews``, ``PathViews`` and other views which take a model and create an instance of a delegate for each entry in the model. The view is smart enough to only create these instances which are visible or in the cache range. This makes it possible to have large models with tens of thousands of entries but still have a very slick user interface. The delegate acts like a template to be rendered with the model entries data. So in summary: a view renders entries from the model using a delegate as a template. The model is a data provider for views.
 
-When you do not want to use C++ you can also define models in pure QML. You have several ways to provide a model for the view. For handling of data coming from C++ or a large amount of data, the C++ model is more suitable than this pure QML approach. But often you only need a few entries then these QML models are well suited.
+When you do not want to use C++ you can also define models in pure QML. You have several ways to provide a model for the view. For handling of data coming from C++ or a large amount of data, the C++ model is more suitable than this pure QML approach. But when you only need a few entries then these QML models are well suited.
 
 .. code-block:: qml
 
@@ -453,19 +453,19 @@ When you do not want to use C++ you can also define models in pure QML. You have
     ListView {
         // using a JS array as model
         model: ['A', 'B', 'C', 'D', 'E']
-        delegate: Text { 'Char['+ index +']: ' + modelData }
+        delegate: Text { text: 'Char['+ index +']: ' + modelData }
     }
 
     ListView {
         // using a dynamic QML ListModel as model
         model: ListModel {
-            ListElement { char: 'A' }
-            ListElement { char: 'B' }
-            ListElement { char: 'C' }
-            ListElement { char: 'D' }
-            ListElement { char: 'E' }
+            ListElement { character: 'A' }
+            ListElement { character: 'B' }
+            ListElement { character: 'C' }
+            ListElement { character: 'D' }
+            ListElement { character: 'E' }
         }
-        delegate: Text { 'Char['+ index +']: ' + model.char }
+        delegate: Text { text: 'Char['+ index +']: ' + model.character }
     }
 
 The QML views know how to handle these different models. For models coming from the C++ world, the view expects a specific protocol to be followed. This protocol is defined in an API (``QAbstractItemModel``) together with documentation for the dynamic behavior. The API was developed for the desktop widget world and is flexible enough to act as a base for trees, or multi-column tables as well as lists. In QML, we use either the list variant of the API (``QAbstractListModel``) or, for the ``TableView`` element, the table variant of the API (``QAbstractTableModel``). The API contains some mandatory functions to be implemented and some are optional. The optional parts mostly handle the dynamic use case of adding or removing of data.
@@ -660,7 +660,7 @@ The helper function ``count`` is trivial. It just returns the data count. The ``
 
 You need to be careful that you only return a value which QML understands. If it is not one of the basic QML types or types known to QML you need to register the type first with ``qmlRegisterType`` or ``qmlRegisterUncreatableType``. You use ``qmlRegisterUncreatableType`` if the user shall not be able to instantiate its own object in QML.
 
-Now you can use the model in QML and insert, append, remove entries from the model. Here is a small example which allows the user to enter a color name or color hex value and the color is then appended onto the model and shown in the list view. The red circle on the delegate allows the user to remove this entry from the model. After the entry is to remove the list view is notified by the model and updates its content.
+Now you can use the model in QML and insert, append, remove entries from the model. Here is a small example which allows the user to enter a color name or color hex value and the color is then appended onto the model and shown in the list view. The red circle on the delegate allows the user to remove this entry from the model. After an entry is removed, the list view is notified by the model and updates its content.
 
 .. figure:: images/modelview.png
     :scale: 50%
