@@ -405,9 +405,9 @@ Another popular way to store and retrieve data is SQL. Qt comes with SQLite embe
 .. code-block:: sql
 
     CREATE TABLE city (name TEXT, country TEXT);
-    INSERT INTO city value ("Munich", "Germany");
-    INSERT INTO city value ("Paris", "France");
-    INSERT INTO city value ("London", "United Kingdom");
+    INSERT INTO city VALUES ("Munich", "Germany");
+    INSERT INTO city VALUES ("Paris", "France");
+    INSERT INTO city VALUES ("London", "United Kingdom");
 
 To use SQL, we need to add the SQL module to our .pro file
 
