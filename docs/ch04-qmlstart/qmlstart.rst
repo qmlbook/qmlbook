@@ -38,7 +38,7 @@ Let's start with a simple example of a QML file to explain the different syntax.
 * Comments can be made using ``//`` for single line comments or ``/* */`` for multi-line comments. Just like in C/C++ and JavaScript
 * Every QML file needs to have exactly one root element, like HTML
 * An element is declared by its type followed by ``{ }``
-* Elements can have properties, they are in the form `` name: value``
+* Elements can have properties, they are in the form ``name: value``
 * Arbitrary elements inside a QML document can be accessed by using their ``id`` (an unquoted identifier)
 * Elements can be nested, meaning a parent element can have child elements. The parent element can be accessed using the ``parent`` keyword
 
