@@ -49,7 +49,7 @@ class NumberGenerator(QObject):
     
     def __set_number(self, val):
         if self.__number != val:
-            self.__number = val;
+            self.__number = val
             self.numberChanged.emit(self.__number)
     
     def get_number(self):
